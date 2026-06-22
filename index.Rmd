@@ -2,18 +2,22 @@
 title: "Statistics and the Physical World"
 author: "Larry Winner"
 date: "`r Sys.Date()`"
-output: pdf_document
-site: bookdown::bookdown_site
+output: 
+  pdf_document: default
+  html_document:
+    df_print: paged
+geometry: left=2cm,right=2cm,top=2cm,bottom=2cm
 documentclass: book
 bibliography:
 - book1.bib
 - packages.bib
 biblio-style: apalike
-link-citations: yes
+link-citations: yes 
 github-repo: rstudio/bookdown-demo
+site: bookdown::bookdown_site
 description: This is an Introduction to Statistics with applications from the physical
   world. We will make use of the R programming language for computations.
-geometry: left=2cm,right=2cm,top=2cm,bottom=2cm
+
 ---
 
 
