@@ -1,0 +1,749 @@
+ID,Team,Number,Name,Position,Height,Weight
+3,Anaheim,7,Andrew Cogliano  ,C,70,184
+4,Anaheim,15,"Ryan Getzlaf ""C"" ",C,76,218
+6,Anaheim,17,Ryan Kesler  ,C,74,208
+10,Anaheim,67,Rickard Rakell  ,C,72,201
+13,Anaheim,44,Nate Thompson  ,C,72,210
+26,Arizona,24,Kyle Chipchura  ,C,74,203
+30,Arizona,9,Sam Gagner  ,C,71,202
+31,Arizona,11,"Martin Hanzal ""A"" ",C,78,226
+37,Arizona,50,Antoine Vermette  ,C,73,198
+38,Arizona,14,Joe Vitale  ,C,71,205
+49,Calgary,11,Mikael Backlund  ,C,72,198
+50,Calgary,63,Sam Bennett  ,C,73,178
+52,Calgary,17,Lance Bouma  ,C,73,210
+53,Calgary,32,Paul Byron  ,C,67,153
+54,Calgary,8,Joe Colborne  ,C,77,213
+57,Calgary,60,Markus Granlund  ,C,71,185
+58,Calgary,24,Jiri Hudler  ,C,70,186
+60,Calgary,86,Josh Jooris   **,C,72,180
+62,Calgary,23,Sean Monahan  ,C,74,185
+64,Calgary,22,Drew Shore  ,C,75,205
+65,Calgary,18,Matt Stajan  ,C,73,192
+79,Edmonton,27,Boyd Gordon  ,C,72,200
+83,Edmonton,51,Anton Lander  ,C,72,186
+84,Edmonton,93,Ryan Nugent-Hopkins  ,C,72,190
+88,Edmonton,8,Derek Roy  ,C,69,184
+101,Los Angeles,77,Jeff Carter  ,C,76,212
+105,Los Angeles,11,"Anze Kopitar ""A"" ",C,75,224
+106,Los Angeles,22,Trevor Lewis  ,C,73,198
+107,Los Angeles,71,Jordan Nolan  ,C,75,221
+109,Los Angeles,10,Mike Richards  ,C,71,196
+110,Los Angeles,28,Jarret Stoll  ,C,73,213
+111,Los Angeles,73,Tyler Toffoli  ,C,73,196
+124,San Jose,39,Logan Couture  ,C,73,200
+125,San Jose,10,Andrew Desjardins  ,C,73,195
+127,San Jose,48,Tomas Hertl  ,C,74,210
+128,San Jose,68,Melker Karlsson  ,C,72,180
+133,San Jose,8,"Joe Pavelski ""A"" ",C,71,190
+136,San Jose,19,"Joe Thornton ""A"" ",C,76,220
+137,San Jose,57,Tommy Wingels  ,C,72,200
+148,Vancouver,13,Nick Bonino  ,C,73,196
+153,Vancouver,53,Bo Horvat  ,C,72,206
+155,Vancouver,27,Shawn Matthias  ,C,76,223
+158,Vancouver,33,"Henrik Sedin ""C"" ",C,74,188
+174,Chicago,16,Marcus Kruger  ,C,72,186
+175,Chicago,42,Joakim Nordstrom  ,C,73,189
+176,Chicago,91,Brad Richards  ,C,72,199
+179,Chicago,65,Andrew Shaw  ,C,71,179
+181,Chicago,86,Teuvo Teravainen  ,C,71,178
+182,Chicago,19,"Jonathan Toews ""C"" ",C,74,201
+195,Colorado,48,Daniel Briere  ,C,69,174
+196,Colorado,24,Marc-Andre Cliche  ,C,72,202
+197,Colorado,9,Matt Duchene  ,C,71,200
+201,Colorado,29,Nathan MacKinnon  ,C,72,195
+204,Colorado,7,John Mitchell  ,C,73,204
+205,Colorado,90,Ryan O'Reilly  ,C,72,210
+207,Colorado,25,Maxime Talbot  ,C,71,190
+209,Colorado,18,Jesse Winchester   **,C,73,205
+222,Dallas,20,Cody Eakin  ,C,72,190
+224,Dallas,38,"Vernon Fiddler ""A"" ",C,71,205
+227,Dallas,10,Shawn Horcoff  ,C,73,205
+230,Dallas,17,Rich Peverley  ,C,71,195
+233,Dallas,22,Colton Sceviour  ,C,72,200
+234,Dallas,91,Tyler Seguin  ,C,73,200
+235,Dallas,90,Jason Spezza  ,C,75,220
+246,Minnesota,21,Kyle Brodziak  ,C,74,212
+247,Minnesota,18,Ryan Carter  ,C,73,205
+249,Minnesota,3,Charlie Coyle  ,C,75,221
+251,Minnesota,64,Mikael Granlund   **,C,70,185
+252,Minnesota,56,Erik Haula  ,C,71,188
+253,Minnesota,9,"Mikko Koivu ""C"" ",C,75,215
+257,Minnesota,10,Jordan Schroeder  ,C,69,176
+275,Nashville,7,Matt Cullen  ,C,73,200
+276,Nashville,12,"Mike Fisher ""A"" ",C,73,215
+277,Nashville,9,Filip Forsberg  ,C,73,186
+278,Nashville,28,Paul Gaustad  ,C,77,223
+279,Nashville,19,Calle Jarnkrok  ,C,71,156
+280,Nashville,13,Olli Jokinen  ,C,74,210
+283,Nashville,63,Mike Ribeiro  ,C,72,177
+284,Nashville,15,Craig Smith  ,C,73,202
+286,Nashville,33,Colin Wilson  ,C,73,216
+297,St. Louis,42,"David Backes ""C"" ",C,75,221
+298,St. Louis,21,Patrik Berglund  ,C,75,217
+300,St. Louis,40,Maxim Lapierre  ,C,74,215
+301,St. Louis,12,Jori Lehtera  ,C,74,210
+302,St. Louis,10,Joakim Lindstrom  ,C,72,187
+304,St. Louis,9,Steve Ott  ,C,72,189
+308,St. Louis,26,Paul Stastny  ,C,72,205
+326,Winnipeg,18,Bryan Little  ,C,71,189
+329,Winnipeg,85,Mathieu Perreault  ,C,70,185
+330,Winnipeg,55,Mark Scheifele  ,C,75,198
+331,Winnipeg,19,Jim Slater  ,C,72,195
+346,Boston,37,"Patrice Bergeron ""A"" ",C,74,194
+347,Boston,11,Gregory Campbell  ,C,72,197
+351,Boston,23,"Chris Kelly ""A"" ",C,72,198
+352,Boston,46,"David Krejci ""A"" ",C,72,188
+357,Boston,91,Marc Savard   **,C,70,191
+359,Boston,34,Carl Soderberg  ,C,75,216
+371,Buffalo,63,Tyler Ennis  ,C,69,169
+372,Buffalo,65,Brian Flynn  ,C,73,180
+375,Buffalo,28,Zemgus Girgensons  ,C,73,190
+376,Buffalo,19,Cody Hodgson  ,C,72,192
+378,Buffalo,8,Cody McCormick   **,C,74,224
+379,Buffalo,17,Torrey Mitchell  ,C,71,189
+383,Buffalo,84,Philip Varone  ,C,70,185
+395,Detroit,18,Joakim Andersson  ,C,74,211
+397,Detroit,13,"Pavel Datsyuk ""A"" ",C,71,194
+399,Detroit,41,Luke Glendening  ,C,71,194
+400,Detroit,43,Darren Helm  ,C,72,196
+405,Detroit,15,Riley Sheahan  ,C,75,222
+407,Detroit,90,Stephen Weiss  ,C,71,190
+421,Florida,16,Aleksander Barkov  ,C,75,213
+423,Florida,27,Nick Bjugstad  ,C,78,218
+424,Florida,63,"Dave Bolland ""A"" ",C,72,184
+431,Florida,17,"Derek MacKenzie ""A"" ",C,71,181
+432,Florida,73,Brandon Pirri  ,C,72,183
+434,Florida,21,Vincent Trocheck  ,C,70,182
+445,Montreal,51,David Desharnais  ,C,67,176
+446,Montreal,81,Lars Eller  ,C,74,209
+447,Montreal,27,Alex Galchenyuk  ,C,73,198
+449,Montreal,20,Manny Malhotra  ,C,74,207
+452,Montreal,14,"Tomas Plekanec ""A"" ",C,71,198
+471,Ottawa,27,Curtis Lazar  ,C,72,196
+472,Ottawa,17,David Legwand  ,C,74,205
+476,Ottawa,44,Jean-Gabriel Pageau  ,C,69,175
+478,Ottawa,15,Zack Smith   **,C,74,210
+480,Ottawa,7,Kyle Turris  ,C,73,191
+481,Ottawa,93,Mika Zibanejad  ,C,74,211
+492,Tampa Bay,11,Brian Boyle  ,C,79,244
+497,Tampa Bay,51,Valtteri Filppula  ,C,72,195
+498,Tampa Bay,9,Tyler Johnson  ,C,69,182
+499,Tampa Bay,17,Alex Killorn  ,C,74,205
+503,Tampa Bay,13,Cedric Paquette  ,C,73,198
+504,Tampa Bay,91,"Steven Stamkos ""C"" ",C,72,190
+519,Toronto,42,Tyler Bozak  ,C,73,195
+521,Toronto,24,Peter Holland   **,C,74,194
+522,Toronto,43,Nazem Kadri  ,C,72,188
+524,Toronto,47,Leo Komarov  ,C,71,198
+526,Toronto,36,Greg McKegg  ,C,72,191
+528,Toronto,25,Mike Santorelli  ,C,72,189
+529,Toronto,26,Daniel Winnik  ,C,74,207
+542,Carolina,16,Elias Lindholm  ,C,73,192
+543,Carolina,24,Brad Malone  ,C,74,207
+544,Carolina,18,Jay McClement  ,C,73,205
+545,Carolina,20,Riley Nash  ,C,73,200
+546,Carolina,15,Andrej Nestrasil  ,C,75,200
+547,Carolina,49,Victor Rask  ,C,74,200
+550,Carolina,12,"Eric Staal ""C"" ",C,76,205
+551,Carolina,11,"Jordan Staal ""A"" ",C,76,220
+564,Columbus,42,Artem Anisimov   **,C,76,198
+568,Columbus,37,Sean Collins  ,C,73,198
+569,Columbus,17,"Brandon Dubinsky ""A"" ",C,74,216
+571,Columbus,23,Brian Gibbons   **,C,68,170
+573,Columbus,38,Boone Jenner   **,C,74,208
+574,Columbus,19,Ryan Johansen  ,C,75,223
+575,Columbus,55,"Mark Letestu ""A"" ",C,70,199
+579,Columbus,41,Alexander Wennberg  ,C,73,190
+594,New Jersey,26,"Patrik Elias ""A"" ",C,73,195
+595,New Jersey,11,Stephen Gionta   **,C,67,185
+596,New Jersey,21,Scott Gomez  ,C,71,200
+598,New Jersey,14,Adam Henrique  ,C,72,195
+600,New Jersey,16,Jacob Josefson  ,C,73,190
+606,New Jersey,19,"Travis Zajac ""A"" ",C,75,205
+621,New York Islanders,53,Casey Cizikas  ,C,71,201
+624,New York Islanders,84,Mikhail Grabovski  ,C,71,183
+626,New York Islanders,27,Anders Lee  ,C,75,227
+628,New York Islanders,29,Brock Nelson  ,C,75,206
+629,New York Islanders,51,"Frans Nielsen ""A"" ",C,73,190
+631,New York Islanders,18,Ryan Strome  ,C,73,196
+632,New York Islanders,91,"John Tavares ""C"" ",C,73,209
+645,Philadelphia,14,Sean Couturier  ,C,75,197
+646,Philadelphia,28,"Claude Giroux ""C"" ",C,71,172
+647,Philadelphia,49,Scott Laughton  ,C,73,177
+648,Philadelphia,40,Vincent Lecavalier  ,C,76,215
+651,Philadelphia,36,Zac Rinaldo  ,C,71,169
+652,Philadelphia,10,Brayden Schenn  ,C,73,190
+654,Philadelphia,18,R.J. Umberger  ,C,74,214
+655,Philadelphia,76,Chris VandeVelde  ,C,74,190
+673,Pittsburgh,87,"Sidney Crosby ""C"" ",C,71,200
+676,Pittsburgh,25,Andrew Ebbett  ,C,69,174
+677,Pittsburgh,57,Marcel Goc  ,C,73,197
+680,Pittsburgh,71,"Evgeni Malkin ""A"" ",C,75,195
+682,Pittsburgh,38,Zach Sill  ,C,72,202
+683,Pittsburgh,13,Nick Spaling  ,C,73,201
+684,Pittsburgh,16,Brandon Sutter  ,C,75,190
+695,Washington,19,"Nicklas Backstrom ""A"" ",C,73,208
+701,Washington,90,Marcus Johansson  ,C,73,205
+702,Washington,92,Evgeny Kuznetsov  ,C,72,172
+703,Washington,21,"Brooks Laich ""A"" ",C,74,210
+704,Washington,46,Michael Latta  ,C,72,209
+718,New York Rangers,61,Derick Brassard,C,73,200
+727,New York Rangers,9,J.T. Miller (A),C,73,218
+728,New York Rangers,20,Dominic Moore,C,72,192
+729,New York Rangers,38,Chris Mueller,C,70,201
+731,New York Rangers,45,James Sheppard,C,73,215
+734,New York Rangers,21,Derek Stepan,C,71,196
+14,Anaheim,23,"Francois Beauchemin ""A"" ",D,73,208
+15,Anaheim,2,Eric Brewer   **,D,76,216
+16,Anaheim,28,Mark Fistric  ,D,74,225
+17,Anaheim,4,Cam Fowler  ,D,73,211
+18,Anaheim,47,Hampus Lindholm  ,D,75,205
+19,Anaheim,6,Ben Lovejoy  ,D,73,206
+20,Anaheim,48,Colby Robak  ,D,75,194
+21,Anaheim,3,Clayton Stoner  ,D,75,212
+22,Anaheim,45,Sami Vatanen  ,D,70,180
+39,Arizona,23,Oliver Ekman-Larsson  ,D,74,200
+40,Arizona,33,Brandon Gormley   **,D,74,196
+41,Arizona,4,Zbynek Michalek  ,D,74,210
+42,Arizona,5,Connor Murphy  ,D,76,212
+43,Arizona,25,Philip Samuelsson  ,D,74,194
+44,Arizona,26,Michael Stone  ,D,75,210
+45,Arizona,20,Chris Summers  ,D,74,209
+46,Arizona,3,"Keith Yandle ""A"" ",D,73,190
+66,Calgary,7,TJ Brodie  ,D,73,182
+67,Calgary,33,Raphael Diaz  ,D,71,197
+68,Calgary,29,Deryk Engelland  ,D,74,215
+69,Calgary,5,"Mark Giordano ""C"" ",D,72,200
+70,Calgary,4,Kris Russell  ,D,70,173
+71,Calgary,15,Ladislav Smid  ,D,75,209
+72,Calgary,6,Dennis Wideman  ,D,72,200
+90,Edmonton,22,Keith Aulie  ,D,78,222
+91,Edmonton,5,Mark Fayne  ,D,75,215
+92,Edmonton,21,Andrew Ference  ,D,71,184
+93,Edmonton,84,Oscar Klefbom  ,D,75,210
+94,Edmonton,86,Nikita Nikitin  ,D,76,217
+95,Edmonton,2,Jeff Petry  ,D,75,198
+96,Edmonton,19,Justin Schultz  ,D,74,196
+113,Los Angeles,8,Drew Doughty  ,D,73,213
+114,Los Angeles,2,"Matt Greene ""A"" ",D,75,234
+115,Los Angeles,27,Alec Martinez  ,D,73,209
+116,Los Angeles,5,Jamie McBain  ,D,73,181
+117,Los Angeles,3,Brayden McNabb  ,D,76,208
+118,Los Angeles,6,Jake Muzzin  ,D,75,214
+119,Los Angeles,44,Robyn Regehr   **,D,75,222
+120,Los Angeles,26,Slava Voynov  ,D,72,194
+138,San Jose,61,Justin Braun  ,D,74,205
+139,San Jose,88,Brent Burns  ,D,77,230
+140,San Jose,4,Brenden Dillon  ,D,76,225
+141,San Jose,27,Scott Hannan  ,D,73,215
+142,San Jose,52,Matt Irwin  ,D,74,210
+143,San Jose,41,Mirco Mueller   **,D,75,205
+144,San Jose,80,Matt Tennyson  ,D,74,205
+145,San Jose,44,"Marc-Edouard Vlasic ""A"" ",D,73,205
+161,Vancouver,3,"Kevin Bieksa ""A"" ",D,73,198
+162,Vancouver,23,Alexander Edler  ,D,75,215
+163,Vancouver,2,Dan Hamhuis  ,D,73,209
+164,Vancouver,5,Luca Sbisa  ,D,74,198
+165,Vancouver,18,Ryan Stanton  ,D,74,196
+166,Vancouver,8,Christopher Tanev  ,D,74,185
+167,Vancouver,6,Yannick Weber  ,D,71,200
+184,Chicago,34,Tim Erixon  ,D,74,200
+185,Chicago,4,Niklas Hjalmarsson  ,D,75,197
+186,Chicago,2,"Duncan Keith ""A"" ",D,73,192
+187,Chicago,27,Johnny Oduya  ,D,72,188
+188,Chicago,32,Michal Rozsival  ,D,73,210
+189,Chicago,5,David Rundblad  ,D,74,187
+190,Chicago,7,Brent Seabrook  ,D,75,220
+191,Chicago,57,Trevor van Riemsdyk   **,D,74,188
+210,Colorado,4,Tyson Barrie  ,D,70,190
+211,Colorado,5,Nate Guenin  ,D,75,207
+212,Colorado,8,Jan Hejda  ,D,76,230
+213,Colorado,2,Nick Holden  ,D,76,210
+214,Colorado,6,Erik Johnson  ,D,76,232
+215,Colorado,22,Zach Redmond  ,D,74,205
+216,Colorado,17,Brad Stuart  ,D,74,215
+217,Colorado,44,Ryan Wilson   **,D,73,210
+236,Dallas,24,Jordie Benn  ,D,74,200
+237,Dallas,6,"Trevor Daley ""A"" ",D,71,195
+238,Dallas,4,Jason Demers  ,D,73,195
+239,Dallas,33,Alex Goligoski  ,D,71,190
+240,Dallas,3,John Klingberg  ,D,74,180
+241,Dallas,37,Patrik Nemeth   **,D,75,230
+242,Dallas,5,Jamie Oleksiak  ,D,79,250
+243,Dallas,28,David Schlemko  ,D,73,190
+260,Minnesota,2,Keith Ballard   **,D,71,204
+261,Minnesota,7,Jonathon Blum  ,D,73,188
+262,Minnesota,25,Jonas Brodin  ,D,73,194
+263,Minnesota,55,Matt Dumba  ,D,72,189
+264,Minnesota,44,Justin Falk   **,D,77,215
+265,Minnesota,5,Christian Folin  ,D,75,214
+266,Minnesota,39,Nate Prosser  ,D,74,203
+267,Minnesota,6,Marco Scandella   **,D,73,205
+268,Minnesota,46,Jared Spurgeon  ,D,69,176
+269,Minnesota,20,"Ryan Suter ""A"" ",D,73,200
+287,Nashville,64,Victor Bartley  ,D,72,203
+288,Nashville,14,Mattias Ekholm  ,D,76,204
+289,Nashville,4,Ryan Ellis   **,D,70,175
+290,Nashville,3,Seth Jones  ,D,76,205
+291,Nashville,59,Roman Josi  ,D,73,192
+292,Nashville,20,Anton Volchenkov  ,D,73,220
+293,Nashville,6,"Shea Weber ""C"" ",D,76,233
+311,St. Louis,19,Jay Bouwmeester  ,D,76,212
+312,St. Louis,25,Chris Butler  ,D,73,196
+313,St. Louis,28,Ian Cole  ,D,73,219
+314,St. Louis,4,Carl Gunnarsson  ,D,74,196
+315,St. Louis,5,"Barret Jackman ""A"" ",D,72,203
+316,St. Louis,27,"Alex Pietrangelo ""A"" ",D,75,201
+317,St. Louis,22,Kevin Shattenkirk  ,D,71,207
+334,Winnipeg,44,Zach Bogosian  ,D,75,225
+335,Winnipeg,33,Dustin Byfuglien  ,D,77,260
+336,Winnipeg,63,Ben Chiarot  ,D,75,215
+337,Winnipeg,24,Grant Clitsome   **,D,71,211
+338,Winnipeg,39,Toby Enstrom  ,D,70,180
+339,Winnipeg,23,Jay Harrison  ,D,76,220
+340,Winnipeg,2,Adam Pardy  ,D,76,227
+341,Winnipeg,4,Paul Postma  ,D,75,195
+342,Winnipeg,5,"Mark Stuart ""A"" ",D,74,213
+343,Winnipeg,8,Jacob Trouba   **,D,74,200
+360,Boston,43,Matt Bartkowski  ,D,73,196
+361,Boston,33,"Zdeno Chara ""C"" ",D,81,255
+362,Boston,27,Dougie Hamilton  ,D,77,212
+363,Boston,47,Torey Krug  ,D,69,181
+364,Boston,54,Adam McQuaid  ,D,77,209
+365,Boston,86,Kevan Miller  ,D,74,210
+366,Boston,44,Dennis Seidenberg  ,D,73,210
+384,Buffalo,61,Andre Benoit  ,D,71,191
+385,Buffalo,4,"Josh Gorges ""A"" ",D,73,201
+386,Buffalo,41,Andrej Meszaros  ,D,74,223
+387,Buffalo,57,Tyler Myers  ,D,80,219
+388,Buffalo,55,Rasmus Ristolainen  ,D,76,219
+389,Buffalo,24,Tyson Strachan  ,D,75,215
+390,Buffalo,6,Mike Weber  ,D,74,212
+391,Buffalo,51,Nikita Zadorov  ,D,77,220
+409,Detroit,65,Danny DeKeyser  ,D,75,191
+410,Detroit,52,Jonathan Ericsson  ,D,76,220
+411,Detroit,4,Jakub Kindl   **,D,75,199
+412,Detroit,55,"Niklas Kronwall ""A"" ",D,72,194
+413,Detroit,23,Brian Lashoff  ,D,75,221
+414,Detroit,61,Xavier Ouellet  ,D,73,200
+415,Detroit,27,Kyle Quincey  ,D,74,216
+416,Detroit,2,Brendan Smith  ,D,74,211
+436,Florida,51,"Brian Campbell ""A"" ",D,70,192
+437,Florida,5,Aaron Ekblad  ,D,76,216
+438,Florida,44,Erik Gudbranson  ,D,77,216
+439,Florida,7,Dmitry Kulikov  ,D,73,204
+440,Florida,33,"Willie Mitchell ""C"" ",D,75,210
+441,Florida,4,Dylan Olsen  ,D,74,223
+457,Montreal,28,Nathan Beaulieu  ,D,74,194
+458,Montreal,74,Alexei Emelin  ,D,74,217
+459,Montreal,77,Tom Gilbert  ,D,74,204
+460,Montreal,55,Sergei Gonchar  ,D,74,210
+461,Montreal,79,"Andrei Markov ""A"" ",D,72,197
+462,Montreal,76,"P.K. Subban ""A"" ",D,72,214
+463,Montreal,43,Mike Weaver  ,D,70,186
+482,Ottawa,74,Mark Borowiecki   **,D,74,205
+483,Ottawa,5,Cody Ceci  ,D,75,209
+484,Ottawa,2,Jared Cowen  ,D,77,228
+485,Ottawa,62,Eric Gryba  ,D,76,225
+486,Ottawa,65,"Erik Karlsson ""C"" ",D,72,180
+487,Ottawa,3,Marc Methot  ,D,75,230
+488,Ottawa,4,"Chris Phillips ""A"" ",D,75,220
+489,Ottawa,46,Patrick Wiercioch  ,D,77,206
+505,Tampa Bay,8,Mark Barberio  ,D,73,185
+506,Tampa Bay,25,Matthew Carle  ,D,72,205
+507,Tampa Bay,5,Jason Garrison  ,D,74,218
+508,Tampa Bay,7,Radko Gudas  ,D,72,204
+509,Tampa Bay,77,Victor Hedman  ,D,78,233
+510,Tampa Bay,89,Nikita Nesterov  ,D,72,183
+511,Tampa Bay,,Mattias Ohlund  ,D,76,233
+512,Tampa Bay,6,Anton Stralman  ,D,71,190
+513,Tampa Bay,62,Andrej Sustr  ,D,80,225
+514,Tampa Bay,53,Luke Witkowski  ,D,74,200
+531,Toronto,4,Cody Franson  ,D,77,213
+532,Toronto,51,Jake Gardiner  ,D,74,184
+533,Toronto,55,Korbinian Holzer  ,D,75,205
+534,Toronto,3,"Dion Phaneuf ""C"" ",D,75,214
+535,Toronto,46,Roman Polak  ,D,72,236
+536,Toronto,44,Morgan Rielly  ,D,73,205
+537,Toronto,12,"Stephane Robidas ""A"" ",D,71,190
+554,Carolina,73,Brett Bellemore  ,D,76,225
+555,Carolina,27,Justin Faulk  ,D,72,215
+556,Carolina,6,Tim Gleason  ,D,72,217
+557,Carolina,65,Ron Hainsey  ,D,75,210
+558,Carolina,26,John-Michael Liles  ,D,70,185
+559,Carolina,7,Ryan Murphy  ,D,71,185
+560,Carolina,4,Andrej Sekera  ,D,72,201
+580,Columbus,4,Kevin Connauton  ,D,74,200
+581,Columbus,29,Cody Goloubef  ,D,73,195
+582,Columbus,7,"Jack Johnson ""A"" ",D,73,238
+583,Columbus,3,Jordan Leopold  ,D,73,206
+584,Columbus,27,Ryan Murray   **,D,73,208
+585,Columbus,47,Dalton Prout  ,D,75,222
+586,Columbus,58,David Savard  ,D,74,219
+587,Columbus,51,Fedor Tyutin  ,D,74,212
+588,Columbus,21,James Wisniewski  ,D,71,203
+608,New Jersey,32,Mark Fraser  ,D,76,220
+609,New Jersey,22,Eric Gelinas  ,D,76,215
+610,New Jersey,6,"Andy Greene ""A"" ",D,71,190
+611,New Jersey,10,Peter Harrold  ,D,71,180
+612,New Jersey,5,Adam Larsson  ,D,75,205
+613,New Jersey,7,Jon Merrill  ,D,75,205
+614,New Jersey,24,"Bryce Salvador ""C""  **",D,75,215
+615,New Jersey,28,Damon Severson   **,D,74,205
+616,New Jersey,2,Marek Zidlicky  ,D,71,190
+633,New York Islanders,55,Johnny Boychuk  ,D,74,225
+634,New York Islanders,7,Matt Carkner  ,D,77,233
+635,New York Islanders,46,Matt Donovan  ,D,73,205
+636,New York Islanders,3,Travis Hamonic  ,D,74,217
+637,New York Islanders,14,Thomas Hickey  ,D,72,190
+638,New York Islanders,2,Nick Leddy  ,D,72,194
+639,New York Islanders,37,Brian Strait  ,D,73,209
+640,New York Islanders,11,Lubomir Visnovsky  ,D,70,192
+641,New York Islanders,44,Calvin de Haan  ,D,73,193
+657,Philadelphia,5,Braydon Coburn   **,D,77,220
+658,Philadelphia,26,Carlo Colaiacovo  ,D,73,200
+659,Philadelphia,15,Michael Del Zotto  ,D,72,195
+660,Philadelphia,8,Nicklas Grossmann   **,D,76,230
+661,Philadelphia,47,Andrew MacDonald  ,D,73,190
+662,Philadelphia,20,Chris Pronger   **,D,78,220
+663,Philadelphia,22,Luke Schenn  ,D,74,229
+664,Philadelphia,55,Nick Schultz  ,D,73,203
+665,Philadelphia,32,"Mark Streit ""A"" ",D,71,191
+685,Pittsburgh,41,Robert Bortuzzo  ,D,76,215
+686,Pittsburgh,47,Simon Despres  ,D,76,214
+687,Pittsburgh,10,Christian Ehrhoff  ,D,74,205
+688,Pittsburgh,6,Scott Harrington  ,D,74,201
+689,Pittsburgh,58,Kris Letang  ,D,72,201
+690,Pittsburgh,3,Olli Maatta   **,D,74,206
+691,Pittsburgh,7,Paul Martin  ,D,73,200
+692,Pittsburgh,4,Rob Scuderi  ,D,73,212
+708,Washington,27,Karl Alzner  ,D,74,217
+709,Washington,74,John Carlson  ,D,75,212
+710,Washington,4,John Erskine  ,D,76,220
+711,Washington,52,"Mike Green ""A"" ",D,73,207
+712,Washington,38,Jack Hillen  ,D,70,190
+713,Washington,2,Matt Niskanen  ,D,72,209
+714,Washington,61,Steve Oleksy  ,D,72,190
+715,Washington,44,Brooks Orpik  ,D,74,219
+736,New York Rangers,22,Dan Boyle,D,71,194
+737,New York Rangers,5,Dan Girardi,D,73,212
+738,New York Rangers,48,Matt Hunwick,D,71,194
+739,New York Rangers,8,Kevin Klein,D,73,206
+740,New York Rangers,21,Michael Kostka,D,73,210
+741,New York Rangers,27,Ryan McDonagh (A),D,73,215
+742,New York Rangers,25,Dylan McIlrath,D,77,232
+743,New York Rangers,2,John Moore,D,75,207
+744,New York Rangers,18,Marc Staal,D,76,208
+745,New York Rangers,55,Chris Summers,D,74,207
+746,New York Rangers,3,Keith Yandle,D,73,192
+23,Anaheim,31,Frederik Andersen  ,G,75,236
+24,Anaheim,80,Ilya Bryzgalov  ,G,75,213
+47,Arizona,31,Michael Lee  ,G,73,185
+48,Arizona,41,Mike Smith  ,G,76,215
+73,Calgary,1,Jonas Hiller  ,G,74,192
+74,Calgary,37,Joni Ortio  ,G,73,185
+75,Calgary,31,Karri Ramo   **,G,74,206
+97,Edmonton,35,Viktor Fasth  ,G,72,181
+98,Edmonton,30,Ben Scrivens  ,G,74,181
+121,Los Angeles,31,Martin Jones  ,G,76,187
+122,Los Angeles,32,Jonathan Quick  ,G,73,220
+146,San Jose,31,Antti Niemi  ,G,74,210
+147,San Jose,32,Alex Stalock  ,G,72,190
+168,Vancouver,31,Eddie Lack  ,G,76,187
+169,Vancouver,30,Ryan Miller  ,G,74,168
+192,Chicago,50,Corey Crawford  ,G,74,216
+193,Chicago,31,Antti Raanta  ,G,72,193
+218,Colorado,31,Calvin Pickard  ,G,73,200
+219,Colorado,1,Semyon Varlamov  ,G,74,209
+244,Dallas,32,Kari Lehtonen  ,G,76,210
+245,Dallas,29,Anders Lindback  ,G,78,215
+270,Minnesota,32,Niklas Backstrom  ,G,74,194
+271,Minnesota,40,Devan Dubnyk  ,G,78,210
+272,Minnesota,35,Darcy Kuemper   **,G,77,205
+294,Nashville,30,Carter Hutton  ,G,73,195
+295,Nashville,39,Marek Mazanec  ,G,76,187
+296,Nashville,35,Pekka Rinne  ,G,77,204
+318,St. Louis,34,Jake Allen  ,G,74,195
+319,St. Louis,30,Martin Brodeur  ,G,74,220
+320,St. Louis,1,Brian Elliott  ,G,74,209
+344,Winnipeg,34,Michael Hutchinson  ,G,75,202
+345,Winnipeg,31,Ondrej Pavelec  ,G,75,218
+367,Boston,40,Tuukka Rask  ,G,74,185
+368,Boston,72,Niklas Svedberg  ,G,72,176
+392,Buffalo,1,Jhonas Enroth  ,G,70,166
+393,Buffalo,34,Michal Neuvirth  ,G,73,209
+417,Detroit,50,Jonas Gustavsson   **,G,76,212
+418,Detroit,35,Jimmy Howard   **,G,73,218
+419,Detroit,38,Tom McCollum  ,G,74,226
+420,Detroit,34,Petr Mrazek  ,G,74,183
+442,Florida,1,Roberto Luongo  ,G,75,217
+443,Florida,35,Al Montoya  ,G,74,203
+464,Montreal,39,Joey MacDonald  ,G,72,197
+465,Montreal,31,Carey Price  ,G,75,216
+466,Montreal,35,Dustin Tokarski  ,G,71,195
+490,Ottawa,41,Craig Anderson  ,G,74,184
+491,Ottawa,40,Robin Lehner  ,G,77,225
+515,Tampa Bay,30,Ben Bishop  ,G,79,214
+516,Tampa Bay,20,Evgeni Nabokov  ,G,72,202
+538,Toronto,45,Jonathan Bernier  ,G,72,185
+539,Toronto,34,James Reimer  ,G,74,208
+561,Carolina,31,Anton Khudobin  ,G,71,203
+562,Carolina,30,Cam Ward  ,G,73,185
+589,Columbus,72,Sergei Bobrovsky  ,G,74,182
+590,Columbus,30,Curtis McElhinney  ,G,75,205
+617,New Jersey,1,Keith Kinkaid  ,G,74,195
+618,New Jersey,35,Cory Schneider  ,G,74,205
+642,New York Islanders,41,Jaroslav Halak  ,G,71,186
+643,New York Islanders,30,Chad Johnson  ,G,75,193
+666,Philadelphia,29,Ray Emery  ,G,74,196
+667,Philadelphia,35,Steve Mason  ,G,76,217
+668,Philadelphia,72,Rob Zepp  ,G,72,181
+693,Pittsburgh,29,Marc-Andre Fleury  ,G,74,180
+694,Pittsburgh,1,Thomas Greiss  ,G,73,220
+716,Washington,70,Braden Holtby  ,G,74,203
+717,Washington,35,Justin Peters  ,G,73,210
+747,New York Rangers,30,Henrik Lundqvist,G,73,182
+748,New York Rangers,33,Cam Talbot,G,76,201
+1,Anaheim,39,Matt Beleskey  ,L,72,204
+2,Anaheim,14,Rene Bourque  ,L,74,214
+7,Anaheim,19,Patrick Maroon  ,L,74,231
+25,Arizona,89,Mikkel Boedker  ,L,72,211
+32,Arizona,28,Lauri Korpikoski  ,L,73,205
+33,Arizona,38,Lucas Lessio  ,L,73,212
+34,Arizona,22,Brandon McMillan  ,L,71,190
+51,Calgary,25,Brandon Bollig  ,L,74,223
+55,Calgary,13,Johnny Gaudreau  ,L,69,150
+56,Calgary,20,"Curtis Glencross ""A"" ",L,73,197
+63,Calgary,21,Mason Raymond  ,L,72,185
+78,Edmonton,20,Luke Gazdic  ,L,76,233
+80,Edmonton,4,Taylor Hall  ,L,73,198
+81,Edmonton,23,Matt Hendricks  ,L,72,211
+82,Edmonton,12,Rob Klinkhammer  ,L,75,214
+86,Edmonton,67,Benoit Pouliot  ,L,75,193
+99,Los Angeles,15,Andy Andreoff  ,L,73,207
+102,Los Angeles,13,Kyle Clifford  ,L,74,211
+104,Los Angeles,74,Dwight King  ,L,76,230
+108,Los Angeles,70,Tanner Pearson   **,L,73,200
+130,San Jose,12,"Patrick Marleau ""A"" ",L,74,220
+131,San Jose,25,Tye McGinn  ,L,74,205
+132,San Jose,83,Matt Nieto  ,L,71,190
+134,San Jose,20,John Scott  ,L,80,260
+135,San Jose,15,James Sheppard  ,L,73,215
+152,Vancouver,20,Chris Higgins  ,L,72,205
+157,Vancouver,22,"Daniel Sedin ""A"" ",L,73,187
+170,Chicago,29,Bryan Bickell  ,L,76,223
+171,Chicago,13,Daniel Carcillo  ,L,72,200
+177,Chicago,20,Brandon Saad  ,L,73,204
+178,Chicago,10,"Patrick Sharp ""A"" ",L,73,198
+183,Chicago,23,Kris Versteeg  ,L,71,176
+194,Colorado,58,Patrick Bordeleau   **,L,78,225
+200,Colorado,92,"Gabriel Landeskog ""C"" ",L,73,210
+202,Colorado,11,Jamie McGinn   **,L,73,210
+203,Colorado,55,"Cody McLeod ""A"" ",L,74,210
+208,Colorado,40,Alex Tanguay  ,L,73,194
+220,Dallas,14,"Jamie Benn ""C"" ",L,74,210
+221,Dallas,72,Erik Cole  ,L,74,205
+225,Dallas,16,Ryan Garbutt  ,L,72,195
+228,Dallas,27,Travis Moen  ,L,74,212
+232,Dallas,21,Antoine Roussel  ,L,72,200
+248,Minnesota,24,Matt Cooke  ,L,71,216
+255,Minnesota,11,"Zach Parise ""A"" ",L,71,197
+258,Minnesota,26,Thomas Vanek  ,L,74,218
+259,Minnesota,16,Jason Zucker  ,L,71,188
+273,Nashville,41,Taylor Beck  ,L,74,203
+274,Nashville,57,Gabriel Bourque  ,L,70,192
+281,Nashville,18,"James Neal ""A"" ",L,74,208
+282,Nashville,24,Eric Nystrom   **,L,73,193
+285,Nashville,25,Viktor Stalberg  ,L,75,209
+305,St. Louis,32,Chris Porter   **,L,73,206
+307,St. Louis,17,Jaden Schwartz  ,L,70,190
+309,St. Louis,20,"Alexander Steen ""A"" ",L,71,212
+322,Winnipeg,21,TJ Galiardi  ,L,74,185
+324,Winnipeg,9,Evander Kane  ,L,74,198
+325,Winnipeg,16,"Andrew Ladd ""C"" ",L,75,200
+327,Winnipeg,17,Adam Lowry  ,L,77,207
+353,Boston,17,Milan Lucic  ,L,75,235
+354,Boston,63,Brad Marchand  ,L,69,183
+355,Boston,20,Daniel Paille  ,L,73,200
+369,Buffalo,44,Nicolas Deslauriers  ,L,73,209
+370,Buffalo,37,Matt Ellis  ,L,72,208
+373,Buffalo,82,Marcus Foligno   **,L,75,223
+380,Buffalo,26,"Matt Moulson ""A"" ",L,73,200
+394,Detroit,8,Justin Abdelkader  ,L,74,218
+402,Detroit,20,Drew Miller  ,L,74,180
+404,Detroit,56,Teemu Pulkkinen  ,L,71,183
+406,Detroit,21,Tomas Tatar  ,L,70,185
+408,Detroit,40,"Henrik Zetterberg ""C"" ",L,72,195
+422,Florida,20,Sean Bergenheim  ,L,70,201
+426,Florida,14,Tomas Fleischmann  ,L,73,192
+428,Florida,11,Jonathan Huberdeau  ,L,73,188
+429,Florida,36,Jussi Jokinen  ,L,71,198
+433,Florida,22,Shawn Thornton   **,L,74,217
+435,Florida,19,"Scottie Upshall ""A"" ",L,72,200
+444,Montreal,49,Michael Bournival  ,L,71,195
+450,Montreal,67,"Max Pacioretty ""A"" ",L,74,214
+453,Montreal,8,Brandon Prust  ,L,72,195
+454,Montreal,26,Jiri Sekac  ,L,74,195
+455,Montreal,60,Christian Thomas  ,L,69,176
+469,Ottawa,14,Colin Greening  ,L,75,210
+470,Ottawa,68,Mike Hoffman  ,L,72,185
+473,Ottawa,16,Clarke MacArthur  ,L,72,195
+474,Ottawa,9,Milan Michalek  ,L,74,216
+496,Tampa Bay,27,Jonathan Drouin  ,L,71,186
+501,Tampa Bay,10,Brenden Morrow  ,L,72,205
+502,Tampa Bay,18,Ondrej Palat  ,L,72,180
+518,Toronto,20,David Booth  ,L,72,212
+525,Toronto,19,"Joffrey Lupul ""A""  **",L,73,206
+530,Toronto,21,James van Riemsdyk  ,L,75,200
+541,Carolina,14,Nathan Gerbe  ,L,65,178
+549,Carolina,53,Jeff Skinner  ,L,71,200
+552,Carolina,25,Chris Terry  ,L,70,195
+553,Carolina,19,Jiri Tlusty  ,L,72,209
+567,Columbus,11,Matt Calvert  ,L,71,187
+570,Columbus,71,Nick Foligno  ,L,72,210
+572,Columbus,43,Scott Hartnell  ,L,74,210
+576,Columbus,9,Jeremy Morin  ,L,73,189
+592,New Jersey,23,Mike Cammalleri  ,L,69,190
+593,New Jersey,29,Ryane Clowe   **,L,75,225
+597,New Jersey,9,Martin Havlat  ,L,74,210
+601,New Jersey,15,Tuomo Ruutu   **,L,72,205
+603,New Jersey,12,Tim Sestito  ,L,71,195
+605,New Jersey,33,Joe Whitney  ,L,66,170
+607,New Jersey,8,Dainius Zubrus  ,L,77,225
+619,New York Islanders,12,Josh Bailey  ,L,73,194
+620,New York Islanders,36,Eric Boulton  ,L,72,225
+625,New York Islanders,86,Nikolay Kulemin  ,L,73,226
+627,New York Islanders,17,Matt Martin  ,L,75,215
+644,Philadelphia,78,Pierre-Edouard Bellemare  ,L,72,198
+649,Philadelphia,12,Michael Raffl  ,L,72,195
+672,Pittsburgh,17,Blake Comeau   **,L,73,202
+679,Pittsburgh,14,"Chris Kunitz ""A"" ",L,72,195
+681,Pittsburgh,39,David Perron  ,L,72,200
+698,Washington,65,Andre Burakovsky  ,L,75,198
+699,Washington,25,Jason Chimera  ,L,75,213
+719,New York Rangers,10,Anthony Duclair,L,71,197
+721,New York Rangers,15,Tanner Glass,L,73,213
+722,New York Rangers,62,Carl Hagelin *,L,72,183
+724,New York Rangers,20,Chris Kreider (A),L,75,230
+725,New York Rangers,24,Oscar Lindberg,L,73,202
+726,New York Rangers,12,Ryan Malone,L,76,224
+730,New York Rangers,61,Rick Nash,L,76,211
+5,Anaheim,18,Tim Jackman  ,R,74,224
+8,Anaheim,21,Kyle Palmieri  ,R,71,196
+9,Anaheim,10,"Corey Perry ""A"" ",R,75,213
+11,Anaheim,33,Jakob Silfverberg  ,R,72,199
+12,Anaheim,12,Devante Smith-Pelly  ,R,72,220
+27,Arizona,44,B.J. Crombeen  ,R,74,209
+28,Arizona,19,"Shane Doan ""C"" ",R,73,223
+29,Arizona,10,Martin Erat  ,R,72,196
+35,Arizona,18,David Moss  ,R,76,210
+36,Arizona,8,Tobias Rieder  ,R,71,185
+59,Calgary,19,David Jones  ,R,74,210
+61,Calgary,16,Brian McGrattan  ,R,76,235
+76,Edmonton,14,Jordan Eberle  ,R,71,183
+77,Edmonton,28,Matt Fraser  ,R,73,204
+85,Edmonton,15,Tyler Pitlick   **,R,72,202
+87,Edmonton,16,Teddy Purcell  ,R,74,198
+89,Edmonton,10,Nail Yakupov  ,R,71,197
+100,Los Angeles,23,"Dustin Brown ""C"" ",R,72,207
+103,Los Angeles,12,Marian Gaborik  ,R,73,204
+112,Los Angeles,14,Justin Williams  ,R,73,189
+123,San Jose,18,Mike Brown   **,R,71,205
+126,San Jose,89,Barclay Goodrow  ,R,74,215
+129,San Jose,81,Tyler Kennedy  ,R,71,185
+149,Vancouver,14,Alexandre Burrows  ,R,73,188
+150,Vancouver,51,Derek Dorsett  ,R,72,192
+151,Vancouver,36,Jannik Hansen  ,R,73,195
+154,Vancouver,9,Zack Kassian  ,R,75,214
+156,Vancouver,15,Brad Richardson  ,R,72,197
+159,Vancouver,7,Linden Vey  ,R,72,189
+160,Vancouver,17,Radim Vrbata  ,R,73,194
+172,Chicago,81,Marian Hossa  ,R,73,207
+173,Chicago,88,Patrick Kane  ,R,71,177
+180,Chicago,28,Ben Smith  ,R,71,199
+198,Colorado,45,Dennis Everberg  ,R,76,205
+199,Colorado,12,"Jarome Iginla ""A"" ",R,73,210
+206,Colorado,71,Borna Rendulic  ,R,74,200
+223,Dallas,18,Patrick Eaves   **,R,72,200
+226,Dallas,83,Ales Hemsky  ,R,72,185
+229,Dallas,43,Valeri Nichushkin   **,R,76,210
+231,Dallas,25,Brett Ritchie  ,R,75,220
+250,Minnesota,14,Justin Fontaine  ,R,70,175
+254,Minnesota,22,Nino Niederreiter  ,R,74,210
+256,Minnesota,29,Jason Pominville  ,R,72,187
+299,St. Louis,23,Dmitrij Jaskin  ,R,74,196
+303,St. Louis,74,"T.J. Oshie ""A"" ",R,71,189
+306,St. Louis,75,Ryan Reaves  ,R,73,224
+310,St. Louis,91,Vladimir Tarasenko  ,R,72,219
+321,Winnipeg,67,Michael Frolik  ,R,73,200
+323,Winnipeg,15,Matt Halischuk  ,R,71,180
+328,Winnipeg,14,Anthony Peluso  ,R,75,235
+332,Winnipeg,22,Chris Thorburn  ,R,75,235
+333,Winnipeg,26,Blake Wheeler  ,R,77,225
+348,Boston,38,Jordan Caron  ,R,75,204
+349,Boston,61,Craig Cunningham  ,R,70,184
+350,Boston,21,Loui Eriksson  ,R,74,196
+356,Boston,88,David Pastrnak  ,R,72,167
+358,Boston,18,Reilly Smith  ,R,72,185
+374,Buffalo,12,"Brian Gionta ""C""  **",R,67,176
+377,Buffalo,36,Patrick Kaleta  ,R,73,198
+381,Buffalo,21,Drew Stafford  ,R,74,214
+382,Buffalo,80,Chris Stewart  ,R,74,231
+396,Detroit,11,Daniel Cleary  ,R,73,205
+398,Detroit,93,Johan Franzen   **,R,76,232
+401,Detroit,26,Tomas Jurco  ,R,73,203
+403,Detroit,14,Gustav Nyquist  ,R,71,183
+425,Florida,24,Brad Boyes  ,R,72,195
+427,Florida,12,Jimmy Hayes  ,R,78,221
+430,Florida,82,Tomas Kopecky  ,R,75,210
+448,Montreal,11,Brendan Gallagher  ,R,69,182
+451,Montreal,15,Pierre-Alexandre Parenteau  ,R,72,197
+456,Montreal,22,Dale Weise  ,R,74,205
+467,Ottawa,90,Alex Chiasson  ,R,76,205
+468,Ottawa,22,Erik Condra  ,R,72,190
+475,Ottawa,25,"Chris Neil ""A""  **",R,73,215
+477,Ottawa,6,Bobby Ryan  ,R,74,207
+479,Ottawa,61,Mark Stone  ,R,74,205
+493,Tampa Bay,23,J.T. Brown  ,R,70,170
+494,Tampa Bay,24,Ryan Callahan  ,R,71,190
+495,Tampa Bay,14,Brett Connolly  ,R,74,181
+500,Tampa Bay,86,Nikita Kucherov  ,R,71,171
+517,Toronto,37,Carter Ashton  ,R,75,215
+520,Toronto,71,David Clarkson  ,R,73,200
+523,Toronto,81,Phil Kessel  ,R,72,202
+527,Toronto,18,Richard Panik  ,R,73,208
+540,Carolina,39,Patrick Dwyer  ,R,71,175
+548,Carolina,28,Alexander Semin  ,R,74,209
+563,Columbus,53,Josh Anderson  ,R,75,212
+565,Columbus,13,Cam Atkinson  ,R,68,174
+566,Columbus,40,"Jared Boll ""A"" ",R,75,214
+577,Columbus,10,Jack Skille   **,R,73,216
+578,Columbus,26,Corey Tropp  ,R,72,185
+591,New Jersey,18,Steve Bernier  ,R,75,215
+599,New Jersey,68,Jaromir Jagr  ,R,75,230
+602,New Jersey,17,Michael Ryder  ,R,73,200
+604,New Jersey,20,Jordin Tootoo  ,R,69,195
+622,New York Islanders,15,Cal Clutterbuck  ,R,71,215
+623,New York Islanders,40,Michael Grabner  ,R,73,202
+630,New York Islanders,21,"Kyle Okposo ""A"" ",R,72,217
+650,Philadelphia,24,Matt Read  ,R,70,185
+653,Philadelphia,17,"Wayne Simmonds ""A"" ",R,74,183
+656,Philadelphia,93,Jakub Voracek  ,R,74,214
+669,Pittsburgh,27,Craig Adams  ,R,72,200
+670,Pittsburgh,26,Mark Arcobello  ,R,68,172
+671,Pittsburgh,19,Beau Bennett  ,R,74,195
+674,Pittsburgh,23,Steve Downie  ,R,71,191
+675,Pittsburgh,9,Pascal Dupuis   **,R,73,205
+678,Pittsburgh,72,Patric Hornqvist   **,R,71,189
+696,Washington,83,Jay Beagle  ,R,75,215
+697,Washington,20,Troy Brouwer  ,R,75,213
+700,Washington,16,Eric Fehr  ,R,76,212
+705,Washington,8,"Alex Ovechkin ""C"" ",R,75,230
+706,Washington,42,Joel Ward  ,R,73,226
+707,Washington,43,Tom Wilson  ,R,76,210
+720,New York Rangers,71,Jesper Fast,R,73,191
+723,New York Rangers,12,Kevin Hayes,R,77,216
+732,New York Rangers,26,Martin St. Louis,R,68,180
+733,New York Rangers,18,Lee Stempniak,R,71,195
+735,New York Rangers,36,Mats Zuccarello,R,68,181
