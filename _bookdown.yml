@@ -1,5 +1,5 @@
 book_filename: "STA2170bookdownproj"
-output_dir: "docs"
+output_dir: docs
 delete_merged_file: true
 repo: https://github.com/LarryWinner/STA2170-Notes1/blob/main/%s
 language:
