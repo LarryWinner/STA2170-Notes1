@@ -1,0 +1,44 @@
+---
+output:
+  pdf_document: default
+  html_document: default
+---
+```{r}
+library(tidyverse)
+library(kableExtra)
+```
+
+# Introduction to Experimentation
+
+This chapter will briefly introduce the following models which will be described in detail in subsequent chapters.
+
+- Observational Studies vs Controlled Experiments
+- Completely Randomized Design
+- Randomized Block Design
+- Factorial Designs
+- Chi-Square Tests for Categorical Variables
+- Regression Models
+
+Studies can be described as **Observational** or as **Controlled Experiments**. Observational studies occur when experimental/sampling
+units are obtained from existing populations. These could be different brands of a product, animals from different species, or people
+who do or do not practice a particular habit. In controlled experiments, a sample of units is obtained, and the individual elements
+of the sample are randomly assigned to the various conditions/treatments. This could involve batches of raw material being assigned to various
+machines, mice being assigned to various doses of a chemical compound, or humans assigned to various advertising campaigns.
+
+The **Completely Randomized Design (CRD)** simply randomizes the experimental units to the various treatments in the most basic manner with no
+restrictions on randomization. The **Randomized Block Design (RBD)** first creates "blocks" of units that are similar based on some
+external criteria (e.g. age or skill) and then assigns units to treatments within blocks. In many experiments, each individual unit
+may receive each treatment, and the units are treated as blocks.
+
+In **Factorial Designs**, there are multiple treatment factors that are simultaneously controlled. These can be structured as a CRD or a RBD.
+In some cases, one or more of the factors may be controlled, while others may be observed. In many engineering applications, a set of $k$
+factors, each at two or more levels, may be observed to determine which variables have the largest impacts on the response, or to optimize the response.
+
+When the independent and dependent variables are categorical, **Chi-Square Tests** can be conducted to determine whether two variables are associated,
+that is whether the probability distribution of one variable depends on the level of the other variable.
+
+When the independent and dependent variables are both numeric, **Regression Models** can be applied to measure the associations among variables.
+These models can be extended in many ways to various types of predictor and response variables.
+
+
+

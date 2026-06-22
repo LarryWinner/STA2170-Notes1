@@ -1,9 +1,26 @@
 --- 
-title: "YOUR TITLE HERE"
-author: "YOUR NAME HERE"
+title: "Statistics and the Physical World"
+author: "Larry Winner"
 date: "`r Sys.Date()`"
+output: pdf_document
 site: bookdown::bookdown_site
+documentclass: book
+bibliography:
+- book1.bib
+- packages.bib
+biblio-style: apalike
+link-citations: yes
+github-repo: rstudio/bookdown-demo
+description: This is an Introduction to Statistics with applications from the physical
+  world. We will make use of the R programming language for computations.
+geometry: left=2cm,right=2cm,top=2cm,bottom=2cm
 ---
 
-# Down the rabbit-hole
 
+# Preface {-}
+
+These notes are for STA 2170 at the University of Florida. 
+
+```{r, include=FALSE}
+options(tinytex.verbose = TRUE)
+```
