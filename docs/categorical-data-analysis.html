@@ -1,0 +1,1189 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 8 Categorical Data Analysis | Statistics and the Physical World</title>
+  <meta name="description" content="This is an Introduction to Statistics with applications from the physical world. We will make use of the R programming language for computations." />
+  <meta name="generator" content="bookdown 0.43 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 8 Categorical Data Analysis | Statistics and the Physical World" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="This is an Introduction to Statistics with applications from the physical world. We will make use of the R programming language for computations." />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 8 Categorical Data Analysis | Statistics and the Physical World" />
+  
+  <meta name="twitter:description" content="This is an Introduction to Statistics with applications from the physical world. We will make use of the R programming language for computations." />
+  
+
+<meta name="author" content="Larry Winner" />
+
+
+<meta name="date" content="2026-06-22" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="experimental-design-and-the-analysis-of-variance.html"/>
+<link rel="next" href="regression-models.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">STA2170 Notes</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
+<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="intro.html"><a href="intro.html#basic-concepts-of-statistical-analysis"><i class="fa fa-check"></i><b>1.1</b> Basic Concepts of Statistical Analysis</a></li>
+<li class="chapter" data-level="1.2" data-path="intro.html"><a href="intro.html#data-collection"><i class="fa fa-check"></i><b>1.2</b> Data Collection</a></li>
+<li class="chapter" data-level="1.3" data-path="intro.html"><a href="intro.html#variable-types"><i class="fa fa-check"></i><b>1.3</b> Variable Types</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="describing-data.html"><a href="describing-data.html"><i class="fa fa-check"></i><b>2</b> Describing Data</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="describing-data.html"><a href="describing-data.html#graphical-description-of-a-single-variable"><i class="fa fa-check"></i><b>2.1</b> Graphical Description of a Single Variable</a></li>
+<li class="chapter" data-level="2.2" data-path="describing-data.html"><a href="describing-data.html#numerical-descriptive-measures-of-a-single-variable"><i class="fa fa-check"></i><b>2.2</b> Numerical Descriptive Measures of a Single Variable</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="describing-data.html"><a href="describing-data.html#measures-of-central-tendency"><i class="fa fa-check"></i><b>2.2.1</b> Measures of Central Tendency</a></li>
+<li class="chapter" data-level="2.2.2" data-path="describing-data.html"><a href="describing-data.html#measures-of-variability"><i class="fa fa-check"></i><b>2.2.2</b> Measures of Variability</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="describing-data.html"><a href="describing-data.html#describing-more-than-one-variable"><i class="fa fa-check"></i><b>2.3</b> Describing More than One Variable</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="probability.html"><a href="probability.html"><i class="fa fa-check"></i><b>3</b> Probability</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="probability.html"><a href="probability.html#terminology-and-probability-rules"><i class="fa fa-check"></i><b>3.1</b> Terminology and Probability Rules</a></li>
+<li class="chapter" data-level="3.2" data-path="probability.html"><a href="probability.html#basic-probability"><i class="fa fa-check"></i><b>3.2</b> Basic Probability</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="probability.html"><a href="probability.html#bayes-rule"><i class="fa fa-check"></i><b>3.2.1</b> Bayes’ Rule</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="probability.html"><a href="probability.html#random-variables-and-probability-distributions"><i class="fa fa-check"></i><b>3.3</b> Random Variables and Probability Distributions</a></li>
+<li class="chapter" data-level="3.4" data-path="probability.html"><a href="probability.html#discrete-random-variables"><i class="fa fa-check"></i><b>3.4</b> Discrete Random Variables</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="probability.html"><a href="probability.html#population-numerical-descriptive-measures"><i class="fa fa-check"></i><b>3.4.1</b> Population Numerical Descriptive Measures</a></li>
+<li class="chapter" data-level="3.4.2" data-path="probability.html"><a href="probability.html#common-families-of-discrete-probability-distributions"><i class="fa fa-check"></i><b>3.4.2</b> Common Families of Discrete Probability Distributions</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="probability.html"><a href="probability.html#continuous-random-variables"><i class="fa fa-check"></i><b>3.5</b> Continuous Random Variables</a>
+<ul>
+<li class="chapter" data-level="3.5.1" data-path="probability.html"><a href="probability.html#common-families-of-continuous-probability-distributions"><i class="fa fa-check"></i><b>3.5.1</b> Common Families of Continuous Probability Distributions</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="probability.html"><a href="probability.html#sampling-distributions-and-the-central-limit-theorem"><i class="fa fa-check"></i><b>3.6</b> Sampling Distributions and the Central Limit Theorem</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="inferences-for-population-means.html"><a href="inferences-for-population-means.html"><i class="fa fa-check"></i><b>4</b> Inferences for Population Means</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="inferences-for-population-means.html"><a href="inferences-for-population-means.html#estimation"><i class="fa fa-check"></i><b>4.1</b> Estimation</a></li>
+<li class="chapter" data-level="4.2" data-path="inferences-for-population-means.html"><a href="inferences-for-population-means.html#hypothesis-testing"><i class="fa fa-check"></i><b>4.2</b> Hypothesis Testing</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="introduction-to-experimentation.html"><a href="introduction-to-experimentation.html"><i class="fa fa-check"></i><b>5</b> Introduction to Experimentation</a></li>
+<li class="chapter" data-level="6" data-path="comparing-two-population-means.html"><a href="comparing-two-population-means.html"><i class="fa fa-check"></i><b>6</b> Comparing Two Population Means</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="comparing-two-population-means.html"><a href="comparing-two-population-means.html#independent-samples"><i class="fa fa-check"></i><b>6.1</b> Independent Samples</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="comparing-two-population-means.html"><a href="comparing-two-population-means.html#large-sample-tests"><i class="fa fa-check"></i><b>6.1.1</b> Large-Sample tests</a></li>
+<li class="chapter" data-level="6.1.2" data-path="comparing-two-population-means.html"><a href="comparing-two-population-means.html#small-sample-tests-with-normal-data"><i class="fa fa-check"></i><b>6.1.2</b> Small Sample Tests with Normal Data</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="comparing-two-population-means.html"><a href="comparing-two-population-means.html#paired-sample-designs"><i class="fa fa-check"></i><b>6.2</b> Paired Sample Designs</a></li>
+<li class="chapter" data-level="6.3" data-path="comparing-two-population-means.html"><a href="comparing-two-population-means.html#nonparametric-tests"><i class="fa fa-check"></i><b>6.3</b> Nonparametric Tests</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="comparing-two-population-means.html"><a href="comparing-two-population-means.html#independent-samples---wilcoxon-rank-sum-test"><i class="fa fa-check"></i><b>6.3.1</b> Independent Samples - Wilcoxon Rank-Sum Test</a></li>
+<li class="chapter" data-level="6.3.2" data-path="comparing-two-population-means.html"><a href="comparing-two-population-means.html#paired-samples---wilcoxon-signed-rank-test"><i class="fa fa-check"></i><b>6.3.2</b> Paired Samples - Wilcoxon Signed Rank Test</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="experimental-design-and-the-analysis-of-variance.html"><a href="experimental-design-and-the-analysis-of-variance.html"><i class="fa fa-check"></i><b>7</b> Experimental Design and the Analysis of Variance</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="experimental-design-and-the-analysis-of-variance.html"><a href="experimental-design-and-the-analysis-of-variance.html#completely-randomized-design-crd-for-independent-samples"><i class="fa fa-check"></i><b>7.1</b> Completely Randomized Design (CRD) For Independent Samples</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="experimental-design-and-the-analysis-of-variance.html"><a href="experimental-design-and-the-analysis-of-variance.html#analysis-of-variance-and-f-test-for-normal-data"><i class="fa fa-check"></i><b>7.1.1</b> Analysis of Variance and <span class="math inline">\(F\)</span>-Test for Normal Data</a></li>
+<li class="chapter" data-level="7.1.2" data-path="experimental-design-and-the-analysis-of-variance.html"><a href="experimental-design-and-the-analysis-of-variance.html#comparisons-among-treatment-means"><i class="fa fa-check"></i><b>7.1.2</b> Comparisons among Treatment Means</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="experimental-design-and-the-analysis-of-variance.html"><a href="experimental-design-and-the-analysis-of-variance.html#randomized-block-design-rbd-for-studies-based-on-matched-units"><i class="fa fa-check"></i><b>7.2</b> Randomized Block Design (RBD) For Studies Based on Matched Units</a></li>
+<li class="chapter" data-level="7.3" data-path="experimental-design-and-the-analysis-of-variance.html"><a href="experimental-design-and-the-analysis-of-variance.html#factorial-designs"><i class="fa fa-check"></i><b>7.3</b> Factorial Designs</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="categorical-data-analysis.html"><a href="categorical-data-analysis.html"><i class="fa fa-check"></i><b>8</b> Categorical Data Analysis</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="categorical-data-analysis.html"><a href="categorical-data-analysis.html#inference-concerning-a-single-variable"><i class="fa fa-check"></i><b>8.1</b> Inference Concerning a Single Variable</a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="categorical-data-analysis.html"><a href="categorical-data-analysis.html#variables-with-two-possible-outcomes"><i class="fa fa-check"></i><b>8.1.1</b> Variables with Two Possible Outcomes</a></li>
+<li class="chapter" data-level="8.1.2" data-path="categorical-data-analysis.html"><a href="categorical-data-analysis.html#variables-with-more-than-two-possible-outcomes"><i class="fa fa-check"></i><b>8.1.2</b> Variables with More than Two Possible Outcomes</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="categorical-data-analysis.html"><a href="categorical-data-analysis.html#introduction-to-tests-for-association-for-two-categorical-variables"><i class="fa fa-check"></i><b>8.2</b> Introduction to Tests for Association for Two Categorical Variables</a>
+<ul>
+<li class="chapter" data-level="8.2.1" data-path="categorical-data-analysis.html"><a href="categorical-data-analysis.html#x-2-tables"><i class="fa fa-check"></i><b>8.2.1</b> 2 x 2 Tables</a></li>
+<li class="chapter" data-level="8.2.2" data-path="categorical-data-analysis.html"><a href="categorical-data-analysis.html#nominal-explanatory-and-response-variables"><i class="fa fa-check"></i><b>8.2.2</b> Nominal Explanatory and Response Variables</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="regression-models.html"><a href="regression-models.html"><i class="fa fa-check"></i><b>9</b> Regression Models</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="regression-models.html"><a href="regression-models.html#simple-linear-regression"><i class="fa fa-check"></i><b>9.1</b> Simple Linear Regression</a>
+<ul>
+<li class="chapter" data-level="9.1.1" data-path="regression-models.html"><a href="regression-models.html#estimation-of-model-parameters"><i class="fa fa-check"></i><b>9.1.1</b> Estimation of Model Parameters</a></li>
+<li class="chapter" data-level="9.1.2" data-path="regression-models.html"><a href="regression-models.html#inference-regarding-beta_1-and-beta_0"><i class="fa fa-check"></i><b>9.1.2</b> Inference Regarding <span class="math inline">\(\beta_1\)</span> and <span class="math inline">\(\beta_0\)</span></a></li>
+<li class="chapter" data-level="9.1.3" data-path="regression-models.html"><a href="regression-models.html#estimating-a-mean-and-predicting-a-new-observation-xx"><i class="fa fa-check"></i><b>9.1.3</b> Estimating a Mean and Predicting a New Observation @ <span class="math inline">\(X=X^*\)</span></a></li>
+<li class="chapter" data-level="9.1.4" data-path="regression-models.html"><a href="regression-models.html#analysis-of-variance"><i class="fa fa-check"></i><b>9.1.4</b> Analysis of Variance</a></li>
+<li class="chapter" data-level="9.1.5" data-path="regression-models.html"><a href="regression-models.html#correlation"><i class="fa fa-check"></i><b>9.1.5</b> Correlation</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="regression-models.html"><a href="regression-models.html#multiple-linear-regression"><i class="fa fa-check"></i><b>9.2</b> Multiple Linear Regression</a>
+<ul>
+<li class="chapter" data-level="9.2.1" data-path="regression-models.html"><a href="regression-models.html#testing-and-estimation-for-partial-regression-coefficients"><i class="fa fa-check"></i><b>9.2.1</b> Testing and Estimation for Partial Regression Coefficients</a></li>
+<li class="chapter" data-level="9.2.2" data-path="regression-models.html"><a href="regression-models.html#analysis-of-variance-1"><i class="fa fa-check"></i><b>9.2.2</b> Analysis of Variance</a></li>
+<li class="chapter" data-level="9.2.3" data-path="regression-models.html"><a href="regression-models.html#testing-a-subset-of-betas-0"><i class="fa fa-check"></i><b>9.2.3</b> Testing a Subset of <span class="math inline">\(\beta^s = 0\)</span></a></li>
+<li class="chapter" data-level="9.2.4" data-path="regression-models.html"><a href="regression-models.html#models-with-categorical-qualitative-predictors"><i class="fa fa-check"></i><b>9.2.4</b> Models With Categorical (Qualitative) Predictors</a></li>
+<li class="chapter" data-level="9.2.5" data-path="regression-models.html"><a href="regression-models.html#models-with-interaction-terms"><i class="fa fa-check"></i><b>9.2.5</b> Models With Interaction Terms</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="regression-models.html"><a href="regression-models.html#logistic-regression"><i class="fa fa-check"></i><b>9.3</b> Logistic Regression</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Statistics and the Physical World</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="categorical-data-analysis" class="section level1 hasAnchor" number="8">
+<h1><span class="header-section-number">Chapter 8</span> Categorical Data Analysis<a href="categorical-data-analysis.html#categorical-data-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Recall that variables can be categorical or numeric.
+Chapters 4, 6, and 7 dealt with making inferences for
+quantitative responses. In this chapter, methods commonly used to analyze data when the response
+variable is categorical are introduced.
+First, consider estimating and testing proportions corresponding to a single binomial (2 possible outcomes)
+or multinomial (<span class="math inline">\(k&gt;2\)</span> possible outcomes) variable. Then, cases of testing for associations among two or more categorical variables are covered.</p>
+<div id="inference-concerning-a-single-variable" class="section level2 hasAnchor" number="8.1">
+<h2><span class="header-section-number">8.1</span> Inference Concerning a Single Variable<a href="categorical-data-analysis.html#inference-concerning-a-single-variable" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>A single variable can have two levels, and counts are modeled by the Binomial distribution, or it can have <span class="math inline">\(k&gt;2\)</span> levels and counts
+are modeled by the Multinomial distribution. Note that the Binomial is a special case of the Multinomial, however there are many
+methods that apply strictly to binary outcomes.</p>
+<div id="variables-with-two-possible-outcomes" class="section level3 hasAnchor" number="8.1.1">
+<h3><span class="header-section-number">8.1.1</span> Variables with Two Possible Outcomes<a href="categorical-data-analysis.html#variables-with-two-possible-outcomes" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>In the case of a binary variable, the goal is typically to estimate the true underlying probability of success, <span class="math inline">\(\pi\)</span>.
+The sample proportion <span class="math inline">\(\hat{\pi}=Y/n\)</span> from a binomial experiment with <span class="math inline">\(n\)</span> trials and <span class="math inline">\(Y\)</span> successes has a sampling distribution with mean <span class="math inline">\(\pi\)</span> and standard error
+<span class="math inline">\(\sqrt{\pi(1-\pi)/n}\)</span>. In large samples, the sampling distribution is approximately normal. One commonly used rule of thumb is that <span class="math inline">\(n\pi \geq5\)</span>
+and <span class="math inline">\(n(1-\pi)\geq 5\)</span>. When estimating <span class="math inline">\(\pi\)</span>, the estimated standard error must be used, where <span class="math inline">\(\pi\)</span> is replaced with <span class="math inline">\(\hat{\pi}\)</span>. Note that the standard
+error is maximized for a given <span class="math inline">\(n\)</span> when <span class="math inline">\(\pi=1-\pi=0.5\)</span>, so a conservative case uses <span class="math inline">\(\pi=0.5\)</span> in the standard error.
+The large-sample <span class="math inline">\((1-\alpha)100\%\)</span> Confidence Interval for <span class="math inline">\(\pi\)</span> and the sample size needed for a given margin of error, <span class="math inline">\(E\)</span>, are given below.</p>
+<p><span class="math display">\[ (1-\alpha)100\% \mbox{CI for }\pi: \hat{\pi} \pm z_{\alpha/2}\sqrt{\frac{\hat{\pi}\left(1-\hat{\pi}\right)}{n}} \qquad
+E=z_{\alpha/2}\sqrt{\frac{\pi\left(1-\pi\right)}{n}} \quad \Rightarrow \quad  n=\frac{z_{\alpha/2}^2\pi(1-\pi)}{E^2} \]</span></p>
+<p>In small samples, the large-sample normal approximation does poorly
+in terms of coverage rates for <span class="math inline">\(\pi\)</span>. It has been seen that making an adjustment to the success count and the sample size performs well. This is referred to
+as the <strong>Wilson-Agresti-Coull</strong> method. Let <span class="math inline">\(y\)</span> be the observed number of successes in the <span class="math inline">\(n\)</span> trials, then the Confidence Interval is obtained as follows.
+Note that since <span class="math inline">\(z_{.025}=1.96 \approx 2\)</span>, for a 95% Confidence Interval, this can be thought of as adding 2 Successes and 2 Failures to the observed data <span class="citation">(<a href="#ref-agresti_1998">A. Agresti and Coull 1998</a>)</span>.</p>
+<p><span class="math display">\[ \tilde{y} = y+2 \quad \tilde{n} = n+ 4 \qquad \tilde{\pi} = \frac{\tilde{y}}{\tilde{n}} \qquad
+(1-\alpha)100\% \mbox{CI for }\pi: \tilde{\pi} \pm z_{\alpha/2}\sqrt{\frac{\tilde{\pi}\left(1-\tilde{\pi}\right)}{\tilde{n}}}  \]</span></p>
+<p><strong>Example 8.1: Estimating Shaquille O’Neal’s Free Throw Success Probability</strong></p>
+<p>During Shaquille O’Neal’s NBA regular season career, he took 11252 free throws, successfully making 5935, so that <span class="math inline">\(\pi = 5935/11252=.5275\)</span>.
+Stringing out his within game free throw attempts into a sequence of <span class="math inline">\(1^s\)</span> and <span class="math inline">\(0^s\)</span>, and taking 100000 random samples of size <span class="math inline">\(n=10\)</span>,
+the coverage rates for the two methods are 88.65% for the “traditional” large-sample method and 94.62% for the Wilson-Agresti-Coull (W-A-C) method.
+For the small-sample case, the adjustment performs very well. When the samples are of size <span class="math inline">\(n=30\)</span>, the coverage rates are 93.35%
+and 95.75%, respectively. For samples of size <span class="math inline">\(n=100\)</span>, they are 94.41% and 95.63%, respectively.
+Further, the mean widths of the 95% Confidence Intervals are narrower for the W-A-C method than for
+the traditional method as can be seen in Table <a href="categorical-data-analysis.html#tab:shaqft">8.1</a>.</p>
+<table style="width:100%;">
+<caption><span id="tab:shaqft">Table 8.1: </span>Coverage rates and mean width for traditional and Wilson-Agresti-Coull 95% Confidence Intervals</caption>
+<colgroup>
+<col width="6%" />
+<col width="7%" />
+<col width="20%" />
+<col width="22%" />
+<col width="20%" />
+<col width="22%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="right"><span class="math inline">\(\pi\)</span></th>
+<th align="right"><span class="math inline">\(\hat{\pi}\)</span> cover</th>
+<th align="right"><span class="math inline">\(\tilde{\pi}\)</span> cover</th>
+<th align="right"><span class="math inline">\(\hat{\pi}\)</span> width</th>
+<th align="right"><span class="math inline">\(\tilde{\pi}\)</span> width</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">n=10</td>
+<td align="right">0.5275</td>
+<td align="right">0.8865</td>
+<td align="right">0.9462</td>
+<td align="right">0.5848</td>
+<td align="right">0.5096</td>
+</tr>
+<tr class="even">
+<td align="left">n=30</td>
+<td align="right">0.5275</td>
+<td align="right">0.9335</td>
+<td align="right">0.9575</td>
+<td align="right">0.3512</td>
+<td align="right">0.3313</td>
+</tr>
+<tr class="odd">
+<td align="left">n=100</td>
+<td align="right">0.5275</td>
+<td align="right">0.9441</td>
+<td align="right">0.9563</td>
+<td align="right">0.1947</td>
+<td align="right">0.1910</td>
+</tr>
+</tbody>
+</table>
+<p>For the first sample of size <span class="math inline">\(n=10\)</span>, <span class="math inline">\(y=5\)</span> free throws were successes and the following calculations are used to obtain the 95% Confidence Intervals for <span class="math inline">\(\pi\)</span>.</p>
+<p><span class="math display">\[ \hat{\pi}=\frac{5}{10}=0.5 \qquad \qquad \widehat{SE}\{\hat{\pi}\}=\sqrt{\frac{0.5\left(1-0.5\right)}{10}}=0.158\]</span>
+<span class="math display">\[ 0.50 \pm 1.96(0.158) \equiv 0.50 \pm 0.310 \equiv (0.190,0.810) \]</span></p>
+<p><span class="math display">\[ \tilde{y}=5+2=7 \quad \tilde{n} = 10+4 =14 \quad \tilde{\pi}=\frac{7}{14}=0.5 \quad
+\sqrt{\frac{0.5\left(1-0.5\right)}{14}} = 0.134 \]</span>
+<span class="math display">\[ 0.5 \pm 1.96(0.134) \equiv 0.5 \pm 0.263 \equiv (0.237, 0.763) \]</span></p>
+<p>Both intervals contain <span class="math inline">\(\pi = 0.5275\)</span>.</p>
+<p><span class="math display">\[ \nabla \]</span></p>
+<p>A large-sample test of whether <span class="math inline">\(\pi=\pi_0\)</span> can also be conducted. For instance, a test may be whether a majority of people favor a political candidate or referendum,
+or whether a defective rate is below some tolerance level.</p>
+<p><span class="math display">\[ \mbox{2-tailed test: } H_0:\pi=\pi_0 \qquad H_A: \pi \neq \pi_0 \qquad \mbox{TS: } z_{obs}=\frac{\hat{\pi}-\pi_0}{\sqrt{\frac{\pi_0\left(1-\pi_0\right)}{n}}} \]</span>
+<span class="math display">\[ \mbox{RR: } |z_{obs}|\geq z_{\alpha/2} \qquad P=2P\left(Z\geq|z_{obs}|\right)  \]</span></p>
+<p><span class="math display">\[ \mbox{Upper-tailed test: } H_0:\pi\leq \pi_0 \qquad H_A: \pi &gt; \pi_0 \qquad \mbox{TS: } z_{obs}=\frac{\hat{\pi}-\pi_0}{\sqrt{\frac{\pi_0\left(1-\pi_0\right)}{n}}}\]</span></p>
+<p><span class="math display">\[ \mbox{RR: } z_{obs} \geq z_{\alpha} \qquad P=P\left(Z\geq z_{obs} \right)  \]</span></p>
+<p><span class="math display">\[ \mbox{Lower-tailed test: } H_0:\pi\geq \pi_0 \qquad H_A: \pi &lt; \pi_0 \qquad \mbox{TS: } z_{obs}=\frac{\hat{\pi}-\pi_0}{\sqrt{\frac{\pi_0\left(1-\pi_0\right)}{n}}} \]</span>
+<span class="math display">\[ \mbox{RR: } z_{obs} \leq -z_{\alpha} \qquad P=P\left(Z\leq z_{obs} \right)  \]</span></p>
+<p>An exact test can be conducted by use of the binomial distribution and statistical packages by obtaining the exact probability that the count
+could be more extreme than the observed count <span class="math inline">\(y\)</span> under the null hypothesis. See the examples below.</p>
+<p><strong>Example 8.2: NBA Point Spread and Over/Under Outcomes for 2014-2015 Regular Season</strong></p>
+<p>For each NBA game there is a “point spread” for bettors to wager on. If the home team is favored to win the game by 5 points, it must win by 6 or more points
+to “cover the spread,” if it loses the game or wins by less than 5 points, the home team loses the bet, and if it wins by 5 points, the bet is a tie or “push.”
+For the 2014-2015 regular season games, the home team covered the spread in 588 games, failed to cover the spread in 615 games,
+and “tied” the spread in 27 games. We treat these games as a sample of the infinite population of games
+that could be played among NBA teams, and eliminate the 27 “pushes.” The test is whether the true underlying probability that the home team covers
+is 0.50. Otherwise bettors could have an advantage over bookmakers. <span class="math inline">\(H_0:\pi=0.50\)</span> versus <span class="math inline">\(H_A:\pi \neq 0.50\)</span>.</p>
+<p><span class="math display">\[ y = 588 \qquad n=615+588=1203 \quad \hat{\pi}=\frac{588}{1203} =0.4888\]</span>
+<span class="math display">\[ SE\left\{\hat{\pi}\right\}_{H_0}=\sqrt{\frac{0.5(1-0.5)}{1203}} = 0.0144 \]</span>
+<span class="math display">\[ z_{obs} = \frac{0.4888-0.5}{0.0144} = -0.78 \qquad  P=2P(Z\geq 0.78) = 2(0.2177)=0.4354  \]</span></p>
+<p>There is no evidence of a “bias” (positive or negative) in terms of the home team performance against the spread.
+An exact test is given here. Under the null hypothesis, the expected value
+of <span class="math inline">\(Y\)</span> is <span class="math inline">\(n\pi_0=1203(0.5)=601.5\)</span>. The observed <span class="math inline">\(y\)</span> is 588, which is 13.5 below its expected value. Had <span class="math inline">\(y\)</span> been 615, it would have been 13.5 above
+its expected value. The exact 2-tailed p-value is obtained as follows.</p>
+<p><span class="math display">\[ P= P\left(Y\leq 588 | Y\sim Bin(1203,0.5)\right) + P\left(Y\geq 615 | Y\sim Bin(1203,0.5)\right)= \]</span>
+<span class="math display">\[= 0.22675 + 0.22675 = .4535  \]</span></p>
+<p>A similar test can be done for the “Over/Under” bet. Bookmakers set a total score for the two teams, and if the combined points exceed this line
+the Over wins, if it falls short, the Under wins, and if it ties, it is a “Push.” For the Over/Under bet for that season, Under won 633 times, Over won
+583 times, and there were 14 Pushes. Again, we eliminate the Pushes, and test <span class="math inline">\(H_0:\pi=0.50\)</span> versus <span class="math inline">\(H_A:\pi \neq 0.50\)</span>, where <span class="math inline">\(\pi\)</span> is the probability Over wins.</p>
+<p><span class="math display">\[ y = 583 \qquad n=633+583=1216 \qquad \hat{\pi}=\frac{583}{1216} =0.4794\]</span>
+<span class="math display">\[SE\left\{\hat{\pi}\right\}_{H_0}=\sqrt{\frac{0.5(1-0.5)}{1216}} = 0.0143 \]</span>
+<span class="math display">\[ z_{obs} = \frac{0.4794-0.5}{0.0143} = -1.44 \qquad  P=2P(Z\geq 1.44) = 2(.0749)=0.1498  \]</span></p>
+<p>Again there is no evidence of a bias.
+An exact p-value is obtained below.</p>
+<p><span class="math display">\[ P= P\left(Y\leq 583 | Y\sim Bin(1216,0.5)\right) + P\left(Y\geq 633 | Y\sim Bin(1216,0.5)\right)=\]</span>
+<span class="math display">\[ = 0.07997 + 0.07997 = 0.1599  \]</span></p>
+<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="categorical-data-analysis.html#cb79-1" tabindex="-1"></a>y.cov <span class="ot">&lt;-</span> <span class="dv">588</span>; n.cov <span class="ot">&lt;-</span> <span class="dv">1203</span></span>
+<span id="cb79-2"><a href="categorical-data-analysis.html#cb79-2" tabindex="-1"></a>y.ou <span class="ot">&lt;-</span> <span class="dv">583</span>; n.ou <span class="ot">&lt;-</span> <span class="dv">1216</span></span>
+<span id="cb79-3"><a href="categorical-data-analysis.html#cb79-3" tabindex="-1"></a><span class="fu">binom.test</span>(y.cov, n.cov, <span class="at">p=</span><span class="fl">0.5</span>, <span class="at">alternative=</span><span class="st">&quot;two.sided&quot;</span>)</span></code></pre></div>
+<pre><code>## 
+##  Exact binomial test
+## 
+## data:  y.cov and n.cov
+## number of successes = 588, number of trials = 1203, p-value = 0.4535
+## alternative hypothesis: true probability of success is not equal to 0.5
+## 95 percent confidence interval:
+##  0.4601721 0.5174390
+## sample estimates:
+## probability of success 
+##              0.4887781</code></pre>
+<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="categorical-data-analysis.html#cb81-1" tabindex="-1"></a><span class="fu">binom.test</span>(y.ou, n.ou, <span class="at">p=</span><span class="fl">0.5</span>, <span class="at">alternative=</span><span class="st">&quot;two.sided&quot;</span>)</span></code></pre></div>
+<pre><code>## 
+##  Exact binomial test
+## 
+## data:  y.ou and n.ou
+## number of successes = 583, number of trials = 1216, p-value = 0.1599
+## alternative hypothesis: true probability of success is not equal to 0.5
+## 95 percent confidence interval:
+##  0.4510292 0.5079521
+## sample estimates:
+## probability of success 
+##              0.4794408</code></pre>
+<p><span class="math display">\[ \nabla   \]</span></p>
+</div>
+<div id="variables-with-more-than-two-possible-outcomes" class="section level3 hasAnchor" number="8.1.2">
+<h3><span class="header-section-number">8.1.2</span> Variables with More than Two Possible Outcomes<a href="categorical-data-analysis.html#variables-with-more-than-two-possible-outcomes" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>We can generalize the case of two possible outcomes to <span class="math inline">\(k&gt;2\)</span> possible outcomes. The test involves computing a Chi-square statistic measuring
+the discrepancy between the observed counts of the outcomes and that
+expected under the null hypothesis of specified probabilities.</p>
+<p>This test can also be used to determine the goodness of fit for a given set of data to a specified probability distribution. This type of test
+can be conducted as follows.</p>
+<ul>
+<li>Obtain a set of data <span class="math inline">\(\left(y_1,\ldots , y_n\right)\)</span>.</li>
+<li>Consider a family of distributions that may describe the data.</li>
+<li>Estimate the <span class="math inline">\(p\)</span> parameter(s) of the hypothesized probability distribution based on the observed data.</li>
+<li>Break the data into <span class="math inline">\(k\)</span> bins, that contain all of the observed values. This works best when there are at 5 observations per bin.</li>
+<li>Compute the observed counts for each bin <span class="math inline">\(n_j \quad j=1,...,k\)</span>.</li>
+<li>Compute the expected counts for each bin by multiplying the probability of that bin <span class="math inline">\(\pi_j\)</span>, by the sample size <span class="math inline">\(n\)</span>. This will typically require using a statistical package for the probabilities. <span class="math inline">\(E_j=n\pi_j\)</span>.</li>
+<li>Compute the Chi-square statistic that takes the squared difference
+between the observed and expected counts, divided by the expected counts.
+Sum these over all <span class="math inline">\(k\)</span> bins.</li>
+<li>Under the null hypothesis that the data are from the specified probability distribution, the statistic will be approximately Chi-square with <span class="math inline">\(k-p-1\)</span> degrees of freedom. Large values of the statistic are evidence against that hypothesis.</li>
+</ul>
+<p><strong>Example 8.3: Testing Poisson Distribution for London Bombings</strong></p>
+<p>In Chapter 3, we used the Poisson distribution to model the counts of London bombs
+observed in <span class="math inline">\(n=576\)</span> sectors during World War II. There were 537 total bombs dropped,
+leading to an estimated mean of <span class="math inline">\(\hat{\lambda}=537/576=0.9323\)</span> bombs per sector.
+Table <a href="categorical-data-analysis.html#tab:londonbomb2">8.2</a> gives counts of 0,1,2,3,4+ for the 576 sectors,
+the expected counts based on the Poisson distribution with mean 0.9323 and the contributions to
+the Chi-square statistic. The degrees of freedom is <span class="math inline">\(k-p-1=5-1-1=3\)</span> and the critical value
+with <span class="math inline">\(\alpha=0.05\)</span> is <span class="math inline">\(\chi_{.05,3}^2=7.815\)</span>.
+The test statistic is 1.2947, and
+the p-value is <span class="math inline">\(P\left(\chi_{3}^2\geq1.2947\right)=.7304\)</span>.
+There is no evidence to claim that the distribution of bomb counts is not well described by a Poisson distribution.</p>
+<table>
+<caption><span id="tab:londonbomb2">Table 8.2: </span>Poisson Distribution for World War II London Bombings.</caption>
+<thead>
+<tr class="header">
+<th align="left"><span class="math inline">\(y\)</span></th>
+<th align="right"><span class="math inline">\(p(y)\)</span></th>
+<th align="right">Expected</th>
+<th align="right">Observed</th>
+<th align="right"><span class="math inline">\(\chi^2\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">0</td>
+<td align="right">0.3936</td>
+<td align="right">226.7408</td>
+<td align="right">229</td>
+<td align="right">0.0225</td>
+</tr>
+<tr class="even">
+<td align="left">1</td>
+<td align="right">0.3670</td>
+<td align="right">211.3905</td>
+<td align="right">211</td>
+<td align="right">0.0007</td>
+</tr>
+<tr class="odd">
+<td align="left">2</td>
+<td align="right">0.1711</td>
+<td align="right">98.5397</td>
+<td align="right">93</td>
+<td align="right">0.3114</td>
+</tr>
+<tr class="even">
+<td align="left">3</td>
+<td align="right">0.0532</td>
+<td align="right">30.6228</td>
+<td align="right">35</td>
+<td align="right">0.6257</td>
+</tr>
+<tr class="odd">
+<td align="left">4+</td>
+<td align="right">0.0151</td>
+<td align="right">8.7062</td>
+<td align="right">7</td>
+<td align="right">0.3344</td>
+</tr>
+<tr class="even">
+<td align="left">Total</td>
+<td align="right">1.0000</td>
+<td align="right">576.0000</td>
+<td align="right">576</td>
+<td align="right">1.2947</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="introduction-to-tests-for-association-for-two-categorical-variables" class="section level2 hasAnchor" number="8.2">
+<h2><span class="header-section-number">8.2</span> Introduction to Tests for Association for Two Categorical Variables<a href="categorical-data-analysis.html#introduction-to-tests-for-association-for-two-categorical-variables" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The data are generally counts of individuals or units,
+and are given in the form of an <span class="math inline">\(r\times c\)</span> contingency table}.
+Throughout these notes, the rows of the table will represent
+the <span class="math inline">\(r\)</span> levels of the explanatory variable, and the columns will
+represent the <span class="math inline">\(c\)</span> levels of the response variable. The numbers within
+the table are the counts of the numbers of individuals falling in that
+cell’s combination of levels of the explanatory and response variables.
+The general set–up of an <span class="math inline">\(r\times c\)</span> contingency table is given in
+Table <a href="categorical-data-analysis.html#tab:rccont1">8.3</a>.</p>
+<table>
+<caption><span id="tab:rccont1">Table 8.3: </span>Contingency table of counts for two categorical variables. Row variable has r levels and Column variable has c levels</caption>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="left">j=1</th>
+<th align="left">j=2</th>
+<th align="left">…</th>
+<th align="left">j=c</th>
+<th align="left">Total</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">i=1</td>
+<td align="left">n11</td>
+<td align="left">n12</td>
+<td align="left">…</td>
+<td align="left">n1c</td>
+<td align="left">n1+</td>
+</tr>
+<tr class="even">
+<td align="left">i=2</td>
+<td align="left">n21</td>
+<td align="left">n22</td>
+<td align="left">…</td>
+<td align="left">n2c</td>
+<td align="left">n2+</td>
+</tr>
+<tr class="odd">
+<td align="left">…</td>
+<td align="left">…</td>
+<td align="left">…</td>
+<td align="left">…</td>
+<td align="left">…</td>
+<td align="left">…</td>
+</tr>
+<tr class="even">
+<td align="left">i=r</td>
+<td align="left">nr1</td>
+<td align="left">nr2</td>
+<td align="left">…</td>
+<td align="left">nrc</td>
+<td align="left">nr+</td>
+</tr>
+<tr class="odd">
+<td align="left">Total</td>
+<td align="left">n+1</td>
+<td align="left">n+2</td>
+<td align="left">…</td>
+<td align="left">n+c</td>
+<td align="left">n++</td>
+</tr>
+</tbody>
+</table>
+<p>Recall that categorical variables can be <strong>nominal</strong> or <strong>ordinal</strong>.
+Nominal variables have levels that have no inherent ordering, such
+as gender (male, female) or hair color (black, blonde, brown, red). Ordinal
+variables have levels that do have a distinct ordering
+such as reviewer’s assessment of a movie (negative opinion, mixed opinion, positive opinion).</p>
+<p>In this chapter, the following cases are covered.</p>
+<ul>
+<li><span class="math inline">\(2 \times 2\)</span> tables (both variables have two levels)</li>
+<li>Both variables are nominal (or one is nominal, the other ordinal)</li>
+</ul>
+<div id="x-2-tables" class="section level3 hasAnchor" number="8.2.1">
+<h3><span class="header-section-number">8.2.1</span> 2 x 2 Tables<a href="categorical-data-analysis.html#x-2-tables" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>There are many situations where both the independent and dependent
+variables have two levels. One example is efficacy studies for drugs,
+where subjects are assigned at random to active drug or placebo
+(explanatory variable) and the outcome measure is whether or not
+the patient is cured (response variable). A second example is epidemiological
+studies where disease state is observed (response variable), as
+well as exposure to risk factor (explanatory variable). Drug efficacy
+studies are generally conducted as randomized
+clinical trials, while epidemiological studies are generally conducted
+in cohort (prospective) and case–control (retrospective) settings.</p>
+<p>For this particular case, we will generalize the explanatory variable’s
+levels to exposed <span class="math inline">\(\left(E\right)\)</span> and not exposed
+<span class="math inline">\(\left(\overline{E}\right)\)</span>, and the response
+variable’s levels as disease <span class="math inline">\(\left(D\right)\)</span> and no disease <span class="math inline">\(\left(\overline{D}\right)\)</span>. These
+interpretations can be applied in either of the two settings described
+above and can be generalized to virtually any application.
+The data for this case will be of the form of Table <a href="categorical-data-analysis.html#tab:rccont2">8.4</a>.</p>
+<table>
+<caption><span id="tab:rccont2">Table 8.4: </span>Contingency Table with 2 rows and 2 columns with rows representing Exposure state and columns representing Disease state</caption>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="left">Disease Present</th>
+<th align="left">Disease Absent</th>
+<th align="left">Total</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Exposure Present</td>
+<td align="left">n11=y1</td>
+<td align="left">n12=n1-y1</td>
+<td align="left">n1+=n1</td>
+</tr>
+<tr class="even">
+<td align="left">Exposure Absent</td>
+<td align="left">n21=y2</td>
+<td align="left">n22=n2-y2</td>
+<td align="left">n2+=n2</td>
+</tr>
+<tr class="odd">
+<td align="left">Total</td>
+<td align="left">n+1=y1+y2</td>
+<td align="left">n+2=(n1+n2)-(y1+y2)</td>
+<td align="left">n++=n1+n2</td>
+</tr>
+</tbody>
+</table>
+<p>In the case of drug efficacy studies, the exposure state can be thought
+of as the drug the subject is randomly assigned to. Exposure could imply
+that a subject was given the active drug, while non-exposure could
+imply having received placebo. In either type study, there are three
+measures of association commonly estimated and reported. These
+are the <strong>absolute risk</strong> (aka difference in proportions), the <strong>relative risk</strong> and the <strong>odds ratio</strong>.</p>
+<p>These methods are also used when the explanatory variable has more than
+two levels, and the response variable has two levels. The methods
+described below are computed within pairs of levels of the explanatory
+variables, with one level forming the “baseline” group in comparisons.</p>
+<div id="difference-in-proportions-pi_1-pi_2" class="section level4 hasAnchor" number="8.2.1.1">
+<h4><span class="header-section-number">8.2.1.1</span> Difference in Proportions: <span class="math inline">\(\pi_1-\pi_2\)</span><a href="categorical-data-analysis.html#difference-in-proportions-pi_1-pi_2" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>In many studies, the goal is to compare the Success probabilities for two groups. These studies can be based on large samples or small samples,
+and can be based on independent or paired samples.</p>
+<p>For the large sample case, based on independent samples, the estimators <span class="math inline">\(\hat{\pi}_1=Y_1/n_1\)</span> and <span class="math inline">\(\hat{\pi}_2=Y_2/n_2\)</span> for the two groups are independent
+and have sampling distributions that are approximately normal. The relevant results are given below.</p>
+<p><span class="math display">\[ E\left\{\hat{\pi}_1-\hat{\pi}_2\right\} = \pi_1-\pi_2 \quad   SE\left\{\hat{\pi}_1-\hat{\pi}_2\right\}=\sqrt{\frac{\pi_1\left(1-\pi_1\right)}{n_1} +
+\frac{\pi_2\left(1-\pi_2\right)}{n_2}}\]</span>
+<span class="math display">\[\hat{SE}\left\{\hat{\pi}_1-\hat{\pi}_2\right\}=\sqrt{\frac{\hat{\pi}_1\left(1-\hat{\pi}_1\right)}{n_1} +
+\frac{\hat{\pi}_2\left(1-\hat{\pi}_2\right)}{n_2}}  \]</span></p>
+<p><span class="math display">\[ (1-\alpha)100\% \mbox{ CI for } \pi_1-\pi_2: \quad
+\left(\hat{\pi}_1-\hat{\pi}_2\right) \pm z_{\alpha/2} \hat{SE}\left\{\hat{\pi}_1-\hat{\pi}_2\right\} \]</span>
+<span class="math display">\[\quad \equiv \quad  \left(\hat{\pi}_1-\hat{\pi}_2\right) \pm z_{\alpha/2} \sqrt{\frac{\hat{\pi}_1\left(1-\hat{\pi}_1\right)}{n_1} +
+\frac{\hat{\pi}_2\left(1-\hat{\pi}_2\right)}{n_2}}  \]</span></p>
+<p>In terms of testing the hypothesis <span class="math inline">\(H_0:\pi_1-\pi_2=0\)</span>, an adjustment is made to the standard error of <span class="math inline">\(\hat{\pi}_1-\hat{\pi}_2\)</span>. In this
+case the overall combined proportion of successes is obtained and used in the “pooled” standard error.</p>
+<p><span class="math display">\[ \hat{\pi}=\frac{y_1+y_2}{n_1+n_2}   \qquad  \hat{SE}_p\left\{\hat{\pi}_1-\hat{\pi}_2\right\}=\sqrt{\hat{\pi}\left(1-\hat{\pi}\right)\left[\frac{1}{n_1} +
+\frac{1}{n_2}\right]}  \]</span></p>
+<p>The test statistic for testing <span class="math inline">\(H_0:\pi_1-\pi_2=0\)</span> is given below with the usual rules for rejection regions and p-values for 2-tailed
+and 1-tailed tests based on the <span class="math inline">\(z\)</span>-distribution.</p>
+<p><span class="math display">\[ TS: z_{obs} = \frac{\hat{\pi}_1-\hat{\pi}_2}{\hat{SE}_p\left\{\hat{\pi}_1-\hat{\pi}_2\right\}} = \frac{\hat{\pi}_1-\hat{\pi}_2}{\sqrt{\hat{\pi}\left(1-\hat{\pi}\right)\left[\frac{1}{n_1} +
+\frac{1}{n_2}\right]}}  \]</span></p>
+<p><strong>Example 8.4: Risk Taking After Large Financial Losses</strong></p>
+<p>An Australian natural experiment considered the effect of large losses on subsequent risk taking behavior <span class="citation">(<a href="#ref-page_2014">Page, Savage, and Torgler 2014</a>)</span>.
+The study included a sample of <span class="math inline">\(n_1=94\)</span> people who had been effected by the flood in Brisbane during 2011 and a sample of <span class="math inline">\(n_2=107\)</span> people who
+had not been effected. The subjects in the experiment were given the choice between a certain $10 and a scratch card valued at $10, but with a
+maximum prize of $500,000. The scratch card is considered the “high risk” choice. Of the effected participants, <span class="math inline">\(y_1=75\)</span> chose the scratch card,
+of the unaffected, <span class="math inline">\(y_2=53\)</span> chose the scratch card.</p>
+<p><span class="math display">\[ \hat{\pi}_1=\frac{75}{94}=.7979 \quad \hat{\pi}_2 =\frac{53}{107}=0.4953 \quad \hat{\pi}_1-\hat{\pi}_2=.7979-.4953=.3026 \]</span> <span class="math display">\[\hat{\pi}=\frac{75+53}{94+107}=\frac{128}{201}=0.6368 \]</span></p>
+<p><span class="math display">\[ \hat{SE}\left\{\hat{\pi}_1-\hat{\pi}_2\right\}=\sqrt{\frac{.7979(.2021)}{94} + \frac{.4953(.5047)}{107}} = .0637  \]</span>
+<span class="math display">\[ .3026 \pm 1.96(.0637) \equiv .3026 \pm .1248 \equiv (.1778,.4274) \]</span></p>
+<p><span class="math display">\[ \hat{SE}_p\left\{\hat{\pi}_1-\hat{\pi}_2\right\} = \sqrt{.6368(.3632)\left[\frac{1}{94} +
+\frac{1}{107}\right]}= .0680  \]</span>
+<span class="math display">\[z_{obs}=\frac{.3026}{.0680} = 4.451  \qquad P=2P(Z\geq 4.451) \approx 0  \]</span></p>
+<p>This provides empirical evidence consistent with prospect theory that states that people adopt risk taking attitudes after losses.</p>
+<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="categorical-data-analysis.html#cb83-1" tabindex="-1"></a>y1 <span class="ot">&lt;-</span> <span class="dv">75</span>; n1 <span class="ot">&lt;-</span> <span class="dv">94</span> <span class="do">## Successes and Total for Group 1 (Affected by Flood)</span></span>
+<span id="cb83-2"><a href="categorical-data-analysis.html#cb83-2" tabindex="-1"></a>y2 <span class="ot">&lt;-</span> <span class="dv">53</span>; n2 <span class="ot">&lt;-</span> <span class="dv">107</span> <span class="do">## Successes and Total for Group 2 (Unaffected)</span></span>
+<span id="cb83-3"><a href="categorical-data-analysis.html#cb83-3" tabindex="-1"></a></span>
+<span id="cb83-4"><a href="categorical-data-analysis.html#cb83-4" tabindex="-1"></a><span class="fu">prop.test</span>(<span class="fu">c</span>(y1,y2),<span class="fu">c</span>(n1,n2),<span class="at">correct=</span>F)</span></code></pre></div>
+<pre><code>## 
+##  2-sample test for equality of proportions without continuity correction
+## 
+## data:  c(y1, y2) out of c(n1, n2)
+## X-squared = 19.804, df = 1, p-value = 8.58e-06
+## alternative hypothesis: two.sided
+## 95 percent confidence interval:
+##  0.1777846 0.4273059
+## sample estimates:
+##    prop 1    prop 2 
+## 0.7978723 0.4953271</code></pre>
+<p>Note that R presents the “Z-test” as a Chi-square test (with 1 degree of freedom), <span class="math inline">\(z_{obs}^2=4.4502^2=19.804\)</span>.
+The p-values are identical for a 2-tailed test.</p>
+<p><span class="math display">\[ \nabla   \]</span></p>
+</div>
+<div id="mcnemars-test-for-paired-designs" class="section level4 hasAnchor" number="8.2.1.2">
+<h4><span class="header-section-number">8.2.1.2</span> McNemar’s Test for Paired Designs<a href="categorical-data-analysis.html#mcnemars-test-for-paired-designs" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>When the same units are being observed under both experimental
+treatments (or units have been matched based on some criteria), McNemar’s test can be used to test for treatment effects. The
+relevant subjects (pairs) are the ones who respond differently under the two
+conditions. Counts will appear as in Table <a href="categorical-data-analysis.html#tab:mcnemar1">8.5</a>.</p>
+<table>
+<caption><span id="tab:mcnemar1">Table 8.5: </span>Contingency Table for McNemar’s Paired Test</caption>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="left">Trt2 Present</th>
+<th align="left">Trt2 Absent</th>
+<th align="left">Total</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Trt1 Present</td>
+<td align="left">n11</td>
+<td align="left">n12</td>
+<td align="left">n1+</td>
+</tr>
+<tr class="even">
+<td align="left">Trt1 Absent</td>
+<td align="left">n21</td>
+<td align="left">n22</td>
+<td align="left">n2+</td>
+</tr>
+<tr class="odd">
+<td align="left">Total</td>
+<td align="left">n+1</td>
+<td align="left">n+2</td>
+<td align="left">n++</td>
+</tr>
+</tbody>
+</table>
+<p>Note that <span class="math inline">\(n_{11}\)</span> is the number of units that have the outcome characteristic present
+under both treatments, while <span class="math inline">\(n_{22}\)</span> is the number having the outcome
+characteristic absent under both treatments. None of these subjects offer
+any information regarding the difference in treatment effects. The units that provide
+information are the <span class="math inline">\(n_{12}\)</span> cases that have the outcome present
+under treatment 1, and absent under treatment 2; and the <span class="math inline">\(n_{21}\)</span> units
+that have the outcome absent under treatment 1, and present under treatment 2.
+Note that treatment 1 and treatment 2 can also be “Before” and “After”
+treatment, or any two conditions.</p>
+<p>A large-sample test for treatment effects can be conducted as follows.</p>
+<ul>
+<li><span class="math inline">\(H_0:\)</span> Pr(Outcome Present<span class="math inline">\(|\)</span>Trt 1)=Pr(Outcome Present<span class="math inline">\(|\)</span>Trt 2) <span class="math inline">\(\quad \Rightarrow \quad\)</span> No Trt effect</li>
+<li><span class="math inline">\(H_A:\)</span> The probabilities differ (Trt effects - This can be 1-sided also)</li>
+<li>TS: <span class="math inline">\(z_{obs}= \frac{n_{12}-n_{21}}{\sqrt{n_{12}+n_{21}}}\)</span></li>
+<li>RR: <span class="math inline">\(|z_{obs}| \geq z_{\alpha/2}\)</span> (For 2-sided test)</li>
+<li>p-value: <span class="math inline">\(P=2P(Z\geq |z_{obs}|)\)</span> (For 2-sided test)</li>
+</ul>
+<p>Often this test is reported as a Chi-square test. The statistic is the
+square of the z-statistic above, and its treated as a Chi-square
+random variable with one degree of freedom. The 2-sided z-test, and the Chi-square test are
+mathematically equivalent.</p>
+<p>An exact test is based on the binomial distribution. Under the null hypothesis of no treatment effect,
+the count <span class="math inline">\(n_{12}\)</span> is distributed binomial with <span class="math inline">\(n=n_{12}+n_{21}\)</span> and <span class="math inline">\(\pi=0.5\)</span>. The P-value is computed
+as follows.</p>
+<p><span class="math display">\[ H_0: \pi_1=\pi_2 \quad H_A:\pi_1 \neq \pi_2 \]</span>
+<span class="math display">\[P=2\min\left[P\left(Y \leq n_{12}\right),P\left(Y \geq n_{12}\right)\right]  \quad Y\sim Bin\left(n=n_{12} +
+n_{21},\pi=0.5\right)  \]</span></p>
+<p>If trying to demonstrate that <span class="math inline">\(\pi_1 &gt; \pi_2\)</span>, we would expect <span class="math inline">\(n_{12} &gt; n_{21}\)</span> and <span class="math inline">\(P=P\left(Y\geq n_{12}\right)\)</span>. If the goal is to demonstrate that
+<span class="math inline">\(\pi_1 &lt; \pi_2\)</span> , we would expect <span class="math inline">\(n_{12} &lt; n_{21}\)</span> and <span class="math inline">\(P=P\left(Y\leq n_{12}\right)\)</span>.</p>
+<p><strong>Example 8.5: Framing of Risky Outcomes</strong></p>
+<p>In one of many studies testing prospect theory, subjects were asked to make two decisions regarding risky gambles <span class="citation">(<a href="#ref-kahneman_1984">D. Kahneman and Tversky 1984</a>)</span>. The decision choices are given below.</p>
+<ul>
+<li>Decision 1: Choose between (A): a sure gain of $240 and (B): a 25% chance of winning $1000 and 75% chance of winning $0.</li>
+<li>Decision 2: Choose between (C): a sure loss of $750 and (D): a 75% chance of losing $1000 and a 25% chance of losing $0.</li>
+</ul>
+<p>The results are given below. Decision 1 is a Positive frame, Decision 2 is Negative. Choices A and C are “sure thing” selections, B and D are “risky.”</p>
+<ul>
+<li>For 16 subjects, both sure things (A and C) were chosen.</li>
+<li>For 110 subjects, the Positive sure thing (A) and Negative risky bet (D) were chosen.</li>
+<li>For 4 subjects, the Positive risky bet (B) and Negative sure thing (C) were chosen.</li>
+<li>For 20 subjects, both risky bets (B and D) were chosen.</li>
+</ul>
+<p>The data are summarized in Table <a href="categorical-data-analysis.html#tab:mcnemar2">8.6</a>.</p>
+<table>
+<caption><span id="tab:mcnemar2">Table 8.6: </span>Positive and Negative frames and subjects’ selections between sure thing and risky bet</caption>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="right">Neg/Sure</th>
+<th align="right">Neg/Risk</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Pos/Sure</td>
+<td align="right">16</td>
+<td align="right">110</td>
+</tr>
+<tr class="even">
+<td align="left">Pos/Risk</td>
+<td align="right">4</td>
+<td align="right">20</td>
+</tr>
+</tbody>
+</table>
+<p>We can test whether the tendency to choose between a sure thing and risky bet depends
+on whether the choice is framed positive (gain) or negative (loss) based on McNemar’s test, since both
+outcomes are being observed on the same subjects.</p>
+<ul>
+<li><span class="math inline">\(H_0:\)</span> No differences in tendency to choose between sure thing and risky bet under the two frames</li>
+<li><span class="math inline">\(H_A:\)</span> The probabilities differ</li>
+<li>TS: <span class="math inline">\(z_{obs}= \frac{110-4}{\sqrt{110+4}}=\frac{106}{10.6771}=9.9278\)</span></li>
+<li>RR: <span class="math inline">\(|z_{obs}| \geq z_{.025}=1.96\)</span> (For 2-sided test, with <span class="math inline">\(\alpha=0.05\)</span>)</li>
+<li>p-value: <span class="math inline">\(P=2P(Z\geq 9.9278) \approx 0\)</span> (For 2-sided test)</li>
+</ul>
+<p>Thus, we conclude that the tendencies differ. People tend to choose the sure thing when posed as a gain, and the risky bet when posed as a loss.
+The exact p-value is set-up below.</p>
+<p><span class="math display">\[ P=2P\left(Y\geq 110 | Y\sim Bin(n=114,\pi=0.5)\right) \approx 0   \]</span>
+In the following R code chunk, the <strong>mcnemar.test</strong> function in R is used to conduct the
+test on the matrix <strong>bet</strong> created below. By using the correct=F option,
+this Chi-square test gives identical conclusions as the <span class="math inline">\(z\)</span>-test conducted above.</p>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="categorical-data-analysis.html#cb85-1" tabindex="-1"></a>(bet <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">16</span>,<span class="dv">110</span>,<span class="dv">4</span>,<span class="dv">20</span>),<span class="at">byrow=</span>T,<span class="at">ncol=</span><span class="dv">2</span>))</span></code></pre></div>
+<pre><code>##      [,1] [,2]
+## [1,]   16  110
+## [2,]    4   20</code></pre>
+<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="categorical-data-analysis.html#cb87-1" tabindex="-1"></a><span class="fu">mcnemar.test</span>(bet,<span class="at">correct=</span>F)</span></code></pre></div>
+<pre><code>## 
+##  McNemar&#39;s Chi-squared test
+## 
+## data:  bet
+## McNemar&#39;s chi-squared = 98.561, df = 1, p-value &lt; 2.2e-16</code></pre>
+<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="categorical-data-analysis.html#cb89-1" tabindex="-1"></a>z.stat <span class="ot">&lt;-</span> (bet[<span class="dv">1</span>,<span class="dv">2</span>]<span class="sc">-</span>bet[<span class="dv">2</span>,<span class="dv">1</span>])<span class="sc">/</span><span class="fu">sqrt</span>(bet[<span class="dv">1</span>,<span class="dv">2</span>]<span class="sc">+</span>bet[<span class="dv">2</span>,<span class="dv">1</span>])</span>
+<span id="cb89-2"><a href="categorical-data-analysis.html#cb89-2" tabindex="-1"></a>z.p <span class="ot">&lt;-</span> <span class="dv">2</span><span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span><span class="fu">pnorm</span>(<span class="fu">abs</span>(z.stat),<span class="dv">0</span>,<span class="dv">1</span>))</span>
+<span id="cb89-3"><a href="categorical-data-analysis.html#cb89-3" tabindex="-1"></a>binom.p <span class="ot">&lt;-</span> <span class="dv">2</span><span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span><span class="fu">pbinom</span>(<span class="fu">max</span>(bet[<span class="dv">1</span>,<span class="dv">2</span>],bet[<span class="dv">2</span>,<span class="dv">1</span>])<span class="sc">-</span><span class="dv">1</span>,bet[<span class="dv">1</span>,<span class="dv">2</span>]<span class="sc">+</span>bet[<span class="dv">2</span>,<span class="dv">1</span>],<span class="fl">0.5</span>))</span>
+<span id="cb89-4"><a href="categorical-data-analysis.html#cb89-4" tabindex="-1"></a></span>
+<span id="cb89-5"><a href="categorical-data-analysis.html#cb89-5" tabindex="-1"></a>bet.out <span class="ot">&lt;-</span> <span class="fu">cbind</span>(bet[<span class="dv">1</span>,<span class="dv">2</span>], bet[<span class="dv">2</span>,<span class="dv">1</span>], z.stat, z.stat<span class="sc">^</span><span class="dv">2</span>, z.p, binom.p)</span>
+<span id="cb89-6"><a href="categorical-data-analysis.html#cb89-6" tabindex="-1"></a><span class="fu">colnames</span>(bet.out) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;n12=+R/-S&quot;</span>, <span class="st">&quot;n21=+S/-R&quot;</span>, <span class="st">&quot;z&quot;</span>, <span class="st">&quot;z^2&quot;</span>, <span class="st">&quot;P(z)&quot;</span>, <span class="st">&quot;P(exact)&quot;</span>)</span>
+<span id="cb89-7"><a href="categorical-data-analysis.html#cb89-7" tabindex="-1"></a><span class="fu">round</span>(bet.out, <span class="dv">4</span>)</span></code></pre></div>
+<pre><code>##      n12=+R/-S n21=+S/-R      z     z^2 P(z) P(exact)
+## [1,]       110         4 9.9278 98.5614    0        0</code></pre>
+<p>The Chi-square statistic from <strong>mcnemar.test</strong> is the square of the <span class="math inline">\(z\)</span>-statistic. They give identical P-values for a 2-tailed test.</p>
+<p><span class="math display">\[ \nabla   \]</span></p>
+</div>
+</div>
+<div id="nominal-explanatory-and-response-variables" class="section level3 hasAnchor" number="8.2.2">
+<h3><span class="header-section-number">8.2.2</span> Nominal Explanatory and Response Variables<a href="categorical-data-analysis.html#nominal-explanatory-and-response-variables" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>In cases where both the explanatory and response variables are
+nominal, the most commonly used method of testing for association
+between the variables is the <strong>Pearson Chi–Squared Test</strong>.
+In these situations, we are interested if the probability distributions
+of the response variable are the same at each level of the explanatory
+variable.</p>
+<p>As we have seen before, the data represent counts, and appear
+as in Table <a href="categorical-data-analysis.html#tab:rccont1">8.3</a>. The <span class="math inline">\(n_{ij}\)</span> values are referred
+to as the <strong>observed</strong> counts. If the variables are independent
+(not associated),
+then the population probability distributions for the response
+variable will be identical within each level of the explanatory variable,
+as in Table <a href="categorical-data-analysis.html#tab:pearsonind">8.7</a>.</p>
+<table>
+<caption><span id="tab:pearsonind">Table 8.7: </span>Probability distributions of response variable within levels of
+explanatory variable under condition of no association between the two
+variables.</caption>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="left">j=1</th>
+<th align="left">j=2</th>
+<th align="left">…</th>
+<th align="left">j=c</th>
+<th align="left">Total</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">i=1</td>
+<td align="left">p1</td>
+<td align="left">p2</td>
+<td align="left">…</td>
+<td align="left">pc</td>
+<td align="left">1</td>
+</tr>
+<tr class="even">
+<td align="left">i=2</td>
+<td align="left">p1</td>
+<td align="left">p2</td>
+<td align="left">…</td>
+<td align="left">pc</td>
+<td align="left">1</td>
+</tr>
+<tr class="odd">
+<td align="left">…</td>
+<td align="left">…</td>
+<td align="left">…</td>
+<td align="left">…</td>
+<td align="left">…</td>
+<td align="left">…</td>
+</tr>
+<tr class="even">
+<td align="left">i=r</td>
+<td align="left">p1</td>
+<td align="left">p2</td>
+<td align="left">…</td>
+<td align="left">pc</td>
+<td align="left">1</td>
+</tr>
+<tr class="odd">
+<td align="left">Total</td>
+<td align="left">p1</td>
+<td align="left">p2</td>
+<td align="left">…</td>
+<td align="left">pc</td>
+<td align="left">1</td>
+</tr>
+</tbody>
+</table>
+<p>The special case of <span class="math inline">\(2 \times 2\)</span> tables has already been covered. Now we
+generalize to <span class="math inline">\(r\)</span> groups (treatments) and <span class="math inline">\(c\)</span> possible outcomes.
+To perform Pearson’s Chi-square test,
+compute the <strong>expected</strong> values for each
+cell count under the hypothesis of independence,
+and obtain a statistic based on discrepancies
+between the observed and expected values.</p>
+<p><span class="math display">\[ \mbox{observed}=n_{ij} \qquad \qquad \mbox{expected}=E_{ij}=\frac{n_{i.}n_{.j}}{n_{..}} \]</span></p>
+<p>The expected values represent how many units would
+have fallen in cell <span class="math inline">\((i,j)\)</span> if the probability distributions of the
+response variable were the same for each level of the explanatory (grouping) variable.
+They apply the marginal proportion of cases in column <span class="math inline">\(j\)</span>, <span class="math inline">\(n_{.j}/n_{..}\)</span> to the number of units in row <span class="math inline">\(i\)</span>, <span class="math inline">\(n_{i.}\)</span>.
+The test is conducted as follows.</p>
+<ul>
+<li><span class="math inline">\(H_0:\)</span> No association between the explanatory and response variables
+(see Table <a href="categorical-data-analysis.html#tab:pearsonind">8.7</a>).</li>
+<li><span class="math inline">\(H_A:\)</span> Explanatory and response variables are associated</li>
+<li>TS: <span class="math inline">\(X_{obs}^2 = \sum_{i,j} \frac{\left(n_{ij} - E_{ij}\right)^2}{E_{ij}}\)</span></li>
+<li>RR: <span class="math inline">\(X_{obs}^2 &gt; \chi^2_{\alpha, (r-1)(c-1)}\)</span></li>
+<li>p-value: <span class="math inline">\(P=P(\chi^2_{(r-1)(c-1)} \geq X_{obs}^2)\)</span></li>
+</ul>
+<p>If the Chi-square test rejects the null hypothesis, <strong>standardized (adjusted) residuals</strong> can be used to determine which cells
+are the “cause” of the association between the variables.
+These are like Z-statistics.
+Generally, standardized residuals larger than 2 or 3 in absolute values are
+considered to be evidence against independence in that cell.</p>
+<p><span class="math display">\[ R_{ij} = \frac{n_{ij}-E_{ij}}{\sqrt{E_{ij}\left(1-\frac{n_{i.}}{n_{..}}\right)\left(1-\frac{n_{.j}}{n_{..}}\right)}} \]</span></p>
+<p><strong>Example 8.6: Projectile Points in the U.S. Northern Great Basin</strong></p>
+<p>A study compared two groups of locations in the
+northern Great Basin in south central Oregon and northwestern Nevada <span class="citation">(<a href="#ref-middleton_2014">Middleton et al. 2014</a>)</span>.
+The locations were classified into <span class="math inline">\(r=2\)</span> groups as Great Basin Carved Abstract sites (GBCA) and other sites (Fort Rock Basin, Chewaucan-Abert Basin, Steens Mountain, and Massacre Lake). The projectiles were
+classified by their cultural period into <span class="math inline">\(c=5\)</span> categories (Paleoindian, Early Archaic, Middle Archaic, Late Archaic, and Late Prehistoric).
+While the cultural period may be classified as ordinal, the authors conducted the analysis with Pearson’s Chi-square test, as is often done.</p>
+<p>The observed and expected values are given in Table <a href="categorical-data-analysis.html#tab:gbca1">8.8</a> along with the Chi-square statistic, p-value, and standardized (adjusted) residuals. A stacked bar chart shows the differences in the period distributions by site. Representative calculations are given below.</p>
+<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="categorical-data-analysis.html#cb91-1" tabindex="-1"></a>proj <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">205</span>,<span class="dv">98</span>, <span class="dv">208</span>,<span class="dv">246</span>, <span class="dv">709</span>,<span class="dv">1064</span>, <span class="dv">497</span>,<span class="dv">851</span>, <span class="dv">48</span>,<span class="dv">115</span>), <span class="at">ncol=</span><span class="dv">5</span>)</span>
+<span id="cb91-2"><a href="categorical-data-analysis.html#cb91-2" tabindex="-1"></a><span class="fu">colnames</span>(proj)<span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;paleoind&quot;</span>, <span class="st">&quot;early arch&quot;</span>, <span class="st">&quot;mid arch&quot;</span>, <span class="st">&quot;late arch&quot;</span>,</span>
+<span id="cb91-3"><a href="categorical-data-analysis.html#cb91-3" tabindex="-1"></a>                   <span class="st">&quot;late preh&quot;</span>)</span>
+<span id="cb91-4"><a href="categorical-data-analysis.html#cb91-4" tabindex="-1"></a><span class="fu">rownames</span>(proj) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;GBCA&quot;</span>, <span class="st">&quot;Other&quot;</span>)</span>
+<span id="cb91-5"><a href="categorical-data-analysis.html#cb91-5" tabindex="-1"></a></span>
+<span id="cb91-6"><a href="categorical-data-analysis.html#cb91-6" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">t</span>(<span class="fu">prop.table</span>(proj,<span class="dv">1</span>)),<span class="at">beside=</span>F,</span>
+<span id="cb91-7"><a href="categorical-data-analysis.html#cb91-7" tabindex="-1"></a>   <span class="at">legend=</span><span class="fu">rownames</span>(proj), <span class="at">col=</span><span class="fu">c</span>(<span class="st">&quot;green&quot;</span>, <span class="st">&quot;orange&quot;</span>, <span class="st">&quot;blue&quot;</span>, <span class="st">&quot;yellow&quot;</span>, <span class="st">&quot;pink&quot;</span>),</span>
+<span id="cb91-8"><a href="categorical-data-analysis.html#cb91-8" tabindex="-1"></a>   <span class="at">main=</span><span class="st">&quot;Indian Artifacts by Site&quot;</span>, <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="fl">1.40</span>))</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:gbca1"></span>
+<img src="STA2170bookdownproj_files/figure-html/gbca1-1.png" alt="Stacked Bar Chart for Projectile Point Cultural period by location" width="80%" />
+<p class="caption">
+Figure 8.1: Stacked Bar Chart for Projectile Point Cultural period by location
+</p>
+</div>
+<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="categorical-data-analysis.html#cb92-1" tabindex="-1"></a>proj.X2 <span class="ot">&lt;-</span> <span class="fu">chisq.test</span>(proj)</span>
+<span id="cb92-2"><a href="categorical-data-analysis.html#cb92-2" tabindex="-1"></a>proj.X2</span></code></pre></div>
+<pre><code>## 
+##  Pearson&#39;s Chi-squared test
+## 
+## data:  proj
+## X-squared = 112.29, df = 4, p-value &lt; 2.2e-16</code></pre>
+<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="categorical-data-analysis.html#cb94-1" tabindex="-1"></a>proj.out <span class="ot">&lt;-</span> <span class="fu">rbind</span>(proj, proj.X2<span class="sc">$</span>expected, proj.X2<span class="sc">$</span>stdres)</span>
+<span id="cb94-2"><a href="categorical-data-analysis.html#cb94-2" tabindex="-1"></a><span class="fu">colnames</span>(proj.out)<span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;paleoind&quot;</span>, <span class="st">&quot;early arch&quot;</span>, <span class="st">&quot;mid arch&quot;</span>, <span class="st">&quot;late arch&quot;</span>,</span>
+<span id="cb94-3"><a href="categorical-data-analysis.html#cb94-3" tabindex="-1"></a>                   <span class="st">&quot;late preh&quot;</span>)</span>
+<span id="cb94-4"><a href="categorical-data-analysis.html#cb94-4" tabindex="-1"></a><span class="fu">rownames</span>(proj.out) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;GBCA Obs&quot;</span>, <span class="st">&quot;Other Obs&quot;</span>,</span>
+<span id="cb94-5"><a href="categorical-data-analysis.html#cb94-5" tabindex="-1"></a>                        <span class="st">&quot;GBCA Exp&quot;</span>, <span class="st">&quot;Other Exp&quot;</span>,</span>
+<span id="cb94-6"><a href="categorical-data-analysis.html#cb94-6" tabindex="-1"></a>                        <span class="st">&quot;GBCA StdRes&quot;</span>, <span class="st">&quot;Other StdRes&quot;</span>)</span>
+<span id="cb94-7"><a href="categorical-data-analysis.html#cb94-7" tabindex="-1"></a></span>
+<span id="cb94-8"><a href="categorical-data-analysis.html#cb94-8" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(proj.out, <span class="at">digits=</span><span class="dv">2</span>,</span>
+<span id="cb94-9"><a href="categorical-data-analysis.html#cb94-9" tabindex="-1"></a>             <span class="at">caption=</span><span class="st">&quot;Indian Artifacts by Site: Observed, Expected and Standardized (adjusted) Residuals&quot;</span>,</span>
+<span id="cb94-10"><a href="categorical-data-analysis.html#cb94-10" tabindex="-1"></a>             <span class="at">booktabs=</span><span class="cn">TRUE</span>)</span></code></pre></div>
+<table>
+<caption><span id="tab:gbca1">Table 8.8: </span>Indian Artifacts by Site: Observed, Expected and Standardized (adjusted) Residuals</caption>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="right">paleoind</th>
+<th align="right">early arch</th>
+<th align="right">mid arch</th>
+<th align="right">late arch</th>
+<th align="right">late preh</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">GBCA Obs</td>
+<td align="right">205.00</td>
+<td align="right">208.00</td>
+<td align="right">709.00</td>
+<td align="right">497.00</td>
+<td align="right">48.00</td>
+</tr>
+<tr class="even">
+<td align="left">Other Obs</td>
+<td align="right">98.00</td>
+<td align="right">246.00</td>
+<td align="right">1064.00</td>
+<td align="right">851.00</td>
+<td align="right">115.00</td>
+</tr>
+<tr class="odd">
+<td align="left">GBCA Exp</td>
+<td align="right">124.99</td>
+<td align="right">187.28</td>
+<td align="right">731.40</td>
+<td align="right">556.08</td>
+<td align="right">67.24</td>
+</tr>
+<tr class="even">
+<td align="left">Other Exp</td>
+<td align="right">178.01</td>
+<td align="right">266.72</td>
+<td align="right">1041.60</td>
+<td align="right">791.92</td>
+<td align="right">95.76</td>
+</tr>
+<tr class="odd">
+<td align="left">GBCA StdRes</td>
+<td align="right">9.71</td>
+<td align="right">2.10</td>
+<td align="right">-1.44</td>
+<td align="right">-4.00</td>
+<td align="right">-3.13</td>
+</tr>
+<tr class="even">
+<td align="left">Other StdRes</td>
+<td align="right">-9.71</td>
+<td align="right">-2.10</td>
+<td align="right">1.44</td>
+<td align="right">4.00</td>
+<td align="right">3.13</td>
+</tr>
+</tbody>
+</table>
+<p>The row (site), column (period), and overal totals are given below.</p>
+<p><span class="math display">\[ n_{1.}=205+208+709+497+48=1667 \quad
+n_{2.}=2374 \quad n_{..}=4041\]</span></p>
+<p><span class="math display">\[n_{.1}=205+98=303 \quad n_{.2}=454 \quad n_{.3}=1773 \quad
+n_{4.}=1348\quad n_{5.}=163 \]</span></p>
+<p>Overall, the proportions of artifacts from the
+<span class="math inline">\(c=5\)</span> cultural periods are as follow.</p>
+<p><span class="math display">\[  j=1:\frac{303}{4041}=.0750 \quad j=2: .1123 \quad j=3: .4388
+\quad j=4: .3336 \quad j=5: .0403\]</span></p>
+<p>These proportions are applied to the row totals to obtain the expected counts under the hypothesis of no association between site and cultural period.</p>
+<p><span class="math display">\[ E_{11} = \left(\frac{303}{4041}\right)(1667)=124.99 \qquad E_{21}=\left(\frac{303}{4041}\right)(2374)=178.01  \quad  \cdots \]</span><br />
+<span class="math display">\[\cdots \quad E_{15} = \left(\frac{163}{4041}\right)(1667)=67.24 \qquad E_{25}=\left(\frac{163}{4041}\right)(2374)=95.76  \]</span></p>
+<p>The test of whether there is an association between site and cultural period is conducted below.</p>
+<p><span class="math inline">\(H_0\)</span>:Site and Cultural Period are independent vs <span class="math inline">\(H_A\)</span>: Site and Cultural Period are associated.</p>
+<p><span class="math display">\[ \mbox{TS: } X_{obs}^2=\sum_{i=1}^2\sum_{j=1}^5 \frac{\left(n_{ij}-E_{ij}\right)^2}{E_{ij}} =
+\frac{(205-124.99)^2}{124.99} + \cdots +
+\frac{(115-95.76)^2}{95.76} = \]</span></p>
+<p><span class="math display">\[ = 51.22+ \cdots + 3.87 = 112.29 \]</span>
+<span class="math display">\[ \mbox{RR: } X_{obs}^2 \geq \chi^2_{.05,(2-1)(5-1)}=9.488 \qquad
+P=P\left(\chi^2_4 \geq 112.29\right) &lt; .0001 \]</span></p>
+<p>The standardized (adjusted) residuals (SAR) for the
+GBCA sites during the Paleoindian period is +9.71 and for
+other sites in that period is -9.71. There are many more
+artifacts during that period in the GBCA and many fewer in other
+sites than would be expected under independence.</p>
+<p>For the Late Archaic period there were more artifacts from the other
+sites than would be expected (SAR=+4) and the same for the Late Prehistoric period (SAR=+3.13).</p>
+<p>The calculations for the Paleoindian period are given below.</p>
+<p><span class="math display">\[ R_{11} = \frac{205-124.99}{\sqrt{124.99(1-1667/4041)(1-303/4041)}} = \frac{80.01}{8.24}=9.71  \]</span>
+<span class="math display">\[ R_{12} = \frac{98-178.01}{\sqrt{178.01(1-2374/4041)(1-303/4041)}} = \frac{-80.01}{8.24}=-9.71 \]</span></p>
+<p><span class="math display">\[ \nabla  \]</span></p>
+
+<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="categorical-data-analysis.html#cb95-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb95-2"><a href="categorical-data-analysis.html#cb95-2" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span></code></pre></div>
+</div>
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
+<div id="ref-agresti_1998" class="csl-entry">
+Agresti, A., and B. Coull. 1998. <span>“Approximate Is Better Than <span>‘Exact’</span> for Interval Estimation of Binomial Proportions.”</span> <em>The American Statistician</em> 52 (2): 119–26.
+</div>
+<div id="ref-kahneman_1984" class="csl-entry">
+Kahneman, D., and A. Tversky. 1984. <span>“Choices, Values, and Frames.”</span> <em>American Psychologist</em> 35 (4): 341–50.
+</div>
+<div id="ref-middleton_2014" class="csl-entry">
+Middleton, E. S., G. M. Smith, W. J. Cannon, and M. F. Ricks. 2014. <span>“Paleoindian Rock Art: Establishing the Antiquity of Great Basin Carved Abstract Petroglyphs in the Northern Great Basin.”</span> <em>Journal of Archaeological Science</em> 43: 21–30. <a href="https://doi.org/10.1016/j.jas.2013.12.006">https://doi.org/10.1016/j.jas.2013.12.006</a>.
+</div>
+<div id="ref-page_2014" class="csl-entry">
+Page, L., D. A. Savage, and B. Torgler. 2014. <span>“Variation in Risk Seeking Behaviour Following Large Losses: A Natural Experiment.”</span> <em>European Economic Review</em> 71: 121–31.
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="experimental-design-and-the-analysis-of-variance.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="regression-models.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": "https://github.com/LarryWinner/STA2170-Notes1/edit/main/08.Rmd",
+    "text": "Edit"
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": null,
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "subsection"
+  }
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

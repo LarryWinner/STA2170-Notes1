@@ -1,0 +1,1835 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 7 Experimental Design and the Analysis of Variance | Statistics and the Physical World</title>
+  <meta name="description" content="This is an Introduction to Statistics with applications from the physical world. We will make use of the R programming language for computations." />
+  <meta name="generator" content="bookdown 0.43 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 7 Experimental Design and the Analysis of Variance | Statistics and the Physical World" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="This is an Introduction to Statistics with applications from the physical world. We will make use of the R programming language for computations." />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 7 Experimental Design and the Analysis of Variance | Statistics and the Physical World" />
+  
+  <meta name="twitter:description" content="This is an Introduction to Statistics with applications from the physical world. We will make use of the R programming language for computations." />
+  
+
+<meta name="author" content="Larry Winner" />
+
+
+<meta name="date" content="2026-06-22" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="comparing-two-population-means.html"/>
+<link rel="next" href="categorical-data-analysis.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">STA2170 Notes</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
+<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="intro.html"><a href="intro.html#basic-concepts-of-statistical-analysis"><i class="fa fa-check"></i><b>1.1</b> Basic Concepts of Statistical Analysis</a></li>
+<li class="chapter" data-level="1.2" data-path="intro.html"><a href="intro.html#data-collection"><i class="fa fa-check"></i><b>1.2</b> Data Collection</a></li>
+<li class="chapter" data-level="1.3" data-path="intro.html"><a href="intro.html#variable-types"><i class="fa fa-check"></i><b>1.3</b> Variable Types</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="describing-data.html"><a href="describing-data.html"><i class="fa fa-check"></i><b>2</b> Describing Data</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="describing-data.html"><a href="describing-data.html#graphical-description-of-a-single-variable"><i class="fa fa-check"></i><b>2.1</b> Graphical Description of a Single Variable</a></li>
+<li class="chapter" data-level="2.2" data-path="describing-data.html"><a href="describing-data.html#numerical-descriptive-measures-of-a-single-variable"><i class="fa fa-check"></i><b>2.2</b> Numerical Descriptive Measures of a Single Variable</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="describing-data.html"><a href="describing-data.html#measures-of-central-tendency"><i class="fa fa-check"></i><b>2.2.1</b> Measures of Central Tendency</a></li>
+<li class="chapter" data-level="2.2.2" data-path="describing-data.html"><a href="describing-data.html#measures-of-variability"><i class="fa fa-check"></i><b>2.2.2</b> Measures of Variability</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="describing-data.html"><a href="describing-data.html#describing-more-than-one-variable"><i class="fa fa-check"></i><b>2.3</b> Describing More than One Variable</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="probability.html"><a href="probability.html"><i class="fa fa-check"></i><b>3</b> Probability</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="probability.html"><a href="probability.html#terminology-and-probability-rules"><i class="fa fa-check"></i><b>3.1</b> Terminology and Probability Rules</a></li>
+<li class="chapter" data-level="3.2" data-path="probability.html"><a href="probability.html#basic-probability"><i class="fa fa-check"></i><b>3.2</b> Basic Probability</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="probability.html"><a href="probability.html#bayes-rule"><i class="fa fa-check"></i><b>3.2.1</b> Bayes’ Rule</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="probability.html"><a href="probability.html#random-variables-and-probability-distributions"><i class="fa fa-check"></i><b>3.3</b> Random Variables and Probability Distributions</a></li>
+<li class="chapter" data-level="3.4" data-path="probability.html"><a href="probability.html#discrete-random-variables"><i class="fa fa-check"></i><b>3.4</b> Discrete Random Variables</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="probability.html"><a href="probability.html#population-numerical-descriptive-measures"><i class="fa fa-check"></i><b>3.4.1</b> Population Numerical Descriptive Measures</a></li>
+<li class="chapter" data-level="3.4.2" data-path="probability.html"><a href="probability.html#common-families-of-discrete-probability-distributions"><i class="fa fa-check"></i><b>3.4.2</b> Common Families of Discrete Probability Distributions</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="probability.html"><a href="probability.html#continuous-random-variables"><i class="fa fa-check"></i><b>3.5</b> Continuous Random Variables</a>
+<ul>
+<li class="chapter" data-level="3.5.1" data-path="probability.html"><a href="probability.html#common-families-of-continuous-probability-distributions"><i class="fa fa-check"></i><b>3.5.1</b> Common Families of Continuous Probability Distributions</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="probability.html"><a href="probability.html#sampling-distributions-and-the-central-limit-theorem"><i class="fa fa-check"></i><b>3.6</b> Sampling Distributions and the Central Limit Theorem</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="inferences-for-population-means.html"><a href="inferences-for-population-means.html"><i class="fa fa-check"></i><b>4</b> Inferences for Population Means</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="inferences-for-population-means.html"><a href="inferences-for-population-means.html#estimation"><i class="fa fa-check"></i><b>4.1</b> Estimation</a></li>
+<li class="chapter" data-level="4.2" data-path="inferences-for-population-means.html"><a href="inferences-for-population-means.html#hypothesis-testing"><i class="fa fa-check"></i><b>4.2</b> Hypothesis Testing</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="introduction-to-experimentation.html"><a href="introduction-to-experimentation.html"><i class="fa fa-check"></i><b>5</b> Introduction to Experimentation</a></li>
+<li class="chapter" data-level="6" data-path="comparing-two-population-means.html"><a href="comparing-two-population-means.html"><i class="fa fa-check"></i><b>6</b> Comparing Two Population Means</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="comparing-two-population-means.html"><a href="comparing-two-population-means.html#independent-samples"><i class="fa fa-check"></i><b>6.1</b> Independent Samples</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="comparing-two-population-means.html"><a href="comparing-two-population-means.html#large-sample-tests"><i class="fa fa-check"></i><b>6.1.1</b> Large-Sample tests</a></li>
+<li class="chapter" data-level="6.1.2" data-path="comparing-two-population-means.html"><a href="comparing-two-population-means.html#small-sample-tests-with-normal-data"><i class="fa fa-check"></i><b>6.1.2</b> Small Sample Tests with Normal Data</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="comparing-two-population-means.html"><a href="comparing-two-population-means.html#paired-sample-designs"><i class="fa fa-check"></i><b>6.2</b> Paired Sample Designs</a></li>
+<li class="chapter" data-level="6.3" data-path="comparing-two-population-means.html"><a href="comparing-two-population-means.html#nonparametric-tests"><i class="fa fa-check"></i><b>6.3</b> Nonparametric Tests</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="comparing-two-population-means.html"><a href="comparing-two-population-means.html#independent-samples---wilcoxon-rank-sum-test"><i class="fa fa-check"></i><b>6.3.1</b> Independent Samples - Wilcoxon Rank-Sum Test</a></li>
+<li class="chapter" data-level="6.3.2" data-path="comparing-two-population-means.html"><a href="comparing-two-population-means.html#paired-samples---wilcoxon-signed-rank-test"><i class="fa fa-check"></i><b>6.3.2</b> Paired Samples - Wilcoxon Signed Rank Test</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="experimental-design-and-the-analysis-of-variance.html"><a href="experimental-design-and-the-analysis-of-variance.html"><i class="fa fa-check"></i><b>7</b> Experimental Design and the Analysis of Variance</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="experimental-design-and-the-analysis-of-variance.html"><a href="experimental-design-and-the-analysis-of-variance.html#completely-randomized-design-crd-for-independent-samples"><i class="fa fa-check"></i><b>7.1</b> Completely Randomized Design (CRD) For Independent Samples</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="experimental-design-and-the-analysis-of-variance.html"><a href="experimental-design-and-the-analysis-of-variance.html#analysis-of-variance-and-f-test-for-normal-data"><i class="fa fa-check"></i><b>7.1.1</b> Analysis of Variance and <span class="math inline">\(F\)</span>-Test for Normal Data</a></li>
+<li class="chapter" data-level="7.1.2" data-path="experimental-design-and-the-analysis-of-variance.html"><a href="experimental-design-and-the-analysis-of-variance.html#comparisons-among-treatment-means"><i class="fa fa-check"></i><b>7.1.2</b> Comparisons among Treatment Means</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="experimental-design-and-the-analysis-of-variance.html"><a href="experimental-design-and-the-analysis-of-variance.html#randomized-block-design-rbd-for-studies-based-on-matched-units"><i class="fa fa-check"></i><b>7.2</b> Randomized Block Design (RBD) For Studies Based on Matched Units</a></li>
+<li class="chapter" data-level="7.3" data-path="experimental-design-and-the-analysis-of-variance.html"><a href="experimental-design-and-the-analysis-of-variance.html#factorial-designs"><i class="fa fa-check"></i><b>7.3</b> Factorial Designs</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="categorical-data-analysis.html"><a href="categorical-data-analysis.html"><i class="fa fa-check"></i><b>8</b> Categorical Data Analysis</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="categorical-data-analysis.html"><a href="categorical-data-analysis.html#inference-concerning-a-single-variable"><i class="fa fa-check"></i><b>8.1</b> Inference Concerning a Single Variable</a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="categorical-data-analysis.html"><a href="categorical-data-analysis.html#variables-with-two-possible-outcomes"><i class="fa fa-check"></i><b>8.1.1</b> Variables with Two Possible Outcomes</a></li>
+<li class="chapter" data-level="8.1.2" data-path="categorical-data-analysis.html"><a href="categorical-data-analysis.html#variables-with-more-than-two-possible-outcomes"><i class="fa fa-check"></i><b>8.1.2</b> Variables with More than Two Possible Outcomes</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="categorical-data-analysis.html"><a href="categorical-data-analysis.html#introduction-to-tests-for-association-for-two-categorical-variables"><i class="fa fa-check"></i><b>8.2</b> Introduction to Tests for Association for Two Categorical Variables</a>
+<ul>
+<li class="chapter" data-level="8.2.1" data-path="categorical-data-analysis.html"><a href="categorical-data-analysis.html#x-2-tables"><i class="fa fa-check"></i><b>8.2.1</b> 2 x 2 Tables</a></li>
+<li class="chapter" data-level="8.2.2" data-path="categorical-data-analysis.html"><a href="categorical-data-analysis.html#nominal-explanatory-and-response-variables"><i class="fa fa-check"></i><b>8.2.2</b> Nominal Explanatory and Response Variables</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="regression-models.html"><a href="regression-models.html"><i class="fa fa-check"></i><b>9</b> Regression Models</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="regression-models.html"><a href="regression-models.html#simple-linear-regression"><i class="fa fa-check"></i><b>9.1</b> Simple Linear Regression</a>
+<ul>
+<li class="chapter" data-level="9.1.1" data-path="regression-models.html"><a href="regression-models.html#estimation-of-model-parameters"><i class="fa fa-check"></i><b>9.1.1</b> Estimation of Model Parameters</a></li>
+<li class="chapter" data-level="9.1.2" data-path="regression-models.html"><a href="regression-models.html#inference-regarding-beta_1-and-beta_0"><i class="fa fa-check"></i><b>9.1.2</b> Inference Regarding <span class="math inline">\(\beta_1\)</span> and <span class="math inline">\(\beta_0\)</span></a></li>
+<li class="chapter" data-level="9.1.3" data-path="regression-models.html"><a href="regression-models.html#estimating-a-mean-and-predicting-a-new-observation-xx"><i class="fa fa-check"></i><b>9.1.3</b> Estimating a Mean and Predicting a New Observation @ <span class="math inline">\(X=X^*\)</span></a></li>
+<li class="chapter" data-level="9.1.4" data-path="regression-models.html"><a href="regression-models.html#analysis-of-variance"><i class="fa fa-check"></i><b>9.1.4</b> Analysis of Variance</a></li>
+<li class="chapter" data-level="9.1.5" data-path="regression-models.html"><a href="regression-models.html#correlation"><i class="fa fa-check"></i><b>9.1.5</b> Correlation</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="regression-models.html"><a href="regression-models.html#multiple-linear-regression"><i class="fa fa-check"></i><b>9.2</b> Multiple Linear Regression</a>
+<ul>
+<li class="chapter" data-level="9.2.1" data-path="regression-models.html"><a href="regression-models.html#testing-and-estimation-for-partial-regression-coefficients"><i class="fa fa-check"></i><b>9.2.1</b> Testing and Estimation for Partial Regression Coefficients</a></li>
+<li class="chapter" data-level="9.2.2" data-path="regression-models.html"><a href="regression-models.html#analysis-of-variance-1"><i class="fa fa-check"></i><b>9.2.2</b> Analysis of Variance</a></li>
+<li class="chapter" data-level="9.2.3" data-path="regression-models.html"><a href="regression-models.html#testing-a-subset-of-betas-0"><i class="fa fa-check"></i><b>9.2.3</b> Testing a Subset of <span class="math inline">\(\beta^s = 0\)</span></a></li>
+<li class="chapter" data-level="9.2.4" data-path="regression-models.html"><a href="regression-models.html#models-with-categorical-qualitative-predictors"><i class="fa fa-check"></i><b>9.2.4</b> Models With Categorical (Qualitative) Predictors</a></li>
+<li class="chapter" data-level="9.2.5" data-path="regression-models.html"><a href="regression-models.html#models-with-interaction-terms"><i class="fa fa-check"></i><b>9.2.5</b> Models With Interaction Terms</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="regression-models.html"><a href="regression-models.html#logistic-regression"><i class="fa fa-check"></i><b>9.3</b> Logistic Regression</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Statistics and the Physical World</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="experimental-design-and-the-analysis-of-variance" class="section level1 hasAnchor" number="7">
+<h1><span class="header-section-number">Chapter 7</span> Experimental Design and the Analysis of Variance<a href="experimental-design-and-the-analysis-of-variance.html#experimental-design-and-the-analysis-of-variance" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Chapter 6 covered methods to make comparisons
+between the means of a numeric response variable for two treatments or groups.
+The cases were considered where the experiment was conducted as an independent samples (aka parallel groups, between subjects)
+design, as well as a paired (aka crossover, within subjects) design.</p>
+<p>This chapter will introduce methods that can be used to compare
+more than two groups (that is, when the explanatory variable has more
+than two levels). In this chapter, we will refer to explanatory variable
+as a <strong>factor</strong>, and their levels as <strong>treatments</strong>. The following situations will be covered.</p>
+<ul>
+<li>1-Treatment Factor, Independent Samples Designs (Completely Randomized Design)</li>
+<li>1-Treatment Factor, Paired Designs (Randomized Block Design)</li>
+<li>2-Treatment Factors, Independent Samples Designs (Factorial Design)</li>
+</ul>
+<p>In all situations, there will be a numeric response variable, and at
+least one categorical (or possibly numeric, with several levels)
+independent variable. The goal will always be to
+compare mean (or median) responses among several populations.
+When all factor levels for a factor are included in the experiment,
+the factor is said to be <strong>fixed</strong>. When a sample of a larger population of
+factor levels are included, the factor is said to be <strong>random</strong>. Only fixed effects designs are considered here.</p>
+<div id="completely-randomized-design-crd-for-independent-samples" class="section level2 hasAnchor" number="7.1">
+<h2><span class="header-section-number">7.1</span> Completely Randomized Design (CRD) For Independent Samples<a href="experimental-design-and-the-analysis-of-variance.html#completely-randomized-design-crd-for-independent-samples" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>In the Completely Randomized Design, there is one factor that is
+controlled. This factor has <span class="math inline">\(k\)</span> levels
+(which are often treatment groups), and <span class="math inline">\(n_i\)</span> units are measured for
+the <span class="math inline">\(i^{th}\)</span> level of the factor.
+Observed responses are defined as <span class="math inline">\(y_{ij}\)</span>, representing the
+measurement on the <span class="math inline">\(j^{th}\)</span> experimental unit (subject), receiving the <span class="math inline">\(i^{th}\)</span>
+treatment. We will write this in model form based on random responses as follows where the factor is <strong>fixed</strong>
+(all levels of interest are included in the experiment).</p>
+<p><span class="math display">\[ Y_{ij} = \mu + \alpha_i + \epsilon_{ij} = \mu_i + \epsilon_{ij}   \quad i=1,\ldots ,k; \quad j=1,\ldots ,n_i \]</span></p>
+<p>Here, <span class="math inline">\(\mu\)</span> is the overall mean measurement across all treatments,
+<span class="math inline">\(\alpha_i\)</span> is the effect of the <span class="math inline">\(i^{th}\)</span> treatment (<span class="math inline">\(\mu_i=
+\mu + \alpha_i\)</span>), and <span class="math inline">\(\epsilon_{ij}\)</span> is a
+random error component that has
+mean 0 and variance <span class="math inline">\(\sigma^2\)</span>. This <span class="math inline">\(\epsilon_{ij}\)</span> allows for
+the fact that there will be variation among the measurements of
+different subjects (units) receiving the same treatment. A common parameterization that has nice properties is to
+assume <span class="math inline">\(\sum\alpha_i = 0\)</span>.</p>
+<p>Of interest to the experimenter is whether or not there is a
+<strong>treatment effect</strong>, that is do any of the levels of the treatment provide
+higher (lower) mean response than other levels. This can be hypothesized
+symbolically as follows.</p>
+<p><span class="math display">\[H_0: \alpha_1 = \alpha_2 = \cdots = \alpha_k = 0 \mbox{ versus } H_A: \mbox{ Not all }
+\alpha_i = 0  \]</span></p>
+<p>The null hypothesis states that all <span class="math inline">\(k\)</span> means are equal, while the alternative states that they are not all equal.
+Note that if <span class="math inline">\(\alpha_1 = \alpha_2 = \cdots = \alpha_k = 0\)</span>
+then <span class="math inline">\(\mu_1=\cdots=\mu_k\)</span>.</p>
+<p>As with the case where there are
+two treatments to compare, tests based on the assumption that
+the <span class="math inline">\(k\)</span> populations are normal (mound-shaped) will be used, either assuming equal or unequal variances. Also, alternative tests (based
+on ranks) that do not assume that the <span class="math inline">\(k\)</span> populations are
+normal can be used to compare population medians. These are the <strong>Kruskal-Wallis Test</strong> for the CRD and <strong>Friedman’s Test</strong> for the RBD.
+These tests will not be covered in these notes.</p>
+<div id="analysis-of-variance-and-f-test-for-normal-data" class="section level3 hasAnchor" number="7.1.1">
+<h3><span class="header-section-number">7.1.1</span> Analysis of Variance and <span class="math inline">\(F\)</span>-Test for Normal Data<a href="experimental-design-and-the-analysis-of-variance.html#analysis-of-variance-and-f-test-for-normal-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>When the underlying populations of measurements that are to be compared
+are approximately normal, with equal variances, the <span class="math inline">\(F\)</span>-test is appropriate. To conduct this test,
+partition the total variation in the sample data to variation <strong>within</strong>
+and <strong>among</strong> treatments. This partitioning is referred to as the
+<strong>Analysis of Variance</strong> and is an important tool in many statistical
+procedures. First, we define the following items, based on random outcomes <span class="math inline">\(Y_{ij}\)</span> where <span class="math inline">\(i\)</span> indexes treatment and <span class="math inline">\(j\)</span> represents
+the replicate number, with <span class="math inline">\(n_i\)</span> observations for treatment <span class="math inline">\(i\)</span> and <span class="math inline">\(N=n_1+\cdots + n_k\)</span>. These items include various means, sums of squares (SS),
+degrees of freedom (df), and mean squares (MS).</p>
+<p><span class="math display">\[ Y_{ij} \sim N\left(\mu_i, \sigma\right)  \]</span></p>
+<p><span class="math display">\[ \overline{Y}_{i.}=\frac{\sum_{j=1}^{n_i}Y_{ij}}{n_i} \qquad
+\overline{Y}_{i.} \sim N\left(\mu_i, \frac{\sigma}{\sqrt{n_i}}\right)  \]</span></p>
+<p><span class="math display">\[ \overline{Y}_{..}=\frac{\sum_{i=1}^k\sum_{j=1}^{n_i}Y_{ij}}{N} = \frac{\sum_{i=1}^k n_i \overline{Y}_{i.}}{N}  \]</span></p>
+<p><span class="math display">\[ \mbox{Total (Corrected) Sum of Squares: } TSS=\sum_{i=1}^k\sum_{j=1}^{n_i}\left(Y_{ij}-\overline{Y}_{..}\right)^2
+\qquad df_{\mbox{Tot}}=N-1 \]</span></p>
+<p><span class="math display">\[ \mbox{Between Treatment Sum of Squares: } SST=\sum_{i=1}^k\sum_{j=1}^{n_i}\left(\overline{Y}_{i.}-\overline{Y}_{..}\right)^2
+=\sum_{i=1}^k n_i\left(\overline{Y}_{i.}-\overline{Y}_{..}\right)^2 \]</span>
+<span class="math display">\[df_{T}=k-1 \qquad \qquad MST=\frac{SST}{k-1} \]</span></p>
+<p><span class="math display">\[ \mbox{Within Treatment (Error) Sum of Squares: } SSE=\sum_{i=1}^k\sum_{j=1}^{n_i}\left(Y_{ij}-\overline{Y}_{i .}\right)^2
+=\sum_{i=1}^k \left(n_i-1\right)S_i^2 \]</span>
+<span class="math display">\[ df_{E}=N-k \qquad \qquad MSE=\frac{SSE}{N-k}\]</span></p>
+<p>Under the null hypothesis of no treatment effects <span class="math inline">\((\mu_1=\cdots = \mu_k=\mu)\)</span>, or equivalently <span class="math inline">\((\alpha_1=\cdots = \alpha_k=0)\)</span>
+the following results are obtained, where <span class="math inline">\(MST\)</span> and <span class="math inline">\(MSE\)</span> are mean squares for treatments and error, respectively.</p>
+<p><span class="math display">\[ E\left\{MST\right\}=E\left\{\frac{SST}{k-1}\right\}=\sigma^2  \qquad
+E\left\{MSE\right\}=E\left\{\frac{SSE}{N-k}\right\}=\sigma^2  \]</span></p>
+<p>Under the null hypothesis of no treatment effects, <span class="math inline">\(E\left\{MST\right\}=E\left\{MSE\right\}=\sigma^2\)</span> and the ratio <span class="math inline">\(MST/MSE\)</span>
+follows the <span class="math inline">\(F\)</span>-distribution with <span class="math inline">\(k-1\)</span> numerator and <span class="math inline">\(N-k\)</span> denominator degrees of freedom. When the null is not true and
+not all <span class="math inline">\(\alpha_i=0\)</span>, then the ratio follows the non-central <span class="math inline">\(F\)</span>-distribution with parameter <span class="math inline">\(\lambda\)</span> given below.</p>
+<p><span class="math display">\[ \frac{MST}{MSE} \sim F_{\nu_1,\nu_2,\lambda} \qquad \lambda=
+\frac{\sum_{i=1}^k n_i \alpha_i^2}{\sigma^2} \qquad \nu_1=k-1 \qquad \nu_2=N-k \]</span></p>
+<p>Once samples have been obtained and the <span class="math inline">\(y_{ij}\)</span> are observed, the <span class="math inline">\(F\)</span>-test is conducted as follows.</p>
+<p><span class="math display">\[\overline{y}_{i.} = \frac{\sum_{j=1}^{n_i}y_{ij}}{n_i} \qquad
+s_i = \sqrt{\frac{\sum_{j=1}^{n_i} (y_{ij}-\overline{y}_{i.})^2}{n_i-1}} \qquad
+N =n_1 + \cdots + n_k \qquad
+\overline{y}_{..} = \frac{\sum_{i=1}^k \sum_{j=1}^{n_i}y_{ij}}{N} \]</span>
+<span class="math display">\[TSS=\sum_{i=1}^k \sum_{j=1}^{n_i} \left(y_{ij} - \overline{y}_{..} \right)^2 \qquad
+SST =\sum_{i=1}^k n_i\left(\overline{y}_{i.} - \overline{y}_{..} \right)^2 \qquad
+SSE = \sum_{i=1}^k (n_i -1) s_i^2    \]</span></p>
+<p>Here, <span class="math inline">\(\overline{y}_{i.}\)</span> and <span class="math inline">\(s_i\)</span> are the mean and standard deviation of measurements
+in the <span class="math inline">\(i^{th}\)</span> treatment group, and <span class="math inline">\(\overline{y}_{..}\)</span> and <span class="math inline">\(N\)</span> are the overall mean and
+total number of all measurements. <span class="math inline">\(TSS\)</span> is the total variability
+in the data (ignoring treatments), <span class="math inline">\(SST\)</span> measures the variability in
+the sample means among the treatments (weighted by the sample sizes), and <span class="math inline">\(SSE\)</span> measures the variability
+within the treatments.</p>
+<p>Note that the goal is to determine whether or not the population means
+differ. If they do, we would expect <span class="math inline">\(SST\)</span> to be large, since that sum of
+squares is measuring differences in the sample means. A test for treatment effects
+is conducted after constructing an Analysis of
+Variance table, as shown in Table <a href="experimental-design-and-the-analysis-of-variance.html#tab:crdaov1">7.1</a>. In that table, there are
+<strong>sums of squares</strong> for treatments (<span class="math inline">\(SST\)</span>), for error (<span class="math inline">\(SSE\)</span>), and total
+(<span class="math inline">\(TSS\)</span>). Also, there are <strong>degrees of freedom</strong>, which represent
+the number of “independent” terms in the sum of squares. Then,
+the <strong>mean squares</strong>, are sums of squares divided by their
+degrees of freedom. Finally, the <span class="math inline">\(F\)</span>–statistic is computed as <span class="math inline">\(F=MST/MSE\)</span>.
+This will serve as the test statistic. Note that <span class="math inline">\(MSE\)</span> is an extension of
+the pooled variance computed in Chapter 6 for two groups, and often
+it is written as <span class="math inline">\(MSE=s^2\)</span>.</p>
+<table>
+<caption><span id="tab:crdaov1">Table 7.1: </span>The Analysis of Variance Table for the Completely Randomized
+(Parallel Groups) Design</caption>
+<colgroup>
+<col width="15%" />
+<col width="27%" />
+<col width="21%" />
+<col width="20%" />
+<col width="14%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Source</th>
+<th align="left">Degrees of Freedom</th>
+<th align="left">Sum of Squares</th>
+<th align="left">Mean Square</th>
+<th align="left"><span class="math inline">\(F_{obs}\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Treatments</td>
+<td align="left">k-1</td>
+<td align="left">SST</td>
+<td align="left">MST=SST/(k-1)</td>
+<td align="left">F=MST/MSE</td>
+</tr>
+<tr class="even">
+<td align="left">Error</td>
+<td align="left">N-k</td>
+<td align="left">SSE</td>
+<td align="left">MSE=SSE/(N-k)</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">Total</td>
+<td align="left">N-1</td>
+<td align="left">TSS</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<p>The formal method of testing this hypothesis is as follows.</p>
+<ul>
+<li><span class="math inline">\(H_0: \alpha _1 = \cdots = \alpha_k = 0  \quad (\mu_1 = \cdots = \mu_k)\)</span>
+(No treatment effect)</li>
+<li><span class="math inline">\(H_A: \mbox{ Not all } \alpha_i\)</span> are 0 (Treatment effects exist)</li>
+<li>T.S. <span class="math inline">\(F_{obs} = \frac{MST}{MSE}\)</span></li>
+<li>R.R.: <span class="math inline">\(F_{obs} \geq F_{\alpha, k-1,N-k}\)</span></li>
+<li>p-value: <span class="math inline">\(P=P(F_{k-1, N-k} \geq F_{obs})\)</span></li>
+</ul>
+<p><strong>Example 7.1: Body Mass Indices of NHL, NBA, and EPL, Players</strong></p>
+<p>Consider an extension of the Body Mass Index analysis to include National Basketball Association players. The populations are NHL (<span class="math inline">\(i=1\)</span>), NBA (<span class="math inline">\(i=2\)</span>),
+and EPL (<span class="math inline">\(i=3\)</span>). Histograms for the three populations are given in
+Figure <a href="experimental-design-and-the-analysis-of-variance.html#fig:nhlnbaeplbmi1">7.1</a>. The population sizes,
+means, and standard deviations are given in Table <a href="experimental-design-and-the-analysis-of-variance.html#tab:nhlnbaeplbmi1a">7.2</a>.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:nhlnbaeplbmi1"></span>
+<img src="STA2170bookdownproj_files/figure-html/nhlnbaeplbmi1-1.png" alt="Distributions of Body Mass Index for NHL, NBA, and EPL players" width="80%" />
+<p class="caption">
+Figure 7.1: Distributions of Body Mass Index for NHL, NBA, and EPL players
+</p>
+</div>
+<table>
+<caption><span id="tab:nhlnbaeplbmi1a">Table 7.2: </span>Population sizes, means, and SDs by league for BMI</caption>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="right"><span class="math inline">\(N\)</span></th>
+<th align="right"><span class="math inline">\(\mu\)</span></th>
+<th align="right"><span class="math inline">\(\sigma\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">NHL BMI</td>
+<td align="right">748</td>
+<td align="right">26.514</td>
+<td align="right">1.449</td>
+</tr>
+<tr class="even">
+<td align="left">NBA BMI</td>
+<td align="right">505</td>
+<td align="right">24.741</td>
+<td align="right">1.718</td>
+</tr>
+<tr class="odd">
+<td align="left">EPL BMI</td>
+<td align="right">526</td>
+<td align="right">23.019</td>
+<td align="right">1.711</td>
+</tr>
+</tbody>
+</table>
+<p><span class="math display">\[ N_1=748 \quad N_2=505 \quad N_3=526 \qquad \mu_1=26.514 \quad \mu_2=24.741 \quad \mu_3=23.019 \]</span>
+<span class="math display">\[\sigma_1=1.449 \quad \sigma_2=1.718 \quad \sigma_3=1.711 \]</span></p>
+<p>While the population standard deviations (and thus variances) are not all equal, a “pooled” (unweighted) variance is used for computational purposes. Also, the
+unweighted mean <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\alpha_i\)</span> are computed.</p>
+<p><span class="math display">\[ \sigma^2 = \frac{1.449^2+1.718^2+1.711^2}{3}=2.660 \]</span>
+<span class="math display">\[\mu=\frac{26.514+24.741+23.019}{3}=24.758 \qquad
+\alpha_1=26.514-24.758=1.756 \]</span>
+<span class="math display">\[ \alpha_2=24.741-24.758=-0.017 \qquad
+\alpha_3=23.019-24.758=-1.739 \]</span></p>
+<p>Note that these <span class="math inline">\(\alpha_i\)</span> are obtained under the assumption <span class="math inline">\(\sum \alpha_i=0\)</span>.
+If samples of sizes <span class="math inline">\(n_1=n_2=n_3=4\)</span> and <span class="math inline">\(n_1=n_2=n_3=12\)</span> are taken, the following <span class="math inline">\(F\)</span>-distributions for the ratio <span class="math inline">\(MST/MSE\)</span> are obtained.</p>
+<p><span class="math display">\[ n_i=4: \quad \frac{MST}{MSE} \sim F_{\nu_1,\nu_2,\lambda_1} \quad \lambda_1=
+\frac{4\left(1.756^2+(-0.017)^2+(-1.739)^2\right)}{2.660}=9.185 \]</span> <span class="math display">\[\nu_1=3-1=2 \qquad \qquad \nu_2=12-3=9\]</span></p>
+<p><span class="math display">\[ n_i=12: \quad \frac{MST}{MSE} \sim F_{\nu_1,\nu_2,\lambda_2} \quad \lambda_2=
+\frac{12\left(1.756^2+(-0.017)^2+(-1.739)^2\right)}{2.660}=27.555 \]</span>
+<span class="math display">\[ \nu_1=3-1=2 \qquad \qquad \nu_2=36-3=33\]</span></p>
+<p>When <span class="math inline">\(n_1=n_2=n_3=4\)</span>, the critical value for testing <span class="math inline">\(H_0:\alpha_1=\alpha_2=\alpha_3=0\)</span> at <span class="math inline">\(\alpha=0.05\)</span> significance level is <span class="math inline">\(F_{.05,2,9}=4.256\)</span>.
+The power of the <span class="math inline">\(F\)</span>-test
+under this configuration is <span class="math inline">\(\pi_1=.622\)</span>.
+When <span class="math inline">\(n_1=n_2=n_3=12\)</span>, the critical value for testing <span class="math inline">\(H_0:\alpha_1=\alpha_2=\alpha_3=0\)</span> at <span class="math inline">\(\alpha=0.05\)</span> significance level is <span class="math inline">\(F_{.05,2,33}=3.285\)</span>.
+The power of the <span class="math inline">\(F\)</span>-test
+under this configuration is <span class="math inline">\(\pi_2=.997\)</span>.
+The central <span class="math inline">\(F\)</span>-density and the non-central <span class="math inline">\(F\)</span>-density with sample sizes <span class="math inline">\(n_1=n_2=n_3=4\)</span>, <span class="math inline">\(\lambda_1=9.48\)</span><br />
+for the denominator degrees of freedom <span class="math inline">\(\nu_2=9\)</span> is given in
+Figure <a href="experimental-design-and-the-analysis-of-variance.html#fig:nhlnbaeplbmi2">7.2</a>.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:nhlnbaeplbmi2"></span>
+<img src="STA2170bookdownproj_files/figure-html/nhlnbaeplbmi2-1.png" alt="Central (Blue) and non-central (red) $F$-distributions for Body Mass Index example with n=4" width="80%" />
+<p class="caption">
+Figure 7.2: Central (Blue) and non-central (red) <span class="math inline">\(F\)</span>-distributions for Body Mass Index example with n=4
+</p>
+</div>
+<p>Now we will take 100000 samples on <span class="math inline">\(n=4\)</span> and <span class="math inline">\(n=12\)</span> players from each league, and conduct the <span class="math inline">\(F\)</span>-test
+of equal population means. We will compare the empirical and theoretical power for each case
+and compare the distributions of the observed and theoretical <span class="math inline">\(F\)</span>-statistics.</p>
+<pre><code>##              ybar(n=4) ybar(n=12) sd(n=4) sd(n=12)
+## NHL-sample 1    26.489     25.938   2.146    1.972
+## NBA-sample 1    23.840     24.635   1.484    2.446
+## EPL-sample 1    25.460     22.940   2.976    2.068</code></pre>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:nhlnbaeplbmi3"></span>
+<img src="STA2170bookdownproj_files/figure-html/nhlnbaeplbmi3-1.png" alt="Observed and Theoretical Distributions of the F-statistic for testing equality of mean Body Mass Index for NHL, NBA, and EPL players, with n1=n2=n3=4" width="80%" />
+<p class="caption">
+Figure 7.3: Observed and Theoretical Distributions of the F-statistic for testing equality of mean Body Mass Index for NHL, NBA, and EPL players, with n1=n2=n3=4
+</p>
+</div>
+<table>
+<caption><span id="tab:nhlnbaeplbmi3a">Table 7.3: </span>Results of sampling, NHL, NBA, EPL BMI</caption>
+<colgroup>
+<col width="3%" />
+<col width="6%" />
+<col width="7%" />
+<col width="21%" />
+<col width="19%" />
+<col width="21%" />
+<col width="20%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="right"><span class="math inline">\(\mu\)</span></th>
+<th align="right"><span class="math inline">\(\sigma\)</span></th>
+<th align="right"><span class="math inline">\(\bar{\bar{y}}\)</span> <span class="math inline">\((n=4)\)</span></th>
+<th align="right"><span class="math inline">\(s_{\bar{y}}\)</span> <span class="math inline">\((n=4)\)</span></th>
+<th align="right"><span class="math inline">\(\bar{\bar{y}}\)</span> <span class="math inline">\((n=12)\)</span></th>
+<th align="right"><span class="math inline">\(s_{\bar{y}}\)</span> <span class="math inline">\((n=12)\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">NHL</td>
+<td align="right">26.514</td>
+<td align="right">1.449</td>
+<td align="right">26.511</td>
+<td align="right">0.724</td>
+<td align="right">26.512</td>
+<td align="right">0.415</td>
+</tr>
+<tr class="even">
+<td align="left">NBA</td>
+<td align="right">24.741</td>
+<td align="right">1.718</td>
+<td align="right">24.738</td>
+<td align="right">0.856</td>
+<td align="right">24.741</td>
+<td align="right">0.490</td>
+</tr>
+<tr class="odd">
+<td align="left">EPL</td>
+<td align="right">23.019</td>
+<td align="right">1.711</td>
+<td align="right">23.021</td>
+<td align="right">0.854</td>
+<td align="right">23.016</td>
+<td align="right">0.489</td>
+</tr>
+</tbody>
+</table>
+<p>The distributions of the sample means for each league and the two sample sizes are summarized in Table <a href="experimental-design-and-the-analysis-of-variance.html#tab:nhlnbaeplbmi3a">7.3</a>.</p>
+<p>Based on 100000 random samples of size <span class="math inline">\(n_i=4\)</span> from each league, the <span class="math inline">\(F\)</span>-test rejected the null hypothesis of no league differences in 63.98%
+of the samples. With samples of size <span class="math inline">\(n_i=12\)</span>, 99.45% of the <span class="math inline">\(F\)</span>-tests rejected the null hypothesis. Despite the fact that the
+populations of measurements are not exactly normally distributed with equal variances, the test performs as expected, see
+Figure <a href="experimental-design-and-the-analysis-of-variance.html#fig:nhlnbaeplbmi3">7.3</a>.
+Computations for the first samples of size <span class="math inline">\(n_1=n_2=n_3=12\)</span> are given below.</p>
+<p><span class="math display">\[ \overline{y}_{1.}=25.938 \quad \overline{y}_{2.}=24.635 \quad \overline{y}_{3.}=22.940 \quad \overline{y}_{..}=24.504 \qquad
+s_1=1.972 \quad s_2=2.446 \quad s_3=2.068 \]</span></p>
+<p><span class="math display">\[ SST=12\left[(25.938-24.504)^2 + (24.635-24.504)^2 + (22.940-24.504)^2\right] = 54.235 \]</span>
+<span class="math display">\[  df_T=3-1=2 \qquad MST=\frac{54.235}{2}=27.118 \]</span></p>
+<p><span class="math display">\[ SSE = (12-1)\left[1.972^2 + 2.446^2 + 2.068^2 \right] = 155.632 \]</span>
+<span class="math display">\[ df_E=3(12)-3=33 \quad MSE=\frac{155.632}{33}=4.716 \]</span></p>
+<p><span class="math display">\[ H_0:\mu_1=\mu_2=\mu_3 \qquad \mbox{TS: } F_{obs}=\frac{27.118}{4.716}=5.75 \]</span>
+<span class="math display">\[\mbox{RR: } F_{obs} \geq 3.285 \quad P=P\left(F_{2,33} \geq 5.75\right) =.0072 \]</span></p>
+<p><span class="math display">\[ \nabla \]</span></p>
+<p><strong>Example 7.2: Comparison of 5 Mosquito Repellents</strong></p>
+<p>A study compared <span class="math inline">\(k=5\)</span> mosquito repellent patches on fabric for soldiers in military operations <span class="citation">(<a href="#ref-bhatnagar_2007">Bhatnagar and Mehta 2007</a>)</span>.
+The 5 treatments were: Odomos (1), Deltamethrin (2), Cyfluthrin (3), Deltamethrin+Odomos (4), and Cyfluthrin+Odomos (5), with <span class="math inline">\(n_i=30\)</span>
+subjects per treatment, and a total of <span class="math inline">\(N=150\)</span> measurements. The response observed was the ``Per Man-Hour Mosquito Catch.’’
+Sample statistics are given in Table <a href="experimental-design-and-the-analysis-of-variance.html#tab:mosquito1">7.4</a>, and the Analysis of Variance is given in Table <a href="experimental-design-and-the-analysis-of-variance.html#tab:mosquito2">7.5</a>.
+Data that have been generated to match the means and standard deviations are plotted in Figure <a href="experimental-design-and-the-analysis-of-variance.html#fig:mosquito3">7.4</a>. The overall mean (long line)
+and individual treatment means (short lines) are included.</p>
+<table>
+<caption><span id="tab:mosquito1">Table 7.4: </span>Summary statistics for mosquito repellant experiment</caption>
+<thead>
+<tr class="header">
+<th align="left">Treatment (<span class="math inline">\(i\)</span>)</th>
+<th align="right"><span class="math inline">\(n\)</span></th>
+<th align="right"><span class="math inline">\(\bar{y}_i\)</span></th>
+<th align="right"><span class="math inline">\(s_i\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Odomos (1)</td>
+<td align="right">30</td>
+<td align="right">7.900</td>
+<td align="right">3.367</td>
+</tr>
+<tr class="even">
+<td align="left">Deltamethrin (2)</td>
+<td align="right">30</td>
+<td align="right">8.133</td>
+<td align="right">3.461</td>
+</tr>
+<tr class="odd">
+<td align="left">Cyfluthrin (3)</td>
+<td align="right">30</td>
+<td align="right">8.033</td>
+<td align="right">3.011</td>
+</tr>
+<tr class="even">
+<td align="left">D+O (4)</td>
+<td align="right">30</td>
+<td align="right">6.333</td>
+<td align="right">3.122</td>
+</tr>
+<tr class="odd">
+<td align="left">C+O (5)</td>
+<td align="right">30</td>
+<td align="right">5.367</td>
+<td align="right">3.068</td>
+</tr>
+</tbody>
+</table>
+<table style="width:100%;">
+<caption><span id="tab:mosquito2">Table 7.5: </span>The Analysis of Variance table for the Mosquito Repellent study</caption>
+<colgroup>
+<col width="13%" />
+<col width="5%" />
+<col width="11%" />
+<col width="8%" />
+<col width="12%" />
+<col width="20%" />
+<col width="28%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Source</th>
+<th align="right">df</th>
+<th align="right">SS</th>
+<th align="left">MS</th>
+<th align="left"><span class="math inline">\(F_{obs}\)</span></th>
+<th align="left"><span class="math inline">\(F_{.05,4,145}\)</span></th>
+<th align="left"><span class="math inline">\(P(F_{4,145}&gt;F_{obs})\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Treatments</td>
+<td align="right">4</td>
+<td align="right">184.560</td>
+<td align="left">46.163</td>
+<td align="left">4.478</td>
+<td align="left">2.434</td>
+<td align="left">0.002</td>
+</tr>
+<tr class="even">
+<td align="left">Error</td>
+<td align="right">145</td>
+<td align="right">1494.680</td>
+<td align="left">10.308</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">Total</td>
+<td align="right">149</td>
+<td align="right">1679.334</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<pre><code>##   trt.mosq y.mosq
+## 1        1   4.50
+## 2        1  10.04
+## 3        1  13.05
+## 4        1   0.26
+## 5        1  10.61
+## 6        1  10.89</code></pre>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:mosquito3"></span>
+<img src="STA2170bookdownproj_files/figure-html/mosquito3-1.png" alt="Mosquito catch by repellent treatment - data generated to match treatment means and standard deviations" width="80%" />
+<p class="caption">
+Figure 7.4: Mosquito catch by repellent treatment - data generated to match treatment means and standard deviations
+</p>
+</div>
+<pre><code>## Analysis of Variance Table
+## 
+## Response: y.mosq
+##                   Df  Sum Sq Mean Sq F value   Pr(&gt;F)   
+## factor(trt.mosq)   4  184.65  46.162  4.4798 0.001924 **
+## Residuals        145 1494.15  10.304                    
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<ul>
+<li><span class="math inline">\(H_0: \alpha_1 = \alpha_2 = \alpha_3 = \alpha_4=\alpha_5= 0  \quad (\mu_1 = \mu_2 = \mu_3=\mu_4=\mu_5)\)</span>
+(No treatment effect)</li>
+<li><span class="math inline">\(H_A: \mbox{ Not all } \alpha_i\)</span> are 0 (Treatment effects exist)</li>
+<li>T.S. <span class="math inline">\(F_{obs} = \frac{MST}{MSE}=4.478\)</span></li>
+<li>R.R.: <span class="math inline">\(F_{obs} &gt; F_{\alpha, k-1, n-k}=F_{0.05,4,145}=2.434\)</span></li>
+<li>p-value: <span class="math inline">\(P=P(F_{k-1,N-k} \geq F_{obs})=P(F_{4,145}\geq 4.478)=.0019\)</span></li>
+</ul>
+<p>Since the <span class="math inline">\(F\)</span>-statistic is sufficiently large, conclude that the means differ,
+then the following methods can used to make comparisons among treatments.</p>
+<p><span class="math display">\[ \nabla \]</span></p>
+</div>
+<div id="comparisons-among-treatment-means" class="section level3 hasAnchor" number="7.1.2">
+<h3><span class="header-section-number">7.1.2</span> Comparisons among Treatment Means<a href="experimental-design-and-the-analysis-of-variance.html#comparisons-among-treatment-means" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Assuming that it has been concluded that treatment means differ, we
+generally would like to know which means are significantly different.
+This is generally done by making contrasts among treatments.
+Special cases of contrasts include pre-planned or all pairwise
+comparisons between pairs of treatments.</p>
+<p>A <strong>contrast</strong> is a linear function of treatment means, where the coefficients sum to 0.
+A contrast among population means can be estimated with the same contrast among sample means, and inferences can be made based on the sampling
+distribution of the contrast. Let <span class="math inline">\(C\)</span> be the contrast among the population means, and <span class="math inline">\(\hat{C}\)</span> be its estimator based on means of the independent
+random samples.</p>
+<p><span class="math display">\[ C= a_1\mu_1 + \cdots + a_k\mu_k = \sum_{i=1}^k a_i \mu_i \mbox{  where  }  \sum_{i=1}^k a_i = 0 \qquad
+\hat{C} = a_1\overline{Y}_{1.} + \cdots + a_k\overline{Y}_{k.} = \sum_{i=1}^k a_i \overline{Y}_{i.}  \]</span>
+<span class="math display">\[ V\{\hat{C}\} = \sigma^2\left[\frac{a_1^2}{n_1} + \cdots + \frac{a_k^2}{n_k}\right] = \sigma^2 \sum_{i=1}^k \frac{a_i^2}{n_i} \]</span></p>
+<p>When the sample sizes are balanced (all <span class="math inline">\(n_i\)</span> are equal), the formula for the variance clearly simplifies.
+Contrasts are specific to particular research questions, so the general rules for tests and Confidence Intervals are given here, followed
+by an application to the Mosquito Repellent study. Since the coefficients sum to 0, we are virtually always testing <span class="math inline">\(H_0: C=0\)</span> in practice.</p>
+<p>Once samples are obtained, obtain <span class="math inline">\(\hat{c}\)</span>, the contrast based on the observed sample means among the treatments.</p>
+<p><span class="math display">\[ \hat{c} = a_1\overline{y}_{1.}+ \cdots + a_k\overline{y}_{k.}=\sum_{i=1}^k a_i\overline{y}_{i.}  \qquad
+\widehat{SE}\{\hat{C}\}=\sqrt{MSE \sum_{i=1}^k \frac{a_i^2}{n_i}} \]</span></p>
+<p>Testing whether a contrast is equal to 0 and obtaining a <span class="math inline">\((1-\alpha)100\%\)</span> Confidence Interval for <span class="math inline">\(C\)</span> are done as follow.</p>
+<p><span class="math display">\[ H_0: C=0 \quad H_A: C\neq 0 \quad \mbox{TS: } t_C = \frac{\hat{c}}{\widehat{SE}\{\hat{C}\}}  \quad \mbox{RR: } |t_C| \geq t_{\alpha/2,N-k} \quad
+P=2P\left(t_{N-k} \geq |t_C|\right)  \]</span></p>
+<p><span class="math display">\[ (1-\alpha)100\% \mbox{ Confidence Interval for } C: \qquad \hat{c} \pm t_{\alpha/2,N-k} \widehat{SE}\{\hat{C}\} \]</span></p>
+<p>The test can be conducted as upper or lower-tailed with obvious adjustments.
+An alternative approach is to compute the sums of squares for the contrast <span class="math inline">\(SSC\)</span>, and use an <span class="math inline">\(F\)</span>-test, comparing its Mean Square to <span class="math inline">\(MSE\)</span>.</p>
+<p><span class="math display">\[ SSC=\frac{\left(\hat{c}\right)^2}{\sum_{i=1}^k \frac{a_i^2}{n_i}}  \qquad  df_C=1 \qquad  MSC=\frac{SSC}{1}=SSC  \]</span></p>
+<p><span class="math display">\[ H_0: C=0 \qquad H_A: C\neq 0 \qquad \mbox{TS: } F_C=\frac{MSC}{MSE} \]</span> <span class="math display">\[ \mbox{RR: } F_C \geq F_{\alpha,1,N-k}  \qquad \qquad
+P=P\left(F_{1,N-k} \geq F_C \right) \]</span></p>
+<p><strong>Example 7.3: Comparison of 5 Mosquito Repellents - Contrasts 1 and 2</strong></p>
+<p>Suppose the researchers are interested in comparing the two treatments that use Deltamethrin (2 and 4) with the two treatments
+that use Cyfluthrin (3 and 5). Then, the following calculations are made.</p>
+<p><span class="math display">\[ C_1 = \left(\mu_2+\mu_4\right) - \left(\mu_3+\mu_5\right) \qquad a_1=0 \quad a_2=a_4=1 \quad a_3=a_5=-1 \qquad n_{i}=30 \qquad MSE=10.308\]</span></p>
+<p><span class="math display">\[ \overline{y}_{2.}=8.133 \quad \overline{y}_{4.}=6.333  \quad \overline{y}_{3.}= 8.033 \quad \overline{y}_{5.}= 5.367 \qquad
+\hat{c}_1 = (8.133+6.333)-(8.033+5.367)=1.066  \]</span></p>
+<p><span class="math display">\[ \widehat{SE}\{\hat{C}_1\} = \sqrt{10.308\left(\frac{0^2+1^2+(-1)^2+1^2+(-1)^2}{30}\right)}=1.172 \]</span></p>
+<p>For a test (<span class="math inline">\(\alpha=0.05\)</span>) of <span class="math inline">\(H_0:C_1=0\)</span>, the test statistic, rejection region and p-value, along with a 95% Confidence Interval for
+<span class="math inline">\(C\)</span> are given below.</p>
+<p><span class="math display">\[ \mbox{TS: } t_{C_1} = \frac{1.066}{1.172} = 0.910 \quad \mbox{RR: } |t_{C_1}| \geq t_{.025,145}=1.976 \quad P=2P\left(t_{145} \geq |0.910|\right)=.364 \]</span></p>
+<p><span class="math display">\[ \mbox{95}\% \mbox{ CI for } C: 1.066 \pm 1.976(1.172) \equiv 1.066 \pm 2.316 \equiv (-1.250,3.382) \]</span></p>
+<p>There is no evidence of any difference between the effects of these two types of repellents. Next, we conduct the <span class="math inline">\(F\)</span>-test, knowing in advance that its
+conclusion and p-value will be equivalent to 2-tailed <span class="math inline">\(t\)</span>-test performed above (the only difference due to rounding is in third decimal place).</p>
+<p><span class="math display">\[ SSC_1=\frac{1.066^2}{\frac{4}{30}} = 8.523 = MSC_1  \quad \mbox{TS: } F_{C_1}=\frac{8.523}{10.308}=0.827 \]</span>
+<span class="math display">\[\mbox{RR: } F_{C_1}\geq F_{.05,1,145}=3.906 \qquad
+P = P\left(F_{1,145} \geq 0.827 \right) = .3647\]</span>
+<span class="math display">\[ P=P\left(F_{1,145}\geq 0.827\right)=.365 \]</span></p>
+<p>For a second contrast <span class="math inline">\((C_2)\)</span>, without going through all calculations, consider comparing Deltamethrin and Cyfluthrin (each without Odomos: 2 and 3)
+with Deltamethrin and Cyfluthrin (each with Odomos: 4 and 5). This involves: <span class="math inline">\(a_1=0,a_2=a_3=1,a_4=a_5=-1\)</span>. Note that the standard error of the
+contrast will be exactly the same as that for contrast <span class="math inline">\(\hat{c}_1\)</span>.</p>
+<p><span class="math display">\[ \hat{c}_2 = 4.466 \quad TS:t_{C_2}=\frac{4.466}{1.172}=3.811 \quad P=2P\left(t_{145}\geq|3.811|\right)=.0002 \qquad
+\mbox{95}\% \mbox{ CI: } 4.466\pm 2.316 \equiv(2.150,6.782)   \]</span></p>
+<p>There is evidence that the combined mean is higher without Odomos than with Odomos. Since low values are better (mosquito contacts),
+Odomos as an additive to the two chemicals (individually) is better than no additive to the two chemicals individually.
+The <span class="math inline">\(F\)</span>-test is given below. The R code that follows extends the calculations made in Example 7.2.</p>
+<p><span class="math display">\[ SSC_2=\frac{4.466^2}{\frac{4}{30}} = 149.59   \quad
+\mbox{TS: } F_{C_2}=\frac{149.59}{10.308}=14.51
+\quad P=P\left(F_{1,145}\geq 14.51\right)=.0005 \]</span></p>
+<pre><code>##                   Estimate Std Err t_obs P(&gt;|t_{obs}|)      SS  F_obs P(&gt;F_obs)
+## C1: (D,DO)-(C,CO)    1.067   1.172  0.91         0.364   8.533  0.828     0.364
+## C2: (D,C)-(DO,CO)    4.465   1.172  3.81         0.000 149.544 14.513     0.000
+##                       LB    UB
+## C1: (D,DO)-(C,CO) -1.250 3.383
+## C2: (D,C)-(DO,CO)  2.149 6.782</code></pre>
+<p><span class="math display">\[   \nabla   \]</span></p>
+<p>A special class of contrasts are <strong>orthogonal contrasts</strong>. Two contrasts are orthogonal if the sum of the products of their <span class="math inline">\(a_i\)</span> coefficients,
+divided by the sample sizes <span class="math inline">\(n_i\)</span>, is 0.
+This concept is shown below.</p>
+<p><span class="math display">\[ C_1 =\sum_{i=1}^k a_{1i}\mu_i \qquad C_2 =\sum_{i=1}^k a_{2i}\mu_i  \quad \mbox{$C_1$ and $C_2$ are orthogonal if } \quad
+\sum_{i=1}^k \frac{a_{1i}a_{2i}}{n_i}=0 \]</span></p>
+<p>Note that if the sample sizes are all equal (balanced design), this simplifies to <span class="math inline">\(\sum_{i=1}^ka_{1i}a_{2i}=0\)</span>. The two contrasts in Example 7.3 are orthogonal
+(check this). If there are <span class="math inline">\(k\)</span> treatments, and <span class="math inline">\(k-1\)</span> degrees of freedom for Treatments, any <span class="math inline">\(k-1\)</span> pairwise orthogonal contrasts’ sums of squares
+will add up to the Treatment sum of squares. That is, <span class="math inline">\(SST\)</span> can be decomposed into the sums of squares for the <span class="math inline">\(k-1\)</span> contrasts. The decomposition is not unique,
+there may be various sets of orthogonal contrasts.</p>
+<p><strong>Example 7.4: Comparison of 5 Mosquito Repellents - Orthogonal Contrasts</strong></p>
+<p>Consider these two other contrasts.</p>
+<ul>
+<li>(D versus C without O) vs (D versus C with Odomos): <span class="math inline">\(C_3=\left(\mu_2-\mu_3\right)-\left(\mu_4-\mu_5\right) = \mu_2-\mu_3-\mu_4+\mu_5\)</span></li>
+<li>Odomos only versus the four other treatments: <span class="math inline">\(C_4=4\mu_1 - \mu_2 - \mu_3 - \mu_4 - \mu_5\)</span></li>
+</ul>
+<p>The following R code chunk gives the contrast coefficients for these four contrasts. For all six pairs, <span class="math inline">\(\sum_{i=1}^k a_{ji} a_{j&#39;i} =0\)</span>, <span class="math inline">\(j\neq j&#39;\)</span>.
+Also given are the estimates, standard errors, <span class="math inline">\(t\)</span>-tests, 95% Confidence Intervals, Sums of Squares and <span class="math inline">\(F\)</span>-statistics.</p>
+<pre><code>##     a1 a2 a3 a4 a1a2 a1a3 a1a4 a2a3 a2a4 a3a4
+## O    0  0  0  4    0    0    0    0    0    0
+## D    1  1  1 -1    1    1   -1    1   -1   -1
+## C   -1  1 -1 -1   -1    1    1   -1   -1    1
+## DO   1 -1 -1 -1   -1   -1   -1    1    1    1
+## CO  -1 -1  1 -1    1   -1    1   -1    1   -1
+## sum  0  0  0  0    0    0    0    0    0    0</code></pre>
+<pre><code>##                     Estimate Std Err  t_obs P(&gt;|t_{obs}|)      SS  F_obs
+## C1: (D,DO)-(C,CO)      1.067   1.172  0.910         0.364   8.533  0.828
+## C2: (D,C)-(DO,CO)      4.465   1.172  3.810         0.000 149.544 14.513
+## C3: (D-C) - (DO-CO)   -0.866   1.172 -0.739         0.461   5.625  0.546
+## C4: 4O-(D,C,DO,CO)     3.737   2.621  1.426         0.156  20.944  2.033
+##                     P(&gt;F_obs)     LB    UB
+## C1: (D,DO)-(C,CO)       0.364 -1.250 3.383
+## C2: (D,C)-(DO,CO)       0.000  2.149 6.782
+## C3: (D-C) - (DO-CO)     0.461 -3.183 1.451
+## C4: 4O-(D,C,DO,CO)      0.156 -1.444 8.917</code></pre>
+<p>From the original Analysis of Variance table, see that the Treatment sum of squares is <span class="math inline">\(SST=184.65\)</span>. As these four contrasts are pairwise orthogonal,
+their sums of squares add up to <span class="math inline">\(SST\)</span>: <span class="math inline">\(8.533+149.544+5.625+20.944=184.646\)</span>. Note that virtually all of the differences among the treatments
+(based on this set of contrasts) is contrast 2, comparing the average of D and C without O versus the average of D and C with O.</p>
+<p><span class="math display">\[ \nabla  \]</span></p>
+<div id="bonferroni-method-of-multiple-comparisons" class="section level4 hasAnchor" number="7.1.2.1">
+<h4><span class="header-section-number">7.1.2.1</span> Bonferroni Method of Multiple Comparisons<a href="experimental-design-and-the-analysis-of-variance.html#bonferroni-method-of-multiple-comparisons" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>The Bonferroni method is used in many situations and is based on the following
+premise: If there are <span class="math inline">\(c\)</span> comparisons or contrasts to be made simultaneously, and we desire to be <span class="math inline">\(\left(1-\alpha_E\right)100\%\)</span>
+confident that all are correct, each comparison should be made at a
+higher level of confidence (lower probability of type I error). If
+individual comparisons are made at <span class="math inline">\(\alpha_I=\alpha_E/c\)</span> level of significance, there is an
+overall error rate no larger than <span class="math inline">\(\alpha_E\)</span>. This method is conservative
+and can run into difficulties (low power) as the number of comparisons
+gets very large. The general procedures for simultaneous tests and Confidence Intervals are as follow in terms of comparing various contrasts.</p>
+<p><span class="math display">\[ \mbox{Define: } \quad B_{C_j} = t_{\alpha_E/(2c),\nu} \widehat{SE}\left\{\hat{C_j}\right\}  \quad j=1,\ldots,c\]</span></p>
+<p><span class="math display">\[ \mbox{Conclude } C_j\neq 0 \mbox{ if } \left|\hat{c_j}\right| \geq B_{C_j} \]</span>
+<span class="math display">\[ \mbox{Simultaneous }\left(1-\alpha_E\right)100\% \mbox{ CI&#39;s for } C_j: \quad  (\hat{c_j}) \pm  B_{C_j} \quad j=1,\ldots,c\]</span></p>
+<p>where <span class="math inline">\(t_{\alpha_E /(2c),\nu}\)</span>, with <span class="math inline">\(\nu\)</span> being the error degrees of freedom, <span class="math inline">\(\nu=N-k\)</span> for the Completely Randomized Design,
+is obtained from the Bonferroni <span class="math inline">\(t\)</span>–table (see chapter powerpoint slides) or from statistical packages or EXCEL.</p>
+<p>The Bonferroni adjusted p-value can be computed as the minimum of 1
+and <span class="math inline">\(c\)</span> times the unadjusted p-value.</p>
+<p><strong>Example 7.5: Comparison of 5 Mosquito Repellents - Bonferroni CIs for Contrasts</strong></p>
+<p>In this example, we will obtain Bonferroni simultaneous Confidence Intervals for the <span class="math inline">\(c=4\)</span> contrasts considered in Example 7.4. The
+adjustment involves replacing <span class="math inline">\(t_{.05/2,N-k}=1.976\)</span> with <span class="math inline">\(t_{.05/(2(4)),N-k}=2.529\)</span>. Recall that the estimated standard
+errors for contrasts 1, 2, and 3 are all equal to 1.172 and the standard error for contrast 4 is 2.621. This leads to the following values for
+<span class="math inline">\(B_{C_j} \quad j=1,2,3,4\)</span>.</p>
+<p><span class="math display">\[ B_{C_1}=B_{C_2}=B_{C_3}=2.529(1.172)=2.964 \qquad
+B_{C_4}=2.529(2.621)=6.629\]</span></p>
+<p>The following R code chunk computes the original 95% CI’s for the contrasts as well as the Bonferroni adjusted 95% CI’s.</p>
+<pre><code>##                     Estimate Std Err  t_obs P(&gt;|t_{obs}|) Bon Adj P     LB
+## C1: (D,DO)-(C,CO)      1.067   1.172  0.910         0.364     1.000 -1.250
+## C2: (D,C)-(DO,CO)      4.465   1.172  3.810         0.000     0.001  2.149
+## C3: (D-C) - (DO-CO)   -0.866   1.172 -0.739         0.461     1.000 -3.183
+## C4: 4O-(D,C,DO,CO)     3.737   2.621  1.426         0.156     0.624 -1.444
+##                        UB Bon LB Bon UB
+## C1: (D,DO)-(C,CO)   3.383 -1.898  4.031
+## C2: (D,C)-(DO,CO)   6.782  1.501  7.430
+## C3: (D-C) - (DO-CO) 1.451 -3.831  2.099
+## C4: 4O-(D,C,DO,CO)  8.917 -2.892 10.366</code></pre>
+<p>Note that the Bonferroni simultaneous Confidence Intervals are wider than the unadjuted ones, and the adjusted p-values are higher, but Contrast 2 is still significant.</p>
+<p><span class="math display">\[ \nabla \]</span></p>
+</div>
+<div id="tukey-method-for-all-pairwise-comparisons" class="section level4 hasAnchor" number="7.1.2.2">
+<h4><span class="header-section-number">7.1.2.2</span> Tukey Method for All Pairwise Comparisons<a href="experimental-design-and-the-analysis-of-variance.html#tukey-method-for-all-pairwise-comparisons" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Various methods have been
+developed to handle all possible pairwise comparisons
+among treatment means
+and keep the overall error
+rate at <span class="math inline">\(\alpha_E\)</span>, including the widely reported Bonferroni procedure
+described above.
+Note that pairwise comparisons are a special class of contrasts where
+one <span class="math inline">\(\alpha_i=1\)</span>, one <span class="math inline">\(\alpha_i=-1\)</span> and the remaining <span class="math inline">\(k-2 \hspace{0.1in} \alpha_i=0\)</span>.
+When there are <span class="math inline">\(k\)</span> treatments, there are <span class="math inline">\(k(k-1)/2\)</span> pairs of treatments that can be compared (combinations from Chapter 3).</p>
+<p>One commonly used procedure is <strong>Tukey’s Honest Significant Difference (HSD)</strong> method,
+which is more powerful than the Bonferroni method (but more limited
+in its applicability).
+Statistical computer packages can make
+these comparisons automatically.
+Tukey’s method can be used for tests and confidence intervals for all pairs of
+treatment means simultaneously. If there are <span class="math inline">\(k\)</span> treatments, their will
+be <span class="math inline">\(\frac{k(k-1)}{2}\)</span> such tests or intervals. The general forms, allowing for
+different sample sizes for treatments <span class="math inline">\(i\)</span> and <span class="math inline">\(i&#39;\)</span> are as follow (the unequal sample size case is referred to as the “Tukey-Kramer” method).
+The procedure makes use of the <strong>Studentized Range Distribution</strong> with critical values, <span class="math inline">\(q_{\alpha_E,k,\nu}\)</span>, indexed by the number of treatments <span class="math inline">\((k)\)</span> and
+error degrees of freedom <span class="math inline">\(\nu = N-k\)</span> for the Completely Randomized Design.
+The R functions <strong>qtukey</strong> and <strong>ptukey</strong> give quantiles and probabilities for the
+distribution. A table of critical values for <span class="math inline">\(\alpha_E=0.05\)</span> is given in this chapter’s powerpoint slides.</p>
+<p><span class="math display">\[ \mbox{Define: } \quad HSD_{ii&#39;} = \frac{q_{\alpha_E,k, \nu}}{2} \widehat{SE}\{\overline{Y}_{i.} - \overline{Y}_{i&#39;.}\} = \frac{q_{\alpha_E,k, \nu}}{2} \sqrt{MSE
+\left(\frac{1}{n_i} +
+\frac{1}{n_{i&#39;}}\right)} \quad i\neq i&#39; \]</span></p>
+<p><span class="math display">\[ \mbox{Conclude } \mu_i \neq \mu_{i&#39;} \quad \mbox{ if } \quad  \left|\overline{y}_{i.}-\overline{y}_{i&#39;.}\right| \geq HSD_{ii&#39;} \]</span>
+<span class="math display">\[  \mbox{Simultaneous }\left(1-\alpha_E\right)100\% \mbox{ CI&#39;s for } \mu_i-\mu_{i&#39;}: \quad  \left(\overline{y}_{i.} - \overline{y}_{i&#39;.}\right) \pm  HSD_{ii&#39;} \]</span></p>
+<p>When the sample sizes are equal (<span class="math inline">\(n_i=n_{i&#39;}\)</span>), the formula for <span class="math inline">\(HSD_{ii&#39;}\)</span>
+can be simplified as follows.</p>
+<p><span class="math display">\[ HSD_{ii&#39;} = q_{\alpha_E,k, \nu} \sqrt{MSE
+\left(\frac{1}{n_i}\right)} \quad i&lt;i&#39;
+\]</span></p>
+<p><strong>Example 7.6: Comparison of 5 Mosquito Repellents</strong></p>
+<p>The Bonferroni and
+Tukey methods are used to obtain simultaneous 95% CI’s for each difference in mean mosquito contacts. The general form for the Bonferroni
+simultaneous 95% CI’s (with <span class="math inline">\(c=5(4)/2=10\)</span> and <span class="math inline">\(\nu=150-5=145)\)</span>) is given below. Recall that <span class="math inline">\(MSE=10.308\)</span> and <span class="math inline">\(n_i=30\)</span> for each treatment.</p>
+<p><span class="math display">\[ B_{ii&#39;} = t_{.05/(2(10)),145} \sqrt{10.308
+\left(\frac{1}{30} +
+\frac{1}{30}\right)} = 2.851(0.829)=2.363 \]</span>
+<span class="math display">\[\mbox{Simultaneous }95\% \mbox{ CIs: } \quad \left(\overline{y}_{i.} - \overline{y}_{i&#39;.}\right) \pm 2.363\]</span></p>
+<p>For Tukey’s method, the confidence intervals are of the following form.</p>
+<p><span class="math display">\[ HSD_{ii&#39;}=q_{0.05, 5, 145}\sqrt{10.308\left(\frac{1}{30}\right)} = 3.907(0.586) = 2.290 \]</span>
+<span class="math display">\[ \qquad \mbox{Simultaneous } 95\% \mbox{ CIs: } \quad\left(\overline{y}_{i.} - \overline{y}_{i&#39;.}\right) \pm 2.290\]</span></p>
+<p>The corresponding calculations and confidence intervals are given in in the following R code chunk.</p>
+<pre><code>##       i i&#39;  yb i yb i&#39;   diff  HSD   T LB   T UB Bon B   B LB   B UB
+##  [1,] 2  1 8.133 7.901  0.232 2.29 -2.057  2.522 2.363 -2.130  2.595
+##  [2,] 3  1 8.033 7.901  0.132 2.29 -2.158  2.422 2.363 -2.231  2.495
+##  [3,] 3  2 8.033 8.133 -0.100 2.29 -2.390  2.189 2.363 -2.463  2.262
+##  [4,] 4  1 6.333 7.901 -1.567 2.29 -3.857  0.722 2.363 -3.930  0.795
+##  [5,] 4  2 6.333 8.133 -1.800 2.29 -4.089  0.490 2.363 -4.162  0.563
+##  [6,] 4  3 6.333 8.033 -1.699 2.29 -3.989  0.590 2.363 -4.062  0.663
+##  [7,] 5  1 5.367 7.901 -2.534 2.29 -4.823 -0.244 2.363 -4.896 -0.171
+##  [8,] 5  2 5.367 8.133 -2.766 2.29 -5.056 -0.476 2.363 -5.129 -0.403
+##  [9,] 5  3 5.367 8.033 -2.666 2.29 -4.955 -0.376 2.363 -5.028 -0.303
+## [10,] 5  4 5.367 6.333 -0.966 2.29 -3.256  1.323 2.363 -3.329  1.396</code></pre>
+<pre><code>## Analysis of Variance Table
+## 
+## Response: y.mosq
+##                   Df  Sum Sq Mean Sq F value   Pr(&gt;F)   
+## factor(trt.mosq)   4  184.65  46.162  4.4798 0.001924 **
+## Residuals        145 1494.15  10.304                    
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<pre><code>##   Tukey multiple comparisons of means
+##     95% family-wise confidence level
+## 
+## Fit: aov(formula = y.mosq ~ factor(trt.mosq), data = mp)
+## 
+## $`factor(trt.mosq)`
+##           diff       lwr        upr     p adj
+## 2-1  0.2323333 -2.057239  2.5219058 0.9986342
+## 3-1  0.1320000 -2.157572  2.4215724 0.9998540
+## 4-1 -1.5673333 -3.856906  0.7222391 0.3268078
+## 5-1 -2.5336667 -4.823239 -0.2440942 0.0220410
+## 3-2 -0.1003333 -2.389906  2.1892391 0.9999510
+## 4-2 -1.7996667 -4.089239  0.4899058 0.1965293
+## 5-2 -2.7660000 -5.055572 -0.4764276 0.0093589
+## 4-3 -1.6993333 -3.988906  0.5902391 0.2476696
+## 5-3 -2.6656667 -4.955239 -0.3760942 0.0136686
+## 5-4 -0.9663333 -3.255906  1.3232391 0.7707275</code></pre>
+<p>Based on the intervals in the previous R code chunk, it can be concluded that
+treatments 1 (Odomos) and 5 (Cyfluthrin + Odomos) are significantly different, as are treatments 2 (Deltamethrin) and 5,
+and treatments 3 (Cyfluthrin) and 5.</p>
+<p>While it is easy to write a function in R to conduct the Bonferroni method, there does not appear an easy “follow up” to the ANOVA
+that prints out actual Confidence Intervals (in base R,
+anyway). There
+is an easy one for Tukey’s honest significant difference method, the <strong>TukeyHSD</strong> function (see above). Note that R takes the mean
+with the higher subscript minus the mean with the lower subscript.</p>
+<p><span class="math display">\[ \nabla \]</span></p>
+</div>
+</div>
+</div>
+<div id="randomized-block-design-rbd-for-studies-based-on-matched-units" class="section level2 hasAnchor" number="7.2">
+<h2><span class="header-section-number">7.2</span> Randomized Block Design (RBD) For Studies Based on Matched Units<a href="experimental-design-and-the-analysis-of-variance.html#randomized-block-design-rbd-for-studies-based-on-matched-units" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>In crossover designs (aka within subjects designs), each unit or subject receives each treatment. In
+these cases, units are referred to as <strong>blocks</strong>. In other studies, units or subjects may be matched based on external criteria.
+The notation for the Randomized Block Design (RBD) is very similar to that of the
+CRD, with additional elements.
+The model we are assuming here is written as follows.</p>
+<p><span class="math display">\[ Y_{ij} = \mu + \alpha_i + \beta_j + \epsilon_{ij} = \mu_i +\beta_j
++\epsilon_{ij} \quad i=1,\ldots,k; \quad j=1,\ldots,b  \]</span></p>
+<p>Here, <span class="math inline">\(\mu\)</span> represents the overall mean measurement, <span class="math inline">\(\alpha_i\)</span> is
+the (<strong>fixed</strong>) effect of the <span class="math inline">\(i^{th}\)</span> treatment, <span class="math inline">\(\beta_j\)</span> is the
+(typically <strong>random</strong>) effect of the
+<span class="math inline">\(j^{th}\)</span> block, and <span class="math inline">\(\epsilon_{ij}\)</span> is a random error component
+that can be thought of as the
+variation in measurements if the same experimental unit received the same
+treatment repeatedly. Note that just as before, <span class="math inline">\(\mu_i\)</span> represents the
+mean measurement for the <span class="math inline">\(i^{th}\)</span> treatment (across all blocks). The
+general situation will consist of an experiment with <span class="math inline">\(k\)</span> treatments
+being received by each of <span class="math inline">\(b\)</span> blocks. Blocks can be fixed or random, typically they are random.</p>
+<p>When the (random) block effects (<span class="math inline">\(\beta_j\)</span>) and random error terms
+(<span class="math inline">\(\epsilon_{ij}\)</span>) are independent and
+normally distributed, an <span class="math inline">\(F\)</span>-test is conducted that is
+similar to that described for the Completely Randomized Design, but with an extra source of variation.
+If blocks are fixed, the analysis is the same.
+The notation used is as
+follows.</p>
+<p><span class="math display">\[ N = bk \qquad
+\overline{y}_{i.} = \frac{\sum_{j=1}^{b}y_{ij}}{b} \qquad
+\overline{y}_{.j} = \frac{\sum_{i=1}^{k}y_{ij}}{k} \qquad
+\overline{y}_{..} = \frac{\sum_{i=1}^k \sum_{j=1}^{b}y_{ij}}{bk} \]</span>
+<span class="math display">\[ \mbox{Total SS: } \quad TSS =\sum_{i=1}^k \sum_{j=1}^{b} \left(y_{ij} - \overline{y}_{..} \right)^2 \qquad df_{\mbox{Tot}}=N-1=bk-1\]</span>
+<span class="math display">\[ \mbox{Treatment SS:} \quad SST =b\sum_{i=1}^k  \left(\overline{y}_{i.} - \overline{y}_{..} \right)^2 \qquad df_T=k-1\]</span>
+<span class="math display">\[ \mbox{Block SS:} \quad SSB =k\sum_{j=1}^b  \left(\overline{y}_{.j} - \overline{y}_{..} \right)^2 \qquad df_B=b-1\]</span>
+<span class="math display">\[ \mbox{Error SS: } \quad
+SSE = \sum_{i=1}^k \sum_{j=1}^{b} \left(y_{ij} - \overline{y}_{i.} - \overline{y}_{.j}  + \overline{y}_{..} \right)^2  \qquad df_E
+= (b-1)(k-1) \]</span></p>
+<p>Note that the Analysis of Variance simply has added items representing the block means
+<span class="math inline">\(\left(\overline{y}_{.j}\right)\)</span> and variation among the block means (<span class="math inline">\(SSB\)</span>). We can further
+think of this as decomposing the total variation into differences among the
+treatment means (<span class="math inline">\(SST\)</span>), differences among the block means (<span class="math inline">\(SSB\)</span>), and
+random variation not explained by either differences among treatment or block means (<span class="math inline">\(SSE\)</span>). Also, note that <span class="math inline">\(SSE=TSS-SST-SSB\)</span>.</p>
+<table>
+<caption><span id="tab:rbdaov1">Table 7.6: </span>The Analysis of Variance Table for the Randomized Block Design</caption>
+<colgroup>
+<col width="14%" />
+<col width="25%" />
+<col width="19%" />
+<col width="27%" />
+<col width="13%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Source</th>
+<th align="left">Degrees of Freedom</th>
+<th align="left">Sum of Squares</th>
+<th align="left">Mean Square</th>
+<th align="left"><span class="math inline">\(F_{obs}\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Treatments</td>
+<td align="left">k-1</td>
+<td align="left">SST</td>
+<td align="left">MST=SST/(k-1)</td>
+<td align="left">F=MST/MSE</td>
+</tr>
+<tr class="even">
+<td align="left">Blocks</td>
+<td align="left">b-1</td>
+<td align="left">SSB</td>
+<td align="left">MSB=SSB/(b-1)</td>
+<td align="left">F=MSB/MSE</td>
+</tr>
+<tr class="odd">
+<td align="left">Error</td>
+<td align="left">(b-1)(k-1)</td>
+<td align="left">SSE</td>
+<td align="left">MSE=SSE/[(b-1)(k-1)]</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">Total</td>
+<td align="left">N-1</td>
+<td align="left">TSS</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<p>Once again, the main purpose for conducting this type of experiment is
+to detect differences among the treatment means (treatment effects). The
+test is very similar to that of the CRD, with only minor adjustments. We
+often are not interested in testing for differences among blocks, since we
+expect there to be differences among them (that’s why the
+design was set up this way), and they were just a random
+sample from a population of such experimental units. However, in some cases, estimating the unit to unit (subject to subject) variance component is of interest.
+The testing procedure can be described as follows.</p>
+<ul>
+<li><span class="math inline">\(H_0: \alpha _1 = \cdots = \alpha_k = 0  \quad (\mu_1 = \cdots = \mu_k)\)</span>
+(No treatment effect)</li>
+<li><span class="math inline">\(H_A: \mbox{ Not all } \alpha_i\)</span> are 0 (Treatment effects exist)</li>
+<li>T.S. <span class="math inline">\(F_{obs} = \frac{MST}{MSE}\)</span></li>
+<li>R.R.: <span class="math inline">\(F_{obs} \geq F_{\alpha, k-1, (b-1)(k-1)}\)</span></li>
+<li>p-value: <span class="math inline">\(P(F_{k-1, (b-1)(k-1)} \geq F_{obs})\)</span></li>
+</ul>
+<p>The procedures to make comparisons among means are
+very similar to the methods used for the CRD. In each formula
+described previously for
+Bonferroni’s, and Tukey’s methods, <span class="math inline">\(n_i\)</span> is replaced
+by <span class="math inline">\(b\)</span>, when making comparisons among treatment means, and <span class="math inline">\(\nu=(b-1)(k-1)\)</span> is the error degrees of freedom.</p>
+<p><strong>Example 7.7: Comparison of 3 Methods for Estimating Value of Wood Logs</strong></p>
+<p>A study compared 3 methods of assessing the lumber value of logs <span class="citation">(<a href="#ref-lin_2012">Lin and Wang 2016</a>)</span>. The <span class="math inline">\(k=3\)</span> treatments the authors compared
+was the actual sawmill value of the log, a value based on a heuristic programming algorithm, and a value based on a dynamic programming algorithm.
+The “treatments” were each measured on <span class="math inline">\(b=30\)</span> logs (acting as the blocks). The goal was to compare the 3 treatments at valuating the logs.
+Data are given in Table <a href="experimental-design-and-the-analysis-of-variance.html#tab:logvalue1">7.7</a>. A crude interaction plot is given in Figure <a href="experimental-design-and-the-analysis-of-variance.html#fig:logvalue2">7.5</a>, which plots
+the valuation versus log ID, with separate lines for the three methods.</p>
+<pre><code>##   lumTrt lumBlk lumVal lumVol
+## 1      1      1  17.67  0.090
+## 2      1      2  31.76  0.123</code></pre>
+<pre><code>## [1]       NA 24.87433 26.81200 27.43267 26.37300</code></pre>
+<table>
+<caption><span id="tab:logvalue1">Table 7.7: </span>Measurements, Block Means, and Treatment Means for log valuation experiment</caption>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="right">Log ID</th>
+<th align="right">Trt1</th>
+<th align="right">Trt2</th>
+<th align="right">Trt3</th>
+<th align="right">Log Mean</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"></td>
+<td align="right">1</td>
+<td align="right">17.670</td>
+<td align="right">20.830</td>
+<td align="right">21.030</td>
+<td align="right">19.843</td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="right">2</td>
+<td align="right">31.760</td>
+<td align="right">35.050</td>
+<td align="right">34.240</td>
+<td align="right">33.683</td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="right">3</td>
+<td align="right">30.770</td>
+<td align="right">33.600</td>
+<td align="right">34.870</td>
+<td align="right">33.080</td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="right">4</td>
+<td align="right">40.270</td>
+<td align="right">42.520</td>
+<td align="right">42.890</td>
+<td align="right">41.893</td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="right">5</td>
+<td align="right">33.510</td>
+<td align="right">35.060</td>
+<td align="right">36.480</td>
+<td align="right">35.017</td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="right">6</td>
+<td align="right">23.070</td>
+<td align="right">25.370</td>
+<td align="right">26.340</td>
+<td align="right">24.927</td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="right">7</td>
+<td align="right">21.330</td>
+<td align="right">21.950</td>
+<td align="right">23.000</td>
+<td align="right">22.093</td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="right">8</td>
+<td align="right">26.280</td>
+<td align="right">28.070</td>
+<td align="right">28.690</td>
+<td align="right">27.680</td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="right">9</td>
+<td align="right">28.890</td>
+<td align="right">31.940</td>
+<td align="right">32.490</td>
+<td align="right">31.107</td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="right">10</td>
+<td align="right">18.460</td>
+<td align="right">19.140</td>
+<td align="right">21.760</td>
+<td align="right">19.787</td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="right">11</td>
+<td align="right">35.610</td>
+<td align="right">38.180</td>
+<td align="right">39.870</td>
+<td align="right">37.887</td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="right">12</td>
+<td align="right">23.150</td>
+<td align="right">25.670</td>
+<td align="right">27.220</td>
+<td align="right">25.347</td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="right">13</td>
+<td align="right">18.030</td>
+<td align="right">19.580</td>
+<td align="right">20.700</td>
+<td align="right">19.437</td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="right">14</td>
+<td align="right">28.220</td>
+<td align="right">30.890</td>
+<td align="right">30.050</td>
+<td align="right">29.720</td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="right">15</td>
+<td align="right">20.330</td>
+<td align="right">21.360</td>
+<td align="right">21.620</td>
+<td align="right">21.103</td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="right">16</td>
+<td align="right">12.420</td>
+<td align="right">13.010</td>
+<td align="right">14.020</td>
+<td align="right">13.150</td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="right">17</td>
+<td align="right">21.900</td>
+<td align="right">24.520</td>
+<td align="right">25.060</td>
+<td align="right">23.827</td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="right">18</td>
+<td align="right">36.160</td>
+<td align="right">38.120</td>
+<td align="right">38.860</td>
+<td align="right">37.713</td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="right">19</td>
+<td align="right">13.730</td>
+<td align="right">14.740</td>
+<td align="right">15.120</td>
+<td align="right">14.530</td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="right">20</td>
+<td align="right">15.740</td>
+<td align="right">17.960</td>
+<td align="right">18.000</td>
+<td align="right">17.233</td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="right">21</td>
+<td align="right">19.220</td>
+<td align="right">20.690</td>
+<td align="right">20.830</td>
+<td align="right">20.247</td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="right">22</td>
+<td align="right">17.120</td>
+<td align="right">19.120</td>
+<td align="right">19.310</td>
+<td align="right">18.517</td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="right">23</td>
+<td align="right">15.210</td>
+<td align="right">16.420</td>
+<td align="right">16.630</td>
+<td align="right">16.087</td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="right">24</td>
+<td align="right">22.030</td>
+<td align="right">23.580</td>
+<td align="right">24.240</td>
+<td align="right">23.283</td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="right">25</td>
+<td align="right">31.220</td>
+<td align="right">32.660</td>
+<td align="right">32.900</td>
+<td align="right">32.260</td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="right">26</td>
+<td align="right">25.690</td>
+<td align="right">28.390</td>
+<td align="right">28.810</td>
+<td align="right">27.630</td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="right">27</td>
+<td align="right">29.250</td>
+<td align="right">31.630</td>
+<td align="right">30.720</td>
+<td align="right">30.533</td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="right">28</td>
+<td align="right">32.770</td>
+<td align="right">33.290</td>
+<td align="right">35.870</td>
+<td align="right">33.977</td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="right">29</td>
+<td align="right">31.880</td>
+<td align="right">34.790</td>
+<td align="right">34.820</td>
+<td align="right">33.830</td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="right">30</td>
+<td align="right">24.540</td>
+<td align="right">26.230</td>
+<td align="right">26.540</td>
+<td align="right">25.770</td>
+</tr>
+<tr class="odd">
+<td align="left">Trt.mean</td>
+<td align="right">NA</td>
+<td align="right">24.874</td>
+<td align="right">26.812</td>
+<td align="right">27.433</td>
+<td align="right">26.373</td>
+</tr>
+</tbody>
+</table>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:logvalue2"></span>
+<img src="STA2170bookdownproj_files/figure-html/logvalue2-1.png" alt="Log Valuation vs Log ID with separate lines by treatment (valuation method)" width="80%" />
+<p class="caption">
+Figure 7.5: Log Valuation vs Log ID with separate lines by treatment (valuation method)
+</p>
+</div>
+<p>The calculations for the Analysis of Variance are given below.</p>
+<p><span class="math display">\[ TSS=(17.67-26.3730)^2 + \cdots + (26.54-26.3730)^2 = 5170.073\]</span> <span class="math display">\[ df=30(3)-1 = 89  \]</span>
+<span class="math display">\[ SST = 30\left[(24.8743-26.3730)^2+(26.8120-26.3730)^2+(27.4327-26.3730)^2\right] = 106.8536 \]</span>
+<span class="math display">\[df_T=3-1=2 \qquad MST=\frac{106.8536}{2} = 53.4268\]</span>
+<span class="math display">\[ SSB = 3\left[(19.8433-26.3730)^2 + \cdots + (25.7700-26.3730)^2\right] = 5042.772\]</span>
+<span class="math display">\[  df_B=30-1=29 \qquad MSB=\frac{5042.772}{29}=173.89 \]</span>
+<span class="math display">\[ SSE = (17.67-19.8433-24.8743+26.3730)^2+ \cdots +(26.54-25.7700-26.4327+26.3730)^2 = \]</span>
+<span class="math display">\[ =5170.073-106.8536-5042.772=20.448 = SSE \]</span>
+<span class="math display">\[ df_E=(30-1)(3-1)=58\qquad MSE=\frac{20.448}{58}=0.353 \]</span></p>
+<p>We can now test for treatment effects, and if necessary use Tukey’s method
+to make pairwise comparisons among the three methods (<span class="math inline">\(\alpha_E=0.05\)</span> significance
+level).</p>
+<ul>
+<li><span class="math inline">\(H_0: \alpha_1 = \alpha_2 = \alpha_3 = 0  \quad (\mu_1 = \mu_2 = \mu_3)\)</span>
+(No differences among valuation method means)</li>
+<li><span class="math inline">\(H_A: \mbox{ Not all } \alpha_i=0\)</span> (Valuation differences exist)</li>
+<li>T.S. <span class="math inline">\(F_{obs} = \frac{MST}{MSE}=151.546\)</span></li>
+<li>R.R.: <span class="math inline">\(F_{obs} \geq F_{\alpha, k-1, (b-1)(k-1)}=F_{0.05,2,58}=3.156\)</span></li>
+<li>p-value: <span class="math inline">\(P=P(F_{2,58} \geq F_{obs})=P(F_{2,58}\geq 151.546)=0.0000\)</span></li>
+</ul>
+<p>Tukey’s method is used to determine which valuation methods
+differ significantly. Recall that for Tukey’s method,
+simultaneous confidence intervals of the form given below are computed, with
+<span class="math inline">\(k\)</span> being the number of treatments (<span class="math inline">\(k\)</span>=3), <span class="math inline">\(b\)</span> being the number of blocks, and <span class="math inline">\(n_i\)</span> the number of measurements per
+valuation method (<span class="math inline">\(n_i=b=30\)</span>).</p>
+<p><span class="math display">\[ \left(\overline{y}_{i.} - \overline{y}_{i&#39;.}\right) \pm q_{\alpha,k, (b-1)(k-1)} \sqrt{MSE\left(\frac{1}{n_i}\right)} \]</span>
+<span class="math display">\[\quad \Longrightarrow \quad
+\left(\overline{y}_{i.} - \overline{y}_{i&#39;.}\right) \pm 3.402 \sqrt{0.353\left(\frac{1}{30}\right)} \quad
+\Longrightarrow \left(\overline{y}_{i.} - \overline{y}_{i&#39;.}\right) \pm 0.369
+\]</span></p>
+<p>We fit the Analysis of Variance using the <strong>aov</strong> function in R and
+obtain the Tukey simultaneous Confidence Intervals in the following R code chunk.</p>
+<pre><code>## Analysis of Variance Table
+## 
+## Response: lumVal
+##           Df Sum Sq Mean Sq F value    Pr(&gt;F)    
+## lumTrt.f   2  106.8  53.424  151.53 &lt; 2.2e-16 ***
+## lumBlk.f  29 5042.8 173.889  493.21 &lt; 2.2e-16 ***
+## Residuals 58   20.4   0.353                      
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<pre><code>##   Tukey multiple comparisons of means
+##     95% family-wise confidence level
+## 
+## Fit: aov(formula = lumVal ~ lumTrt.f + lumBlk.f, data = lv)
+## 
+## $lumTrt.f
+##                        diff       lwr       upr    p adj
+## Heuristic-Actual  1.9376667 1.5689056 2.3064277 0.000000
+## Dynamic-Actual    2.5583333 2.1895723 2.9270944 0.000000
+## Dynamic-Heuristic 0.6206667 0.2519056 0.9894277 0.000449</code></pre>
+<p>Conclude that Actual sawmill valuation is significantly lower than Heuristic, which is significantly lower than Dynamic.</p>
+<p>Note that to run this in R, it is necessary to have a separate row for each observation, along with a treatment ID and block ID (as was used in the previous R code chunk).</p>
+<p><span class="math display">\[\nabla \]</span></p>
+</div>
+<div id="factorial-designs" class="section level2 hasAnchor" number="7.3">
+<h2><span class="header-section-number">7.3</span> Factorial Designs<a href="experimental-design-and-the-analysis-of-variance.html#factorial-designs" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>In many cases, the research is interested in whether multiple factors have effects on responses, and whether
+the effects of the individual factor levels depend on the levels of the remaining factor(s). We will consider only the case of two
+treatment factors: <span class="math inline">\(A\)</span> with <span class="math inline">\(a\)</span> levels and <span class="math inline">\(B\)</span> with <span class="math inline">\(b\)</span> levels. Further, we will only consider the case where there are <span class="math inline">\(n\)</span>
+observation within each of the <span class="math inline">\(ab\)</span> treatments (the crossing of the levels of factors <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>).</p>
+<p>In this section, models with two factors are considered.<br />
+Denoting the <span class="math inline">\(k^{th}\)</span> measurement
+observed under the <span class="math inline">\(i^{th}\)</span> level of factor <span class="math inline">\(A\)</span> and the <span class="math inline">\(j^{th}\)</span> level
+of factor <span class="math inline">\(B\)</span>, the<br />
+model is written as follows.</p>
+<p><span class="math display">\[ Y_{ijk} = \mu_{ij} + \epsilon_{ijk} = \mu + \alpha_i + \beta_j + (\alpha \beta)_{ij} + \epsilon_{ijk}  \]</span> <span class="math display">\[i=1,\ldots,a;\quad j=1,\ldots,b;\quad  k=1,\ldots,n \qquad \epsilon_{ijk}\sim
+N\left(0,\sigma\right)  \]</span></p>
+<p>Here <span class="math inline">\(\mu\)</span> is the overall mean, <span class="math inline">\(\alpha_i\)</span> is the effect of the
+<span class="math inline">\(i^{th}\)</span> level of factor <span class="math inline">\(A\)</span>, <span class="math inline">\(\beta_j\)</span> is the effect of the <span class="math inline">\(j^{th}\)</span>
+level of factor <span class="math inline">\(B\)</span>, <span class="math inline">\((\alpha \beta)_{ij}\)</span> is the effect of the
+interaction of the <span class="math inline">\(i^{th}\)</span>
+level of factor <span class="math inline">\(A\)</span> and the <span class="math inline">\(j^{th}\)</span> level of factor <span class="math inline">\(B\)</span>, and
+<span class="math inline">\(\epsilon_{ijk}\)</span> is the random error term representing the fact that
+units within each treatment combination will vary, as well as
+if the same unit were measured repeatedly, its measurements would vary.
+Here, we consider the model where both factors <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are <strong>fixed</strong>,
+with all levels of interest present in the study.</p>
+<p>Note that an interaction represents the fact that the effect of a particular level of factor <span class="math inline">\(A\)</span> depends on the level of factor <span class="math inline">\(B\)</span>, and vice versa.
+As before, we assume
+that <span class="math inline">\(\epsilon_{ijk}\)</span> is normally distributed with mean 0 and variance
+<span class="math inline">\(\sigma^2\)</span>.</p>
+<p>When factors <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are fixed, the effects are unknown parameters to be estimated. One common way of parameterizing the model is as follows.</p>
+<p><span class="math display">\[ E\left\{Y_{ijk}\right\}=\mu + \alpha_i + \beta_j + (\alpha \beta)_{ij} \qquad\qquad V\left\{Y_{ijk}\right\}=\sigma^2 \]</span>
+<span class="math display">\[ \sum_{i=1}^a\alpha_i=\sum_{j=1}^b\beta_j=\sum_{i=1}^a(\alpha \beta)_{ij}=\sum_{j=1}^b(\alpha \beta)_{ij}=0 \]</span></p>
+<p>Some interesting hypotheses to test are as follow.</p>
+<ul>
+<li><span class="math inline">\(H_0^{AB}: (\alpha \beta)_{11} = \cdots = (\alpha \beta)_{ab} = 0\)</span> (No
+interaction effect).</li>
+<li><span class="math inline">\(H_0^A: \alpha_1 = \cdots = \alpha_a =0\)</span> (No effects among the
+levels of factor <span class="math inline">\(A\)</span>)</li>
+<li><span class="math inline">\(H_0^B: \beta_1 = \cdots = \beta_b =0\)</span> (No effects among the
+levels of factor <span class="math inline">\(B\)</span>)</li>
+</ul>
+<p>The total variation in the set of observed measurements can be
+decomposed into four parts: variation in the means of the levels of
+factor <span class="math inline">\(A\)</span>, variation in the means of the levels of factor <span class="math inline">\(B\)</span>,
+variation due to the interaction of factors <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>, and error
+variation. The formulas for the sums of squares are
+given here (but will not be pursued further in this course).</p>
+<p><span class="math display">\[\overline{y}_{ij.} = \frac{\sum_{k=1}^{n}y_{ijk}}{n} \qquad \qquad
+\overline{y}_{i..} = \frac{\sum_{j=1}^{b}\sum_{k=1}^{n}y_{ijk}}{bn} \]</span>
+<span class="math display">\[ \overline{y}_{.j.} = \frac{\sum_{i=1}^{a}\sum_{k=1}^{n}y_{ijk}}{an} \qquad \qquad
+\overline{y}_{...} = \frac{\sum_{i=1}^{a}\sum_{j=1}^{b}\sum_{k=1}^{n}y_{ijk}}{abn} \]</span>
+<span class="math display">\[ N = abn \qquad \qquad
+s_{ij}^2 = \frac{\sum_{k=1}^n\left(y_{ijk}-\overline{y}_{ij.}\right)^2}{n-1} \]</span></p>
+<p><span class="math display">\[\mbox{Total SS: } \quad TSS =\sum_{i=1}^a \sum_{j=1}^{b}\sum_{k=1}^n  \left(y_{ijk} - \overline{y}_{...} \right)^2 \qquad df_{\mbox{Tot}}=N-1 \]</span></p>
+<p><span class="math display">\[ \mbox{Factor A SS: } \quad SSA =
+bn\sum_{i=1}^a  \left(\overline{y}_{i..} - \overline{y}_{...} \right)^2
+\quad df_A=a-1   \quad MSA=\frac{SSA}{a-1}\]</span></p>
+<p><span class="math display">\[ \mbox{Factor B SS: } \quad SSB =
+an\sum_{j=1}^b  \left(\overline{y}_{.j.} - \overline{y}_{...} \right)^2
+\quad df_B=b-1 \quad MSB=\frac{SSB}{b-1} \]</span></p>
+<p><span class="math display">\[ \mbox{Interaction AB SS: } \quad SSAB =
+n\sum_{i=1}^a \sum_{j=1}^{b}  \left(\overline{y}_{ij.}-\overline{y}_{i..}-\overline{y}_{.j.}+  \overline{y}_{...} \right)^2 \]</span>
+<span class="math display">\[ df_{AB}=(a-1)(b-1) \qquad \qquad MSAB = \frac{SSAB}{(a-1)(b-1)}\]</span></p>
+<p><span class="math display">\[ \mbox{Error SS: } \quad SSE =
+\sum_{i=1}^a \sum_{j=1}^{b}\sum_{k=1}^n  \left(y_{ijk} - \overline{y}_{ij.} \right)^2  \quad
+df_E = ab(n-1) \quad MSE = \frac{SSE}{ab(n-1)}\]</span></p>
+<p>The error sum of squares can also be computed from the within cell standard deviations, which is helpful as many research articles
+provide the treatment means and standard deviations.</p>
+<p><span class="math display">\[ SSE = \sum_{i=1}^a \sum_{j=1}^{b}\sum_{k=1}^n  \left(y_{ijk} - \overline{y}_{ij.} \right)^2 =(n-1) \sum_{i=1}^a \sum_{j=1}^{b}s_{ij}^2 \]</span></p>
+<p>Note that this type of analysis,
+is almost always done on a computer. The analysis of variance can be set
+up as shown in Table <a href="experimental-design-and-the-analysis-of-variance.html#tab:facaov1">7.8</a>, assuming that <span class="math inline">\(n\)</span> measurements are
+made at each combination of levels of the two factors.</p>
+<table>
+<caption><span id="tab:facaov1">Table 7.8: </span>The Analysis of Variance Table for the 2-Factor Fixed Effects Design</caption>
+<colgroup>
+<col width="22%" />
+<col width="16%" />
+<col width="7%" />
+<col width="34%" />
+<col width="19%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Source</th>
+<th align="left">df</th>
+<th align="left">SS</th>
+<th align="left">MS</th>
+<th align="left"><span class="math inline">\(F_{obs}\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Factor A</td>
+<td align="left">a-1</td>
+<td align="left">SSA</td>
+<td align="left">MSA=SSA/(a-1)</td>
+<td align="left">FA=MSA/MSE</td>
+</tr>
+<tr class="even">
+<td align="left">Factor B</td>
+<td align="left">b-1</td>
+<td align="left">SSB</td>
+<td align="left">MSB=SSB/(b-1)</td>
+<td align="left">FB=MSB/MSE</td>
+</tr>
+<tr class="odd">
+<td align="left">Interaction AB</td>
+<td align="left">(a-1)(b-1)</td>
+<td align="left">SSAB</td>
+<td align="left">MSAB=SSAB/[(a-1)(b-1)]</td>
+<td align="left">FAB=MSAB/MSE</td>
+</tr>
+<tr class="even">
+<td align="left">Error</td>
+<td align="left">ab(n-1)</td>
+<td align="left">SSE</td>
+<td align="left">MSE=SSE/[ab(n-1)]</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">Total</td>
+<td align="left">N-1</td>
+<td align="left">TSS</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<p>The tests for interactions and for effects of factors <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>
+involve the three <span class="math inline">\(F\)</span>-statistics, and can be conducted as follow. Note that under each of the three null hypotheses,
+the corresponding expected mean square in the numerator simplifies to <span class="math inline">\(\sigma^2=E\left\{MSE\right\}\)</span>.</p>
+<ul>
+<li><span class="math inline">\(H_0^{AB}: (\alpha \beta)_{11} = \cdots = (\alpha \beta)_{ab} = 0\)</span> (No
+interaction effect).</li>
+<li><span class="math inline">\(H_A^{AB}:\)</span> Not all <span class="math inline">\((\alpha \beta)_{ij} = 0\)</span> (Interaction effects
+exist)</li>
+<li>T.S.: <span class="math inline">\(F_{AB} = \frac{MSAB}{MSE}\)</span></li>
+<li>R.R.: <span class="math inline">\(F_{AB} \geq F_{\alpha, (a-1)(b-1), ab(n-1)}\)</span></li>
+<li>p-value: <span class="math inline">\(P=P\left(F_{(a-1)(b-1),ab(n-1)} \geq F_{AB}\right)\)</span></li>
+</ul>
+<p>Assuming no interaction effects exist, we can test for differences among
+the effects of the levels of factor <span class="math inline">\(A\)</span> as follows.</p>
+<ul>
+<li><span class="math inline">\(H_0^A: \alpha_1 = \cdots = \alpha_a = 0\)</span> (No
+factor <span class="math inline">\(A\)</span> effect).</li>
+<li><span class="math inline">\(H_A^A:\)</span> Not all <span class="math inline">\(\alpha_i = 0\)</span> (Factor <span class="math inline">\(A\)</span> effects
+exist)</li>
+<li>T.S. <span class="math inline">\(F_{A} = \frac{MSA}{MSE}\)</span></li>
+<li>R.R.: <span class="math inline">\(F_{A} \geq  F_{\alpha, (a-1), ab(n-1)}\)</span></li>
+<li>p-value: <span class="math inline">\(P=P\left(F_{a-1,ab(n-1)} \geq F_A\right)\)</span></li>
+</ul>
+<p>Assuming no interaction effects exist, we can test for differences among
+the effects of the levels of factor <span class="math inline">\(B\)</span> as follows.</p>
+<ul>
+<li><span class="math inline">\(H_0^B: \beta_1 = \cdots = \beta_b = 0\)</span> (No
+factor <span class="math inline">\(B\)</span> effect).</li>
+<li><span class="math inline">\(H_A^B:\)</span> Not all <span class="math inline">\(\beta_j = 0\)</span> (Factor <span class="math inline">\(B\)</span> effects
+exist)</li>
+<li>T.S. <span class="math inline">\(F_B = \frac{MSB}{MSE}\)</span></li>
+<li>R.R.: <span class="math inline">\(F_B \geq F_{\alpha, (b-1), ab(n-1)}\)</span></li>
+<li>p-value: <span class="math inline">\(P=P\left(F_{(b-1), ab(n-1)} \geq F_{obs}\right)\)</span></li>
+</ul>
+<p>Note that if we conclude interaction effects exist, we usually look at
+the individual combinations of factors <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> separately
+(as in the Completely Randomized Design), and don’t
+conduct the last two tests, although software packages print them out.</p>
+<p><strong>Example 7.8: Espresso Foam Index by Temperature and Extraction Pressure</strong></p>
+<p>An experiment was conducted to measure foam index <span class="math inline">\((Y)\)</span> of espresso samples brewed at <span class="math inline">\(a=3\)</span> levels of temperature (factor <span class="math inline">\(A\)</span>: 75C, 85C, 95C)
+and <span class="math inline">\(b=2\)</span> extraction pressures (factor <span class="math inline">\(B\)</span>: 15bar, 20bar) with <span class="math inline">\(n=9\)</span> replicates per treatment <span class="citation">(<a href="#ref-masella_2015">Masella et al. 2015</a>)</span>. The sample means (standard
+deviations), temperature means, pressure means, and overall mean are given in Table <a href="experimental-design-and-the-analysis-of-variance.html#tab:foamindex1">7.9</a>.
+Note that at 75C, Foam Index increases by <span class="math inline">\(135.0-113.4=21.6\)</span> when pressure increases from 15 to 20. Similarly, the changes are
+11.4 and 26.5 for 85C and 95C, respectively. Those are fairly similar increases, but we will test formally for the interaction below.</p>
+<table>
+<caption><span id="tab:foamindex1">Table 7.9: </span>Espresso foam index mean (sd) by Temperature and Pressure</caption>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="left">Temp</th>
+<th align="left">15bar (j=1)</th>
+<th align="left">20bar (j=2)</th>
+<th align="left">Temp Mean</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">(i=1)</td>
+<td align="left">75C</td>
+<td align="left">113.4 (15.0)</td>
+<td align="left">135.0 (27.5)</td>
+<td align="left">124.20</td>
+</tr>
+<tr class="even">
+<td align="left">(i=2)</td>
+<td align="left">85C</td>
+<td align="left">102.4 (12.2)</td>
+<td align="left">113.8 (20.5)</td>
+<td align="left">108.10</td>
+</tr>
+<tr class="odd">
+<td align="left">(1=3)</td>
+<td align="left">95C</td>
+<td align="left">91.1 (12.9)</td>
+<td align="left">117.6 (21.7)</td>
+<td align="left">104.35</td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="left">Press Mean</td>
+<td align="left">102.30</td>
+<td align="left">122.13</td>
+<td align="left">112.22</td>
+</tr>
+</tbody>
+</table>
+<p>The sums of squares are set-up below., The Analysis of Variance
+is given in Table <a href="experimental-design-and-the-analysis-of-variance.html#tab:foamindex2">7.10</a>.
+The Analysis of Variance obtained from the <strong>aov</strong> function is
+given in the following R code chunk.</p>
+<p><span class="math display">\[ SSA = 2(9)\left[(124.20-112.22)^2+(108.10-112.22)^2+(104.35-112.22)^2\right] = 4004 \]</span>
+<span class="math display">\[ df_A=3-1=2 \qquad \qquad MSA = \frac{4004}{2}=2002 \]</span></p>
+<p><span class="math display">\[ SSB = 3(9)\left[(102.30-112.22)^2+(122.13-112.22)^2\right] = 5309\]</span>
+<span class="math display">\[ df_B = 2-1 =1 \qquad \qquad MSB=\frac{5309}{1}=5309 \]</span></p>
+<p><span class="math display">\[ SSAB = 9\left[(113.4-124.20-102.30+112.22)^2+\cdots \right] = 534 \]</span>
+<span class="math display">\[ df_{AB} = 2(1)=2 \qquad MSAB=\frac{534}{2} = 267\]</span></p>
+<p><span class="math display">\[ SSE = (9-1)\left[15.0^2+\cdots +21.7^2\right] = 17501\]</span>
+<span class="math display">\[df_E=3(2)(9-1) = 48 \qquad \qquad MSE=\frac{17501}{48}=364.60\]</span></p>
+<table>
+<caption><span id="tab:foamindex2">Table 7.10: </span>Analysis of Variance Table for Espresso Foam Index experiment</caption>
+<thead>
+<tr class="header">
+<th align="left">Source</th>
+<th align="left"><span class="math inline">\(df\)</span></th>
+<th align="left"><span class="math inline">\(SS\)</span></th>
+<th align="left"><span class="math inline">\(MS\)</span></th>
+<th align="left"><span class="math inline">\(F_{obs}\)</span></th>
+<th align="left"><span class="math inline">\(P(&gt;F_{obs})\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Temperature (A)</td>
+<td align="left">2</td>
+<td align="left">4004</td>
+<td align="left">2002</td>
+<td align="left">5.485</td>
+<td align="left">.0072</td>
+</tr>
+<tr class="even">
+<td align="left">Pressure (B)</td>
+<td align="left">1</td>
+<td align="left">5309</td>
+<td align="left">5309</td>
+<td align="left">14.545</td>
+<td align="left">.0004</td>
+</tr>
+<tr class="odd">
+<td align="left">Interaction (AB)</td>
+<td align="left">2</td>
+<td align="left">534</td>
+<td align="left">267</td>
+<td align="left">0.732</td>
+<td align="left">.4862</td>
+</tr>
+<tr class="even">
+<td align="left">Error</td>
+<td align="left">48</td>
+<td align="left">17501</td>
+<td align="left">365</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">Total</td>
+<td align="left">53</td>
+<td align="left">27348</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<pre><code>##   foamIndx trt_id tempC prssBar
+## 1    94.21      1    75      15
+## 2   120.39      1    75      15</code></pre>
+<pre><code>## Analysis of Variance Table
+## 
+## Response: foamIndx
+##                   Df  Sum Sq Mean Sq F value    Pr(&gt;F)    
+## tempC.f            2  4003.9  2001.9  5.4906 0.0071231 ** 
+## prssBar.f          1  5310.4  5310.4 14.5645 0.0003876 ***
+## tempC.f:prssBar.f  2   534.0   267.0  0.7323 0.4860753    
+## Residuals         48 17501.3   364.6                      
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<pre><code>##   Tukey multiple comparisons of means
+##     95% family-wise confidence level
+## 
+## Fit: aov(formula = foamIndx ~ tempC.f * prssBar.f, data = etp)
+## 
+## $tempC.f
+##             diff       lwr        upr     p adj
+## 85-75 -16.100556 -31.49407 -0.7070449 0.0385233
+## 95-75 -19.850000 -35.24351 -4.4564893 0.0084704
+## 95-85  -3.749444 -19.14296 11.6440662 0.8266145</code></pre>
+<pre><code>##   Tukey multiple comparisons of means
+##     95% family-wise confidence level
+## 
+## Fit: aov(formula = foamIndx ~ tempC.f * prssBar.f, data = etp)
+## 
+## $prssBar.f
+##           diff      lwr      upr     p adj
+## 20-15 19.83333 9.384174 30.28249 0.0003876</code></pre>
+<p>Thus, there are significant main effects for Temperature and Pressure, but the interaction is not significant. The R code chunk and output for
+the analysis (including Tukey’s comparisons among Temperature and Pressure effects individually is given above). Note,
+the R program uses more internal decimal places than the computations above. Foam Index is significantly higher at 75C than 85C and 95C.
+The Foam Index at 85C and 95C are not significantly different. It is significantly higher at 20bar than 15bar.</p>
+<p>An interaction plot is given in Figure <a href="experimental-design-and-the-analysis-of-variance.html#fig:foamindex3">7.6</a>.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:foamindex3"></span>
+<img src="STA2170bookdownproj_files/figure-html/foamindex3-1.png" alt="Foam Index vs Barometric Pressure with separate lines by Temperature" width="80%" />
+<p class="caption">
+Figure 7.6: Foam Index vs Barometric Pressure with separate lines by Temperature
+</p>
+</div>
+<p><span class="math display">\[\nabla \]</span></p>
+
+<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="experimental-design-and-the-analysis-of-variance.html#cb78-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb78-2"><a href="experimental-design-and-the-analysis-of-variance.html#cb78-2" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span></code></pre></div>
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
+<div id="ref-bhatnagar_2007" class="csl-entry">
+Bhatnagar, A., and V. K. Mehta. 2007. <span>“Efficacy of Deltamethrin and Cyfluthrin Impregnated Cloth over Uniform Against Mosquito Bites.”</span> <em>Medical Journal Armed Forces India</em> 63: 120–22.
+</div>
+<div id="ref-lin_2012" class="csl-entry">
+Lin, W., and J. Wang. 2016. <span>“An Integrated 3D Log Processing Optimization System for Hardwood Sawmills in Central Appalachia, USA.”</span> <em>Computers and Electronics in Agriculture</em> 82: 42–47.
+</div>
+<div id="ref-masella_2015" class="csl-entry">
+Masella, P., L. Guerrini, S. Spinelli, L. Calamai, P. Spugnoli, F. Illy, and A. Parenti. 2015. <span>“A New Espresso Brewing Method.”</span> <em>Journal of Food Engineering</em> 146: 204–8.
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="comparing-two-population-means.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="categorical-data-analysis.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": "https://github.com/LarryWinner/STA2170-Notes1/edit/main/07.Rmd",
+    "text": "Edit"
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": null,
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "subsection"
+  }
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

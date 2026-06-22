@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Statistics and the Physical World</title>
+  <title>Chapter 1 Introduction | Statistics and the Physical World</title>
   <meta name="description" content="This is an Introduction to Statistics with applications from the physical world. We will make use of the R programming language for computations." />
   <meta name="generator" content="bookdown 0.43 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Statistics and the Physical World" />
+  <meta property="og:title" content="Chapter 1 Introduction | Statistics and the Physical World" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="This is an Introduction to Statistics with applications from the physical world. We will make use of the R programming language for computations." />
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Statistics and the Physical World" />
+  <meta name="twitter:title" content="Chapter 1 Introduction | Statistics and the Physical World" />
   
   <meta name="twitter:description" content="This is an Introduction to Statistics with applications from the physical world. We will make use of the R programming language for computations." />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-<link rel="next" href="intro.html"/>
+<link rel="prev" href="index.html"/>
+<link rel="next" href="describing-data.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -283,42 +283,365 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">Statistics and the Physical World</h1>
-<p class="author"><em>Larry Winner</em></p>
-<p class="date"><em>2026-06-22</em></p>
+<div id="intro" class="section level1 hasAnchor" number="1">
+<h1><span class="header-section-number">Chapter 1</span> Introduction<a href="intro.html#intro" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="basic-concepts-of-statistical-analysis" class="section level2 hasAnchor" number="1.1">
+<h2><span class="header-section-number">1.1</span> Basic Concepts of Statistical Analysis<a href="intro.html#basic-concepts-of-statistical-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Statistical tools and methods are used to describe data and make inferences regarding states of nature in a wide variety of areas of study.
+From simple graphs and numeric summaries provided in mainstream press to highly complex models used to describe measurements across a wide
+range of individuals or sampling units, we see reports making use of statistical tools and methods constantly. We will go through many of
+the commonly used methods in these notes.</p>
+<p>After a brief introduction to <strong>descriptive statistics</strong>, making use of numeric and graphical summaries of variables, we will spend the
+remainder of the notes on <strong>inferential statistics</strong> that make use of information from a sample to make statements regarding a larger population of
+units. When conducting a study, researchers typically use the following strategy known as the
+<strong>Scientific Method</strong>.</p>
+<ul>
+<li>Define the problem/research question of interest, including what to measure and all relevant conditions or groups to study.</li>
+<li>Generate a hypothesis regarding the question of interest.</li>
+<li>Construct one or more predictions based on the hypothesis.</li>
+<li>Collect the data by means of a controlled experiment, observational study, or sample survey.</li>
+<li>Summarize the data numerically in tabular form and/or graphically.</li>
+<li>Analyze, interpret, and communicate the study’s findings.</li>
+</ul>
+<p>Many methods exist for the final part, data analysis, that we describe in detail in these notes. Many factors lead to the choice of the statistical
+methods to use for the analysis, including: data type(s), sampling method, and distributional assumptions regarding the measurements.</p>
+<p><strong>Populations</strong> will be thought of as the universe of units, while <strong>samples</strong> will refer to subsamples of the populations that are observed and measured.
+In practice, we observe the sample with the goal of making <strong>inferences</strong> regarding the corresponding population. Consider the following examples.</p>
 </div>
-<div id="preface" class="section level1 unnumbered hasAnchor">
-<h1>Preface<a href="index.html#preface" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>These notes are for STA 2170 at the University of Florida.</p>
+<div id="data-collection" class="section level2 hasAnchor" number="1.2">
+<h2><span class="header-section-number">1.2</span> Data Collection<a href="intro.html#data-collection" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Once a research question has been posed, then data are collected to attempt to answer the question. Three common methods of collecting data are:
+controlled experiments, observational studies, and sample surveys.</p>
+<p>In a <strong>Controlled Experiment</strong>, a sample of experimental units is obtained, and randomized to the various treatments or conditions to be compared.
+There are many ways that these can be conducted, and we will describe many variations of them throughout this course. Some elements
+of controlled experiments are given here.</p>
+<ul>
+<li><strong>Factors</strong> - Variable(s) that are controlled by the experimenter (e.g. new drug vs placebo, 4 doses of a pesticide, 3 packages for food product)</li>
+<li><strong>Responses</strong> - Measurements/Outcomes obtained during the experiment (e.g. change in blood pressure, weeds killed, consumer ratings for the product)</li>
+<li><strong>Treatments</strong> - Conditions that are generated by the factor(s). When only 1 factor, these are the levels. With 2 or more factors, these are combinations of levels.</li>
+<li><strong>Experimental Unit</strong> - Entity that is randomized to the Treatments. These can be individual items (patients in clinical trial, plants in botanical experiment) or groups of items (classrooms of students in an education experiment, pens of animals in a feed study).</li>
+<li><strong>Replications</strong> - Treatments are assigned to more than one experimental unit, allowing for experimental error (variation) to be measured.</li>
+<li><strong>Measurement Unit</strong> - Entity on which measurements are obtained. These can be experimental units when individuals are randomized, or subunits within the experimental units (students in a classroom, pigs in a pen).</li>
+</ul>
+<p>Controlled experiments can be conducted in laboratories/hospitals/greenhouses, but can also be conducted in the “real world” where they are often referred to as
+“field studies” or “natural experiments.”</p>
+<p>There are many different treatment designs that are commonly applied. Some classes of designs are given below.</p>
+<ul>
+<li><strong>Single Factor Designs</strong> - In these designs, there is a single factor to be studied with various levels.</li>
+<li><strong>Multi Factor Designs</strong> - More than one factor is varied. Treatments correspond to combinations of factor levels.</li>
+<li><strong>Completely Randomized Designs</strong> - Experimental units are randomly assigned to treatments with no restriction on randomization.</li>
+<li><strong>Randomized Block Designs</strong> - Experimental units are grouped into homogeneous blocks, with treatments assigned so that each block receives each treatment.</li>
+<li><strong>Latin Square Designs</strong> - Two or more blocking factors are available.</li>
+<li><strong>Repeated Measure Designs</strong> - Units can be assigned to each treatment or be measured at multiple occasions on the same treatment.</li>
+</ul>
+<p>Note that in designs with 2 or more factors, researchers are often interested in whether the effects of the levels of one factor depend on the levels of
+the other factor(s). When the effects do depend on the levels of the other factor, this is referred to as an <strong>interaction</strong>.</p>
+<p><strong>Example 1.1: Galileo’s Experiments with Gravity</strong></p>
+<p>Experimental work by Galileo has been described and analyzed <span class="citation">(<a href="#ref-dickey_1995">Dickey and Arnold 1995</a>)</span>.
+Two experiments involved rolling a ball down a ramp
+and measuring the horizontal distance traveled by the ball as a function of the height at which the ball was dropped. One set of measurements contained
+only a ramp, the second set of measurements had a ramp and a flat shelf at the bottom of the ramp.</p>
+<p>One theory is that the horizontal distance traveled increases with the height at which the ball is dropped on the ramp. However, the
+rate of change should decrease with height. Another restriction is that the distance traveled should be 0 when the height it is dropped at is 0.
+One mathematical equation that could be used to relate Distance (<span class="math inline">\(D\)</span>) to Height (<span class="math inline">\(H\)</span>) is the following.</p>
+<p><span class="math display">\[  D = \alpha + \beta \sqrt{H}  \]</span></p>
+<p>In this formulation, it is expected that <span class="math inline">\(\alpha=0\)</span>, that is, that <span class="math inline">\(D=0\)</span> when <span class="math inline">\(H=0\)</span> and that <span class="math inline">\(\beta &gt; 0\)</span>. The authors fit a regression model
+and, first found no evidence that <span class="math inline">\(\alpha \neq 0\)</span>. Then they fit a model without the intercept and found that <span class="math inline">\(D=47.086\sqrt{H}\)</span>.
+Table <a href="intro.html#tab:galileo1">1.1</a> contains the data and the predictions based on the equation for 5 observations. As seen in the table, the predictions
+are very close to the observed values. Figure <a href="intro.html#fig:galileo2">1.1</a> includes the observed data and fitted equation.</p>
+<table>
+<caption><span id="tab:galileo1">Table 1.1: </span>Measurements and predictions for Galileo experiment with ramp and shelf on horizontal distance traveled as a function
+of height of ball drop.</caption>
+<thead>
+<tr class="header">
+<th align="right">Height</th>
+<th align="right">Distance</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">1000</td>
+<td align="right">1500</td>
+</tr>
+<tr class="even">
+<td align="right">828</td>
+<td align="right">1340</td>
+</tr>
+<tr class="odd">
+<td align="right">800</td>
+<td align="right">1328</td>
+</tr>
+<tr class="even">
+<td align="right">600</td>
+<td align="right">1172</td>
+</tr>
+<tr class="odd">
+<td align="right">300</td>
+<td align="right">800</td>
+</tr>
+</tbody>
+</table>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:galileo2"></span>
+<img src="STA2170bookdownproj_files/figure-html/galileo2-1.png" alt="Galileo data and fitted equation" width="80%" />
+<p class="caption">
+Figure 1.1: Galileo data and fitted equation
+</p>
+</div>
+<p><span class="math display">\[ \nabla \]</span></p>
+<p><strong>Example 1.2: Factors Effecting Color Strength of Dyes Applied to Modified Cotton</strong></p>
+<p>An experiment was conducted to measure the effects of 4 factors on color strength measured as K/S <span class="citation">(<a href="#ref-benticha_2016">Ben Ticha et al. 2016</a>)</span>.
+Each factor was set at 2 levels and the experiment
+included all <span class="math inline">\(2^4=16\)</span> combinations of the factor levels. The factors studied and their levels were: Cationizing Agent Amount (5%, 10%),
+pH (5, 11), Dying Temperature (40C, 100C), and Drying Time (30min, 60min).</p>
+<p><span class="math display">\[ \nabla \]</span></p>
+<p>In many settings, it is not possible or ethical to assign units to treatments. For instance, when comparing quality of products of various brands, you can take samples from the various brands, but not assign “raw materials” at random to the brands. Studies comparing residents of various parts of a country can only
+take samples of residents from the areas, not assign people to them. In studies of the effects of smoking or drinking, it is unethical to assign subjects
+to the conditions. In all of these cases, we refer to these as <strong>Observational Studies</strong>. Typically the method of analysis is the same for controlled experiments and observational studies, however the ability to imply “cause and effect” is more difficult in observational studies than controlled experiments.
+Researchers in such studies must try and control for any potential alternative explanations of the association. For an interesting discussion of
+various aspects of observational studies, including: external validity (generalizing results beyond the original study), causation, reliability of
+measurement, and inclusion of covariates, involving study of interruption and multitasking <span class="citation">(<a href="#ref-walter_2015">Walter, Dunsmuir, and Westbrook 2015</a>)</span>.</p>
+</div>
+<div id="variable-types" class="section level2 hasAnchor" number="1.3">
+<h2><span class="header-section-number">1.3</span> Variable Types<a href="intro.html#variable-types" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>In most settings, researchers have one or more “output” variable(s) and one or more “input” variable(s). For instance, a study comparing salaries among males and females would have the output variable be salary and possible input variables: gender (1 if female, 0 if male), experience (years), and education (years). The output variables are often referred to as <strong>dependent variables</strong>,
+<strong>responses</strong>, or <strong>end points</strong>. The input variables are often referred to as
+<strong>independent variables</strong>, <strong>predictors</strong>, or <strong>explanatory variables</strong>.</p>
+<p>Variables are measured on different scales, and the data analysis methods are determined by variable types. Variables can be <strong>categorical</strong> or <strong>numeric</strong>.
+Categorical variables can be <strong>nominal</strong> or <strong>ordinal</strong>, while numeric variables can be <strong>discrete</strong> or <strong>continuous</strong>.</p>
+<p>Examples of nominal variables include gender, hair color, and automobile make. These are categories with no inherent ordering. Ordinal variables
+are categorical, but with an inherent ordering, such as: strongly disagree, disagree, neutral, agree, strongly agree. Discrete variables can
+take on only a finite or countably infinite set of values, these can be counts of number of occurrences of an event in a series of trials or in a fixed time
+or space, or the number facing up on a roll of a dice. Continuous variables can take on any value along a continuum, such as temperature, time, or blood pressure.
+When discrete variables take on many values, they are often treated as continuous, and continuous variables are often reported as discrete values.</p>
+<p><strong>Example 1.3: Consistency of Ratings Based on a Rating Scale for Videostroboscopy</strong></p>
+<p>A study was conducted to measure inter-rater and intra-rater reliability of the Voice-Vibratory Assessment with Laryngeal Imaging (VALI) rating form
+for assessing
+videostroboscopy and high-speed videoendoscopic (HSV) recordings
+<span class="citation">(<a href="#ref-poburka_2017">Poburka, Patel, and Bless 2017</a>)</span>.
+Table <a href="intro.html#tab:dysphonia">1.2</a> contains information on the 30 subjects in the study. These include: subject ID, Age (continuous, reported as a discrete variable), gender (nominal), and an overall dysphonia grade (ordinal,
+with 0=normal, 1=mild, 2=moderate, 3=severe).</p>
+<table>
+<caption><span id="tab:dysphonia">Table 1.2: </span>Age, Gender, and Dysphonia Grade for 30 Subjects - VALI Study.</caption>
+<thead>
+<tr class="header">
+<th align="right">Subject</th>
+<th align="right">Age</th>
+<th align="left">Gender</th>
+<th align="right">Dysphonia</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">1</td>
+<td align="right">10</td>
+<td align="left">M</td>
+<td align="right">3</td>
+</tr>
+<tr class="even">
+<td align="right">2</td>
+<td align="right">19</td>
+<td align="left">M</td>
+<td align="right">1</td>
+</tr>
+<tr class="odd">
+<td align="right">3</td>
+<td align="right">27</td>
+<td align="left">F</td>
+<td align="right">1</td>
+</tr>
+<tr class="even">
+<td align="right">4</td>
+<td align="right">32</td>
+<td align="left">M</td>
+<td align="right">1</td>
+</tr>
+<tr class="odd">
+<td align="right">5</td>
+<td align="right">37</td>
+<td align="left">F</td>
+<td align="right">2</td>
+</tr>
+<tr class="even">
+<td align="right">6</td>
+<td align="right">37</td>
+<td align="left">M</td>
+<td align="right">0</td>
+</tr>
+<tr class="odd">
+<td align="right">7</td>
+<td align="right">39</td>
+<td align="left">F</td>
+<td align="right">3</td>
+</tr>
+<tr class="even">
+<td align="right">8</td>
+<td align="right">42</td>
+<td align="left">F</td>
+<td align="right">2</td>
+</tr>
+<tr class="odd">
+<td align="right">9</td>
+<td align="right">44</td>
+<td align="left">F</td>
+<td align="right">2</td>
+</tr>
+<tr class="even">
+<td align="right">10</td>
+<td align="right">45</td>
+<td align="left">F</td>
+<td align="right">2</td>
+</tr>
+<tr class="odd">
+<td align="right">11</td>
+<td align="right">45</td>
+<td align="left">F</td>
+<td align="right">3</td>
+</tr>
+<tr class="even">
+<td align="right">12</td>
+<td align="right">47</td>
+<td align="left">F</td>
+<td align="right">3</td>
+</tr>
+<tr class="odd">
+<td align="right">13</td>
+<td align="right">48</td>
+<td align="left">M</td>
+<td align="right">1</td>
+</tr>
+<tr class="even">
+<td align="right">14</td>
+<td align="right">49</td>
+<td align="left">F</td>
+<td align="right">2</td>
+</tr>
+<tr class="odd">
+<td align="right">15</td>
+<td align="right">50</td>
+<td align="left">F</td>
+<td align="right">3</td>
+</tr>
+<tr class="even">
+<td align="right">16</td>
+<td align="right">51</td>
+<td align="left">F</td>
+<td align="right">3</td>
+</tr>
+<tr class="odd">
+<td align="right">17</td>
+<td align="right">51</td>
+<td align="left">M</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td align="right">18</td>
+<td align="right">51</td>
+<td align="left">M</td>
+<td align="right">0</td>
+</tr>
+<tr class="odd">
+<td align="right">19</td>
+<td align="right">53</td>
+<td align="left">F</td>
+<td align="right">1</td>
+</tr>
+<tr class="even">
+<td align="right">20</td>
+<td align="right">57</td>
+<td align="left">F</td>
+<td align="right">3</td>
+</tr>
+<tr class="odd">
+<td align="right">21</td>
+<td align="right">57</td>
+<td align="left">F</td>
+<td align="right">2</td>
+</tr>
+<tr class="even">
+<td align="right">22</td>
+<td align="right">59</td>
+<td align="left">F</td>
+<td align="right">2</td>
+</tr>
+<tr class="odd">
+<td align="right">23</td>
+<td align="right">60</td>
+<td align="left">F</td>
+<td align="right">3</td>
+</tr>
+<tr class="even">
+<td align="right">24</td>
+<td align="right">60</td>
+<td align="left">M</td>
+<td align="right">1</td>
+</tr>
+<tr class="odd">
+<td align="right">25</td>
+<td align="right">62</td>
+<td align="left">F</td>
+<td align="right">2</td>
+</tr>
+<tr class="even">
+<td align="right">26</td>
+<td align="right">62</td>
+<td align="left">M</td>
+<td align="right">3</td>
+</tr>
+<tr class="odd">
+<td align="right">27</td>
+<td align="right">64</td>
+<td align="left">F</td>
+<td align="right">3</td>
+</tr>
+<tr class="even">
+<td align="right">28</td>
+<td align="right">70</td>
+<td align="left">M</td>
+<td align="right">3</td>
+</tr>
+<tr class="odd">
+<td align="right">29</td>
+<td align="right">77</td>
+<td align="left">F</td>
+<td align="right">3</td>
+</tr>
+<tr class="even">
+<td align="right">30</td>
+<td align="right">89</td>
+<td align="left">F</td>
+<td align="right">2</td>
+</tr>
+</tbody>
+</table>
+<p><span class="math display">\[ \nabla \]</span></p>
 
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="index.html#cb1-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
-<pre><code>## Warning: package &#39;ggplot2&#39; was built under R version 4.5.3</code></pre>
-<pre><code>## ── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
-## ✔ dplyr     1.1.4     ✔ readr     2.1.5
-## ✔ forcats   1.0.0     ✔ stringr   1.5.1
-## ✔ ggplot2   4.0.3     ✔ tibble    3.3.0
-## ✔ lubridate 1.9.4     ✔ tidyr     1.3.1
-## ✔ purrr     1.0.4     
-## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-## ✖ dplyr::filter() masks stats::filter()
-## ✖ dplyr::lag()    masks stats::lag()
-## ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="index.html#cb4-1" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span></code></pre></div>
-<pre><code>## 
-## Attaching package: &#39;kableExtra&#39;
-## 
-## The following object is masked from &#39;package:dplyr&#39;:
-## 
-##     group_rows</code></pre>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="intro.html#cb6-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb6-2"><a href="intro.html#cb6-2" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
+<span id="cb6-3"><a href="intro.html#cb6-3" tabindex="-1"></a><span class="fu">library</span>(RColorBrewer)</span></code></pre></div>
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
+<div id="ref-benticha_2016" class="csl-entry">
+Ben Ticha, M., W. Haddar, N. Meksi, A. Guesmi, and M. F. Mhenni. 2016. <span>“Improving Dyeability of Modified Cotton Fabrics by the Natural Aqueous Extract from Red Cabbage Using Ultrasonic Energy.”</span> <em>Carbohydrate Polymers</em> 154: 287–95.
+</div>
+<div id="ref-dickey_1995" class="csl-entry">
+Dickey, D. A., and J. T. Arnold. 1995. <span>“Teaching Statistics with Data of Historic Significance: Galileo’s Gravity and Motion Experiments.”</span> <em>Journal of Statistics Education</em> 3 (1): 1–8.
+</div>
+<div id="ref-poburka_2017" class="csl-entry">
+Poburka, P. J., R. R. Patel, and D. M. Bless. 2017. <span>“Voice-Vibratory Assessment with Laryngeal Imaging (VALI) Form: Reliability of Rating Stroboscopy and High-Speed Videoendoscopy.”</span> <em>Journal of Voice</em> 31 (4): 513.e1–14.
+</div>
+<div id="ref-walter_2015" class="csl-entry">
+Walter, S. R., W. T. M. Dunsmuir, and J. I. Westbrook. 2015. <span>“Studying Interruptions and Multitasking in Situ: The Untapped Potential of Quantitative Observational Studies.”</span> <em>International Journal of Human-Computer Studies</em> 79: 118–25.
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-
-<a href="intro.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="describing-data.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -349,7 +672,7 @@ gitbook.start({
     "size": 2
   },
   "edit": {
-    "link": "https://github.com/LarryWinner/STA2170-Notes1/edit/main/index.Rmd",
+    "link": "https://github.com/LarryWinner/STA2170-Notes1/edit/main/01-intro.Rmd",
     "text": "Edit"
   },
   "history": {

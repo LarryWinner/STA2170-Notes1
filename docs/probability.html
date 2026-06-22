@@ -1,0 +1,1549 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 3 Probability | Statistics and the Physical World</title>
+  <meta name="description" content="This is an Introduction to Statistics with applications from the physical world. We will make use of the R programming language for computations." />
+  <meta name="generator" content="bookdown 0.43 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 3 Probability | Statistics and the Physical World" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="This is an Introduction to Statistics with applications from the physical world. We will make use of the R programming language for computations." />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 3 Probability | Statistics and the Physical World" />
+  
+  <meta name="twitter:description" content="This is an Introduction to Statistics with applications from the physical world. We will make use of the R programming language for computations." />
+  
+
+<meta name="author" content="Larry Winner" />
+
+
+<meta name="date" content="2026-06-22" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="describing-data.html"/>
+<link rel="next" href="inferences-for-population-means.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">STA2170 Notes</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
+<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="intro.html"><a href="intro.html#basic-concepts-of-statistical-analysis"><i class="fa fa-check"></i><b>1.1</b> Basic Concepts of Statistical Analysis</a></li>
+<li class="chapter" data-level="1.2" data-path="intro.html"><a href="intro.html#data-collection"><i class="fa fa-check"></i><b>1.2</b> Data Collection</a></li>
+<li class="chapter" data-level="1.3" data-path="intro.html"><a href="intro.html#variable-types"><i class="fa fa-check"></i><b>1.3</b> Variable Types</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="describing-data.html"><a href="describing-data.html"><i class="fa fa-check"></i><b>2</b> Describing Data</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="describing-data.html"><a href="describing-data.html#graphical-description-of-a-single-variable"><i class="fa fa-check"></i><b>2.1</b> Graphical Description of a Single Variable</a></li>
+<li class="chapter" data-level="2.2" data-path="describing-data.html"><a href="describing-data.html#numerical-descriptive-measures-of-a-single-variable"><i class="fa fa-check"></i><b>2.2</b> Numerical Descriptive Measures of a Single Variable</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="describing-data.html"><a href="describing-data.html#measures-of-central-tendency"><i class="fa fa-check"></i><b>2.2.1</b> Measures of Central Tendency</a></li>
+<li class="chapter" data-level="2.2.2" data-path="describing-data.html"><a href="describing-data.html#measures-of-variability"><i class="fa fa-check"></i><b>2.2.2</b> Measures of Variability</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="describing-data.html"><a href="describing-data.html#describing-more-than-one-variable"><i class="fa fa-check"></i><b>2.3</b> Describing More than One Variable</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="probability.html"><a href="probability.html"><i class="fa fa-check"></i><b>3</b> Probability</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="probability.html"><a href="probability.html#terminology-and-probability-rules"><i class="fa fa-check"></i><b>3.1</b> Terminology and Probability Rules</a></li>
+<li class="chapter" data-level="3.2" data-path="probability.html"><a href="probability.html#basic-probability"><i class="fa fa-check"></i><b>3.2</b> Basic Probability</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="probability.html"><a href="probability.html#bayes-rule"><i class="fa fa-check"></i><b>3.2.1</b> Bayes’ Rule</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="probability.html"><a href="probability.html#random-variables-and-probability-distributions"><i class="fa fa-check"></i><b>3.3</b> Random Variables and Probability Distributions</a></li>
+<li class="chapter" data-level="3.4" data-path="probability.html"><a href="probability.html#discrete-random-variables"><i class="fa fa-check"></i><b>3.4</b> Discrete Random Variables</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="probability.html"><a href="probability.html#population-numerical-descriptive-measures"><i class="fa fa-check"></i><b>3.4.1</b> Population Numerical Descriptive Measures</a></li>
+<li class="chapter" data-level="3.4.2" data-path="probability.html"><a href="probability.html#common-families-of-discrete-probability-distributions"><i class="fa fa-check"></i><b>3.4.2</b> Common Families of Discrete Probability Distributions</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="probability.html"><a href="probability.html#continuous-random-variables"><i class="fa fa-check"></i><b>3.5</b> Continuous Random Variables</a>
+<ul>
+<li class="chapter" data-level="3.5.1" data-path="probability.html"><a href="probability.html#common-families-of-continuous-probability-distributions"><i class="fa fa-check"></i><b>3.5.1</b> Common Families of Continuous Probability Distributions</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="probability.html"><a href="probability.html#sampling-distributions-and-the-central-limit-theorem"><i class="fa fa-check"></i><b>3.6</b> Sampling Distributions and the Central Limit Theorem</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="inferences-for-population-means.html"><a href="inferences-for-population-means.html"><i class="fa fa-check"></i><b>4</b> Inferences for Population Means</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="inferences-for-population-means.html"><a href="inferences-for-population-means.html#estimation"><i class="fa fa-check"></i><b>4.1</b> Estimation</a></li>
+<li class="chapter" data-level="4.2" data-path="inferences-for-population-means.html"><a href="inferences-for-population-means.html#hypothesis-testing"><i class="fa fa-check"></i><b>4.2</b> Hypothesis Testing</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="introduction-to-experimentation.html"><a href="introduction-to-experimentation.html"><i class="fa fa-check"></i><b>5</b> Introduction to Experimentation</a></li>
+<li class="chapter" data-level="6" data-path="comparing-two-population-means.html"><a href="comparing-two-population-means.html"><i class="fa fa-check"></i><b>6</b> Comparing Two Population Means</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="comparing-two-population-means.html"><a href="comparing-two-population-means.html#independent-samples"><i class="fa fa-check"></i><b>6.1</b> Independent Samples</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="comparing-two-population-means.html"><a href="comparing-two-population-means.html#large-sample-tests"><i class="fa fa-check"></i><b>6.1.1</b> Large-Sample tests</a></li>
+<li class="chapter" data-level="6.1.2" data-path="comparing-two-population-means.html"><a href="comparing-two-population-means.html#small-sample-tests-with-normal-data"><i class="fa fa-check"></i><b>6.1.2</b> Small Sample Tests with Normal Data</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="comparing-two-population-means.html"><a href="comparing-two-population-means.html#paired-sample-designs"><i class="fa fa-check"></i><b>6.2</b> Paired Sample Designs</a></li>
+<li class="chapter" data-level="6.3" data-path="comparing-two-population-means.html"><a href="comparing-two-population-means.html#nonparametric-tests"><i class="fa fa-check"></i><b>6.3</b> Nonparametric Tests</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="comparing-two-population-means.html"><a href="comparing-two-population-means.html#independent-samples---wilcoxon-rank-sum-test"><i class="fa fa-check"></i><b>6.3.1</b> Independent Samples - Wilcoxon Rank-Sum Test</a></li>
+<li class="chapter" data-level="6.3.2" data-path="comparing-two-population-means.html"><a href="comparing-two-population-means.html#paired-samples---wilcoxon-signed-rank-test"><i class="fa fa-check"></i><b>6.3.2</b> Paired Samples - Wilcoxon Signed Rank Test</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="experimental-design-and-the-analysis-of-variance.html"><a href="experimental-design-and-the-analysis-of-variance.html"><i class="fa fa-check"></i><b>7</b> Experimental Design and the Analysis of Variance</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="experimental-design-and-the-analysis-of-variance.html"><a href="experimental-design-and-the-analysis-of-variance.html#completely-randomized-design-crd-for-independent-samples"><i class="fa fa-check"></i><b>7.1</b> Completely Randomized Design (CRD) For Independent Samples</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="experimental-design-and-the-analysis-of-variance.html"><a href="experimental-design-and-the-analysis-of-variance.html#analysis-of-variance-and-f-test-for-normal-data"><i class="fa fa-check"></i><b>7.1.1</b> Analysis of Variance and <span class="math inline">\(F\)</span>-Test for Normal Data</a></li>
+<li class="chapter" data-level="7.1.2" data-path="experimental-design-and-the-analysis-of-variance.html"><a href="experimental-design-and-the-analysis-of-variance.html#comparisons-among-treatment-means"><i class="fa fa-check"></i><b>7.1.2</b> Comparisons among Treatment Means</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="experimental-design-and-the-analysis-of-variance.html"><a href="experimental-design-and-the-analysis-of-variance.html#randomized-block-design-rbd-for-studies-based-on-matched-units"><i class="fa fa-check"></i><b>7.2</b> Randomized Block Design (RBD) For Studies Based on Matched Units</a></li>
+<li class="chapter" data-level="7.3" data-path="experimental-design-and-the-analysis-of-variance.html"><a href="experimental-design-and-the-analysis-of-variance.html#factorial-designs"><i class="fa fa-check"></i><b>7.3</b> Factorial Designs</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="categorical-data-analysis.html"><a href="categorical-data-analysis.html"><i class="fa fa-check"></i><b>8</b> Categorical Data Analysis</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="categorical-data-analysis.html"><a href="categorical-data-analysis.html#inference-concerning-a-single-variable"><i class="fa fa-check"></i><b>8.1</b> Inference Concerning a Single Variable</a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="categorical-data-analysis.html"><a href="categorical-data-analysis.html#variables-with-two-possible-outcomes"><i class="fa fa-check"></i><b>8.1.1</b> Variables with Two Possible Outcomes</a></li>
+<li class="chapter" data-level="8.1.2" data-path="categorical-data-analysis.html"><a href="categorical-data-analysis.html#variables-with-more-than-two-possible-outcomes"><i class="fa fa-check"></i><b>8.1.2</b> Variables with More than Two Possible Outcomes</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="categorical-data-analysis.html"><a href="categorical-data-analysis.html#introduction-to-tests-for-association-for-two-categorical-variables"><i class="fa fa-check"></i><b>8.2</b> Introduction to Tests for Association for Two Categorical Variables</a>
+<ul>
+<li class="chapter" data-level="8.2.1" data-path="categorical-data-analysis.html"><a href="categorical-data-analysis.html#x-2-tables"><i class="fa fa-check"></i><b>8.2.1</b> 2 x 2 Tables</a></li>
+<li class="chapter" data-level="8.2.2" data-path="categorical-data-analysis.html"><a href="categorical-data-analysis.html#nominal-explanatory-and-response-variables"><i class="fa fa-check"></i><b>8.2.2</b> Nominal Explanatory and Response Variables</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="regression-models.html"><a href="regression-models.html"><i class="fa fa-check"></i><b>9</b> Regression Models</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="regression-models.html"><a href="regression-models.html#simple-linear-regression"><i class="fa fa-check"></i><b>9.1</b> Simple Linear Regression</a>
+<ul>
+<li class="chapter" data-level="9.1.1" data-path="regression-models.html"><a href="regression-models.html#estimation-of-model-parameters"><i class="fa fa-check"></i><b>9.1.1</b> Estimation of Model Parameters</a></li>
+<li class="chapter" data-level="9.1.2" data-path="regression-models.html"><a href="regression-models.html#inference-regarding-beta_1-and-beta_0"><i class="fa fa-check"></i><b>9.1.2</b> Inference Regarding <span class="math inline">\(\beta_1\)</span> and <span class="math inline">\(\beta_0\)</span></a></li>
+<li class="chapter" data-level="9.1.3" data-path="regression-models.html"><a href="regression-models.html#estimating-a-mean-and-predicting-a-new-observation-xx"><i class="fa fa-check"></i><b>9.1.3</b> Estimating a Mean and Predicting a New Observation @ <span class="math inline">\(X=X^*\)</span></a></li>
+<li class="chapter" data-level="9.1.4" data-path="regression-models.html"><a href="regression-models.html#analysis-of-variance"><i class="fa fa-check"></i><b>9.1.4</b> Analysis of Variance</a></li>
+<li class="chapter" data-level="9.1.5" data-path="regression-models.html"><a href="regression-models.html#correlation"><i class="fa fa-check"></i><b>9.1.5</b> Correlation</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="regression-models.html"><a href="regression-models.html#multiple-linear-regression"><i class="fa fa-check"></i><b>9.2</b> Multiple Linear Regression</a>
+<ul>
+<li class="chapter" data-level="9.2.1" data-path="regression-models.html"><a href="regression-models.html#testing-and-estimation-for-partial-regression-coefficients"><i class="fa fa-check"></i><b>9.2.1</b> Testing and Estimation for Partial Regression Coefficients</a></li>
+<li class="chapter" data-level="9.2.2" data-path="regression-models.html"><a href="regression-models.html#analysis-of-variance-1"><i class="fa fa-check"></i><b>9.2.2</b> Analysis of Variance</a></li>
+<li class="chapter" data-level="9.2.3" data-path="regression-models.html"><a href="regression-models.html#testing-a-subset-of-betas-0"><i class="fa fa-check"></i><b>9.2.3</b> Testing a Subset of <span class="math inline">\(\beta^s = 0\)</span></a></li>
+<li class="chapter" data-level="9.2.4" data-path="regression-models.html"><a href="regression-models.html#models-with-categorical-qualitative-predictors"><i class="fa fa-check"></i><b>9.2.4</b> Models With Categorical (Qualitative) Predictors</a></li>
+<li class="chapter" data-level="9.2.5" data-path="regression-models.html"><a href="regression-models.html#models-with-interaction-terms"><i class="fa fa-check"></i><b>9.2.5</b> Models With Interaction Terms</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="regression-models.html"><a href="regression-models.html#logistic-regression"><i class="fa fa-check"></i><b>9.3</b> Logistic Regression</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Statistics and the Physical World</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="probability" class="section level1 hasAnchor" number="3">
+<h1><span class="header-section-number">Chapter 3</span> Probability<a href="probability.html#probability" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>In this chapter, we describe the concepts of probability, random variables, probability distributions, and sampling distributions.
+There are three commonly used interpretations of probability: classical, relative frequency, and subjective. Probability is the basis of all methods of statistical inference covered in this course.</p>
+<div id="terminology-and-probability-rules" class="section level2 hasAnchor" number="3.1">
+<h2><span class="header-section-number">3.1</span> Terminology and Probability Rules<a href="probability.html#terminology-and-probability-rules" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The <strong>classical</strong> interpretation of probability involves listing (or using counting rules to quantify) all possible outcomes of a random process, often
+referred to as an “experiment.” It is often (but not necessarily) assumed that each outcome is equally likely. If a coin is tossed once, it can land either “heads” or “tails,” and unless there is reason to believe otherwise, we would assume the probability of each possible outcome is 1/2. If a dice is rolled, the
+possible numbers on the “up face” are <span class="math inline">\(\{1,2,3,4,5,6\}\)</span>. Again, unless some external evidence leads us to believe otherwise, we would assume each
+side has a probability of landing as the “up face” is 1/6. When dealing a 5 card hand from a well shuffled 52 card deck, there are
+<span class="math inline">\(\frac{52!}{5!(52-5)!}=2,598,960\)</span> possible hands. Clearly that would be impossible to enumerate, but with counting rules it is still
+fairly easy to assign probabilities to different types of hands.</p>
+<p>An <strong>event</strong> is a pre-specified outcome of an experiment/random process. It can be made up of a single element or a group of elements of the sample space.
+If the sample space is made up of <span class="math inline">\(N\)</span> elements and the event of interest constitutes <span class="math inline">\(N_E\)</span> elements of the sample space, the probability of the event
+is <span class="math inline">\(p_E = N_E/N\)</span>, when all elements are equally likely. If elements are not equally likely, <span class="math inline">\(p_E\)</span> is the sum of the probabilities of the elements constituting
+the event (where the sum of all the <span class="math inline">\(N\)</span> probabilities is 1).</p>
+<p>The <strong>relative frequency</strong> interpretation of probability corresponds to how often an event of interest would occur if an experiment were conducted
+repeatedly. If an unbalanced dice were tossed a very large number of times, we could observe the fractions of times each number was the “up face.” With
+modern computing power, simulations can be run to approximate probabilities of complex events, which could never be able to be obtained via a
+model of a sample space.</p>
+<p>In cases where a sample space can not be enumerated or an experiment can not be repeated, individuals often resort to assessing <strong>subjective</strong>
+probabilities. For instance, in considering whether the price of a stock will increase over a specific time horizon, individuals may speculate on<br />
+the probability based on any market information available at the time of the assessment.
+Different individuals may have different probabilities for the same event. Many studies have been conducted to assess people’s abilities and
+heuristics used to assign probabilities to events, see <span class="citation">(<a href="#ref-kahneman_1982">Daniel Kahneman, Slovic, and Tversky 1982</a>)</span>
+for a large collection of research on the topic.</p>
+<p>Three useful counting tools are the <strong>multiplication rule</strong>, <strong>permutations</strong>, and <strong>combinations</strong>. The multiplication rule is useful
+when the experiment is made up of <span class="math inline">\(k\)</span> stages, where stage <span class="math inline">\(i\)</span> can end in one of <span class="math inline">\(m_i\)</span> outcomes. Permutations are used when sampling <span class="math inline">\(k\)</span> items from
+<span class="math inline">\(n\)</span> items without replacement, and order matters. Combinations are similar to permutations with the exception that order does not matter.
+The total possible outcomes for each of these rules is given below.</p>
+<p><span class="math display">\[ \mbox{Multiplication Rule: } m_1\times m_2 \times \cdots \times m_k = \prod_{i=1}^k m_i  \]</span></p>
+<p><span class="math display">\[ \mbox{Permutations: } P_k^n = n\times (n-1) \times \cdots \times (n-k+1) = \frac{n!}{(n-k)!} \qquad 0!\equiv 1 \]</span></p>
+<p><span class="math display">\[ \mbox{Combinations: } C_k^n = \frac{n\times (n-1) \times \cdots \times (n-k+1)}{k\times (k-1)\cdots \times 1}=\frac{n!}{k!(n-k)!} \]</span></p>
+<p>Note that there are <span class="math inline">\(k!\)</span> possible orderings of the <span class="math inline">\(k\)</span> items selected from <span class="math inline">\(n\)</span> items, which is why there are fewer combinations than permutations.</p>
+<p><strong>Example 3.1: Lotteries and Competitions</strong></p>
+<p>The Florida lottery has many “products” for consumers (flalottery.com). The Pick 4 game is conducted twice per day and pays out up to $5000 per
+drawing. Participants choose 4 digits from 0-9 (digits can be repeated). Thus at each of <span class="math inline">\(k=4\)</span> stages, there are <span class="math inline">\(m=10\)</span> potential digits. Thus there are
+10(10)(10)(10) = 10,000 possible sequences (order matters in payouts).</p>
+<p>In a race among 10 “identical” mice of a given strain, there are <span class="math inline">\(P_3^{10} = 10(9)(8) = 720\)</span> possible orderings of 1st, 2nd, and 3rd place.
+In the 2017 Kentucky Derby, there were 22 horses in the race. Starting positions are taken by “pulling names out of a hat.” Thus, there
+are <span class="math inline">\(22!=1.124\times10^{21}\)</span> possible orderings of the horses to the starting positions. This is 10.4 billion times as many people who had ever lived
+on the earth as of 2011 according to the Population Reference Bureau (www.prb.com).</p>
+<p>The Florida Lotto game, held every Wednesday and Saturday night, involves selecting 6 numbers without replacement from the integers 1,…,53;
+where order does not matter. There are <span class="math inline">\(C_6^{53}=\frac{53!}{6!47!}=22,957,480\)</span> possible drawings.</p>
+</div>
+<div id="basic-probability" class="section level2 hasAnchor" number="3.2">
+<h2><span class="header-section-number">3.2</span> Basic Probability<a href="probability.html#basic-probability" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Let <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> be events of interest with corresponding probabilities <span class="math inline">\(P(A)\)</span> and <span class="math inline">\(P(B)\)</span>, respectively. The <strong>Union</strong> of events <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>
+is the event that either <span class="math inline">\(A\)</span> and/or <span class="math inline">\(B\)</span> occurs and is denoted <span class="math inline">\(A\cup B\)</span>. Events <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are <strong>mutually exclusive</strong> if they can not
+both occur as an experimental outcome. That is, if <span class="math inline">\(A\)</span> occurs, <span class="math inline">\(B\)</span> cannot occur, and vice versa. The <strong>Complement</strong> of event <span class="math inline">\(A\)</span>, is the event
+that <span class="math inline">\(A\)</span> does not occur and is denoted by <span class="math inline">\(\overline{A}\)</span> or sometimes <span class="math inline">\(A&#39;\)</span>. The <strong>Intersection</strong> of events <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> is the event that both
+<span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> occur, and is denoted as <span class="math inline">\(A\cap B\)</span> or simply <span class="math inline">\(AB\)</span>. In terms of probabilities, we have the following rules.</p>
+<p><span class="math display">\[ \mbox{Union: }P(A\cup B) = P(A) + P(B) - P(AB) \qquad \mbox{Mutually Exclusive: } P(AB)=0 \]</span>
+<span class="math display">\[\mbox{Complement: } P\left(\overline{A}\right) =
+1-P(A) \]</span></p>
+<p>The probability of an event <span class="math inline">\(A\)</span> or <span class="math inline">\(B\)</span>, without any other information, is referred to as its <strong>unconditional</strong> or <strong>marginal</strong> probability.
+When information is known whether or not another event has (or has not) occurred it is referred to as its <strong>conditional</strong> probability.
+If the unconditional probability of <span class="math inline">\(A\)</span> and its conditional probability given <span class="math inline">\(B\)</span> has occurred are equal, then the events <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are said to be
+<strong>independent</strong>. The rules for obtaining conditional probabilities (assuming <span class="math inline">\(P(A)&gt;0\)</span> and <span class="math inline">\(P(B)&gt;0\)</span>) are given below, as well as probabilities under independence.</p>
+<p><span class="math display">\[ \mbox{Prob. of A Given B: } P(A|B) = \frac{P(AB)}{P(B)} \qquad  \mbox{Prob. of B Given A: } P(B|A) = \frac{P(AB)}{P(A)} \]</span></p>
+<p><span class="math display">\[ P(AB) = P(A)P(B|A)=P(B)P(A|B) \]</span></p>
+<p><span class="math display">\[ \mbox{$A$ and $B$ independent: } P(A) = P(A|B)=P\left(A|\overline{B}\right) \qquad P(B)= P(B|A)=P\left(B|\overline{A}\right) \qquad
+P(AB) = P(A)P(B) \]</span></p>
+<p><strong>Example 3.2: UFO Sightings</strong></p>
+<p>Based on 3646 UFO sightings on the UFO Research Database (www.uforesearchdb.com), we define <span class="math inline">\(A\)</span> to be the event that a UFO is classified as being
+shaped as an orb/sphere or circular or a disk and event <span class="math inline">\(B\)</span> that the sighting is in the USA. Table <a href="probability.html#tab:ufo1">3.1</a> gives a cross-tabulation of the counts
+for this “population.”</p>
+<table>
+<caption><span id="tab:ufo1">Table 3.1: </span>UFO Shapes and Locations.</caption>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="right"><span class="math inline">\(B\)</span></th>
+<th align="right"><span class="math inline">\(\bar{B}\)</span></th>
+<th align="right">Total</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">A</td>
+<td align="right">909</td>
+<td align="right">67</td>
+<td align="right">976</td>
+</tr>
+<tr class="even">
+<td align="left">Not A</td>
+<td align="right">2528</td>
+<td align="right">142</td>
+<td align="right">2670</td>
+</tr>
+<tr class="odd">
+<td align="left">Total</td>
+<td align="right">3437</td>
+<td align="right">209</td>
+<td align="right">3646</td>
+</tr>
+</tbody>
+</table>
+<p><span class="math display">\[P(A)=\frac{976}{3646}=.2677 \qquad P(B) = \frac{3437}{3646} = .9427 \qquad P(AB) = \frac{909}{3646}=.2493 \]</span>
+<span class="math display">\[P(A\cup B) = .2677+.9427-.2493=.9611 \]</span></p>
+<p><span class="math display">\[ P(A|B) = \frac{.2493}{.9427}=\frac{909}{2528}=.2645 \qquad P\left(A|\overline{B}\right)=\frac{67}{209}=.3206 \]</span> <span class="math display">\[P(B|A)=\frac{.2493}{.2677}=
+\frac{909}{976}=.9314 \qquad
+P(B|\overline{A})=\frac{.6934}{.7323}=
+\frac{2528}{2670}=.9468\]</span></p>
+<p>Note that the event that a UFO is classified as orb/sphere or circular or a disk is not independent of whether it was sighted in the USA. There is a higher
+probability for these types of shapes to be sighted outside the USA (.3206) than in the USA (.2645).</p>
+<p><span class="math display">\[ \nabla \]</span></p>
+<p><strong>Example 3.3: Women’s and Men’s Marathon Speeds</strong></p>
+<p>For the Rock and Roll marathon runner speeds, we can classify events as follow. Event <span class="math inline">\(F\)</span> is that the runner is Female, event <span class="math inline">\(S_5\)</span> is the
+event that a runner’s speed is less than or equal to 5 miles per hour, and <span class="math inline">\(S_7\)</span> is the event that the runner’s speed is greater than or equal to 7 miles per hour.
+Counts of runners by gender and speed are given in
+Table <a href="probability.html#tab:rrmarprob1">3.2</a>. Note that the middle row represents the intersection of the compliments
+of events <span class="math inline">\(S_5\)</span> and <span class="math inline">\(S_7\)</span> and represents the runners with speeds between 5 and 7 miles per hour. We compute various probabilities below.</p>
+<p><span class="math display">\[ P(F) = \frac{1045}{2499} = .4182 \qquad P\left(\overline{F}\right)=1-.4182=\frac{1454}{2499}=.5818 \qquad P(S_5)= \frac{326}{2499} = .1305
+\qquad P(S_7)=\frac{464}{2499}=.1857\]</span></p>
+<p><span class="math display">\[P\left(\overline{S_5}\cap \overline{S_7}\right)=1-.1305-.1857=\frac{1709}{2499}=.6839 \]</span>
+<span class="math display">\[P(F\cap S_5)=\frac{172}{2499}=.0688 \qquad
+P\left(\overline{F}\cap S_5\right)=\frac{154}{2499}=.0616\]</span></p>
+<p><span class="math display">\[P(F\cap S_7)=\frac{106}{2499}=.0424 \qquad P\left(\overline{F}\cap S_7\right)=\frac{358}{2499}=.1433 \]</span>
+<span class="math display">\[P\left(F\cap \overline{S_5}\cap \overline{S_7} \right)=\frac{767}{2499}=.3069 \]</span></p>
+<p><span class="math display">\[ P\left(\overline{F}\cap \overline{S_5}\cap \overline{S_7} \right)=\frac{942}{2499}=.3770 \]</span>
+<span class="math display">\[ P(S_5|F) = \frac{.0688}{.4182}=\frac{172}{1045}=.1646 \qquad P(S_7|F) = \frac{.0424}{.4182}=\frac{106}{1045}=.1014\]</span></p>
+<p><span class="math display">\[\left(\overline{S_5}\cap \overline{S_7}|F\right)=\frac{.3069}{.4182}=\frac{767}{1045}=.7340 \]</span></p>
+<table>
+<caption><span id="tab:rrmarprob1">Table 3.2: </span>Rock and Roll Marathon Counts.</caption>
+<thead>
+<tr class="header">
+<th align="left">Counts</th>
+<th align="right">F</th>
+<th align="right">M</th>
+<th align="right">Total</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">S5(&lt;5)</td>
+<td align="right">172</td>
+<td align="right">154</td>
+<td align="right">326</td>
+</tr>
+<tr class="even">
+<td align="left">NotS5orS7(5-7)</td>
+<td align="right">767</td>
+<td align="right">942</td>
+<td align="right">1709</td>
+</tr>
+<tr class="odd">
+<td align="left">S7(&gt;7)</td>
+<td align="right">106</td>
+<td align="right">358</td>
+<td align="right">464</td>
+</tr>
+<tr class="even">
+<td align="left">Total</td>
+<td align="right">1045</td>
+<td align="right">1454</td>
+<td align="right">2499</td>
+</tr>
+</tbody>
+</table>
+<p><span class="math display">\[ \nabla \]</span></p>
+<div id="bayes-rule" class="section level3 hasAnchor" number="3.2.1">
+<h3><span class="header-section-number">3.2.1</span> Bayes’ Rule<a href="probability.html#bayes-rule" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Bayes’ rule is used in a wide range of areas to update probabilities (and probability distributions) in light of new information
+(data). In the case of updating probabilities of particular events, we start with a set of events <span class="math inline">\(A_1,\ldots, A_k\)</span> that represent a
+<strong>partition</strong> of the sample space. That means that each element in the sample space must fall in exactly one <span class="math inline">\(A_i\)</span>. In probability terms this means the
+following statements hold.</p>
+<p><span class="math display">\[ i\neq j: \quad P\left(A_i\cap A_j\right)=0 \qquad \qquad P(A_1)+\cdots +P(A_k) = 1 \]</span></p>
+<p>The probability <span class="math inline">\(P(A_i)\)</span> is referred to as the <strong>prior probability</strong> of the <span class="math inline">\(i^{th}\)</span> portion of the partition, and in some contexts are referred
+to as <strong>base rates</strong>. Let <span class="math inline">\(C\)</span> be an event, such that <span class="math inline">\(0 &lt; P(C) &lt; 1\)</span>, with known conditional probabilities <span class="math inline">\(P(C|A_i)\)</span>. This leads to being able to ``update’’
+the probability that <span class="math inline">\(A_i\)</span> occurred, given knowledge that <span class="math inline">\(C\)</span> has occurred, the <strong>posterior probability</strong> of the <span class="math inline">\(i^{th}\)</span> portion of the partition.
+This is simply (in this context) an application of conditional probability making use of formulas given above and the fact that there is a partition of
+the sample space.</p>
+<p><span class="math display">\[ P(A_i \cap C) = P(A_i)P(C|A_i) \qquad \qquad  P(C) = \sum_{i=1}^k P(A_i \cap C) = \sum_{i=1}^k P(A_i)P(C|A_i) \]</span>
+<span class="math display">\[ \Rightarrow \qquad
+P(A_i|C) = \frac{P(A_i \cap C)}{P(C)} = \frac{P(A_i)P(C|A_i)}{\sum_{i=1}^k P(A_i)P(C|A_i)} \quad i=1,...,k  \]</span></p>
+<p><strong>Example 3.4: Women’s and Men’s Marathon Speeds</strong></p>
+<p>Treating the three speed ranges (<span class="math inline">\(A_1\equiv \leq 5, \quad A_2 \equiv 5-7, \quad A_3 \equiv \geq 7\)</span>) as a partition of the sample space, we can update the probabilities of the runner’s speed range, given knowledge of gender. The prior probabilities are
+<span class="math inline">\(P(A_1)=326/2499=.1305\)</span>, <span class="math inline">\(P(A_2)=1709/2499=.6839\)</span>, and <span class="math inline">\(P(A_3)=464/2499=.1857\)</span>.
+The relevant probabilities are given below to obtain the posterior probabilities of the speed ranges, given the runner’s gender.</p>
+<p><span class="math display">\[ P(A_1) =  \frac{326}{2499} = .1305 \qquad P(F|A_1) = \frac{172}{326}=.5276 \]</span>
+<span class="math display">\[P(A_1\cap F)=P(A_1)P(F|A_1) = \left(\frac{326}{2499}\right)
+\left(\frac{172}{326}\right)=.0688 \]</span></p>
+<p><span class="math display">\[ P(A_2) =  \frac{1709}{2499} = .6839 \qquad P(F|A_2) = \frac{767}{1709}=.4488 \]</span>
+<span class="math display">\[P(A_2\cap F)=P(A_2)P(F|A_2) = \left(\frac{1709}{2499}\right)
+\left(\frac{767}{1709}\right)=.3069 \]</span></p>
+<p><span class="math display">\[ P(A_3) =  \frac{464}{2499} = .1857 \qquad P(F|A_3) = \frac{106}{464}=.2284 \]</span>
+<span class="math display">\[P(A_3\cap F)=P(A_3)P(F|A_3) = \left(\frac{464}{2499}\right)
+\left(\frac{106}{464}\right)=.0424 \]</span></p>
+<p><span class="math display">\[ P(F) = \sum_{i=1}^3 P(A_i\cap F) = .0688 + .3069 + .0424 = .4182 \]</span> <span class="math display">\[P(A_1|F) = \frac{.0688}{.4182}=.1646 \]</span></p>
+<p><span class="math display">\[ P(A_2|F) =
+\frac{.3069}{.4182}= .7340 \qquad P(A_3|F) = \frac{.0424}{.4182}=.1014 \]</span></p>
+<p>Note that these can be computed very easily from the counts in Table <a href="probability.html#tab:rrmarprob1">3.2</a> by taking the cell counts over the column totals,
+as can be seen for the males.</p>
+<p><span class="math display">\[ P(M) = \frac{1454}{2499}=.5818 \]</span>
+<span class="math display">\[P(A_1|M)=\frac{154}{1454}=.1059 \quad P(A_2|M) = \frac{942}{1454}=.6479 \quad
+P(A_3|M) = \frac{358}{1454}=.2462  \]</span></p>
+<p><span class="math display">\[ \nabla \]</span></p>
+<p><strong>Example 3.5: Drug Testing Accuracy</strong></p>
+<p>As a second example based on assessed probabilities, <span class="citation">(<a href="#ref-barnum_1964">Barnum and Gleason 1964</a>)</span>
+considered drug tests among workers.
+They had four sources of prevalence of recreational drug users based on published data sources
+(2.4% (.024), 3.1% (.031), 8.2% (.082), and 20.2% (.202)).
+Further, based on studies of test accuracy at the time, they had the probability that a drug user (correctly) tests positive is 0.80, and
+the probability a non-drug user (incorrectly) tests positive is 0.02. Let <span class="math inline">\(D\)</span> be the event that a worker is a drug user, and <span class="math inline">\(T^+\)</span> be the
+event that a worker tests positive for drug use.</p>
+<p>Consider the case where <span class="math inline">\(P(D)=.024\)</span>. We are interested in the probability a worker who tests positive is a drug user. Note that we do not
+have this probability stated above. The relevant probabilities and calculations are given below.</p>
+<p><span class="math display">\[ P(D)=.024 \qquad P\left(\overline{D}\right)=1-.024=.976 \]</span> <span class="math display">\[P\left(T^+|D\right) = .80 \qquad
+P\left(T^+|\overline{D}\right)=.02 \]</span></p>
+<p><span class="math display">\[ P\left(D\cap T^+\right)=.024(.80)=.01920 \qquad P\left(\overline{D}\cap T^+\right)=.976(.02)=.01952 \]</span>
+<span class="math display">\[ P\left(T^+\right)=.01920 + .01952 = .03872 \]</span></p>
+<p><span class="math display">\[  P\left(D|T^+\right)=\frac{.01920}{.03872}=.4959 \qquad
+P\left(\overline{D}|T^+\right)=\frac{.01952}{.03872}=.5041 \]</span></p>
+<p>Thus a positive result on the test implies slightly less than a 50:50 chance the worker uses drugs. As the prevalence increases, this probability
+increases, see Table <a href="probability.html#tab:drugtest1">3.3</a>.</p>
+<table>
+<caption><span id="tab:drugtest1">Table 3.3: </span>Drug Testing Probabilities.</caption>
+<thead>
+<tr class="header">
+<th align="right"><span class="math inline">\(P(D)\)</span></th>
+<th align="right"><span class="math inline">\(P(DT^+)\)</span></th>
+<th align="right"><span class="math inline">\(P(\bar{D}T^+)\)</span></th>
+<th align="right"><span class="math inline">\(P(T^+)\)</span></th>
+<th align="right"><span class="math inline">\(P(D\)</span>|<span class="math inline">\(T^+)\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">0.024</td>
+<td align="right">0.0192</td>
+<td align="right">0.01952</td>
+<td align="right">0.03872</td>
+<td align="right">0.4959</td>
+</tr>
+<tr class="even">
+<td align="right">0.031</td>
+<td align="right">0.0248</td>
+<td align="right">0.01938</td>
+<td align="right">0.04418</td>
+<td align="right">0.5613</td>
+</tr>
+<tr class="odd">
+<td align="right">0.082</td>
+<td align="right">0.0656</td>
+<td align="right">0.01836</td>
+<td align="right">0.08396</td>
+<td align="right">0.7813</td>
+</tr>
+<tr class="even">
+<td align="right">0.202</td>
+<td align="right">0.1616</td>
+<td align="right">0.01596</td>
+<td align="right">0.17756</td>
+<td align="right">0.9101</td>
+</tr>
+</tbody>
+</table>
+<p><span class="math display">\[ \nabla \]</span></p>
+</div>
+</div>
+<div id="random-variables-and-probability-distributions" class="section level2 hasAnchor" number="3.3">
+<h2><span class="header-section-number">3.3</span> Random Variables and Probability Distributions<a href="probability.html#random-variables-and-probability-distributions" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>When an experiment is conducted, or an observation is made, the outcome will not be known in advance, and is considered to be a
+<strong>random variable</strong>. Random variables can be qualitative or quantitative. Qualitative variables are generally modeled as
+a list of outcomes and their corresponding counts, as in contingency tables and cross-tabulations. Quantitative random variables
+are numeric outcomes and are classified as being either discrete or continuous, as described previously in describing data.</p>
+<p>A <strong>probability distribution</strong> gives the values a random variable can take on and their corresponding probabilities (discrete case)
+or density (continuous case). Probability distributions can be given in tabular, graphic, or formulaic form.
+Some commonly used families of distributions are described below.</p>
+</div>
+<div id="discrete-random-variables" class="section level2 hasAnchor" number="3.4">
+<h2><span class="header-section-number">3.4</span> Discrete Random Variables<a href="probability.html#discrete-random-variables" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Discrete random variables can take on a finite, or countably infinite, set of outcomes. We label the random variable as <span class="math inline">\(Y\)</span>, and its specific outcomes
+as <span class="math inline">\(y_1, y_2,\ldots, y_k\)</span>. Note that in some cases there is no upper limit for <span class="math inline">\(k\)</span>. We denote the probabilities of the outcomes as
+<span class="math inline">\(P\left(Y=y_i\right)=p\left(y_i\right)\)</span>, with the following restrictions.</p>
+<p><span class="math display">\[ 0 \leq p\left(y_i\right) \leq 1 \qquad \qquad  \sum_{i=1}^k p\left(y_i\right) = 1 \qquad \qquad F\left(y_t\right) = P\left(Y \leq y_t\right) =
+\sum_{i=1}^tp\left(y_i\right)   \quad t=1,\ldots ,k  \]</span></p>
+<p>Here <span class="math inline">\(F(y)\)</span> is called the <strong>cumulative distribution function (cdf)</strong>. This is a monotonic “step” function for discrete random variables, and ranges from
+0 to 1.</p>
+<p><strong>Example 3.6: NASCAR Race Finish Positions - 1975-2003</strong></p>
+<p>For the NASCAR race data in <span class="citation">(<a href="#ref-winner_2006">Winner 2006</a>)</span>,
+each driver was classified by their starting position and their finishing position in the 898
+races (34884 driver/races). For each race, we identify the number of racers who start in the top 10 that finish in the top 3. This random variable <span class="math inline">\((Y)\)</span>
+can take on the values <span class="math inline">\(y=\)</span> 0, 1, 2, or 3. That is, none of the people who start toward the front (top 10) finish in the top 3, or one, or two, or three.
+Table <a href="probability.html#tab:nascard2">3.4</a> gives the counts, probabilities, cumulative probabilities, and calculations used later to numerically describe the empirical population
+distribution. The probability of either 2 or 3 drivers who started in the top 10 finish in the top 3, is over 3/4 (.3987+.3708=.7695). A graphical depiction of the probability distribution is given in
+Figure <a href="probability.html#fig:nascard2">3.1</a>.</p>
+<pre><code>##   serRace year yearRace finish start laps prize carsRace carMake       driver
+## 1       1 1975        1      1     1  191 12035       35 Matador BobbyAllison
+## 2       1 1975        1      2     2  191  8135       35 Mercury DavidPearson</code></pre>
+<table>
+<caption><span id="tab:nascard2">Table 3.4: </span>NASCAR Start Top 10/Finish Top 3 Computations.</caption>
+<thead>
+<tr class="header">
+<th align="left"><span class="math inline">\(y\)</span></th>
+<th align="left">races</th>
+<th align="left"><span class="math inline">\(p(y)\)</span></th>
+<th align="left"><span class="math inline">\(F(y)\)</span></th>
+<th align="left"><span class="math inline">\(yp(y)\)</span></th>
+<th align="left"><span class="math inline">\(y^2p(y)\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">0</td>
+<td align="left">37</td>
+<td align="left">0.0412</td>
+<td align="left">0.0412</td>
+<td align="left">0</td>
+<td align="left">0</td>
+</tr>
+<tr class="even">
+<td align="left">1</td>
+<td align="left">170</td>
+<td align="left">0.1893</td>
+<td align="left">0.2305</td>
+<td align="left">0.1893</td>
+<td align="left">0.1893</td>
+</tr>
+<tr class="odd">
+<td align="left">2</td>
+<td align="left">358</td>
+<td align="left">0.3987</td>
+<td align="left">0.6292</td>
+<td align="left">0.7974</td>
+<td align="left">1.5948</td>
+</tr>
+<tr class="even">
+<td align="left">3</td>
+<td align="left">333</td>
+<td align="left">0.3708</td>
+<td align="left">1</td>
+<td align="left">1.1124</td>
+<td align="left">3.3372</td>
+</tr>
+<tr class="odd">
+<td align="left">sum</td>
+<td align="left">898</td>
+<td align="left">1</td>
+<td align="left">NA</td>
+<td align="left">2.0991</td>
+<td align="left">5.1213</td>
+</tr>
+</tbody>
+</table>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:nascard2"></span>
+<img src="STA2170bookdownproj_files/figure-html/nascard2-1.png" alt="Graphical depiction of  discrete probability distribution for NASCAR race start top 10/finish top 3 results" width="80%" />
+<p class="caption">
+Figure 3.1: Graphical depiction of discrete probability distribution for NASCAR race start top 10/finish top 3 results
+</p>
+</div>
+<p><span class="math display">\[ \nabla \]</span></p>
+<div id="population-numerical-descriptive-measures" class="section level3 hasAnchor" number="3.4.1">
+<h3><span class="header-section-number">3.4.1</span> Population Numerical Descriptive Measures<a href="probability.html#population-numerical-descriptive-measures" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Three widely used numerical descriptive measures corresponding to a population are the <strong>population mean</strong>, <span class="math inline">\(\mu\)</span>, the <strong>population variance</strong>,
+<span class="math inline">\(\sigma^2\)</span>, and the <strong>population standard deviation</strong>, <span class="math inline">\(\sigma\)</span>. While we have previously covered these based on a population of measurements,
+we now base them on a probability distribution. Their formulas are given below.</p>
+<p><span class="math display">\[ \mbox{Mean: } E\{Y\} = \mu_Y =y_1p(y_1) + \cdots + y_kp(y_k) = \sum_y yp(y)  \]</span></p>
+<p><span class="math display">\[ \mbox{Variance: } V\{Y\}  =  E\{(Y-\mu_Y)^2\} = \sigma_Y^2 =
+(y_1-\mu_Y)^2p(y_1) + \cdots + (y_k-\mu_Y)^2p(y_k) =
+\sum_y(y-\mu_Y)^2p(y) = \]</span>
+<span class="math display">\[ = \sum_y y^2p(y) - \mu_Y^2 \qquad \qquad \mbox{Standard Deviation: } \sigma_Y=+\sqrt{\sigma_Y^2} \]</span></p>
+<p><strong>Example 3.7: NASCAR Race Finish Positions - 1975-2003</strong></p>
+<p>For the NASCAR race finish data, we obtain the population mean, variance, and standard deviation
+from calculations in Table <a href="probability.html#tab:nascard2">3.4</a>.</p>
+<p><span class="math display">\[ E\{Y\} = \mu_Y = \sum_y yp(y) = 2.0991 \qquad
+V\{Y\}  =  \sigma_Y^2= \sum_y y^2p(y) - \mu_Y^2=5.1213-2.0991^2=0.7151 \]</span>
+<span class="math display">\[ \sigma_Y=+\sqrt{0.7151}=0.8456\]</span></p>
+<p>Some useful rules among <strong>linear</strong> functions of random variables are given here. Suppose <span class="math inline">\(Y\)</span> is a random variable with mean and variance <span class="math inline">\(\mu_Y\)</span> and
+<span class="math inline">\(\sigma^2_Y\)</span>, respectively. Further, suppose that <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> are constants (not random). Then we have the following results.</p>
+<p><span class="math display">\[ E\{a+bY\} = \sum_y(a+by)p(y) = a\sum_yp(y) + b\sum_y yp(y) = a(1) + b\mu_Y = a + b\mu_Y \]</span></p>
+<p><span class="math display">\[ V\{a+bY\} = \sum_y((a+by)-(a+b\mu_Y))^2p(y) = b^2\sum_y(y-\mu_Y)^2p(y) = b^2\sigma_Y^2 \]</span>
+<span class="math display">\[\sigma_{a+bY} = |b|\sigma_Y \]</span></p>
+<p>Examples where these can be applied involve transforming from inches to centimeters (1 inch = 2.54 cm, 1 cm = 1/2.54=0.3937 inch),
+from pounds to kilograms (1 kilogram = 2.204623 pounds) and from degrees Fahrenheit to Celsius
+(<span class="math inline">\(\deg F = 32 + 1.8 \deg C\)</span>). These rules do not work for values raised to powers, exponentials, or logarithms, although some
+approximations exist.</p>
+<p><strong>Example 3.8: NHL Hockey Player BMI and Marathon Speeds </strong></p>
+<p>Previously, we obtained the population mean and variance for NHL player body mass indices. Now we obtain the mean, variance, and standard
+deviation of their
+weights (pounds) and heights (inches), and convert them to kilograms and centimeters, respectively.
+The mean weight is 202.42 pounds, and the variance is 228.60 <span class="math inline">\(\mbox{pounds}^2\)</span>. To convert from pounds to kilos, we have to divide pounds by 2.2,
+that is <span class="math inline">\(K=(1/2.204623)P=0.453592P\)</span>. Thus, we obtain the following quantities.</p>
+<p><span class="math display">\[\mu_K=0.453592\mu_P=0.453592(202.42)=91.92 \]</span> <span class="math display">\[\sigma_K^2=(0.453592)^2\sigma_P^2=(0.453592)^2(228.60)=47.03 \]</span>
+<span class="math display">\[ \sigma_K=\sqrt{47.03}=6.86 \]</span></p>
+<p>The population mean and variance of heights are 73.26 inches and 4.26 <span class="math inline">\(\mbox{inches}^2\)</span>, respectively. To convert inches to centimeters, we have
+to multiply by 2.54, that is <span class="math inline">\(C=2.54I\)</span>. Thus, we obtain the following quantities.</p>
+<p><span class="math display">\[ \mu_C = 2.54\mu_I = 2.54(73.26)=186.08 \qquad \sigma_C^2=(2.54)^2\sigma_I^2=(2.54)^2(4.26)=27.48 \]</span> <span class="math display">\[\sigma_C=\sqrt{27.48}=5.24 \]</span></p>
+<p>Note that in the metric system, the weights in kilograms are less variable than weights in pounds, while the heights in centimeters are more variable
+than than heights in inches.</p>
+<p>For the female marathon runners, the mean and variance of their speeds were 5.84 mph and 0.69 <span class="math inline">\(\mbox{mph}^2\)</span>, respectively. One mile represents 1.60394 kilometers,
+so that so that a person who runs <span class="math inline">\(M\)</span> miles in 1 hour, runs <span class="math inline">\(K=1.60394M\)</span> kilometers in one hour. This leads to the following quantities.</p>
+<p><span class="math display">\[ \mu_K = 1.60394(5.84) = 9.37 \qquad \sigma_K^2=(1.60394)^2(0.69)=1.78\]</span>
+<span class="math display">\[ \sigma_K=\sqrt{1.78}=1.33 \]</span></p>
+<p><span class="math display">\[ \nabla  \]</span></p>
+<p>In many settings, we are interested in linear functions of a sequence of random variables: <span class="math inline">\(Y_1,\ldots,Y_n\)</span>. Typically, we have fixed coefficients
+<span class="math inline">\(a_1,\ldots, a_n\)</span>, and <span class="math inline">\(E\{Y_i\}=\mu_i\)</span>, <span class="math inline">\(V\{Y_i\}=\sigma_i^2\)</span>, and <span class="math inline">\(\mbox{COV}\{Y_i,Y_j\}=\sigma_{ij}\)</span>.
+<span class="math display">\[ \mbox{COV}\{Y_i,Y_j\} = E\{\left(Y_i-\mu_i\right)\left(Y_j-\mu_j\right)\}=\sigma_{ij} =\rho_{ij}\sigma_i\sigma_j  \]</span></p>
+<p><span class="math display">\[ W=\sum_{i=1}^n a_iY_i \qquad E\{W\}=\mu_W = \sum_{i=1}^n a_i \mu_i\]</span> <span class="math display">\[V\{W\} = \sum_{i=1}^n a_i^2 \sigma_i^2 +
+  2\sum_{i=1}^{n-1} \sum_{j=i+1}^n a_ia_j \sigma_{ij}   \]</span></p>
+<p>If, as in many, but by no means all, cases, the <span class="math inline">\(Y_i\)</span> values are independent (<span class="math inline">\(\sigma_{ij}=0\)</span>), the variance simplifies to <span class="math inline">\(V\{W\}=\sum_{i=1}^n a_i^2 \sigma_i^2\)</span>.
+A special case is when we have two random variables: <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>, and a linear function <span class="math inline">\(W=aX+bY\)</span> for fixed constants <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span>. We have means <span class="math inline">\(\mu_X\)</span>, <span class="math inline">\(\mu_Y\)</span>,
+standard deviations <span class="math inline">\(\sigma_X\)</span>, <span class="math inline">\(\sigma_Y\)</span>, covariance <span class="math inline">\(\sigma_{XY}\)</span>, and correlation <span class="math inline">\(\rho_{XY}\)</span>.</p>
+<p><span class="math display">\[ W=aX+bY \qquad E\{W\}= a\mu_X + b\mu_Y \]</span>
+<span class="math display">\[ V\{W\}=a^2\sigma_X^2 + b^2\sigma_Y^2 + 2ab\sigma_{XY} =
+a^2\sigma_X^2 + b^2\sigma_Y^2 + 2ab\rho_{XY}\sigma_X\sigma_Y \]</span></p>
+<p>Some special cases include where we have: <span class="math inline">\(a=1,b=1\)</span> (sums), and <span class="math inline">\(a=1,b=-1\)</span> (differences). This leads to the following results.</p>
+<p><span class="math display">\[ E\{X+Y\}=\mu_X+\mu_Y \qquad \qquad V\{X+Y\} = \sigma_X^2+\sigma_Y^2 + 2\rho_{XY} \sigma_X \sigma_Y \]</span>
+<span class="math display">\[ E\{X-Y\}=\mu_X-\mu_Y \qquad
+\qquad V\{X-Y\} = \sigma_X^2+\sigma_Y^2 - 2\rho_{XY} \sigma_X \sigma_Y  \]</span></p>
+<p><strong>Example 3.9: Movie “Close Up” Scenes</strong></p>
+<p>Barry Salt has classified film shots along an ordinal scale for a “population” of 398 movies.<br />
+The levels are (BCU=Big Close Up, CU=Close Up,
+MCU=Medium Close Up, MLS=Medium Long Shot, LS=Long Shot, and VLS=Very Long Shot). We consider <span class="math inline">\(X\)</span> to be the number of Big Close Up’s and <span class="math inline">\(Y\)</span> to be the
+number of Close Up’s in a film. For this population, <span class="math inline">\(\mu_X=28.84\)</span>, <span class="math inline">\(\mu_Y=79.23\)</span>, <span class="math inline">\(\sigma_X=31.48\)</span>, <span class="math inline">\(\sigma_Y=61.37\)</span>, and <span class="math inline">\(\rho_{XY}=0.51\)</span>.
+We obtain the population mean, variance, and standard deviations of the sum of Big Close Up’s and Close Up’s (<span class="math inline">\(X+Y\)</span>) and the difference between
+Big Close Up’s and Close Up’s (<span class="math inline">\(X-Y\)</span>).</p>
+<p><span class="math display">\[ E\{X+Y\} = 28.84 + 79.23 = 108.07 \]</span>
+<span class="math display">\[V\{X+Y\} = 31.48^2 + 61.37^2 + 2(0.51)(31.48)(61.37) = 6727.83 \quad \sigma_{X+Y}=82.02 \]</span></p>
+<p><span class="math display">\[ E\{X-Y\} = 28.84 - 79.23 = -50.39 \]</span>
+<span class="math display">\[V\{X-Y\} = 31.48^2 + 61.37^2 - 2(0.51)(31.48)(61.37) = 2786.70 \quad \sigma_{X-Y}=52.79\]</span></p>
+<p>Source: <a href="http://www.cinemetrics.lv/salt.php" class="uri">http://www.cinemetrics.lv/salt.php</a></p>
+<p><span class="math display">\[ \nabla \]</span></p>
+</div>
+<div id="common-families-of-discrete-probability-distributions" class="section level3 hasAnchor" number="3.4.2">
+<h3><span class="header-section-number">3.4.2</span> Common Families of Discrete Probability Distributions<a href="probability.html#common-families-of-discrete-probability-distributions" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Here we consider some commonly used families of discrete probability distributions, namely the Binomial, Poisson, and Negative Binomial families.
+These are used in many situations where data are counts of numbers of events occurring in an experiment.</p>
+<div id="binomial-distribution" class="section level4 hasAnchor" number="3.4.2.1">
+<h4><span class="header-section-number">3.4.2.1</span> Binomial Distribution<a href="probability.html#binomial-distribution" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>A binomial “experiment” is based on a series of Bernoulli trials with the following characteristics.</p>
+<ul>
+<li>The experiment consists of <span class="math inline">\(n\)</span> trials or observations.</li>
+<li>Trial outcomes are independent of one another.</li>
+<li>Each trial can end in one of two possible outcomes, often labeled <strong>S</strong>uccess or <strong>F</strong>ailure.</li>
+<li>The probability of Success, <span class="math inline">\(\pi\)</span> is constant across all trials.</li>
+<li>The random variable, <span class="math inline">\(Y\)</span>, is the number of Successes in the <span class="math inline">\(n\)</span> trials</li>
+</ul>
+<p>Note that many experiments are well approximated by this model, and thus it has wide applicability. One problem that has been considered in great detail
+is the assumption of independence from trial to trial. A classic paper that looked at the “hot hand” in basketball shooting has led to many
+studies in sports involving the topic is [gilovich_1985].</p>
+<p>The probability of any sequence of <span class="math inline">\(y\)</span> Successes and <span class="math inline">\(n-y\)</span> Failures is <span class="math inline">\(\pi^y (1-\pi)^{n-y}\)</span> for <span class="math inline">\(y=0,1,\ldots ,n\)</span>. The number of ways
+to observe <span class="math inline">\(y\)</span> successes in <span class="math inline">\(n\)</span> trials makes use of combinations described previously. The number of ways of choosing <span class="math inline">\(y\)</span> positions from
+<span class="math inline">\(1,2,\ldots ,n\)</span> is <span class="math inline">\(C_y^n=\frac{n!}{y!(n-y)!}={n \choose y}\)</span>. For instance, there is only one way observing either 0 or <span class="math inline">\(n\)</span> Successes, there are <span class="math inline">\(n\)</span> ways
+of observing 1 or <span class="math inline">\(n-1\)</span> Successes, and so on. This leads to the following probability distribution for <span class="math inline">\(Y \sim Bin(n,\pi)\)</span>.</p>
+<p><span class="math display">\[ P(Y=y) =p(y)= {n \choose y} \pi^y (1-\pi)^{n-y} \quad y=0,1,\ldots ,n \qquad \sum_{y=0}^n p(y)= \left(\pi + (1-\pi)\right)^n=1^n=1    \]</span></p>
+<p>Statistical packages and spreadsheets have functions for computing probabilities for the Binomial (and all distributions covered in these notes).
+In R, the function <strong>dbinom(<span class="math inline">\(y\)</span>,<span class="math inline">\(n\)</span>,<span class="math inline">\(\pi\)</span>)</strong> returns <span class="math inline">\(P(Y=y)=p(y)\)</span> (the probability “density”) when <span class="math inline">\(Y\sim Bin(n,\pi)\)</span>.</p>
+<p>To obtain the mean and variance of the Binomial distribution, consider the <span class="math inline">\(n\)</span> independent trials individually (these are referred to as <strong>Bernoulli</strong>
+trials). Let <span class="math inline">\(S_i=1\)</span> if trial <span class="math inline">\(i\)</span> is a success, and <span class="math inline">\(S_i=0\)</span> if it is a failure. Then <span class="math inline">\(Y\)</span>, the number of Successes is the sum of the independent <span class="math inline">\(S_i\)</span>
+values, leading to the following results.</p>
+<p><span class="math display">\[E\{S_i\} = 1\pi + 0(1-\pi) = \pi \qquad E\{S_i^2\} = 1^2\pi + 0^2(1-\pi)=\pi \]</span>
+<span class="math display">\[ V\{S_i\}=E\{S_i^2\}-\left(E\{S_i\}\right)^2=
+\pi-\pi^2=\pi(1-\pi) \]</span></p>
+<p><span class="math display">\[ Y=\sum_{i=1}^n S_i \quad \Rightarrow \quad E\{Y\} = \mu_Y= \sum_{i=1}^n E\{S_i\} = n\pi \]</span>
+<span class="math display">\[ V\{Y\}=\sigma_Y^2=\sum_{i=1}^n V\{S_i\} = n\pi (1-\pi)  \qquad \sigma_Y=\sqrt{n\pi (1-\pi)}\]</span></p>
+<p><strong>Example 3.10: Experiments of Mobile Phone Telepathy</strong></p>
+<p>A set of experiments was conducted to determine whether people displayed evidence of telepathy in receiving mobile phone calls <span class="citation">(<a href="#ref-sheldrake_2015">Sheldrake, Smart, and Avraamides 2015</a>)</span>.
+Each subject received 6 calls from one of two potential callers. Each subject predicted
+which caller was calling. Assuming random guessing, the number of successful predictions should be Binomial, with <span class="math inline">\(n=6\)</span> trials, and probability of Success <span class="math inline">\(\pi=0.5\)</span>,
+since there were two potential callers. The probabilities of 0,1,2,…,6 successes for a subject in the experiment are given below.
+A plot of the probability distribution is given in Figure <a href="probability.html#fig:binomial1">3.2</a>.</p>
+<p><span class="math display">\[ \frac{6!}{0!(6-0)!}=\frac{6!}{6!(6-6)!}=1 \quad \frac{6!}{1!(6-1)!}=\frac{6!}{5!(6-5)!}=6 \quad \frac{6!}{2!(6-2)!}=\frac{6!}{4!(6-4)!}=15 \quad
+\frac{6!}{3!(6-3)!}=20 \]</span></p>
+<p><span class="math display">\[ .5^y(1-.5)^{6-y}=.5^6=.015625 \]</span></p>
+<p><span class="math display">\[ p(0)=p(6)=.015625 \quad p(1)=p(5)=.09375 \quad p(2)=p(4) =.234375 \quad p(3) = .3125 \]</span></p>
+<pre><code>##      y      p_y
+## [1,] 0 0.015625
+## [2,] 1 0.093750
+## [3,] 2 0.234375
+## [4,] 3 0.312500
+## [5,] 4 0.234375
+## [6,] 5 0.093750
+## [7,] 6 0.015625</code></pre>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:binomial1"></span>
+<img src="STA2170bookdownproj_files/figure-html/binomial1-1.png" alt="Binomial Distribution" width="80%" />
+<p class="caption">
+Figure 3.2: Binomial Distribution
+</p>
+</div>
+<p>The mean, variance, and standard deviation of the number of Successful predictions in the <span class="math inline">\(n=6\)</span> trials under this model are
+as follow.</p>
+<p><span class="math display">\[ \mu_Y=n\pi=6(0.5) = 3 \qquad \sigma_Y^2=n\pi(1-\pi) = 6(0.5)(1-0.5) = 1.5 \qquad \sigma_Y = \sqrt{1.5}=1.2247 \]</span></p>
+<p>For this study, 110 subjects completed 6 trials each (660 total trials). There were a total of 369 hits (there appears to be a typo saying 370 in their Table 3). This corresponds to a proportion of 369/660=.559, in other words, these subjects in aggregate showed better than expected
+success in predicting callers. Table <a href="probability.html#tab:telepathy1">3.5</a> gives the probability distributions for <span class="math inline">\(\pi=0.50\)</span> and <span class="math inline">\(\pi=0.56\)</span>, along with
+expected counts under the two models and the observed counts (<span class="math inline">\(N=110\)</span> subjects).</p>
+<table style="width:100%;">
+<caption><span id="tab:telepathy1">Table 3.5: </span>Binomial Distribution for Mobile Telepathy Experiment.</caption>
+<colgroup>
+<col width="6%" />
+<col width="22%" />
+<col width="22%" />
+<col width="20%" />
+<col width="20%" />
+<col width="9%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left"><span class="math inline">\(y\)</span></th>
+<th align="right"><span class="math inline">\(p(y\)</span>|<span class="math inline">\(\pi=.50)\)</span></th>
+<th align="right"><span class="math inline">\(p(y\)</span>|<span class="math inline">\(\pi=.56)\)</span></th>
+<th align="right">Expected<span class="math inline">\((\pi=.50)\)</span></th>
+<th align="right">Expected<span class="math inline">\((\pi=.56)\)</span></th>
+<th align="right">Observed</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">0</td>
+<td align="right">0.0156</td>
+<td align="right">0.0073</td>
+<td align="right">1.7188</td>
+<td align="right">0.7982</td>
+<td align="right">1</td>
+</tr>
+<tr class="even">
+<td align="left">1</td>
+<td align="right">0.0938</td>
+<td align="right">0.0554</td>
+<td align="right">10.3125</td>
+<td align="right">6.0953</td>
+<td align="right">5</td>
+</tr>
+<tr class="odd">
+<td align="left">2</td>
+<td align="right">0.2344</td>
+<td align="right">0.1763</td>
+<td align="right">25.7812</td>
+<td align="right">19.3941</td>
+<td align="right">18</td>
+</tr>
+<tr class="even">
+<td align="left">3</td>
+<td align="right">0.3125</td>
+<td align="right">0.2992</td>
+<td align="right">34.3750</td>
+<td align="right">32.9113</td>
+<td align="right">37</td>
+</tr>
+<tr class="odd">
+<td align="left">4</td>
+<td align="right">0.2344</td>
+<td align="right">0.2856</td>
+<td align="right">25.7812</td>
+<td align="right">31.4153</td>
+<td align="right">31</td>
+</tr>
+<tr class="even">
+<td align="left">5</td>
+<td align="right">0.0938</td>
+<td align="right">0.1454</td>
+<td align="right">10.3125</td>
+<td align="right">15.9933</td>
+<td align="right">15</td>
+</tr>
+<tr class="odd">
+<td align="left">6</td>
+<td align="right">0.0156</td>
+<td align="right">0.0308</td>
+<td align="right">1.7188</td>
+<td align="right">3.3925</td>
+<td align="right">3</td>
+</tr>
+<tr class="even">
+<td align="left">Total</td>
+<td align="right">1.0000</td>
+<td align="right">1.0000</td>
+<td align="right">110.0000</td>
+<td align="right">110.0000</td>
+<td align="right">110</td>
+</tr>
+</tbody>
+</table>
+<p><span class="math display">\[ \nabla \]</span></p>
+</div>
+<div id="poisson-distribution" class="section level4 hasAnchor" number="3.4.2.2">
+<h4><span class="header-section-number">3.4.2.2</span> Poisson Distribution<a href="probability.html#poisson-distribution" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>In many applications, researchers observe the counts of a random process in some fixed amount of time or space. The random variable
+<span class="math inline">\(Y\)</span> is a count that can take on any non-negative integer. One important aspect of the Poisson family is that the mean and variance
+are the same. This is one aspect that does not work for all applications. We use the notation: <span class="math inline">\(Y \sim  Poi\left(\lambda \right)\)</span>.
+The probability distribution, mean and variance of <span class="math inline">\(Y\)</span> are:</p>
+<p><span class="math display">\[ p(y) = \frac{e^{-\lambda} \lambda^y}{y!} \quad y=0,1,\ldots ; \quad \lambda &gt; 0\]</span><br />
+<span class="math display">\[ E\{Y\}=\mu_Y=\lambda   \qquad \qquad
+V\{Y\}=\sigma_Y^2 = \lambda   \]</span></p>
+<p>Note that <span class="math inline">\(\lambda &gt; 0\)</span>. The Poisson arises by dividing the time/space into <span class="math inline">\(n\)</span> “infinitely” small areas, each having
+either 0 or 1 Success, with Success probability <span class="math inline">\(\pi = \lambda/n\)</span>. Then <span class="math inline">\(Y\)</span> is the number of areas having a success.</p>
+<p><span class="math display">\[ p(y) = \frac{n!}{y!(n-y)!}\left(\frac{\lambda}{n}\right)^y\left(1-\frac{\lambda}{n} \right)^{n-y} =
+\frac{n(n-1)\cdots(n-y+1)}{y!}\left(\frac{\lambda}{n}\right)^y\left(1-\frac{\lambda}{n} \right)^{n-y}   =   \]</span>
+<span class="math display">\[ =\frac{1}{y!} \left(\frac{n}{n}\right)\left(\frac{n-1}{n}\right)\cdots \left(\frac{n-y+1}{n}\right)\lambda^y
+\left(1-\frac{\lambda}{n} \right)^{n}\left(1-\frac{\lambda}{n} \right)^{-y} \]</span></p>
+<p>The limit as <span class="math inline">\(n\)</span> goes to <span class="math inline">\(\infty\)</span> is:
+<span class="math display">\[ \lim_{n\to\infty} p(y) = \frac{1}{y!}(1)(1)\cdots(1)\lambda^y e^{-\lambda}(1) = p(y) = \frac{e^{-\lambda} \lambda^y}{y!} \quad y=0,1,2... \]</span></p>
+<p>The mean and variance for the Poisson distribution are both <span class="math inline">\(\lambda\)</span>. This restriction can be problematic in many applications, and the Negative Binomial
+distribution (described below) is often used when the variance exceeds the mean.</p>
+<p><strong>Example 3.11: London Bomb Hits in World War II</strong></p>
+<p>A widely reported application of the Poisson Distribution involves the counts of the number of bombs hitting among 576 areas of <span class="math inline">\(0.5 km^2\)</span> in
+south London during WWII <span class="citation">(<a href="#ref-clarke_1946">Clarke 1946</a>)</span>, also reported in <span class="citation">(<a href="#ref-feller_1968">Feller 1968</a>)</span>. There were a total of 537 bombs hit with a mean of <span class="math inline">\(537/576=.9323\)</span>. Table <a href="probability.html#tab:londonbomb1">3.6</a> gives the counts, and their expected counts (<span class="math inline">\(576p(y)\)</span>) for the occurrences of 0 bombs, 1 bomb, …,
+<span class="math inline">\(\geq5\)</span> bombs (the last cell involves 1 area which was hit 7 times).</p>
+<table>
+<caption><span id="tab:londonbomb1">Table 3.6: </span>Poisson Distribution for World War II London Bombings.</caption>
+<thead>
+<tr class="header">
+<th align="left"><span class="math inline">\(y\)</span></th>
+<th align="right"><span class="math inline">\(p(y)\)</span></th>
+<th align="right">Expected</th>
+<th align="right">Observed</th>
+<th align="right">NA</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">1</td>
+<td align="right">0.3670</td>
+<td align="right">211.3905</td>
+<td align="right">211</td>
+<td align="right">0.0007</td>
+</tr>
+<tr class="even">
+<td align="left">2</td>
+<td align="right">0.1711</td>
+<td align="right">98.5397</td>
+<td align="right">93</td>
+<td align="right">0.3114</td>
+</tr>
+<tr class="odd">
+<td align="left">3</td>
+<td align="right">0.0532</td>
+<td align="right">30.6228</td>
+<td align="right">35</td>
+<td align="right">0.6257</td>
+</tr>
+<tr class="even">
+<td align="left">4+</td>
+<td align="right">0.0151</td>
+<td align="right">8.7062</td>
+<td align="right">7</td>
+<td align="right">0.3344</td>
+</tr>
+<tr class="odd">
+<td align="left">Total</td>
+<td align="right">1.0000</td>
+<td align="right">576.0000</td>
+<td align="right">576</td>
+<td align="right">1.2947</td>
+</tr>
+</tbody>
+</table>
+<p><span class="math display">\[ \nabla \]</span></p>
+</div>
+<div id="negative-binomial-distribution" class="section level4 hasAnchor" number="3.4.2.3">
+<h4><span class="header-section-number">3.4.2.3</span> Negative Binomial Distribution<a href="probability.html#negative-binomial-distribution" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>The negative binomial distribution is used in two quite different contexts. The first is where a binomial type experiment
+is being conducted, except instead of having a fixed number of trials, the experiment is completed when the <span class="math inline">\(r^{th}\)</span> success occurs.
+The random variable <span class="math inline">\(Y\)</span> is the number of trials needed until the <span class="math inline">\(r^{th}\)</span> success, and can take on any
+integer value greater than or equal to <span class="math inline">\(r\)</span>. The probability distribution, its mean and variance are given below.
+<span class="math display">\[ p(y) = {y-1 \choose r-1} \pi^r \left(1-\pi \right)^{y-r}    \qquad
+E\{Y\}= \mu_Y = \frac{r}{\pi} \]</span>
+<span class="math display">\[ V\{Y\} = \sigma_Y^2 = \frac{r\left(1-\pi\right)}{\pi^2} \]</span></p>
+<p>A second use of the negative binomial distribution is as a model for count data. It arises from a mixture of Poisson models.
+In this setting it has 2 parameters and is more flexible than the Poisson (which has the variance equal to the mean), and can take on any
+non-negative integer value.
+In this form, the negative binomial distribution and its mean and variance can be written as follow
+(see e.g. <span class="citation">(<a href="#ref-agresti_2002">Alan Agresti 2002</a>)</span>, Section 13.4).</p>
+<p><span class="math display">\[ f\left(y;\mu,\alpha\right) =\frac{\Gamma\left(\alpha+y\right)}{\Gamma\left(\alpha\right)
+\Gamma\left(y+1\right)}
+\left(\frac{\alpha}{\alpha+\mu}\right)^{\alpha} \left(\frac{\mu}{\alpha+\mu}\right)^y  \quad
+\Gamma(w)=\int_0^{\infty} x^{w-1} e^{-x}dx = \left(w-1\right)\Gamma\left(w-1\right) \]</span></p>
+<p><span class="math display">\[ E\left\{Y\right\} = \mu \qquad  V\left\{Y\right\} = \mu\left(1+\alpha\mu\right)\]</span></p>
+<p><strong>Example 3.12: Number of Comets Observed per Year - 1789-1888</strong></p>
+<p>The number of comets observed per year for the century 1789-1888 inclusive were reported by <span class="citation">(<a href="#ref-chambers_1889">Chambers 1889</a>)</span> and included in a
+large number of datasets by <span class="citation">(<a href="#ref-thorndike_1926">Thorndike 1926</a>)</span>. The annual number of comets ranged from 0 (19 years) to 9 (1 year), with frequency counts
+and computations for the mean and variance given in Table <a href="probability.html#tab:comet1">3.7</a>, treating this as a population of years. The mean and variance are given
+below, along with “method of moments” estimates for <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\alpha\)</span> for the Negative Binomial distribution.</p>
+<p><span class="math display">\[ \mu_Y=\sum_y yp(y)=2.58 \qquad \sigma_Y^2= \sum_y y^2p(y)-\mu_Y^2=11.36-2.58^2=4.70  \]</span></p>
+<p><span class="math display">\[ \sigma^2 = \mu(1+\alpha\mu) \quad \Rightarrow \quad \alpha = \frac{\sigma^2/\mu -1}{\mu} = \frac{4.70/2.58-1}{2.58} = 0.32 \]</span></p>
+<p>The Negative Binomial appears to fit better than a Poisson distribution with mean 2.58, based on observed and expected counts.</p>
+<table>
+<caption><span id="tab:comet1">Table 3.7: </span>Poisson and Negative Binomial Distributions for Annual Comets During 1789-1888.</caption>
+<thead>
+<tr class="header">
+<th align="left"><span class="math inline">\(y\)</span></th>
+<th align="right">years</th>
+<th align="right"><span class="math inline">\(p(y)\)</span></th>
+<th align="right"><span class="math inline">\(yp(y)\)</span></th>
+<th align="right"><span class="math inline">\(y^2p(y)\)</span></th>
+<th align="right">Exp(Poi)</th>
+<th align="right">Exp(NB)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">0</td>
+<td align="right">19</td>
+<td align="right">0.19</td>
+<td align="right">0.00</td>
+<td align="right">0.00</td>
+<td align="right">7.58</td>
+<td align="right">15.22</td>
+</tr>
+<tr class="even">
+<td align="left">1</td>
+<td align="right">19</td>
+<td align="right">0.19</td>
+<td align="right">0.19</td>
+<td align="right">0.19</td>
+<td align="right">19.55</td>
+<td align="right">21.54</td>
+</tr>
+<tr class="odd">
+<td align="left">2</td>
+<td align="right">17</td>
+<td align="right">0.17</td>
+<td align="right">0.34</td>
+<td align="right">0.68</td>
+<td align="right">25.22</td>
+<td align="right">20.11</td>
+</tr>
+<tr class="even">
+<td align="left">3</td>
+<td align="right">14</td>
+<td align="right">0.14</td>
+<td align="right">0.42</td>
+<td align="right">1.26</td>
+<td align="right">21.69</td>
+<td align="right">15.54</td>
+</tr>
+<tr class="odd">
+<td align="left">4</td>
+<td align="right">13</td>
+<td align="right">0.13</td>
+<td align="right">0.52</td>
+<td align="right">2.04</td>
+<td align="right">13.99</td>
+<td align="right">10.76</td>
+</tr>
+<tr class="even">
+<td align="left">5</td>
+<td align="right">8</td>
+<td align="right">0.08</td>
+<td align="right">0.40</td>
+<td align="right">2.00</td>
+<td align="right">7.22</td>
+<td align="right">6.93</td>
+</tr>
+<tr class="odd">
+<td align="left">6</td>
+<td align="right">4</td>
+<td align="right">0.04</td>
+<td align="right">0.24</td>
+<td align="right">1.44</td>
+<td align="right">3.10</td>
+<td align="right">4.24</td>
+</tr>
+<tr class="even">
+<td align="left">7</td>
+<td align="right">2</td>
+<td align="right">0.02</td>
+<td align="right">0.14</td>
+<td align="right">0.98</td>
+<td align="right">1.14</td>
+<td align="right">2.50</td>
+</tr>
+<tr class="odd">
+<td align="left">8</td>
+<td align="right">3</td>
+<td align="right">0.03</td>
+<td align="right">0.24</td>
+<td align="right">1.92</td>
+<td align="right">0.37</td>
+<td align="right">1.43</td>
+</tr>
+<tr class="even">
+<td align="left">9+</td>
+<td align="right">1</td>
+<td align="right">0.01</td>
+<td align="right">0.09</td>
+<td align="right">0.81</td>
+<td align="right">0.14</td>
+<td align="right">1.73</td>
+</tr>
+<tr class="odd">
+<td align="left">Total</td>
+<td align="right">100</td>
+<td align="right">1.00</td>
+<td align="right">2.58</td>
+<td align="right">11.32</td>
+<td align="right">100.00</td>
+<td align="right">100.00</td>
+</tr>
+</tbody>
+</table>
+<p><span class="math display">\[ \nabla \]</span></p>
+</div>
+</div>
+</div>
+<div id="continuous-random-variables" class="section level2 hasAnchor" number="3.5">
+<h2><span class="header-section-number">3.5</span> Continuous Random Variables<a href="probability.html#continuous-random-variables" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Continuous random variables can take on any values along a continuum. Their distributions are described as densities, with probabilities being assigned
+as areas under the curve. Unlike discrete random variables, individual points have no probability assigned to them. While discrete probabilities and
+means and variances make use of summation, continuous probabilities and means and variances are obtained by integration. The following rules and results
+are used for continuous random variables and probability distributions. We use <span class="math inline">\(f(y)\)</span> to denote a probability density function and <span class="math inline">\(F(y)\)</span> to dentote
+the cumulative distribution function.</p>
+<p><span class="math display">\[ f(y) \geq 0 \qquad \int_{-\infty}^{\infty}f(y)dy=1 \qquad P(a\leq Y \leq b) = \int_a^b f(y)dy  \qquad F(y) = \int_{-\infty}^y f(t)dt \]</span></p>
+<p><span class="math display">\[ E\{Y\} = \mu_Y = \int_{-\infty}^{\infty} yf(y) dy \]</span>
+<span class="math display">\[V\{Y\}=\sigma_Y^2= \int_{-\infty}^{\infty} \left(y-\mu_Y\right)^2f(y) dy=
+\int_{-\infty}^{\infty} y^2f(y) dy - \mu_Y^2 \qquad \sigma_Y=+\sqrt{\sigma_Y^2}  \]</span></p>
+<div id="common-families-of-continuous-probability-distributions" class="section level3 hasAnchor" number="3.5.1">
+<h3><span class="header-section-number">3.5.1</span> Common Families of Continuous Probability Distributions<a href="probability.html#common-families-of-continuous-probability-distributions" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Three commonly applied families of distributions for describing populations of continuous measurements are the normal (Gaussian), gamma,
+and beta families, although there are many other families also used in practice.</p>
+<p>The normal distribution is symmetric and mound-shaped. It has two parameters: a mean and variance (the standard deviation is often used in software packages).
+Many variables have distributions that are modeled well by the normal distribution, and many estimators have <strong>sampling distributions</strong> that are
+approximately normal. The gamma distribution has a density over positive values that is skewed to the right. There are many applications where
+data are skewed with a few extreme observations, such as the marathon running times observed previously. The gamma distribution also has two parameters
+associated with it. The beta distribution is often used to model data that are proportions (or can be extended to any finite length interval). The beta
+distribution also has two parameters. All of these families can take on a wide range of shapes by changing parameter values.</p>
+<p>Probabilities, quantiles, densities, and random number generators for specific distributions and parameter values can be obtained from many statistical
+software packages and spreadsheets such as EXCEL. We will use R throughout these notes.</p>
+<div id="normal-gaussian-distribution" class="section level4 hasAnchor" number="3.5.1.1">
+<h4><span class="header-section-number">3.5.1.1</span> Normal (Gaussian) Distribution<a href="probability.html#normal-gaussian-distribution" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>The normal distributions, also known as the Gaussian distributions, are a family of symmetric mound-shaped distributions.
+The distribution has 2 parameters: the mean <span class="math inline">\(\mu\)</span> and the variance <span class="math inline">\(\sigma^2\)</span>, although often it is indexed by its
+standard deviation <span class="math inline">\(\sigma\)</span>. We use the notation <span class="math inline">\(Y \sim N\left(\mu,\sigma\right)\)</span>. The probability density function, the mean and variance are:</p>
+<p><span class="math display">\[ f(y) = \frac{1}{\sqrt{2\pi \sigma^2}} \exp\left(-\frac{\left(y-\mu\right)^2}{2\sigma^2}\right) \quad -\infty &lt;y &lt; \infty, -\infty &lt; \mu &lt; \infty, \sigma &gt;0
+\]</span>
+<span class="math display">\[E\{Y\} = \mu_Y = \mu \quad  V\{Y\}=\sigma_Y^2=\sigma^2 \]</span>
+The mean <span class="math inline">\(\mu\)</span> defines the center (median and mode) of the distribution, and the standard deviation <span class="math inline">\(\sigma\)</span> is a measure of the spread
+(<span class="math inline">\(\mu-\sigma\)</span> and <span class="math inline">\(\mu+\sigma\)</span> are the inflection points). Despite the differences in location and spread of the different
+distributions in the normal family, probabilities with respect to standard deviations from the mean are the same for
+all normal distributions. For <span class="math inline">\(-\infty &lt; z_1 &lt; z_2 &lt; \infty\)</span>, we have:
+<span class="math display">\[ P\left(\mu+z_1\sigma \leq Y \leq \mu + z_2\sigma \right) = \int_{\mu+z_1\sigma}^{\mu+z_2\sigma}
+\frac{1}{\sqrt{2\pi \sigma^2}}  \exp\left(-\frac{\left(y-\mu\right)^2}{2\sigma^2}\right)dy = \]</span>
+<span class="math display">\[ = \int_{z1}^{z_2} \frac{1}{\sqrt{2\pi}}e^{-z^2/2}dz = \Phi(z_2) - \Phi(z_1) \]</span>
+Here <span class="math inline">\(Z\)</span> is <strong>standard normal</strong>, a normal distribution with mean 0, and variance (standard deviation) 1.<br />
+<span class="math inline">\(\Phi(z^*)\)</span> is the cumulative distribution function of the standard normal distribution, up to the point <span class="math inline">\(z^*\)</span>:
+<span class="math display">\[  \Phi(z^*) = \int_{-\infty}^{z^*} \frac{1}{\sqrt{2\pi}}e^{-z^2/2}dz \]</span>
+These probabilities and critical values can be obtained directly or indirectly from standard tables, statistical software, or spreadsheets.
+Note that:
+<span class="math display">\[Y \sim N\left(\mu,\sigma\right)  \qquad \Rightarrow \qquad  Z=\frac{Y-\mu}{\sigma} \sim N(0,1).   \]</span>
+This makes it possible to use the standard normal table to obtain probabilities and quantiles for any normal distribution.
+Plots of three normal distributions are given in Figure <a href="probability.html#fig:normal1">3.3</a>.</p>
+<p>Approximately 68% (.6826) of the probability lies within 1 standard deviation from the mean, 95% (.9544)
+lies within 2 standard deviations, and virtually all (.9970) lies within
+3 standard deviations.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:normal1"></span>
+<img src="STA2170bookdownproj_files/figure-html/normal1-1.png" alt="Three Normal Distributions" width="80%" />
+<p class="caption">
+Figure 3.3: Three Normal Distributions
+</p>
+</div>
+<p><strong>Example 3.13: NHL Player Body Mass Indices </strong></p>
+<p>Previously, we saw that the Body Mass Indices (BMI) of National Hockey League players for the 2013-2014 season were mound shaped with a mean
+of 26.50 and standard deviation 1.45. Figure <a href="probability.html#fig:nhlbminorm1">3.4</a> gives a histogram along with the corresponding normal density.<br />
+There is a tendency to observe more actual BMI’s in the center than the normal distribution would imply, but the normal model seems
+to be reasonable.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:nhlbminorm1"></span>
+<img src="STA2170bookdownproj_files/figure-html/nhlbminorm1-1.png" alt="Body Mass Index for NHL Players 2014/2015 Season and Normal Density" width="80%" />
+<p class="caption">
+Figure 3.4: Body Mass Index for NHL Players 2014/2015 Season and Normal Density
+</p>
+</div>
+<p>Consider the following quantiles (.10, .25, .50, .75, .90) for the NHL data and the corresponding N(26.50, 1.45) distribution.
+Also consider the probabilities of the following ranges <span class="math inline">\((&lt; 26.50-2(1.45)=23.60, &gt;26.50 + 2(1.45) = 29.40\)</span>, and <span class="math inline">\((25.05=26.50-1.45,26.50+1.45=27.95))\)</span> for
+the NHL data and the normal distribution. Results are given in Table <a href="probability.html#tab:nhlbminorm2">3.8</a> and in
+Table <a href="probability.html#tab:nhlbminorm3">3.9</a>.</p>
+<table>
+<caption><span id="tab:nhlbminorm2">Table 3.8: </span>Theoretical and Empirical quantiles for BMI - NHL players</caption>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="right">10%</th>
+<th align="right">25%</th>
+<th align="right">50%</th>
+<th align="right">75%</th>
+<th align="right">90%</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Theoretical</td>
+<td align="right">24.657</td>
+<td align="right">25.537</td>
+<td align="right">26.514</td>
+<td align="right">27.491</td>
+<td align="right">28.371</td>
+</tr>
+<tr class="even">
+<td align="left">Empirical</td>
+<td align="right">24.736</td>
+<td align="right">25.620</td>
+<td align="right">26.542</td>
+<td align="right">27.473</td>
+<td align="right">28.359</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption><span id="tab:nhlbminorm3">Table 3.9: </span>Theoretical and Empirical probabilities for BMI - NHL players</caption>
+<colgroup>
+<col width="17%" />
+<col width="22%" />
+<col width="38%" />
+<col width="22%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="right"><span class="math inline">\(&lt;\mu-2\sigma\)</span></th>
+<th align="right"><span class="math inline">\((\mu-\sigma,\mu+\sigma)\)</span></th>
+<th align="right"><span class="math inline">\(&gt;\mu+2\sigma\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Theoretical</td>
+<td align="right">0.023</td>
+<td align="right">0.683</td>
+<td align="right">0.023</td>
+</tr>
+<tr class="even">
+<td align="left">Empirical</td>
+<td align="right">0.025</td>
+<td align="right">0.694</td>
+<td align="right">0.027</td>
+</tr>
+</tbody>
+</table>
+<p>The quantiles and probabilities are very similar, showing the normal model is a reasonable approximation to the distribution of NHL BMI values.</p>
+<p><span class="math display">\[ \nabla \]</span></p>
+</div>
+<div id="gamma-distribution" class="section level4 hasAnchor" number="3.5.1.2">
+<h4><span class="header-section-number">3.5.1.2</span> Gamma Distribution<a href="probability.html#gamma-distribution" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>The gamma family of distributions are used to model non-negative random variables that are often right-skewed.
+There are two widely used parameterizations. The first given here is in terms of <strong>shape</strong> and <strong>scale</strong> parameters.
+<span class="math display">\[ f(y) = \frac{1}{\Gamma(\alpha)\beta^{\alpha}}y^{\alpha-1} e^{-y/\beta} \qquad y\geq 0, \alpha &gt;0, \beta &gt; 0  \]</span>
+<span class="math display">\[ E\{Y\}=\mu_Y = \alpha\beta \qquad V\{Y\}=\sigma_Y^2= \alpha\beta^2 \]</span>
+Here, <span class="math inline">\(\Gamma(\alpha)\)</span> is the gamma function <span class="math inline">\(\Gamma(\alpha)=\int_0^{\infty} y^{\alpha-1}e^{-y}dy\)</span> and is
+built-in to virtually all statistical packages and spreadsheets. It also has two simple properties.</p>
+<p><span class="math display">\[ \alpha &gt; 1: \quad  \Gamma(\alpha) = \left(\alpha-1\right)\Gamma(\alpha-1)  \qquad \qquad  \Gamma\left(\frac{1}{2}\right)=\sqrt{\pi}   \]</span></p>
+<p>Thus, if <span class="math inline">\(\alpha\)</span> is an integer, <span class="math inline">\(\Gamma(\alpha)=\left(\alpha -1\right)!\)</span>.
+The second parameterization given here is in terms of <strong>shape</strong> and <strong>rate</strong> parameters.</p>
+<p><span class="math display">\[ f(y) = \frac{\beta^{\alpha}}{\Gamma(\alpha)}y^{\alpha-1} e^{-y\beta} \qquad y\geq 0, \alpha &gt;0, \beta &gt; 0 \]</span>
+<span class="math display">\[ E\{Y\}=\mu_Y = \frac{\alpha}{\beta} \qquad V\{Y\}=\sigma_Y^2= \frac{\alpha}{\beta^2}  \]</span></p>
+<p>Note that different software packages use the different parameterizations in generating samples and giving
+tail-areas and critical values. For instance, EXCEL uses the first parameterization and R uses the second.
+Figure <a href="probability.html#fig:gamma1">3.5</a> displays three gamma densities of various shapes.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:gamma1"></span>
+<img src="STA2170bookdownproj_files/figure-html/gamma1-1.png" alt="Three Gamma Distributions" width="80%" />
+<p class="caption">
+Figure 3.5: Three Gamma Distributions
+</p>
+</div>
+<p><strong>Example 3.14: Rock and Roll Marathon Speeds </strong></p>
+<p>As seen previously, when considering females and males separately, the distributions of running speeds are all positive, and skewed to the right.
+The means for females and males were 5.8398 and 6.3370, respectively; and the variances were 0.6906 and 1.1187, respectively. Using the second formulation
+of the gamma distribution, with <span class="math inline">\(\mu = \alpha/ \beta\)</span> and <span class="math inline">\(\sigma^2=\alpha/ \beta^2\)</span>, we obtain the following parameter values for the two distributions
+based on the method of moments.</p>
+<p><span class="math display">\[ \frac{\mu^2}{\sigma^2}= \frac{(\alpha/\beta)^2}{\alpha/\beta^2} = \alpha \qquad \frac{\mu}{\sigma^2}=\frac{\alpha/\beta}{\alpha/\beta^2} = \beta  \]</span></p>
+<p><span class="math display">\[ \mbox{Females: } \quad \alpha_F=\frac{5.8398^2}{0.6906} = 49.38 \qquad \qquad \beta_F=\frac{5.8398}{0.6906} = 8.46 \]</span></p>
+<p><span class="math display">\[ \mbox{Males: } \quad \alpha_M=\frac{6.3370^2}{1.1187} = 35.90 \qquad \qquad \beta_M=\frac{6.3370}{1.1187} = 5.66\]</span></p>
+<p>Histograms of the actual speeds and the corresponding Gamma densities are given in Figure <a href="probability.html#fig:rrmargamma1">3.6</a>.
+Similar to what was done for the NHL BMI measurements, we compare the theoretical quantiles for the female and male speeds with the actual quantiles in Table <a href="probability.html#tab:rrmargamma1">3.10</a>
+and compare theoretical probabilities for females and males with observed probabilities
+in Table <a href="probability.html#tab:rrmargamma2">3.11</a>. There is very good agreement between the quantiles. The extreme
+probabilities do not match up as well, but still show fairly good agreement, with exception of no actual cases falling more than 2 standard deviations below
+the means.</p>
+<pre><code>##   Runner Gender Place Seconds      mph
+## 1      1      M  1830   17375 5.432374
+## 2      2      F  2475   20988 4.497213</code></pre>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:rrmargamma1"></span>
+<img src="STA2170bookdownproj_files/figure-html/rrmargamma1-1.png" alt="Running Velocities for Females and Males at the 2015 Rock and Roll Marathon" width="80%" />
+<p class="caption">
+Figure 3.6: Running Velocities for Females and Males at the 2015 Rock and Roll Marathon
+</p>
+</div>
+<table>
+<caption><span id="tab:rrmargamma1">Table 3.10: </span>Theoretical and Empirical quantiles for velocities - Rock and Roll Marathon by gender</caption>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="right">10%</th>
+<th align="right">25%</th>
+<th align="right">50%</th>
+<th align="right">75%</th>
+<th align="right">90%</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Theoretical/Female</td>
+<td align="right">4.803</td>
+<td align="right">5.260</td>
+<td align="right">5.800</td>
+<td align="right">6.377</td>
+<td align="right">6.927</td>
+</tr>
+<tr class="even">
+<td align="left">Empirical/Female</td>
+<td align="right">4.811</td>
+<td align="right">5.203</td>
+<td align="right">5.711</td>
+<td align="right">6.357</td>
+<td align="right">7.015</td>
+</tr>
+<tr class="odd">
+<td align="left">Theoretical/Male</td>
+<td align="right">5.025</td>
+<td align="right">5.595</td>
+<td align="right">6.278</td>
+<td align="right">7.015</td>
+<td align="right">7.725</td>
+</tr>
+<tr class="even">
+<td align="left">Empirical/Male</td>
+<td align="right">4.970</td>
+<td align="right">5.561</td>
+<td align="right">6.277</td>
+<td align="right">6.986</td>
+<td align="right">7.718</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption><span id="tab:rrmargamma2">Table 3.11: </span>Theoretical and Empirical probabilities for velocities - Rock and Roll Marathon by gender</caption>
+<colgroup>
+<col width="25%" />
+<col width="20%" />
+<col width="34%" />
+<col width="20%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="right"><span class="math inline">\(&lt;\mu-2\sigma\)</span></th>
+<th align="right"><span class="math inline">\((\mu-\sigma,\mu+\sigma)\)</span></th>
+<th align="right"><span class="math inline">\(&gt;\mu+2\sigma\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Theoretical/Female</td>
+<td align="right">0.015</td>
+<td align="right">0.684</td>
+<td align="right">0.030</td>
+</tr>
+<tr class="even">
+<td align="left">Empirical/Female</td>
+<td align="right">0.000</td>
+<td align="right">0.662</td>
+<td align="right">0.036</td>
+</tr>
+<tr class="odd">
+<td align="left">Theoretical/Male</td>
+<td align="right">0.013</td>
+<td align="right">0.685</td>
+<td align="right">0.031</td>
+</tr>
+<tr class="even">
+<td align="left">Empirical/Male</td>
+<td align="right">0.000</td>
+<td align="right">0.665</td>
+<td align="right">0.036</td>
+</tr>
+</tbody>
+</table>
+<p><span class="math display">\[ \nabla \]</span></p>
+<p>Two special cases of the gamma family are the exponential family, where <span class="math inline">\(\alpha=1\)</span> and the Chi-square family,
+with <span class="math inline">\(\alpha=\nu/2\)</span> and <span class="math inline">\(\beta=2\)</span> for integer valued <span class="math inline">\(\nu\)</span>.
+For the exponential family, based on the second parameterization, the symbol <span class="math inline">\(\beta\)</span> is often replaced by <span class="math inline">\(\theta\)</span>.</p>
+<p><span class="math display">\[ f(y) = \theta e^{-y\theta}
+\qquad E\{Y\}=\mu_Y = \frac{1}{\theta} \qquad V\{Y\}=\sigma_Y^2= \frac{1}{\theta^2} \]</span></p>
+<p>Probabilities for the exponential distribution are trivial to obtain as <span class="math inline">\(F\left(y^*\right) =1-e^{-y^*\theta}\)</span>.
+Figure <a href="probability.html#fig:exponential1">3.7</a> gives three exponential distributions.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:exponential1"></span>
+<img src="STA2170bookdownproj_files/figure-html/exponential1-1.png" alt="Three Exponential Distributions" width="80%" />
+<p class="caption">
+Figure 3.7: Three Exponential Distributions
+</p>
+</div>
+<p>For the chi-square family, based on the first parameterization, we have the following.</p>
+<p><span class="math display">\[ f(y) = \frac{1}{\Gamma\left(\frac{\nu}{2}\right)2^{\nu/2}} y^{\frac{\nu}{2}-1} e^{-y/2} \qquad y&gt;0, \nu=1,2,\ldots \]</span>
+<span class="math display">\[ E\{Y\} =\mu_Y = \nu \qquad V\{Y\}=\sigma_Y^2= 2\nu \]</span></p>
+<p>Here, <span class="math inline">\(\nu\)</span> is the <strong>degrees of freedom</strong> and we denote the distribution as: <span class="math inline">\(Y \sim \chi^2_{\nu}\)</span>.
+Upper and lower critical values of the chi-square distribution are available in tabular form,
+and in statistical packages and spreadsheets. Probabilities, quantiles, densities, and random samples can be obtained with statistical packages and
+spreadsheets. The chi-square distribution is widely used in statistical testing as will be seen later.
+Figure <a href="probability.html#fig:chisquare1">3.8</a> gives three Chi-Square distributions.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:chisquare1"></span>
+<img src="STA2170bookdownproj_files/figure-html/chisquare1-1.png" alt="Three Chi-Square Distributions" width="80%" />
+<p class="caption">
+Figure 3.8: Three Chi-Square Distributions
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="sampling-distributions-and-the-central-limit-theorem" class="section level2 hasAnchor" number="3.6">
+<h2><span class="header-section-number">3.6</span> Sampling Distributions and the Central Limit Theorem<a href="probability.html#sampling-distributions-and-the-central-limit-theorem" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Sampling distributions are the probability distributions of sample statistics across different random samples from a population. That is, if we take many random
+samples, compute the statistic for each sample, then save that value, what would be the distribution of those saved statistics? In particular, if we are
+interested in the sample mean <span class="math inline">\(\overline{Y}\)</span>, or the sample proportion with a characteristic <span class="math inline">\(\hat{\pi}\)</span>, we know the following results, based on independence of
+elements within a random sample.</p>
+<p><span class="math display">\[ \mbox{Sample Mean: } E\{Y_i\}=\mu \quad V\{Y_i\}=\sigma^2 \quad E\{\overline{Y}\}=E\left\{\sum_{i=1}^n\left(\frac{1}{n}\right)Y_i\right\}
+=n\left(\frac{1}{n}\right)\mu=\mu   \]</span>
+<span class="math display">\[   V\{\overline{Y}\}=V\left\{\sum_{i=1}^n\left(\frac{1}{n}\right)Y_i\right\}=\sum_{i=1}^n\left(\frac{1}{n}\right)^2V\{Y_i\}=
+n\left(\frac{1}{n}\right)^2\sigma^2=\frac{\sigma^2}{n} \]</span>
+<span class="math display">\[ SE\{\overline{Y}\} = \sigma_{\overline{Y}}=\frac{\sigma}{\sqrt{n}} \]</span></p>
+<p><span class="math display">\[ \mbox{Sample Proportion: } E\{Y_i\}=\pi \quad V\{Y_i\}=\pi(1-\pi) \quad E\{\hat{\pi}\}= E\left\{\sum_{i=1}^n\left(\frac{1}{n}\right)Y_i\right\}
+=n\left(\frac{1}{n}\right)\pi=\pi \]</span>
+<span class="math display">\[  V\{\hat{\pi}\}= V\left\{\sum_{i=1}^n\left(\frac{1}{n}\right)Y_i\right\}= \sum_{i=1}^n\left(\frac{1}{n}\right)^2V\{Y_i\}=
+n\left(\frac{1}{n}\right)^2 \pi(1-\pi) = \frac{\pi(1-\pi)}{n} \]</span>
+<span class="math display">\[ SE\{\hat{\pi}\} =  \sigma_{\hat{\pi}}=\sqrt{\frac{\pi(1-\pi)}{n}}\]</span></p>
+<p>The standard deviation of the sampling distribution of a sample statistic (aka estimator) is referred to as its <strong>standard error</strong>.
+Thus <span class="math inline">\(SE\{\overline{Y}\} = \sigma_{\overline{Y}}\)</span> is the standard error of the sample mean, and
+<span class="math inline">\(SE\{\hat{\pi}\} =  \sigma_{\hat{\pi}}\)</span> is the standard error of the sample proportion.</p>
+<p>When the data are normally distributed, the sampling distribution of the sample mean is also normal. When the data are not normally
+distributed, as the sample size increases, the sampling distribution of the sample mean or proportion tends to normality. The “rate”
+of convergence to normality depends on how “non-normal” the underlying distribution is. The mathematical arguments for these results are
+<strong>Central Limit Theorems</strong>.</p>
+<p><span class="math display">\[ \mbox{Sample Mean: } \overline{Y} \stackrel{\cdot}{\sim} N\left(\mu,\frac{\sigma}{\sqrt{n}}\right) \qquad
+\mbox{Sample Proportion: } \hat{\pi} \stackrel{\cdot}{\sim} N\left(\pi,\sqrt{\frac{\pi(1-\pi)}{n}}\right)  \]</span></p>
+<p><strong>Example 3.15: Sampling Distributions - NHL BMI, Female Marathon Speeds</strong></p>
+<p>We consider the sampling distributions of sample means for the NHL player Body Mass Indices, and Female Rock and Roll Marathon Speeds.
+For the NHL BMI data, the population mean is <span class="math inline">\(\mu=26.500\)</span> and standard deviation is <span class="math inline">\(\sigma=1.454\)</span>. As the underlying distribution is approximately normal,
+the sampling distribution of the mean is approximately normal, regardless of the sample size. We take 10000 random samples of size <span class="math inline">\(n=9\)</span>,
+computing and saving the sample mean for each sample. The theoretical and empirical (based on the 10000 random samples) mean and standard error
+of the sample means are given below and a histogram with the normal density are shown in Figure <a href="probability.html#fig:nhlbmisampdist1">3.9</a>.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:nhlbmisampdist1"></span>
+<img src="STA2170bookdownproj_files/figure-html/nhlbmisampdist1-1.png" alt="Sample Mean Body Mass Index for NHL Players 2014/2015 Season and Normal Density" width="80%" />
+<p class="caption">
+Figure 3.9: Sample Mean Body Mass Index for NHL Players 2014/2015 Season and Normal Density
+</p>
+</div>
+<p><span class="math display">\[ \mbox{Theory: } \mu_{\overline{Y}}=\mu=26.514 \quad \sigma_{\overline{Y}} = \frac{1.450}{\sqrt{9}}=0.483 \qquad \mbox{Empirical: } \overline{\overline{y}}=26.516 \quad
+s_{\overline{y}} = 0.479 \]</span></p>
+<p>The mean and standard deviation are very close to the corresponding theoretical values (they won’t always be this close, as sampling error exists).</p>
+<p>For the female marathon speeds, we saw that the distribution was skewed to the right, and well modeled by a gamma distribution
+with mean <span class="math inline">\(\mu=5.84\)</span> and standard deviation <span class="math inline">\(\sigma=0.83\)</span>. We take 10000 random samples of <span class="math inline">\(n=16\)</span> from this population, computing and saving the
+sample mean from each sample. The theoretical and empirical (based on the 10000 random samples) mean and standard error
+of the sample means are given below and a histogram with the normal density are shown in Figure <a href="probability.html#fig:rrmarfsampdist1">3.10</a>.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:rrmarfsampdist1"></span>
+<img src="STA2170bookdownproj_files/figure-html/rrmarfsampdist1-1.png" alt="Sample Mean velocity for females in the Rock and Roll marathon" width="80%" />
+<p class="caption">
+Figure 3.10: Sample Mean velocity for females in the Rock and Roll marathon
+</p>
+</div>
+<p><span class="math display">\[ \mbox{Theory: } \mu_{\overline{Y}}=\mu=5.840 \quad SE\{\overline{Y}\} = \frac{0.831}{\sqrt{16}}=0.208 \qquad \mbox{Empirical: }\overline{\overline{y}}=5.841 \quad
+SE\{\overline{y}\} = 0.207 \]</span></p>
+<p>Again, we see very strong agreement between the empirical and theoretical values (as we should). Also, note that the sampling distribution is very
+well approximated by the N(5.840,0.208) in the graph.</p>
+<p><span class="math display">\[ \nabla \]</span></p>
+
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="probability.html#cb38-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb38-2"><a href="probability.html#cb38-2" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span></code></pre></div>
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
+<div id="ref-agresti_2002" class="csl-entry">
+Agresti, Alan. 2002. <em>Categorical Data Analysis</em>. 2nd ed. New York: Wiley.
+</div>
+<div id="ref-barnum_1964" class="csl-entry">
+Barnum, D. T., and J. M. Gleason. 1964. <span>“The Credibility of Drug Tests: A Multi-Stage Bayesian Analysis.”</span> <em>Industrial and Labor Relations Review</em> 47 (4): 610–21.
+</div>
+<div id="ref-chambers_1889" class="csl-entry">
+Chambers, G. F. 1889. <em>A Handbook of Descriptive and Practical Astronomy</em>. 4th ed. Oxford: Clarendon House.
+</div>
+<div id="ref-clarke_1946" class="csl-entry">
+Clarke, R. D. 1946. <span>“An Application of the Poisson Distribution.”</span> <em>Journal of the Institute of Actuaries</em> 72: 481.
+</div>
+<div id="ref-feller_1968" class="csl-entry">
+Feller, William. 1968. <em>An Introduction to Probability Theory and Its Applications, Vol.1</em>. 3rd ed. New York: Wiley.
+</div>
+<div id="ref-kahneman_1982" class="csl-entry">
+Kahneman, Daniel, Paul Slovic, and Amos Tversky. 1982. <em>Judgment Under Uncertainty: Heuristics and Biases</em>. 1st ed. Cambridge: Cambridge University Press.
+</div>
+<div id="ref-sheldrake_2015" class="csl-entry">
+Sheldrake, R., P. Smart, and L. Avraamides. 2015. <span>“Automated Tests for Telephone Telepathy Using Mobile Phones.”</span> <em>Explore</em> 11 (4): 310–19.
+</div>
+<div id="ref-thorndike_1926" class="csl-entry">
+Thorndike, F. 1926. <span>“Applications of Poisson’s Probability Summation.”</span> <em>Bell System Technical Journal</em> 5: 604–24.
+</div>
+<div id="ref-winner_2006" class="csl-entry">
+Winner, L. 2006. <span>“NASCAR Winston Cup Race Results for 1975-2003.”</span> <em>Journal of Statistics Education</em> 14 (3): 1–15.
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="describing-data.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="inferences-for-population-means.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": "https://github.com/LarryWinner/STA2170-Notes1/edit/main/03-method.Rmd",
+    "text": "Edit"
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": null,
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "subsection"
+  }
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

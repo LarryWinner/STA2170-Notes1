@@ -1,0 +1,1649 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 2 Describing Data | Statistics and the Physical World</title>
+  <meta name="description" content="This is an Introduction to Statistics with applications from the physical world. We will make use of the R programming language for computations." />
+  <meta name="generator" content="bookdown 0.43 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 2 Describing Data | Statistics and the Physical World" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="This is an Introduction to Statistics with applications from the physical world. We will make use of the R programming language for computations." />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 2 Describing Data | Statistics and the Physical World" />
+  
+  <meta name="twitter:description" content="This is an Introduction to Statistics with applications from the physical world. We will make use of the R programming language for computations." />
+  
+
+<meta name="author" content="Larry Winner" />
+
+
+<meta name="date" content="2026-06-22" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="intro.html"/>
+<link rel="next" href="probability.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">STA2170 Notes</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
+<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="intro.html"><a href="intro.html#basic-concepts-of-statistical-analysis"><i class="fa fa-check"></i><b>1.1</b> Basic Concepts of Statistical Analysis</a></li>
+<li class="chapter" data-level="1.2" data-path="intro.html"><a href="intro.html#data-collection"><i class="fa fa-check"></i><b>1.2</b> Data Collection</a></li>
+<li class="chapter" data-level="1.3" data-path="intro.html"><a href="intro.html#variable-types"><i class="fa fa-check"></i><b>1.3</b> Variable Types</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="describing-data.html"><a href="describing-data.html"><i class="fa fa-check"></i><b>2</b> Describing Data</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="describing-data.html"><a href="describing-data.html#graphical-description-of-a-single-variable"><i class="fa fa-check"></i><b>2.1</b> Graphical Description of a Single Variable</a></li>
+<li class="chapter" data-level="2.2" data-path="describing-data.html"><a href="describing-data.html#numerical-descriptive-measures-of-a-single-variable"><i class="fa fa-check"></i><b>2.2</b> Numerical Descriptive Measures of a Single Variable</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="describing-data.html"><a href="describing-data.html#measures-of-central-tendency"><i class="fa fa-check"></i><b>2.2.1</b> Measures of Central Tendency</a></li>
+<li class="chapter" data-level="2.2.2" data-path="describing-data.html"><a href="describing-data.html#measures-of-variability"><i class="fa fa-check"></i><b>2.2.2</b> Measures of Variability</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="describing-data.html"><a href="describing-data.html#describing-more-than-one-variable"><i class="fa fa-check"></i><b>2.3</b> Describing More than One Variable</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="probability.html"><a href="probability.html"><i class="fa fa-check"></i><b>3</b> Probability</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="probability.html"><a href="probability.html#terminology-and-probability-rules"><i class="fa fa-check"></i><b>3.1</b> Terminology and Probability Rules</a></li>
+<li class="chapter" data-level="3.2" data-path="probability.html"><a href="probability.html#basic-probability"><i class="fa fa-check"></i><b>3.2</b> Basic Probability</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="probability.html"><a href="probability.html#bayes-rule"><i class="fa fa-check"></i><b>3.2.1</b> Bayes’ Rule</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="probability.html"><a href="probability.html#random-variables-and-probability-distributions"><i class="fa fa-check"></i><b>3.3</b> Random Variables and Probability Distributions</a></li>
+<li class="chapter" data-level="3.4" data-path="probability.html"><a href="probability.html#discrete-random-variables"><i class="fa fa-check"></i><b>3.4</b> Discrete Random Variables</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="probability.html"><a href="probability.html#population-numerical-descriptive-measures"><i class="fa fa-check"></i><b>3.4.1</b> Population Numerical Descriptive Measures</a></li>
+<li class="chapter" data-level="3.4.2" data-path="probability.html"><a href="probability.html#common-families-of-discrete-probability-distributions"><i class="fa fa-check"></i><b>3.4.2</b> Common Families of Discrete Probability Distributions</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="probability.html"><a href="probability.html#continuous-random-variables"><i class="fa fa-check"></i><b>3.5</b> Continuous Random Variables</a>
+<ul>
+<li class="chapter" data-level="3.5.1" data-path="probability.html"><a href="probability.html#common-families-of-continuous-probability-distributions"><i class="fa fa-check"></i><b>3.5.1</b> Common Families of Continuous Probability Distributions</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="probability.html"><a href="probability.html#sampling-distributions-and-the-central-limit-theorem"><i class="fa fa-check"></i><b>3.6</b> Sampling Distributions and the Central Limit Theorem</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="inferences-for-population-means.html"><a href="inferences-for-population-means.html"><i class="fa fa-check"></i><b>4</b> Inferences for Population Means</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="inferences-for-population-means.html"><a href="inferences-for-population-means.html#estimation"><i class="fa fa-check"></i><b>4.1</b> Estimation</a></li>
+<li class="chapter" data-level="4.2" data-path="inferences-for-population-means.html"><a href="inferences-for-population-means.html#hypothesis-testing"><i class="fa fa-check"></i><b>4.2</b> Hypothesis Testing</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="introduction-to-experimentation.html"><a href="introduction-to-experimentation.html"><i class="fa fa-check"></i><b>5</b> Introduction to Experimentation</a></li>
+<li class="chapter" data-level="6" data-path="comparing-two-population-means.html"><a href="comparing-two-population-means.html"><i class="fa fa-check"></i><b>6</b> Comparing Two Population Means</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="comparing-two-population-means.html"><a href="comparing-two-population-means.html#independent-samples"><i class="fa fa-check"></i><b>6.1</b> Independent Samples</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="comparing-two-population-means.html"><a href="comparing-two-population-means.html#large-sample-tests"><i class="fa fa-check"></i><b>6.1.1</b> Large-Sample tests</a></li>
+<li class="chapter" data-level="6.1.2" data-path="comparing-two-population-means.html"><a href="comparing-two-population-means.html#small-sample-tests-with-normal-data"><i class="fa fa-check"></i><b>6.1.2</b> Small Sample Tests with Normal Data</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="comparing-two-population-means.html"><a href="comparing-two-population-means.html#paired-sample-designs"><i class="fa fa-check"></i><b>6.2</b> Paired Sample Designs</a></li>
+<li class="chapter" data-level="6.3" data-path="comparing-two-population-means.html"><a href="comparing-two-population-means.html#nonparametric-tests"><i class="fa fa-check"></i><b>6.3</b> Nonparametric Tests</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="comparing-two-population-means.html"><a href="comparing-two-population-means.html#independent-samples---wilcoxon-rank-sum-test"><i class="fa fa-check"></i><b>6.3.1</b> Independent Samples - Wilcoxon Rank-Sum Test</a></li>
+<li class="chapter" data-level="6.3.2" data-path="comparing-two-population-means.html"><a href="comparing-two-population-means.html#paired-samples---wilcoxon-signed-rank-test"><i class="fa fa-check"></i><b>6.3.2</b> Paired Samples - Wilcoxon Signed Rank Test</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="experimental-design-and-the-analysis-of-variance.html"><a href="experimental-design-and-the-analysis-of-variance.html"><i class="fa fa-check"></i><b>7</b> Experimental Design and the Analysis of Variance</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="experimental-design-and-the-analysis-of-variance.html"><a href="experimental-design-and-the-analysis-of-variance.html#completely-randomized-design-crd-for-independent-samples"><i class="fa fa-check"></i><b>7.1</b> Completely Randomized Design (CRD) For Independent Samples</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="experimental-design-and-the-analysis-of-variance.html"><a href="experimental-design-and-the-analysis-of-variance.html#analysis-of-variance-and-f-test-for-normal-data"><i class="fa fa-check"></i><b>7.1.1</b> Analysis of Variance and <span class="math inline">\(F\)</span>-Test for Normal Data</a></li>
+<li class="chapter" data-level="7.1.2" data-path="experimental-design-and-the-analysis-of-variance.html"><a href="experimental-design-and-the-analysis-of-variance.html#comparisons-among-treatment-means"><i class="fa fa-check"></i><b>7.1.2</b> Comparisons among Treatment Means</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="experimental-design-and-the-analysis-of-variance.html"><a href="experimental-design-and-the-analysis-of-variance.html#randomized-block-design-rbd-for-studies-based-on-matched-units"><i class="fa fa-check"></i><b>7.2</b> Randomized Block Design (RBD) For Studies Based on Matched Units</a></li>
+<li class="chapter" data-level="7.3" data-path="experimental-design-and-the-analysis-of-variance.html"><a href="experimental-design-and-the-analysis-of-variance.html#factorial-designs"><i class="fa fa-check"></i><b>7.3</b> Factorial Designs</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="categorical-data-analysis.html"><a href="categorical-data-analysis.html"><i class="fa fa-check"></i><b>8</b> Categorical Data Analysis</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="categorical-data-analysis.html"><a href="categorical-data-analysis.html#inference-concerning-a-single-variable"><i class="fa fa-check"></i><b>8.1</b> Inference Concerning a Single Variable</a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="categorical-data-analysis.html"><a href="categorical-data-analysis.html#variables-with-two-possible-outcomes"><i class="fa fa-check"></i><b>8.1.1</b> Variables with Two Possible Outcomes</a></li>
+<li class="chapter" data-level="8.1.2" data-path="categorical-data-analysis.html"><a href="categorical-data-analysis.html#variables-with-more-than-two-possible-outcomes"><i class="fa fa-check"></i><b>8.1.2</b> Variables with More than Two Possible Outcomes</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="categorical-data-analysis.html"><a href="categorical-data-analysis.html#introduction-to-tests-for-association-for-two-categorical-variables"><i class="fa fa-check"></i><b>8.2</b> Introduction to Tests for Association for Two Categorical Variables</a>
+<ul>
+<li class="chapter" data-level="8.2.1" data-path="categorical-data-analysis.html"><a href="categorical-data-analysis.html#x-2-tables"><i class="fa fa-check"></i><b>8.2.1</b> 2 x 2 Tables</a></li>
+<li class="chapter" data-level="8.2.2" data-path="categorical-data-analysis.html"><a href="categorical-data-analysis.html#nominal-explanatory-and-response-variables"><i class="fa fa-check"></i><b>8.2.2</b> Nominal Explanatory and Response Variables</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="regression-models.html"><a href="regression-models.html"><i class="fa fa-check"></i><b>9</b> Regression Models</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="regression-models.html"><a href="regression-models.html#simple-linear-regression"><i class="fa fa-check"></i><b>9.1</b> Simple Linear Regression</a>
+<ul>
+<li class="chapter" data-level="9.1.1" data-path="regression-models.html"><a href="regression-models.html#estimation-of-model-parameters"><i class="fa fa-check"></i><b>9.1.1</b> Estimation of Model Parameters</a></li>
+<li class="chapter" data-level="9.1.2" data-path="regression-models.html"><a href="regression-models.html#inference-regarding-beta_1-and-beta_0"><i class="fa fa-check"></i><b>9.1.2</b> Inference Regarding <span class="math inline">\(\beta_1\)</span> and <span class="math inline">\(\beta_0\)</span></a></li>
+<li class="chapter" data-level="9.1.3" data-path="regression-models.html"><a href="regression-models.html#estimating-a-mean-and-predicting-a-new-observation-xx"><i class="fa fa-check"></i><b>9.1.3</b> Estimating a Mean and Predicting a New Observation @ <span class="math inline">\(X=X^*\)</span></a></li>
+<li class="chapter" data-level="9.1.4" data-path="regression-models.html"><a href="regression-models.html#analysis-of-variance"><i class="fa fa-check"></i><b>9.1.4</b> Analysis of Variance</a></li>
+<li class="chapter" data-level="9.1.5" data-path="regression-models.html"><a href="regression-models.html#correlation"><i class="fa fa-check"></i><b>9.1.5</b> Correlation</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="regression-models.html"><a href="regression-models.html#multiple-linear-regression"><i class="fa fa-check"></i><b>9.2</b> Multiple Linear Regression</a>
+<ul>
+<li class="chapter" data-level="9.2.1" data-path="regression-models.html"><a href="regression-models.html#testing-and-estimation-for-partial-regression-coefficients"><i class="fa fa-check"></i><b>9.2.1</b> Testing and Estimation for Partial Regression Coefficients</a></li>
+<li class="chapter" data-level="9.2.2" data-path="regression-models.html"><a href="regression-models.html#analysis-of-variance-1"><i class="fa fa-check"></i><b>9.2.2</b> Analysis of Variance</a></li>
+<li class="chapter" data-level="9.2.3" data-path="regression-models.html"><a href="regression-models.html#testing-a-subset-of-betas-0"><i class="fa fa-check"></i><b>9.2.3</b> Testing a Subset of <span class="math inline">\(\beta^s = 0\)</span></a></li>
+<li class="chapter" data-level="9.2.4" data-path="regression-models.html"><a href="regression-models.html#models-with-categorical-qualitative-predictors"><i class="fa fa-check"></i><b>9.2.4</b> Models With Categorical (Qualitative) Predictors</a></li>
+<li class="chapter" data-level="9.2.5" data-path="regression-models.html"><a href="regression-models.html#models-with-interaction-terms"><i class="fa fa-check"></i><b>9.2.5</b> Models With Interaction Terms</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="regression-models.html"><a href="regression-models.html#logistic-regression"><i class="fa fa-check"></i><b>9.3</b> Logistic Regression</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Statistics and the Physical World</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="describing-data" class="section level1 hasAnchor" number="2">
+<h1><span class="header-section-number">Chapter 2</span> Describing Data<a href="describing-data.html#describing-data" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Once data have been collected, they are typically described via
+graphical and numeric means. The methods used to describe the data will
+depend on its type (nominal, ordinal, or numeric). We also need to
+distinguish whether the data corresponds to a sample or a population. In
+this chapter, we focus purely on describing a set of measurements, not
+making inferences. First we consider graphical and numeric descriptions
+of a single variable. Then we consider pairs of variables.</p>
+<div id="graphical-description-of-a-single-variable" class="section level2 hasAnchor" number="2.1">
+<h2><span class="header-section-number">2.1</span> Graphical Description of a Single Variable<a href="describing-data.html#graphical-description-of-a-single-variable" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Depending on the type of measurement, common plots are <strong>pie charts</strong>,
+<strong>bar charts</strong>, <strong>histograms</strong>, <strong>box plots</strong>, and <strong>density plots</strong>.</p>
+<p><strong>Pie charts</strong> can be used to describe any variable type. Continuous numeric
+variables must be collapsed into “bins” or “buckets.” The size of the
+sectors of the pie represent the relative frequency of each category.</p>
+<p><strong>Bar charts</strong> are used to describe nominal or ordinal data. The variable
+levels are arrayed on the bottom (or left side) of the plot and bars
+above (or beside) the levels represent the frequency or relative
+frequency of the number of observations belonging to the various
+categories.</p>
+<p><strong>Histograms</strong> are used for numeric variables, where the heights of the bars
+above the bins represent the frequency or relative frequency of the
+various bins.</p>
+<p><strong>Box plots</strong> are used for numeric variables. They identify particular
+percentiles of a distribution and are useful in detecting outlying
+observations and spread in the distribution.</p>
+<p><strong>Density plots</strong> are used for numeric variables. They offer a smoother
+description of the measurements than a histogram does and are simple to
+obtain with modern statistical software packages.</p>
+<p><strong>Example 2.1: Hand Postures of Blues Guitarists</strong></p>
+<p>A study was conducted among <span class="math inline">\(n=93\)</span> blues guitarists that classified
+the guitarists with respect to several categorical variables
+<span class="citation">(<a href="#ref-cohen_1996">Cohen 1996</a>)</span>.
+Among the variables was “hand posture,” with levels: Extended, Stacked, and Lutiform. Figure <a href="describing-data.html#fig:blueshand1">2.1</a> is
+a pie chart representing the proportions of guitarists classified in the
+three hand posture categories. Figure <a href="describing-data.html#fig:blueshand2">2.2</a> displays a bar chart of the same data.</p>
+<pre><code>##           name state brthYr post1906 region handPost thumbSty
+## 1 Henry Thomas    TX   1874        0      3        1        3
+## 2 Frank Stokes    TN   1887        0      2        1        3</code></pre>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:blueshand1"></span>
+<img src="STA2170bookdownproj_files/figure-html/blueshand1-1.png" alt="Pie chart of Hand Postures for $n$=93 blues guitarists" width="80%" />
+<p class="caption">
+Figure 2.1: Pie chart of Hand Postures for <span class="math inline">\(n\)</span>=93 blues guitarists
+</p>
+</div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:blueshand2"></span>
+<img src="STA2170bookdownproj_files/figure-html/blueshand2-1.png" alt="Bar chart of Hand Postures for $n$=93 blues guitarists" width="80%" />
+<p class="caption">
+Figure 2.2: Bar chart of Hand Postures for <span class="math inline">\(n\)</span>=93 blues guitarists
+</p>
+</div>
+<p>We see that over half of the guitarists utilized the extended hand posture,
+approximately a third, used the stacked, and the remaining approximately a ninth used the lutiform.</p>
+<p><span class="math display">\[\nabla\]</span></p>
+<p><strong>Example 2.2: Measurements of the Velocity of Light circa 1931-1933</strong></p>
+<p>A.A. Michelson, F.G. Pease, and F. Pearson set up an approximately one
+mile long tube to make determinations of the speed of light near Irvine,
+CA in the early 1930s <span class="citation">(<a href="#ref-michelson_1935">Michelson, Pease, and Pearson 1935</a>)</span>. Without getting into the very detailed description
+given in the paper, we have 1010 determinations of the velocity of light
+after having removed some runs with anomalous values in the table.
+Further, we do not include weights that varied due to the experimental
+protocol as it evolved during the data collection process. Figure
+<a href="describing-data.html#fig:michelson1">2.3</a> provides a histogram of the <span class="math inline">\(n=1010\)</span> measurements
+(approximated from their tabular information) as well as a smooth
+density function overlay on the graph. The values on the graph represent
+velocity - 299000 km/sec. The individual measurements are mound shaped
+around a center point with arithmetic mean of 299773.5 km/sec. Modern
+assessments of the velocity of light in a vacuum is 299792.5 km/sec.</p>
+<pre><code>##   Series Year Mean  e velocity n weight serTotWt SeriesGrp
+## 1      1 1931  792  8    799.5 2      1        2         1
+## 2      1 1931  792 -7    784.5 2      1        2         1</code></pre>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:michelson1"></span>
+<img src="STA2170bookdownproj_files/figure-html/michelson1-1.png" alt="Michelson Speed of Light Measurements (Deviations from 299000 km/sec)" width="80%" />
+<p class="caption">
+Figure 2.3: Michelson Speed of Light Measurements (Deviations from 299000 km/sec)
+</p>
+</div>
+<p>Measurements were made in 4 groups of series: Series 1-54
+(2/16/1931-7/14/1931), Series 55-110 (3/3/1932-5/13/1932), Series
+111-158 (5/13/1932-8/4/1932), and Series 159-233 (12/3/1932-2/27/1933).
+Side-by-side box plots are given in Figure <a href="describing-data.html#fig:michelson2">2.4</a>. The
+box plot identifies from bottom to top the following elements.</p>
+<ul>
+<li>Minimum: Bottom of line at bottom of plot (or the lowest circle)</li>
+<li>Range for lowest 25% of measurements: Distance from minimum
+observation to the bottom of the box</li>
+<li>25th percentile (Lower Quartile, aka LQ): Bottom line of box</li>
+<li>Range for the 25th to 50th percent of participants: Distance between
+bottom of box and second horizontal line</li>
+<li>Median (50th percentile): Second horizontal line</li>
+<li>Range for the 50th to 75th percent of participants: Distance between
+second horizontal line and top of box</li>
+<li>Interquartile Range (IQR): Distance between top (75th percentile)
+and bottom (25th percentile) of the box</li>
+<li>75th percentile (Upper Quartile, UQ): Top line of the box</li>
+<li>Range for 75th to 100th percent of participants: Distance from the
+top of the box to the maximum observation</li>
+<li>Maximum: Top of line at the top of plot (or the highest circle)</li>
+<li>Lower line extends either to the minimum or 1.5(IQR) below the LQ,
+whichever is shortest.</li>
+<li>Upper line extends either to the maximum or 1.5(IQR) above the UQ,
+whichever is shortest.</li>
+<li>Circles represent outlying measurements (very extreme measurements).</li>
+</ul>
+<p>The precision of the measurements tend to improve slightly over the
+course of the study. Note that the average weights for the individual
+measurements included in this analysis were approximately 1.65 for the
+first series and approximately 3 for the remaining series.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:michelson2"></span>
+<img src="STA2170bookdownproj_files/figure-html/michelson2-1.png" alt="Side-by-side boxplots for velocities measured in the 4 groups of series" width="80%" />
+<p class="caption">
+Figure 2.4: Side-by-side boxplots for velocities measured in the 4 groups of series
+</p>
+</div>
+<p><span class="math display">\[ \nabla \]</span></p>
+<p><strong>Example 2.3: Body Mass Index for National Hockey League Players - 2014/2015 Season</strong></p>
+<p>Body mass index (BMI) is a measure of body fat that is based on the the
+work of Adolphe Quetelet, a renowned Belgian researcher in astronomy and
+statistics and other areas, particularly social sciences. The formulas
+for BMI in the metric and American systems are given below.</p>
+<p><span class="math display">\[ BMI = \mbox{mass(kg)/height(m)}^2 = \mbox{703$\times$mass(lbs)/height(in)}^2 \]</span></p>
+<p>Data for all National Hockey League (NHL) players are obtained, reported
+in pounds (lbs) and inches, respectively.
+A histogram is given in Figure <a href="describing-data.html#fig:nhlbmi1">2.5</a>. The histogram is
+approximately symmetric and mound-shaped, centered above 26.</p>
+<p><span class="math display">\[ \nabla \]</span></p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:nhlbmi1"></span>
+<img src="STA2170bookdownproj_files/figure-html/nhlbmi1-1.png" alt="Body Mass Index for NHL Players 2014/2015 Season" width="80%" />
+<p class="caption">
+Figure 2.5: Body Mass Index for NHL Players 2014/2015 Season
+</p>
+</div>
+<p><strong>Example 2.4: Female and Male Speeds at Washington, DC Rock and Roll Marathon - 2015</strong></p>
+<p>The 2015 Rock and Roll Marathon in Washington, D.C. was completed by
+1045 female and 1454 male participants. Each participant’s time to
+complete the marathon was converted to a speed (miles per hour).
+Histograms and kernel density plots for females and males are given in
+Figure <a href="describing-data.html#fig:rrmarathon1">2.6</a>, and side-by-side box plots are
+given in Figure <a href="describing-data.html#fig:rrmarathon2">2.7</a>. For both genders, there
+tend to be more cases at lower speeds with a few extreme cases with
+higher speeds. These distributions are <strong>right-skewed</strong>.</p>
+<p>A smooth version of a boxplot, which does not separate the measurements
+into quantiles is a <strong>violin plot</strong>. For the marathon data, one is
+displayed in Figure <a href="describing-data.html#fig:rrmarathon3">2.8</a>.</p>
+<pre><code>##   Runner Gender Place Seconds      mph
+## 1      1      M  1830   17375 5.432374
+## 2      2      F  2475   20988 4.497213</code></pre>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:rrmarathon1"></span>
+<img src="STA2170bookdownproj_files/figure-html/rrmarathon1-1.png" alt="Histograms and Densities of Velocities at Rock and Roll Marathon 2015 (mph)" width="80%" />
+<p class="caption">
+Figure 2.6: Histograms and Densities of Velocities at Rock and Roll Marathon 2015 (mph)
+</p>
+</div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:rrmarathon2"></span>
+<img src="STA2170bookdownproj_files/figure-html/rrmarathon2-1.png" alt="Box Plots of Velocities at Rock and Roll Marathon 2015 (mph)" width="80%" />
+<p class="caption">
+Figure 2.7: Box Plots of Velocities at Rock and Roll Marathon 2015 (mph)
+</p>
+</div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:rrmarathon3"></span>
+<img src="STA2170bookdownproj_files/figure-html/rrmarathon3-1.png" alt="Violin Plots of Velocities at Rock and Roll Marathon 2015 (mph)" width="80%" />
+<p class="caption">
+Figure 2.8: Violin Plots of Velocities at Rock and Roll Marathon 2015 (mph)
+</p>
+</div>
+<p><span class="math display">\[ \nabla \]</span>
+<strong>Time series</strong> plots are widely used in many areas including economics,
+finance, climatology, and biology. These graphs include one or more
+characteristics being observed in a sequential time order. These plots
+can be based on virtually any level of sampling interval.</p>
+<p><strong>Example 2.5: Miami Monthly and Annual Mean Temperature 1/1949-12/2014</strong></p>
+<p>They can be used to detect trend and cyclical patterns over time. Figure <a href="describing-data.html#fig:miami1">2.9</a> shows the the monthly and annual mean
+temperature in Miami for the years 1949 through 2014. Clearly there is a
+cyclical pattern occurring within years, and after a flat early annual
+series, there certainly appears to be evidence of an increasing trend
+over approximately the second half of the series (after about 1970).</p>
+<pre><code>##   Month Year LowTemp HighTemp WarmestMin ColdestHigh AveMin AveMax meanTemp
+## 1     1 1949      39       84         70          61   61.7   78.8     70.2
+## 2     2 1949      57       87         72          77   65.2   81.7     73.4
+##   TotPrecip TotSnow Max24hrPrecip Max24hrSnow
+## 1      0.11       0          0.06           0
+## 2      0.37       0          0.36           0</code></pre>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:miami1"></span>
+<img src="STA2170bookdownproj_files/figure-html/miami1-1.png" alt="Miami Monthly and Annual Temperatures 1949-2014" width="80%" />
+<p class="caption">
+Figure 2.9: Miami Monthly and Annual Temperatures 1949-2014
+</p>
+</div>
+<p><span class="math display">\[ \nabla  \]</span></p>
+</div>
+<div id="numerical-descriptive-measures-of-a-single-variable" class="section level2 hasAnchor" number="2.2">
+<h2><span class="header-section-number">2.2</span> Numerical Descriptive Measures of a Single Variable<a href="describing-data.html#numerical-descriptive-measures-of-a-single-variable" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Numerical descriptive measures describe a set of measurements in
+quantitative terms. When describing a <strong>population</strong> of measurements,
+they are referred to as <strong>parameters</strong>; when describing a <strong>sample</strong> of
+data, they are referred to as <strong>statistics</strong>.</p>
+<p>In terms of nominal and ordinal data, <strong>proportions</strong> are generally the
+numeric measures of interest. These are simply the fraction of
+measurements falling into the various possible levels (and must sum to
+1). For ordinal variables, the <strong>cumulative proportions</strong> are also of
+interest, representing the fraction of measurements falling in or below
+the various categories.</p>
+<div id="measures-of-central-tendency" class="section level3 hasAnchor" number="2.2.1">
+<h3><span class="header-section-number">2.2.1</span> Measures of Central Tendency<a href="describing-data.html#measures-of-central-tendency" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>There are two commonly reported measures of central tendency, or
+location for a set of measurements. The <strong>mean</strong> is the sum of all
+measurements divided by the number of measurements, and is reported
+often as “per capita” in economic reports. The mean is the”balance
+point” of a set of measurements in a physical sense. The <strong>median</strong> is
+the point where half of the measurements fall at or below it, and half
+of the measurements fall at or above it. It is also the 50th percentile
+of the set of measurements. Many economic reports state median values. A
+third, less reported measure is the <strong>mode</strong> which really is only
+appropriate for discrete variables, and is the value that occurs most
+often. For a histogram of discretely measured data, the mode is the
+level with the highest bar.</p>
+<p>Note that the mean is affected by outlying measurements, as it is the
+sum of all measurements, evenly distributed among all of the
+measurements. The median is more “robust” as it is not effected by the
+actual values of individual measurements, only the center of them. The
+formulas for the population mean <span class="math inline">\(\mu\)</span>, based on a population of <span class="math inline">\(N\)</span>
+items and the sample mean <span class="math inline">\(\overline{y}\)</span> for a sample of <span class="math inline">\(n\)</span> items are
+given below.</p>
+<p><span class="math display">\[ \mbox{Population Mean: } \mu = \frac{\sum_{i=1}^N y_i}{N} \qquad \qquad \mbox{Sample Mean: } \overline{y} = \frac{\sum_{i=1}^n y_i}{n} \]</span></p>
+<p>To obtain the median, measurements are ordered from smallest to largest,
+and the middle observation (odd population/sample size) or the average
+of the middle two observations (even population/sample size) are
+identified. We will denote <span class="math inline">\(M\)</span> as the population median and <span class="math inline">\(m\)</span> as the sample median.</p>
+<p><strong>Example2.6: NHL BMI’s and Rock and Roll Marathon Speeds</strong></p>
+<p>Using the <strong>length</strong>, <strong>sum</strong>, <strong>mean</strong> and <strong>median</strong> functions in R, we obtain <span class="math inline">\(N\)</span>, <span class="math inline">\(\sum_{i=1}^Ny_i\)</span>, <span class="math inline">\(\mu\)</span>, and the medians
+for NHL BMI’s in Table <a href="describing-data.html#tab:nhlbmi2">2.1</a> and marathon speeds by gender for the
+Rock and Roll marathon in Table <a href="describing-data.html#tab:rrmarathon4">2.2</a>.</p>
+<table>
+<caption><span id="tab:nhlbmi2">Table 2.1: </span>Population size, sum, mean, and median for NHL BMI</caption>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="right"><span class="math inline">\(N\)</span></th>
+<th align="right"><span class="math inline">\(\sum_iy_i\)</span></th>
+<th align="right"><span class="math inline">\(\mu\)</span></th>
+<th align="right"><span class="math inline">\(M\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">NHL BMI</td>
+<td align="right">748</td>
+<td align="right">19832.32</td>
+<td align="right">26.514</td>
+<td align="right">26.542</td>
+</tr>
+</tbody>
+</table>
+<pre><code>##   Runner Gender Place Seconds      mph
+## 1      1      M  1830   17375 5.432374
+## 2      2      F  2475   20988 4.497213</code></pre>
+<table>
+<caption><span id="tab:rrmarathon4">Table 2.2: </span>Population size, sum, mean, and median velocity (mph) Rock and Roll Marathon
+by gender</caption>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="right"><span class="math inline">\(N\)</span></th>
+<th align="right"><span class="math inline">\(\sum_iy_i\)</span></th>
+<th align="right"><span class="math inline">\(\mu\)</span></th>
+<th align="right"><span class="math inline">\(M\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Females</td>
+<td align="right">1045</td>
+<td align="right">6102.632</td>
+<td align="right">5.840</td>
+<td align="right">5.711</td>
+</tr>
+<tr class="even">
+<td align="left">Males</td>
+<td align="right">1454</td>
+<td align="right">9213.968</td>
+<td align="right">6.337</td>
+<td align="right">6.277</td>
+</tr>
+</tbody>
+</table>
+<p>Note that the mean (26.514) and median (26.542) of NHL BMI values are very
+close, as is expected for an (approximately) symmetric distribution.</p>
+<p>For the marathon speeds, we use the obtain the means and medians
+directly by gender.</p>
+<p>The marathon velocity distributions are skewed-right, with a few very
+fast runners in each gender. This causes the means (F=5.84, M=6.37) to
+be larger than the medians (F=5.71, M=6.28).</p>
+<p><span class="math display">\[ \nabla \]</span></p>
+<p><strong>Example 2.7: James Short’s Measurements of the Sun’s Parallax</strong></p>
+<p>The parallax is defined as (Merriam-Webster Dictionary):</p>
+<blockquote>
+<p>“the apparent displacement or the difference in apparent direction of
+an object as seen from two different points not on a straight line
+with the object. especially : the angular difference in direction of a
+celestial body as measured from two points on the earth’s orbit.”</p>
+</blockquote>
+<p>James Short reported <span class="math inline">\(n=158\)</span> measurements of the parallax of the sun in
+seconds of a degree <span class="citation">(<a href="#ref-short_1763">Short 1763</a>)</span>,
+also reported in <span class="citation">(<a href="#ref-stigler_1977">Stigler 1977</a>)</span>.
+The summary calculations are given in
+Table <a href="describing-data.html#tab:shortparallax1">2.3</a>. The true value has since been determined to be 8.798.</p>
+<p>A histogram of
+the data, the true value, and sample mean, as well as a box plot of the
+measurements are given in Figure <a href="describing-data.html#fig:shortparallax1">2.10</a>.</p>
+<pre><code>##   tablepage datcolumn prlxsun
+## 1       310         1     8.5
+## 2       310         1     8.5</code></pre>
+<table>
+<caption><span id="tab:shortparallax1">Table 2.3: </span>Sample size, sum, sample mean, sample median, and 90 percent trimmed mean of sun parallax measurements</caption>
+<colgroup>
+<col width="32%" />
+<col width="5%" />
+<col width="17%" />
+<col width="14%" />
+<col width="7%" />
+<col width="22%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="right"><span class="math inline">\(n\)</span></th>
+<th align="right"><span class="math inline">\(\sum_iy_i\)</span></th>
+<th align="right"><span class="math inline">\(\bar{y}\)</span></th>
+<th align="right"><span class="math inline">\(m\)</span></th>
+<th align="right">90% Trim Mean</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Parallax Measurements</td>
+<td align="right">158</td>
+<td align="right">1360.31</td>
+<td align="right">8.6096</td>
+<td align="right">8.55</td>
+<td align="right">8.5944</td>
+</tr>
+</tbody>
+</table>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:shortparallax1"></span>
+<img src="STA2170bookdownproj_files/figure-html/shortparallax1-1.png" alt="James Short Measurements of the Parallax of the Sun" width="80%" />
+<p class="caption">
+Figure 2.10: James Short Measurements of the Parallax of the Sun
+</p>
+</div>
+<p><span class="math display">\[ \nabla \]</span></p>
+<p><strong>Outliers</strong> are observations that lie “far” away from the others. These
+may be data that have been entered erroneously or just individual cases
+that are quite different from others. As stated above, means can be
+affected by outliers, while medians generally are not. A measure of the
+mean that is not affected by outliers is the <strong>trimmed mean</strong>. This is
+the mean of observations in the “middle” of the measurements. For
+instance, a 90% trimmed mean is the mean of the middle 90% of the
+ordered measurements (removing the smallest 5% and largest 5%).</p>
+<p>Note that the Short parallax data has some extreme outliers in the box
+plot. The 90% trimmed mean is 8.594 (see above output, where we have
+trimmed 5% in each tail) which is not far from the sample mean as the
+data are still fairly symmetric despite the outliers.</p>
+</div>
+<div id="measures-of-variability" class="section level3 hasAnchor" number="2.2.2">
+<h3><span class="header-section-number">2.2.2</span> Measures of Variability<a href="describing-data.html#measures-of-variability" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Along with the “location” of a set of measurements, researchers are also
+interested in their variability (aka dispersion). The <strong>range</strong> is the
+distance between the largest and smallest measurements (note that this
+differs from the standard meaning which would just give the lowest and
+highest values). The <strong>interquartile range</strong> (IQR) is the distance
+between the 75th percentile (3/4 of measurements lie below it) and the
+25th percentile (1/4 of the measurements lie below it). That is, the IQR
+measures the range for the middle half of the ordered measurements.</p>
+<p>Measures that are more widely used in making inferences are the
+<strong>variance</strong> and its square root, the <strong>standard deviation</strong>. In terms
+of measurements, the variance is approximately the average squared
+distance of the individual measurements from the mean (for a population,
+it is the average). The formulas for the population and sample variance
+are given below. Note that unless stated otherwise specifically,
+software packages are reporting the sample version.</p>
+<p><span class="math display">\[ \mbox{Population Variance: } \sigma^2 = \frac{\sum_{i=1}^N\left(y_i-\mu\right)^2}{N} \qquad \qquad
+\mbox{Sample Variance: } s^2  = \frac{\sum_{i=1}^n\left(y_i-\overline{y}\right)^2}{n-1} \]</span></p>
+<p>The reason for dividing by <span class="math inline">\(n-1\)</span> in the sample variance is to make the
+estimator an unbiased estimator for the population variance. That is,
+when computed across all possible samples, the “average” of the sample
+variance will be the population variance. The standard deviation is the
+positive square root of the variance and is in the same units as the
+measurements. The population standard deviation is denoted as <span class="math inline">\(\sigma\)</span>,
+the sample standard deviation is denoted as <span class="math inline">\(s\)</span>. For many (but certainly
+not all) distributions, approximately 2/3 of the measurements lie within
+one standard deviation of the mean and approximately 19/20 lie within
+two standard deviations of the mean.</p>
+<p><strong>Example 2.8: NHL BMI’s and Rock and Roll Marathon Speeds</strong></p>
+<p>We compute the minimum, maximum, range, lower and upper quartiles, and the interquartile range, for NHL BMI’s in Table <a href="describing-data.html#tab:nhlbmi3">2.4</a>.</p>
+<p>The means, variances, and standard
+deviations for the NHL BMI’s and the Rock and Roll marathon speeds by
+gender are given in Table <a href="describing-data.html#tab:nhlbmi3a">2.5</a>,
+and Table <a href="describing-data.html#tab:rrmarathon5">2.6</a>, respectively.
+Since we treat each of these as a population, we will make a
+slight adjustment to R’s “built-in” functions <strong>var</strong> and <strong>sd</strong>, which
+compute the sample versions by default. Also included in the the
+results are the proportions of measurements lying within 1 and 2 standard deviations of the mean.</p>
+<table>
+<caption><span id="tab:nhlbmi3">Table 2.4: </span>Minimum, Maximum, Range, Lower and Upper Quartiles for NHL BMI</caption>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="right">min</th>
+<th align="right">max</th>
+<th align="right">range</th>
+<th align="right">LQ</th>
+<th align="right">UQ</th>
+<th align="right">IQR</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">NHL BMI</td>
+<td align="right">21.568</td>
+<td align="right">32.004</td>
+<td align="right">10.436</td>
+<td align="right">25.62</td>
+<td align="right">27.473</td>
+<td align="right">1.852</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption><span id="tab:nhlbmi3a">Table 2.5: </span>Mean, Sum of Squares, Variance, SD, Proportions within 1 and 2 SDs of mean for
+NHL BMI</caption>
+<colgroup>
+<col width="9%" />
+<col width="7%" />
+<col width="18%" />
+<col width="12%" />
+<col width="10%" />
+<col width="20%" />
+<col width="21%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="right"><span class="math inline">\(\mu\)</span></th>
+<th align="right"><span class="math inline">\(\sum(y-\mu)^2\)</span></th>
+<th align="right"><span class="math inline">\(\sigma^2\)</span></th>
+<th align="right"><span class="math inline">\(\sigma\)</span></th>
+<th align="right"><span class="math inline">\(P(\mu\pm\sigma)\)</span></th>
+<th align="right"><span class="math inline">\(P(\mu\pm2\sigma)\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">NHL BMI</td>
+<td align="right">26.514</td>
+<td align="right">1570.124</td>
+<td align="right">2.099</td>
+<td align="right">1.449</td>
+<td align="right">0.694</td>
+<td align="right">0.948</td>
+</tr>
+</tbody>
+</table>
+<p>For the marathon speeds, we will simply use the <strong>var</strong> and <strong>sd</strong>
+functions in R, applied separately to Females and Males. As both
+population sizes exceed 1000, the adjustment for population variances
+and standard deviations would be very small.</p>
+<pre><code>##   Runner Gender Place Seconds      mph
+## 1      1      M  1830   17375 5.432374
+## 2      2      F  2475   20988 4.497213</code></pre>
+<table>
+<caption><span id="tab:rrmarathon5">Table 2.6: </span>Means, Variances, SDs, Proportions within 1 and 2 SD of mean for Rock and Roll marathon by gender</caption>
+<colgroup>
+<col width="10%" />
+<col width="7%" />
+<col width="14%" />
+<col width="11%" />
+<col width="26%" />
+<col width="28%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="right"><span class="math inline">\(\mu\)</span></th>
+<th align="right"><span class="math inline">\(\sigma^2\)</span></th>
+<th align="right"><span class="math inline">\(\sigma\)</span></th>
+<th align="right"><span class="math inline">\(P(\mu \pm \sigma)\)</span></th>
+<th align="right"><span class="math inline">\(P(\mu \pm  2\sigma)\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Females</td>
+<td align="right">5.840</td>
+<td align="right">0.691</td>
+<td align="right">0.831</td>
+<td align="right">0.662</td>
+<td align="right">0.964</td>
+</tr>
+<tr class="even">
+<td align="left">Males</td>
+<td align="right">6.337</td>
+<td align="right">1.119</td>
+<td align="right">1.058</td>
+<td align="right">0.665</td>
+<td align="right">0.964</td>
+</tr>
+</tbody>
+</table>
+<p>Male speeds tend to be higher and more variable than Female speeds. All
+three distributions have approximately 2/3 of individuals lying with one
+standard deviation of the mean, and approximately 95% lying within two
+standard deviations from the mean.</p>
+<p><span class="math display">\[ \nabla \]</span></p>
+<p><strong>Example 2.9: James Short’s Measurements of the Sun’s Parallax</strong></p>
+<p>We compute the range, interquartile range, variance, and standard
+deviations for the sample of <span class="math inline">\(n=158\)</span> sun parallax measurements in
+Table <a href="describing-data.html#tab:shortparallax2">2.7</a>.</p>
+<pre><code>##   tablepage datcolumn prlxsun
+## 1       310         1     8.5
+## 2       310         1     8.5</code></pre>
+<table>
+<caption><span id="tab:shortparallax2">Table 2.7: </span>Sample size, mean, range, IQR, variance, SD, and proportions within 1 and 2 standard deviations of the mean, sun parallax data</caption>
+<colgroup>
+<col width="10%" />
+<col width="4%" />
+<col width="11%" />
+<col width="6%" />
+<col width="6%" />
+<col width="6%" />
+<col width="6%" />
+<col width="22%" />
+<col width="23%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="right"><span class="math inline">\(n\)</span></th>
+<th align="right"><span class="math inline">\(\bar{y}\)</span></th>
+<th align="right">range</th>
+<th align="right">IQR</th>
+<th align="right"><span class="math inline">\(s^2\)</span></th>
+<th align="right"><span class="math inline">\(s\)</span></th>
+<th align="right"><span class="math inline">\(P(\bar{y} \pm s)\)</span></th>
+<th align="right"><span class="math inline">\(P(\bar{y} \pm 2s)\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Parallax</td>
+<td align="right">158</td>
+<td align="right">8.61</td>
+<td align="right">5.04</td>
+<td align="right">0.445</td>
+<td align="right">0.455</td>
+<td align="right">0.674</td>
+<td align="right">0.778</td>
+<td align="right">0.937</td>
+</tr>
+</tbody>
+</table>
+<p>The full set of measurements lie within a range of 5.04 seconds of a
+degree, while the middle 50% lie within a range of 0.445. The variance
+is 0.455 and the standard deviation (a typical distance from an
+observation to the mean) is 0.674. Further, approximately 77.8% of
+measurements lie within one standard deviation and 93.7% lie within two
+standard deviations of the mean.</p>
+<p><span class="math display">\[ \nabla \]</span></p>
+</div>
+</div>
+<div id="describing-more-than-one-variable" class="section level2 hasAnchor" number="2.3">
+<h2><span class="header-section-number">2.3</span> Describing More than One Variable<a href="describing-data.html#describing-more-than-one-variable" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>So far, we have looked at cases one variable at a time, although the
+marathon speed data set has two variables: speed and gender. Now we
+consider describing relationships when two variables are observed on
+each sampling/experimental unit. These can be extended to more than two
+variables, but can be harder to visualize. We consider graphical
+techniques as well as numerical measures. Keep in mind that variable
+types (nominal, ordinal, and numeric) will dictate which method(s) is
+(are) appropriate.</p>
+<p>When both variables are categorical (nominal or ordinal), two methods of
+plotting them are <strong>stacked bar graphs</strong> and <strong>cluster bar graphs</strong>. For
+the stacked bar graph, one variable is on the horizontal axis (one slot
+for each level) and the other variable is displayed within the bars with
+subcategories for each of its levels. In a cluster (grouped) bar graph,
+one variable forms “major groupings,” while the second variable is
+plotted “side-by-side” within the groupings. Both methods are based on
+results of a <strong>contingency table</strong> also known as a <strong>crosstabulation</strong>.
+These are tables where rows are the levels of one categorical variable,
+columns are levels of another variable, and numbers within the table are
+counts of the number of units falling in that cell (combination of
+variable levels). Often these are converted into proportions either
+overall (cell probabilities sum to 1), or within rows or columns
+marginally.</p>
+<p><strong>Example 2.10: Thumb Styles of Blues Guitarists by Region and Period</strong></p>
+<p>A study reported hand and thumb styles of Blues guitarists as well as
+the region they were from and when they were born <span class="citation">(<a href="#ref-cohen_1996">Cohen 1996</a>)</span>. The regions are 1=East, 2=Delta, and 3=Texas. The thumb
+styles are 1=Alternating, 2=Utility, and 3=Dead. The birth period was
+labeled post1906 with 0=Born before 1906, 1=Born after 1906. First, the
+association between region (row) and thumb style (column) is considered,
+then birth period is added. The crosstabulation is given in Table <a href="describing-data.html#tab:bluesguitar1a">2.8</a>.
+The marginal counts by region and thumb style are given in Table <a href="describing-data.html#tab:bluesguitar1b">2.9</a>
+and Table <a href="describing-data.html#tab:bluesguitar1c">2.10</a>, respectively. The joint proportions are
+given in Table <a href="describing-data.html#tab:bluesguitar1d">2.11</a>. The row proportions of thumb style within region
+are given in Table <a href="describing-data.html#tab:bluesguitar1e">2.12</a>. The column proportions of region within
+thumb style are given in Table <a href="describing-data.html#tab:bluesguitar1f">2.13</a>.
+Figure <a href="describing-data.html#fig:bluesguitar2">2.11</a> gives the Stacked and Cluster Bar Graphs.</p>
+<table>
+<caption><span id="tab:bluesguitar1a">Table 2.8: </span>Crosstabulation of blues guitarists by region and thumb style</caption>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="right">Alternating</th>
+<th align="right">Utility</th>
+<th align="right">Dead</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">East</td>
+<td align="right">20</td>
+<td align="right">8</td>
+<td align="right">7</td>
+</tr>
+<tr class="even">
+<td align="left">Delta</td>
+<td align="right">9</td>
+<td align="right">19</td>
+<td align="right">19</td>
+</tr>
+<tr class="odd">
+<td align="left">Texas</td>
+<td align="right">1</td>
+<td align="right">2</td>
+<td align="right">8</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption><span id="tab:bluesguitar1b">Table 2.9: </span>Marginal counts of blues guitarists by region</caption>
+<thead>
+<tr class="header">
+<th align="left">Var1</th>
+<th align="right">Freq</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">East</td>
+<td align="right">35</td>
+</tr>
+<tr class="even">
+<td align="left">Delta</td>
+<td align="right">47</td>
+</tr>
+<tr class="odd">
+<td align="left">Texas</td>
+<td align="right">11</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption><span id="tab:bluesguitar1c">Table 2.10: </span>Marginal counts of blues guitarists by thumb style</caption>
+<thead>
+<tr class="header">
+<th align="left">Var1</th>
+<th align="right">Freq</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Alternating</td>
+<td align="right">30</td>
+</tr>
+<tr class="even">
+<td align="left">Utility</td>
+<td align="right">29</td>
+</tr>
+<tr class="odd">
+<td align="left">Dead</td>
+<td align="right">34</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption><span id="tab:bluesguitar1d">Table 2.11: </span>Joint proportions of blues guitarists by region and thumb style</caption>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="right">Alternating</th>
+<th align="right">Utility</th>
+<th align="right">Dead</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">East</td>
+<td align="right">0.2151</td>
+<td align="right">0.0860</td>
+<td align="right">0.0753</td>
+</tr>
+<tr class="even">
+<td align="left">Delta</td>
+<td align="right">0.0968</td>
+<td align="right">0.2043</td>
+<td align="right">0.2043</td>
+</tr>
+<tr class="odd">
+<td align="left">Texas</td>
+<td align="right">0.0108</td>
+<td align="right">0.0215</td>
+<td align="right">0.0860</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption><span id="tab:bluesguitar1e">Table 2.12: </span>Proportions by thumb style within region</caption>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="right">Alternating</th>
+<th align="right">Utility</th>
+<th align="right">Dead</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">East</td>
+<td align="right">0.5714</td>
+<td align="right">0.2286</td>
+<td align="right">0.2000</td>
+</tr>
+<tr class="even">
+<td align="left">Delta</td>
+<td align="right">0.1915</td>
+<td align="right">0.4043</td>
+<td align="right">0.4043</td>
+</tr>
+<tr class="odd">
+<td align="left">Texas</td>
+<td align="right">0.0909</td>
+<td align="right">0.1818</td>
+<td align="right">0.7273</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption><span id="tab:bluesguitar1f">Table 2.13: </span>Proportions by region within thumb style</caption>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="right">Alternating</th>
+<th align="right">Utility</th>
+<th align="right">Dead</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">East</td>
+<td align="right">0.6667</td>
+<td align="right">0.2759</td>
+<td align="right">0.2059</td>
+</tr>
+<tr class="even">
+<td align="left">Delta</td>
+<td align="right">0.3000</td>
+<td align="right">0.6552</td>
+<td align="right">0.5588</td>
+</tr>
+<tr class="odd">
+<td align="left">Texas</td>
+<td align="right">0.0333</td>
+<td align="right">0.0690</td>
+<td align="right">0.2353</td>
+</tr>
+</tbody>
+</table>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:bluesguitar2"></span>
+<img src="STA2170bookdownproj_files/figure-html/bluesguitar2-1.png" alt="Stacked and Cluster Bar Charts for Blues Guitarists" width="80%" />
+<p class="caption">
+Figure 2.11: Stacked and Cluster Bar Charts for Blues Guitarists
+</p>
+</div>
+<p><span class="math display">\[ \nabla \]</span>
+<strong>Example 2.11: IMDB User Reviews for 14 Disaster Films</strong></p>
+<p>The Internet Movie Database has user reviews for a huge number of films. In this example, we
+consider the proportion of reviews (from 1-10) for 14 disaster films (Independence Day (I), The Core, Armageddon, Deep Impact, Geostorm, San Andreas, Independence Day (II), 2012, Day After Tomorrow, War of the Worlds, Poseidon, Perfect Storm, Twister (I), and Titanic). A table of the proportions by rating score for the 14 films is given in Table <a href="describing-data.html#tab:disastermovie1">2.14</a>. A grouped bar chart is
+given in Figure <a href="describing-data.html#fig:disastermovie1">2.12</a> and a stacked bar chart is given in Figure <a href="describing-data.html#fig:disastermovie2">2.13</a>.</p>
+<pre><code>##                     Movie Movie1 Rating numRate
+## 1 Independence Day (1996)  ID4.1      1   11267
+## 2                The Core   Core      1    3570</code></pre>
+<table>
+<caption><span id="tab:disastermovie1">Table 2.14: </span>IMDB user ratings for 14 disaster films</caption>
+<colgroup>
+<col width="10%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="right">1</th>
+<th align="right">2</th>
+<th align="right">3</th>
+<th align="right">4</th>
+<th align="right">5</th>
+<th align="right">6</th>
+<th align="right">7</th>
+<th align="right">8</th>
+<th align="right">9</th>
+<th align="right">10</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">ID4.1</td>
+<td align="right">0.019</td>
+<td align="right">0.012</td>
+<td align="right">0.019</td>
+<td align="right">0.032</td>
+<td align="right">0.069</td>
+<td align="right">0.160</td>
+<td align="right">0.296</td>
+<td align="right">0.218</td>
+<td align="right">0.091</td>
+<td align="right">0.085</td>
+</tr>
+<tr class="even">
+<td align="left">Core</td>
+<td align="right">0.034</td>
+<td align="right">0.035</td>
+<td align="right">0.064</td>
+<td align="right">0.113</td>
+<td align="right">0.209</td>
+<td align="right">0.243</td>
+<td align="right">0.163</td>
+<td align="right">0.074</td>
+<td align="right">0.026</td>
+<td align="right">0.040</td>
+</tr>
+<tr class="odd">
+<td align="left">Armag</td>
+<td align="right">0.025</td>
+<td align="right">0.018</td>
+<td align="right">0.026</td>
+<td align="right">0.045</td>
+<td align="right">0.092</td>
+<td align="right">0.188</td>
+<td align="right">0.262</td>
+<td align="right">0.176</td>
+<td align="right">0.078</td>
+<td align="right">0.090</td>
+</tr>
+<tr class="even">
+<td align="left">Deep</td>
+<td align="right">0.015</td>
+<td align="right">0.015</td>
+<td align="right">0.028</td>
+<td align="right">0.062</td>
+<td align="right">0.145</td>
+<td align="right">0.283</td>
+<td align="right">0.248</td>
+<td align="right">0.119</td>
+<td align="right">0.040</td>
+<td align="right">0.044</td>
+</tr>
+<tr class="odd">
+<td align="left">Geo</td>
+<td align="right">0.044</td>
+<td align="right">0.047</td>
+<td align="right">0.070</td>
+<td align="right">0.112</td>
+<td align="right">0.201</td>
+<td align="right">0.233</td>
+<td align="right">0.155</td>
+<td align="right">0.068</td>
+<td align="right">0.024</td>
+<td align="right">0.045</td>
+</tr>
+<tr class="even">
+<td align="left">SanAnd</td>
+<td align="right">0.022</td>
+<td align="right">0.019</td>
+<td align="right">0.034</td>
+<td align="right">0.068</td>
+<td align="right">0.149</td>
+<td align="right">0.269</td>
+<td align="right">0.231</td>
+<td align="right">0.106</td>
+<td align="right">0.039</td>
+<td align="right">0.064</td>
+</tr>
+<tr class="odd">
+<td align="left">ID4.2</td>
+<td align="right">0.056</td>
+<td align="right">0.051</td>
+<td align="right">0.082</td>
+<td align="right">0.129</td>
+<td align="right">0.211</td>
+<td align="right">0.222</td>
+<td align="right">0.137</td>
+<td align="right">0.057</td>
+<td align="right">0.019</td>
+<td align="right">0.036</td>
+</tr>
+<tr class="even">
+<td align="left">M2012</td>
+<td align="right">0.040</td>
+<td align="right">0.032</td>
+<td align="right">0.051</td>
+<td align="right">0.087</td>
+<td align="right">0.168</td>
+<td align="right">0.236</td>
+<td align="right">0.193</td>
+<td align="right">0.100</td>
+<td align="right">0.040</td>
+<td align="right">0.054</td>
+</tr>
+<tr class="odd">
+<td align="left">DayAft</td>
+<td align="right">0.014</td>
+<td align="right">0.013</td>
+<td align="right">0.024</td>
+<td align="right">0.050</td>
+<td align="right">0.114</td>
+<td align="right">0.245</td>
+<td align="right">0.288</td>
+<td align="right">0.146</td>
+<td align="right">0.051</td>
+<td align="right">0.055</td>
+</tr>
+<tr class="even">
+<td align="left">WarWor</td>
+<td align="right">0.023</td>
+<td align="right">0.014</td>
+<td align="right">0.024</td>
+<td align="right">0.047</td>
+<td align="right">0.109</td>
+<td align="right">0.234</td>
+<td align="right">0.284</td>
+<td align="right">0.154</td>
+<td align="right">0.054</td>
+<td align="right">0.056</td>
+</tr>
+<tr class="odd">
+<td align="left">Pos</td>
+<td align="right">0.025</td>
+<td align="right">0.024</td>
+<td align="right">0.046</td>
+<td align="right">0.097</td>
+<td align="right">0.212</td>
+<td align="right">0.282</td>
+<td align="right">0.174</td>
+<td align="right">0.073</td>
+<td align="right">0.023</td>
+<td align="right">0.043</td>
+</tr>
+<tr class="even">
+<td align="left">PerfSt</td>
+<td align="right">0.015</td>
+<td align="right">0.013</td>
+<td align="right">0.022</td>
+<td align="right">0.047</td>
+<td align="right">0.116</td>
+<td align="right">0.265</td>
+<td align="right">0.290</td>
+<td align="right">0.144</td>
+<td align="right">0.045</td>
+<td align="right">0.043</td>
+</tr>
+<tr class="odd">
+<td align="left">Twist</td>
+<td align="right">0.014</td>
+<td align="right">0.014</td>
+<td align="right">0.024</td>
+<td align="right">0.051</td>
+<td align="right">0.122</td>
+<td align="right">0.252</td>
+<td align="right">0.264</td>
+<td align="right">0.140</td>
+<td align="right">0.051</td>
+<td align="right">0.068</td>
+</tr>
+<tr class="even">
+<td align="left">Titan</td>
+<td align="right">0.021</td>
+<td align="right">0.008</td>
+<td align="right">0.011</td>
+<td align="right">0.017</td>
+<td align="right">0.035</td>
+<td align="right">0.078</td>
+<td align="right">0.185</td>
+<td align="right">0.249</td>
+<td align="right">0.166</td>
+<td align="right">0.231</td>
+</tr>
+</tbody>
+</table>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:disastermovie1"></span>
+<img src="STA2170bookdownproj_files/figure-html/disastermovie1-1.png" alt="Stacked Bar Chart for user reviews (1-10) of 14 Disaster Movies on IMDB" width="80%" />
+<p class="caption">
+Figure 2.12: Stacked Bar Chart for user reviews (1-10) of 14 Disaster Movies on IMDB
+</p>
+</div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:disastermovie2"></span>
+<img src="STA2170bookdownproj_files/figure-html/disastermovie2-1.png" alt="Cluster Bar Chart for user reviews (1-10) of 14 Disaster Movies on IMDB" width="80%" />
+<p class="caption">
+Figure 2.13: Cluster Bar Chart for user reviews (1-10) of 14 Disaster Movies on IMDB
+</p>
+</div>
+<p><span class="math display">\[\nabla \]</span></p>
+<p>When the independent variable is categorical (nominal or ordinal) and
+the response (dependent variable) is numeric, we can construct
+side-by-side histograms and density plots, or box plots (see Figure
+<a href="describing-data.html#fig:michelson2">2.4</a> for side-by-side box plots). Histograms and
+densities can also be placed into single plots with different colors or
+patterns as in Figure <a href="describing-data.html#fig:rrmarathon6">2.14</a>.</p>
+<pre><code>##   Runner Gender Place Seconds      mph
+## 1      1      M  1830   17375 5.432374
+## 2      2      F  2475   20988 4.497213</code></pre>
+<pre><code>## Scale for fill is already present.
+## Adding another scale for fill, which will replace the existing scale.</code></pre>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:rrmarathon6"></span>
+<img src="STA2170bookdownproj_files/figure-html/rrmarathon6-1.png" alt="Density Plots of Velocities at Rock and Roll Marathon 2015 (mph)" width="80%" />
+<p class="caption">
+Figure 2.14: Density Plots of Velocities at Rock and Roll Marathon 2015 (mph)
+</p>
+</div>
+<p>When two variables (labeled <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>) are both numeric, one numeric
+descriptive measure that is widely reported is the <strong>correlation</strong>
+between the two variables. Technically, this is called the Pearson
+product moment coefficient of correlation. This measure is only for the
+<strong>linear</strong>, or “straight line” relation between the two variables.
+Unlike in Regression (described later), the variables are not
+necessarily (but can be) identified as an independent and or dependent
+variable. The formula for this measure (population and sample) are given
+below.</p>
+<p><span class="math display">\[ \mbox{Population Correlation: } \rho = \frac{
+\frac{1}{N}\sum_{i=1}^N\left(x_i-\mu_x\right)\left(y_i-\mu_y\right)}{\sigma_x\sigma_y}=
+\frac{\sum_{i=1}^N\left(x_i-\mu_x\right)\left(y_i-\mu_y\right)}{\sqrt{\sum_{i=1}^N\left(x_i-\mu_x\right)^2\sum_{i=1}^N\left(y_i-\mu_y\right)^2}} \]</span></p>
+<p><span class="math display">\[ \mbox{Sample Correlation: } r =  \frac{\frac{1}{n-1}\sum_{i=1}^n\left(x_i-\overline{x}\right)\left(y_i-\overline{y}\right)}{s_xs_y}=
+\frac{\sum_{i=1}^n\left(x_i-\overline{x}\right)\left(y_i-\overline{y}\right)}{\sqrt{\sum_{i=1}^n\left(x_i-\overline{x}\right)^2\sum_{i=1}^n\left(y_i-\overline{y}\right)^2}} \]</span></p>
+<p>A <strong>scatterplot</strong> is a plot where each case’s <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> pairs are
+plotted in two dimensions. When one variable is the dependent variable,
+it is labeled <span class="math inline">\(y\)</span>, and plotted on the vertical axis and the independent
+variable is labeled <span class="math inline">\(x\)</span>, plotted on the horizontal axis. We are
+interested in any pattern (linear or possibly nonlinear, or none at all)
+between the variables. The formulas for the (ordinary) least squares
+regression line relating <span class="math inline">\(y\)</span> to <span class="math inline">\(x\)</span> are given below.</p>
+<p><span class="math display">\[ \hat{y} = \hat{\beta}_0 + \hat{\beta}_1 x \qquad \qquad \hat{\beta}_1 =
+\frac{\sum_{i=1}^n\left(x_i-\overline{x}\right)\left(y_i-\overline{y}\right)}{\sum_{i=1}^n\left(x_i-\overline{x}\right)^2}
+\qquad \qquad \hat{\beta}_0 = \overline{y} - \hat{\beta}_1 \overline{x} \]</span></p>
+<p><span class="math display">\[SSE=\sum_{i=1}^n\left(y_i-\hat{y}_i\right)^2
+= \sum_{i=1}^n\left(y_i-\left(\hat{\beta}_0 + \hat{\beta}_1 x_i\right)\right)^2 \]</span></p>
+<p><strong>Example 2.12: Relation Between Temperature and Water Evaporation</strong></p>
+<p>An experiment was conducted that observed the temperature <span class="math inline">\(x\)</span>
+(fahrenheit) and water evaporation <span class="math inline">\(y\)</span> (grains of water) with
+measurements taken at 8:00AM daily from 11/10/1692-11/09/1693 <span class="citation">(<a href="#ref-halley_1694">Halley 1694</a>)</span>.</p>
+<p>The plot of the data and the linear regression equation is given in
+Figure <a href="describing-data.html#fig:halley1">2.15</a>. The correlation and regression equation were
+obtained using the <strong>cor</strong> and <strong>lm</strong> functions.</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="describing-data.html#cb18-1" tabindex="-1"></a>evap <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">&quot;evap.dat&quot;</span>,</span>
+<span id="cb18-2"><a href="describing-data.html#cb18-2" tabindex="-1"></a>        <span class="at">header=</span>F, </span>
+<span id="cb18-3"><a href="describing-data.html#cb18-3" tabindex="-1"></a>        <span class="at">col.names=</span><span class="fu">c</span>(<span class="st">&quot;day&quot;</span>, <span class="st">&quot;dayEvap&quot;</span>, <span class="st">&quot;dayTemp&quot;</span>, <span class="st">&quot;dayPres&quot;</span>, <span class="st">&quot;mdate&quot;</span>))</span>
+<span id="cb18-4"><a href="describing-data.html#cb18-4" tabindex="-1"></a><span class="fu">head</span>(evap,<span class="dv">2</span>)</span></code></pre></div>
+<pre><code>##   day dayEvap dayTemp dayPres     mdate
+## 1   1      21      30    29.7 10NOV1692
+## 2   2      32      27    29.7 11NOV1692</code></pre>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="describing-data.html#cb20-1" tabindex="-1"></a><span class="do">## Compute correlation coefficient (Pearson) between evaporation and temp</span></span>
+<span id="cb20-2"><a href="describing-data.html#cb20-2" tabindex="-1"></a><span class="fu">cor</span>(evap<span class="sc">$</span>dayEvap, evap<span class="sc">$</span>dayTemp)</span></code></pre></div>
+<pre><code>## [1] 0.7961281</code></pre>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="describing-data.html#cb22-1" tabindex="-1"></a><span class="do">## Fit simple linear regression model</span></span>
+<span id="cb22-2"><a href="describing-data.html#cb22-2" tabindex="-1"></a>mod1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(dayEvap <span class="sc">~</span> dayTemp, <span class="at">data=</span>evap)</span>
+<span id="cb22-3"><a href="describing-data.html#cb22-3" tabindex="-1"></a><span class="fu">summary</span>(mod1)</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = dayEvap ~ dayTemp, data = evap)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -31.415  -8.127  -1.476   8.858  48.418 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept) 23.94556    1.09028   21.96   &lt;2e-16 ***
+## dayTemp      0.62879    0.02509   25.07   &lt;2e-16 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 13.05 on 363 degrees of freedom
+## Multiple R-squared:  0.6338, Adjusted R-squared:  0.6328 
+## F-statistic: 628.3 on 1 and 363 DF,  p-value: &lt; 2.2e-16</code></pre>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="describing-data.html#cb24-1" tabindex="-1"></a><span class="fu">anova</span>(mod1)</span></code></pre></div>
+<pre><code>## Analysis of Variance Table
+## 
+## Response: dayEvap
+##            Df Sum Sq Mean Sq F value    Pr(&gt;F)    
+## dayTemp     1 107023  107023  628.32 &lt; 2.2e-16 ***
+## Residuals 363  61831     170                      
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="describing-data.html#cb26-1" tabindex="-1"></a><span class="fu">plot</span>(evap<span class="sc">$</span>dayEvap <span class="sc">~</span> evap<span class="sc">$</span>dayTemp, <span class="at">pch=</span><span class="dv">16</span>, <span class="at">col=</span><span class="st">&quot;red&quot;</span>, <span class="at">cex=</span><span class="fl">0.7</span>,</span>
+<span id="cb26-2"><a href="describing-data.html#cb26-2" tabindex="-1"></a>    <span class="at">main=</span><span class="st">&quot;Daily Water Evaporation (y) and Temperature (x)&quot;</span>,</span>
+<span id="cb26-3"><a href="describing-data.html#cb26-3" tabindex="-1"></a>    <span class="at">ylab=</span><span class="st">&quot;Water Evaporation&quot;</span>, <span class="at">xlab=</span><span class="st">&quot;Temperature&quot;</span>)</span>
+<span id="cb26-4"><a href="describing-data.html#cb26-4" tabindex="-1"></a><span class="fu">abline</span>(mod1, <span class="at">col=</span><span class="st">&quot;blue&quot;</span>, <span class="at">lwd=</span><span class="dv">2</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:halley1"></span>
+<img src="STA2170bookdownproj_files/figure-html/halley1-1.png" alt="Temperature (X) and Water Evaporation (Y) - Edmund Halley Observations 1692/1693" width="80%" />
+<p class="caption">
+Figure 2.15: Temperature (X) and Water Evaporation (Y) - Edmund Halley Observations 1692/1693
+</p>
+</div>
+<p>The sample correlation is <span class="math inline">\(r =0.7691\)</span> and the fitted linear regression
+equation is <span class="math inline">\(\hat{y}=23.9456+0.6288x\)</span>.</p>
+<p><span class="math display">\[ \nabla  \]</span></p>
+<p><strong>Example 2.13: Heights of Adult Children and Their Parents</strong></p>
+<p>Francis Galton measured many aspects of humans, plants, and animals
+during the late 1800s, some of which were presented in table form in his
+book <em>Natural Inheritance</em>. One analysis that had been published
+previously <span class="citation">(<a href="#ref-galton_1886">Galton 1886</a>)</span>
+introduced the notion of
+linear regression. Galton reported the heights of adult children and
+their
+“mid-parents” which was the average height of the parents. Galton multiplied female heights for the adult children and the mothers by 1.08 to make the female and male heights”comparable.”
+The individual data were obtained from Galton’s notebooks and are
+available due to Professor James A. Hanley <span class="citation">(<a href="#ref-hanley_2004">Hanley 2004</a>)</span>.</p>
+<p>Histograms of the male and (unscaled) female heights is given in Figure
+<a href="describing-data.html#fig:galton1">2.16</a>. The histograms are approximately mound-shaped within
+gender. The plot of adult child height versus mid-parent height (with
+female heights scaled by 1.08) is given in Figure <a href="describing-data.html#fig:galton2">2.17</a>.
+The plot contains three lines, which are described below.</p>
+<pre><code>##   Family Father Mother Gender Height Kids MidParent AdltChld
+## 1      1   78.5     67      M   73.2    4     75.43   73.200
+## 2      1   78.5     67      F   69.2    4     75.43   74.736</code></pre>
+<pre><code>## 
+## Call:
+## lm(formula = AdltChld ~ MidParent, data = galton)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -9.4947 -1.4779  0.0995  1.5175  9.1262 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept) 18.76698    2.84062   6.607 6.74e-11 ***
+## MidParent    0.72906    0.04102  17.772  &lt; 2e-16 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 2.233 on 896 degrees of freedom
+## Multiple R-squared:  0.2606, Adjusted R-squared:  0.2598 
+## F-statistic: 315.9 on 1 and 896 DF,  p-value: &lt; 2.2e-16</code></pre>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:galton1"></span>
+<img src="STA2170bookdownproj_files/figure-html/galton1-1.png" alt="Histograms of Adult Male and Female Children Heights - Frances Galton Measurements" width="80%" />
+<p class="caption">
+Figure 2.16: Histograms of Adult Male and Female Children Heights - Frances Galton Measurements
+</p>
+</div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:galton2"></span>
+<img src="STA2170bookdownproj_files/figure-html/galton2-1.png" alt="Adult Chidren Scaled Heights (Y) versus Midparents Height (X) and Regression Line" width="80%" />
+<p class="caption">
+Figure 2.17: Adult Chidren Scaled Heights (Y) versus Midparents Height (X) and Regression Line
+</p>
+</div>
+<ul>
+<li>Steepest: Line of equality <span class="math inline">\(\hat{y}=x\)</span>, which represents the case with the
+average adult child height equaling the mid-parent height.</li>
+<li>Flat: Constant line <span class="math inline">\(\hat{y}=\overline{y}\)</span>, which represents the case with
+the average adult child height equaling the average mid-parent
+height (no association between adult child and mid-parent height).</li>
+<li>Middle: Least squares regression line <span class="math inline">\(\hat{y} = 18.77 + 0.73x\)</span></li>
+</ul>
+<p>The fact the least squares line falls between the two reference lines
+showed that adult children of tall parents tended to be tall, but not as
+tall on average as their parents. Similarly, adult children of short
+parents tended to be short, but not as short on average as their
+parents. Galton referred to this phenomenon as “regression to
+mediocrity.” Today it is more widely referred to as “regression to the
+mean.”</p>
+<p><span class="math display">\[ \nabla  \]</span></p>
+<p>We often are interested in relationships among more than two numeric
+variables. Scatterplot and correlation matrices can be constructed to
+demonstrate the bivariate association of all pairs of variables.</p>
+<p><strong>Example 2.14: Compressive Strength and Microfabric Properties of Amphibolites</strong></p>
+<p>A study reported the relationship between Uniaxial Compression Strentgh (UCS) and 8 predictor variables including: percent hornblende (hb), grain size (gs), and grain area (ga) <span class="citation">(<a href="#ref-ali_2014">Ali, Guang, and Ibrahim 2014</a>)</span>.
+A simple scatterplot matrix of plots of all pairs of these
+four variables is given in Figure <a href="describing-data.html#fig:rockstrength">2.18</a>. The
+correlation matrix is given along with R code below. Note that this can
+be extended to all pairs of variables, the plot just gets very difficult
+to focus on particular pairs of variables.</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="describing-data.html#cb29-1" tabindex="-1"></a>rs1 <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;rockstrength.csv&quot;</span>)</span>
+<span id="cb29-2"><a href="describing-data.html#cb29-2" tabindex="-1"></a><span class="fu">head</span>(rs1,<span class="dv">2</span>)</span></code></pre></div>
+<pre><code>##   sample_id   UCS quartz plag  kfds    hb    gs    ga    sf    ar
+## 1         1 100.6   40.3 9.98 17.01 21.57 0.031 754.4 0.594 0.630
+## 2         2 112.0   47.1 8.50 15.00 23.00 0.025 490.6 0.612 0.612</code></pre>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="describing-data.html#cb31-1" tabindex="-1"></a><span class="do">## Scatterplot matrix of UCS, hb, gs, ga (columns 2,6,7,8 of rs1)</span></span>
+<span id="cb31-2"><a href="describing-data.html#cb31-2" tabindex="-1"></a><span class="fu">plot</span>(rs1[,<span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">8</span>)])</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:rockstrength"></span>
+<img src="STA2170bookdownproj_files/figure-html/rockstrength-1.png" alt="Scatterplot Matrix for all pairs among 4 rock strength variables" width="80%" />
+<p class="caption">
+Figure 2.18: Scatterplot Matrix for all pairs among 4 rock strength variables
+</p>
+</div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="describing-data.html#cb32-1" tabindex="-1"></a><span class="do">## Obtain correlation matrix of UCS, hb, gs, ga  (columns 2,6,7,8 of rs1)</span></span>
+<span id="cb32-2"><a href="describing-data.html#cb32-2" tabindex="-1"></a><span class="fu">cor</span>(rs1[,<span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">8</span>)])</span></code></pre></div>
+<pre><code>##            UCS         hb         gs         ga
+## UCS  1.0000000  0.6935996 -0.8535317 -0.8537215
+## hb   0.6935996  1.0000000 -0.7200409 -0.6641698
+## gs  -0.8535317 -0.7200409  1.0000000  0.9845240
+## ga  -0.8537215 -0.6641698  0.9845240  1.0000000</code></pre>
+<p><span class="math display">\[ \nabla \]</span></p>
+<p>When data are highly skewed, individual cases have the ability to have a
+large impact on the correlation coefficient. An alternative measure that
+is widely used is the Spearman Rank Correlation Coefficient (aka
+Spearman’s rho). This coefficient is computed by ranking the <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>
+values from 1 (smallest) to <span class="math inline">\(n\)</span> or <span class="math inline">\(N\)</span> (largest), and applying the
+formula for Pearson’s coefficient to the ranks. This way, extreme <span class="math inline">\(x\)</span> or
+<span class="math inline">\(y\)</span> values do not have as large of an impact on the coefficient. Also,
+in many situations, the natural measurements are the rankings or
+ordering themselves.</p>
+<p><strong>Example 2.15: NASCAR Start and Finish Positions 1975-2003</strong></p>
+<p>A study of NASCAR races for the years 1975-2003, considered the
+correlation between starting and finishing positions among drivers for
+the 898 races during those seasons
+<span class="citation">(<a href="#ref-winner_2006">Winner 2006</a>)</span>. As
+the data were orderings, it was natural to compute the correlation using
+Spearman’s rank correlation. The summary of the correlations is given
+below, and a density plot and histogram are given in Figure
+<a href="describing-data.html#fig:nasrace1">2.19</a>.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:nasrace1"></span>
+<img src="STA2170bookdownproj_files/figure-html/nasrace1-1.png" alt="NASCAR Races 1975-2003 - Spearman rank correlation coefficient for start/finish positions" width="80%" />
+<p class="caption">
+Figure 2.19: NASCAR Races 1975-2003 - Spearman rank correlation coefficient for start/finish positions
+</p>
+</div>
+<p><span class="math display">\[ \nabla \]</span></p>
+<p>Many series (particularly when measured over time) display
+<strong>spurious correlations</strong>,
+particularly when both variables tend to increase or
+decrease together with no <strong>causal</strong> reason that the two (or more)
+variables move in tandem. For instance, the correlation between annual
+U.S. internet users (per 100 people) and electrical power consumption
+(kWh per capita) for the years 1994-2010 is .7821 (data source: The
+World Bank). Presumably increasing internet usage isn’t leading to large
+increases in electrical consumption, or vice versa.</p>
+
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="describing-data.html#cb34-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb34-2"><a href="describing-data.html#cb34-2" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span></code></pre></div>
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
+<div id="ref-ali_2014" class="csl-entry">
+Ali, E., W. Guang, and A. Ibrahim. 2014. <span>“Empirical Relations Between Compressive Strength and Microfabric Properties of Amphibolites Using Multivariate Regression, Fuzzy Inference, and Neural Networks: A Comparative Study.”</span> <em>Engineering Geology</em> 183: 230–40.
+</div>
+<div id="ref-cohen_1996" class="csl-entry">
+Cohen, A. M. 1996. <span>“The Hands of Blues Guitarists.”</span> <em>American Music</em> 14 (4): 455–79.
+</div>
+<div id="ref-galton_1886" class="csl-entry">
+Galton, F. 1886. <span>“Regression Towards Mediocrity in Hereditary Stature.”</span> <em>The Journal of the Anthropological Institute of Great Britain and Ireland</em> 15: 246–63.
+</div>
+<div id="ref-halley_1694" class="csl-entry">
+Halley, E. 1694. <span>“An Account of the Evaporation of Water, as It Was Experimented in Gresham Colledge in the Year 1693. With Some Observations Thereon.”</span> <em>Philosophical Transactions</em> 18: 183–90.
+</div>
+<div id="ref-hanley_2004" class="csl-entry">
+Hanley, J. A. 2004. <span>“Transmuting Women into Men: Galton’s Family Data on Human Stature.”</span> <em>The American Statistician</em> 58 (3): 237–43.
+</div>
+<div id="ref-michelson_1935" class="csl-entry">
+Michelson, A. A., F. G. Pease, and F. Pearson. 1935. <span>“Measurement of the Velocity of Light in a Partial Vacuum.”</span> <em>Astrophysical Journal</em> 82: 26–61.
+</div>
+<div id="ref-short_1763" class="csl-entry">
+Short, J. 1763. <span>“Second Paper Concerning the Parallax of the Sun Determined from the Observations of the Late Transit of Venus, in Which This Subject Is Treated of More at Length, and the Quantity of the Parallax More Fully Ascertained.”</span> <em>Philosophical Transactions</em> 53: 300–345.
+</div>
+<div id="ref-stigler_1977" class="csl-entry">
+Stigler, S. M. 1977. <span>“Do Robust Estimators Work with Real Data?”</span> <em>The Annals of Statistics</em> 5 (6): 1055–98.
+</div>
+<div id="ref-winner_2006" class="csl-entry">
+Winner, L. 2006. <span>“NASCAR Winston Cup Race Results for 1975-2003.”</span> <em>Journal of Statistics Education</em> 14 (3): 1–15.
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="intro.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="probability.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": "https://github.com/LarryWinner/STA2170-Notes1/edit/main/02-literature.Rmd",
+    "text": "Edit"
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": null,
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "subsection"
+  }
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

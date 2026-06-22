@@ -1,0 +1,1139 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 6 Comparing Two Population Means | Statistics and the Physical World</title>
+  <meta name="description" content="This is an Introduction to Statistics with applications from the physical world. We will make use of the R programming language for computations." />
+  <meta name="generator" content="bookdown 0.43 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 6 Comparing Two Population Means | Statistics and the Physical World" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="This is an Introduction to Statistics with applications from the physical world. We will make use of the R programming language for computations." />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 6 Comparing Two Population Means | Statistics and the Physical World" />
+  
+  <meta name="twitter:description" content="This is an Introduction to Statistics with applications from the physical world. We will make use of the R programming language for computations." />
+  
+
+<meta name="author" content="Larry Winner" />
+
+
+<meta name="date" content="2026-06-22" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="introduction-to-experimentation.html"/>
+<link rel="next" href="experimental-design-and-the-analysis-of-variance.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">STA2170 Notes</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
+<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="intro.html"><a href="intro.html#basic-concepts-of-statistical-analysis"><i class="fa fa-check"></i><b>1.1</b> Basic Concepts of Statistical Analysis</a></li>
+<li class="chapter" data-level="1.2" data-path="intro.html"><a href="intro.html#data-collection"><i class="fa fa-check"></i><b>1.2</b> Data Collection</a></li>
+<li class="chapter" data-level="1.3" data-path="intro.html"><a href="intro.html#variable-types"><i class="fa fa-check"></i><b>1.3</b> Variable Types</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="describing-data.html"><a href="describing-data.html"><i class="fa fa-check"></i><b>2</b> Describing Data</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="describing-data.html"><a href="describing-data.html#graphical-description-of-a-single-variable"><i class="fa fa-check"></i><b>2.1</b> Graphical Description of a Single Variable</a></li>
+<li class="chapter" data-level="2.2" data-path="describing-data.html"><a href="describing-data.html#numerical-descriptive-measures-of-a-single-variable"><i class="fa fa-check"></i><b>2.2</b> Numerical Descriptive Measures of a Single Variable</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="describing-data.html"><a href="describing-data.html#measures-of-central-tendency"><i class="fa fa-check"></i><b>2.2.1</b> Measures of Central Tendency</a></li>
+<li class="chapter" data-level="2.2.2" data-path="describing-data.html"><a href="describing-data.html#measures-of-variability"><i class="fa fa-check"></i><b>2.2.2</b> Measures of Variability</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="describing-data.html"><a href="describing-data.html#describing-more-than-one-variable"><i class="fa fa-check"></i><b>2.3</b> Describing More than One Variable</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="probability.html"><a href="probability.html"><i class="fa fa-check"></i><b>3</b> Probability</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="probability.html"><a href="probability.html#terminology-and-probability-rules"><i class="fa fa-check"></i><b>3.1</b> Terminology and Probability Rules</a></li>
+<li class="chapter" data-level="3.2" data-path="probability.html"><a href="probability.html#basic-probability"><i class="fa fa-check"></i><b>3.2</b> Basic Probability</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="probability.html"><a href="probability.html#bayes-rule"><i class="fa fa-check"></i><b>3.2.1</b> Bayes’ Rule</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="probability.html"><a href="probability.html#random-variables-and-probability-distributions"><i class="fa fa-check"></i><b>3.3</b> Random Variables and Probability Distributions</a></li>
+<li class="chapter" data-level="3.4" data-path="probability.html"><a href="probability.html#discrete-random-variables"><i class="fa fa-check"></i><b>3.4</b> Discrete Random Variables</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="probability.html"><a href="probability.html#population-numerical-descriptive-measures"><i class="fa fa-check"></i><b>3.4.1</b> Population Numerical Descriptive Measures</a></li>
+<li class="chapter" data-level="3.4.2" data-path="probability.html"><a href="probability.html#common-families-of-discrete-probability-distributions"><i class="fa fa-check"></i><b>3.4.2</b> Common Families of Discrete Probability Distributions</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="probability.html"><a href="probability.html#continuous-random-variables"><i class="fa fa-check"></i><b>3.5</b> Continuous Random Variables</a>
+<ul>
+<li class="chapter" data-level="3.5.1" data-path="probability.html"><a href="probability.html#common-families-of-continuous-probability-distributions"><i class="fa fa-check"></i><b>3.5.1</b> Common Families of Continuous Probability Distributions</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="probability.html"><a href="probability.html#sampling-distributions-and-the-central-limit-theorem"><i class="fa fa-check"></i><b>3.6</b> Sampling Distributions and the Central Limit Theorem</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="inferences-for-population-means.html"><a href="inferences-for-population-means.html"><i class="fa fa-check"></i><b>4</b> Inferences for Population Means</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="inferences-for-population-means.html"><a href="inferences-for-population-means.html#estimation"><i class="fa fa-check"></i><b>4.1</b> Estimation</a></li>
+<li class="chapter" data-level="4.2" data-path="inferences-for-population-means.html"><a href="inferences-for-population-means.html#hypothesis-testing"><i class="fa fa-check"></i><b>4.2</b> Hypothesis Testing</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="introduction-to-experimentation.html"><a href="introduction-to-experimentation.html"><i class="fa fa-check"></i><b>5</b> Introduction to Experimentation</a></li>
+<li class="chapter" data-level="6" data-path="comparing-two-population-means.html"><a href="comparing-two-population-means.html"><i class="fa fa-check"></i><b>6</b> Comparing Two Population Means</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="comparing-two-population-means.html"><a href="comparing-two-population-means.html#independent-samples"><i class="fa fa-check"></i><b>6.1</b> Independent Samples</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="comparing-two-population-means.html"><a href="comparing-two-population-means.html#large-sample-tests"><i class="fa fa-check"></i><b>6.1.1</b> Large-Sample tests</a></li>
+<li class="chapter" data-level="6.1.2" data-path="comparing-two-population-means.html"><a href="comparing-two-population-means.html#small-sample-tests-with-normal-data"><i class="fa fa-check"></i><b>6.1.2</b> Small Sample Tests with Normal Data</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="comparing-two-population-means.html"><a href="comparing-two-population-means.html#paired-sample-designs"><i class="fa fa-check"></i><b>6.2</b> Paired Sample Designs</a></li>
+<li class="chapter" data-level="6.3" data-path="comparing-two-population-means.html"><a href="comparing-two-population-means.html#nonparametric-tests"><i class="fa fa-check"></i><b>6.3</b> Nonparametric Tests</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="comparing-two-population-means.html"><a href="comparing-two-population-means.html#independent-samples---wilcoxon-rank-sum-test"><i class="fa fa-check"></i><b>6.3.1</b> Independent Samples - Wilcoxon Rank-Sum Test</a></li>
+<li class="chapter" data-level="6.3.2" data-path="comparing-two-population-means.html"><a href="comparing-two-population-means.html#paired-samples---wilcoxon-signed-rank-test"><i class="fa fa-check"></i><b>6.3.2</b> Paired Samples - Wilcoxon Signed Rank Test</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="experimental-design-and-the-analysis-of-variance.html"><a href="experimental-design-and-the-analysis-of-variance.html"><i class="fa fa-check"></i><b>7</b> Experimental Design and the Analysis of Variance</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="experimental-design-and-the-analysis-of-variance.html"><a href="experimental-design-and-the-analysis-of-variance.html#completely-randomized-design-crd-for-independent-samples"><i class="fa fa-check"></i><b>7.1</b> Completely Randomized Design (CRD) For Independent Samples</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="experimental-design-and-the-analysis-of-variance.html"><a href="experimental-design-and-the-analysis-of-variance.html#analysis-of-variance-and-f-test-for-normal-data"><i class="fa fa-check"></i><b>7.1.1</b> Analysis of Variance and <span class="math inline">\(F\)</span>-Test for Normal Data</a></li>
+<li class="chapter" data-level="7.1.2" data-path="experimental-design-and-the-analysis-of-variance.html"><a href="experimental-design-and-the-analysis-of-variance.html#comparisons-among-treatment-means"><i class="fa fa-check"></i><b>7.1.2</b> Comparisons among Treatment Means</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="experimental-design-and-the-analysis-of-variance.html"><a href="experimental-design-and-the-analysis-of-variance.html#randomized-block-design-rbd-for-studies-based-on-matched-units"><i class="fa fa-check"></i><b>7.2</b> Randomized Block Design (RBD) For Studies Based on Matched Units</a></li>
+<li class="chapter" data-level="7.3" data-path="experimental-design-and-the-analysis-of-variance.html"><a href="experimental-design-and-the-analysis-of-variance.html#factorial-designs"><i class="fa fa-check"></i><b>7.3</b> Factorial Designs</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="categorical-data-analysis.html"><a href="categorical-data-analysis.html"><i class="fa fa-check"></i><b>8</b> Categorical Data Analysis</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="categorical-data-analysis.html"><a href="categorical-data-analysis.html#inference-concerning-a-single-variable"><i class="fa fa-check"></i><b>8.1</b> Inference Concerning a Single Variable</a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="categorical-data-analysis.html"><a href="categorical-data-analysis.html#variables-with-two-possible-outcomes"><i class="fa fa-check"></i><b>8.1.1</b> Variables with Two Possible Outcomes</a></li>
+<li class="chapter" data-level="8.1.2" data-path="categorical-data-analysis.html"><a href="categorical-data-analysis.html#variables-with-more-than-two-possible-outcomes"><i class="fa fa-check"></i><b>8.1.2</b> Variables with More than Two Possible Outcomes</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="categorical-data-analysis.html"><a href="categorical-data-analysis.html#introduction-to-tests-for-association-for-two-categorical-variables"><i class="fa fa-check"></i><b>8.2</b> Introduction to Tests for Association for Two Categorical Variables</a>
+<ul>
+<li class="chapter" data-level="8.2.1" data-path="categorical-data-analysis.html"><a href="categorical-data-analysis.html#x-2-tables"><i class="fa fa-check"></i><b>8.2.1</b> 2 x 2 Tables</a></li>
+<li class="chapter" data-level="8.2.2" data-path="categorical-data-analysis.html"><a href="categorical-data-analysis.html#nominal-explanatory-and-response-variables"><i class="fa fa-check"></i><b>8.2.2</b> Nominal Explanatory and Response Variables</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="regression-models.html"><a href="regression-models.html"><i class="fa fa-check"></i><b>9</b> Regression Models</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="regression-models.html"><a href="regression-models.html#simple-linear-regression"><i class="fa fa-check"></i><b>9.1</b> Simple Linear Regression</a>
+<ul>
+<li class="chapter" data-level="9.1.1" data-path="regression-models.html"><a href="regression-models.html#estimation-of-model-parameters"><i class="fa fa-check"></i><b>9.1.1</b> Estimation of Model Parameters</a></li>
+<li class="chapter" data-level="9.1.2" data-path="regression-models.html"><a href="regression-models.html#inference-regarding-beta_1-and-beta_0"><i class="fa fa-check"></i><b>9.1.2</b> Inference Regarding <span class="math inline">\(\beta_1\)</span> and <span class="math inline">\(\beta_0\)</span></a></li>
+<li class="chapter" data-level="9.1.3" data-path="regression-models.html"><a href="regression-models.html#estimating-a-mean-and-predicting-a-new-observation-xx"><i class="fa fa-check"></i><b>9.1.3</b> Estimating a Mean and Predicting a New Observation @ <span class="math inline">\(X=X^*\)</span></a></li>
+<li class="chapter" data-level="9.1.4" data-path="regression-models.html"><a href="regression-models.html#analysis-of-variance"><i class="fa fa-check"></i><b>9.1.4</b> Analysis of Variance</a></li>
+<li class="chapter" data-level="9.1.5" data-path="regression-models.html"><a href="regression-models.html#correlation"><i class="fa fa-check"></i><b>9.1.5</b> Correlation</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="regression-models.html"><a href="regression-models.html#multiple-linear-regression"><i class="fa fa-check"></i><b>9.2</b> Multiple Linear Regression</a>
+<ul>
+<li class="chapter" data-level="9.2.1" data-path="regression-models.html"><a href="regression-models.html#testing-and-estimation-for-partial-regression-coefficients"><i class="fa fa-check"></i><b>9.2.1</b> Testing and Estimation for Partial Regression Coefficients</a></li>
+<li class="chapter" data-level="9.2.2" data-path="regression-models.html"><a href="regression-models.html#analysis-of-variance-1"><i class="fa fa-check"></i><b>9.2.2</b> Analysis of Variance</a></li>
+<li class="chapter" data-level="9.2.3" data-path="regression-models.html"><a href="regression-models.html#testing-a-subset-of-betas-0"><i class="fa fa-check"></i><b>9.2.3</b> Testing a Subset of <span class="math inline">\(\beta^s = 0\)</span></a></li>
+<li class="chapter" data-level="9.2.4" data-path="regression-models.html"><a href="regression-models.html#models-with-categorical-qualitative-predictors"><i class="fa fa-check"></i><b>9.2.4</b> Models With Categorical (Qualitative) Predictors</a></li>
+<li class="chapter" data-level="9.2.5" data-path="regression-models.html"><a href="regression-models.html#models-with-interaction-terms"><i class="fa fa-check"></i><b>9.2.5</b> Models With Interaction Terms</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="regression-models.html"><a href="regression-models.html#logistic-regression"><i class="fa fa-check"></i><b>9.3</b> Logistic Regression</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Statistics and the Physical World</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="comparing-two-population-means" class="section level1 hasAnchor" number="6">
+<h1><span class="header-section-number">Chapter 6</span> Comparing Two Population Means<a href="comparing-two-population-means.html#comparing-two-population-means" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>While estimating the mean or median of a population is important, many more applications involve comparing two or more treatments or populations.
+There are two commonly used designs: <strong>independent samples</strong> and <strong>paired samples</strong>. Independent samples are used in controlled experiments
+when a sample of experimental units is obtained, and randomly assigned to one of two treatments or conditions. That is, each unit receives only
+one of the two treatments. These are often referred to as <strong>Completely Randomized</strong> or <strong>Parallel Groups</strong> or <strong>Between Subjects</strong>
+designs in various fields of study. Paired samples can involve the same experimental unit receiving each treatment, or units being matched based
+on external criteria, then being randomly assigned to the two treatments within pairs. These are often referred to as <strong>Randomized Block</strong> or
+<strong>Crossover</strong> or <strong>Within Subjects</strong> designs.</p>
+<p>In observational studies, independent samples can be taken from two existing populations, or elements within two populations can be matched
+based on external criteria and observed.
+In each case, the goal is to make inferences concerning the difference between the two means or medians based on sample data.</p>
+<p>There are two considerations when choosing the appropriate
+test: (1) Are the population distributions of measurements approximately normal?
+and (2) Was the study conducted as an independent samples (parallel groups) or paired samples (crossover) design?
+The appropriate test for each situation is given in Table <a href="comparing-two-population-means.html#tab:tests2">6.1</a>.
+We will describe each test with the general procedure and an example.</p>
+<p>The two tests based on non–normal data are called <strong>nonparametric tests</strong>
+and are based on ranks, as opposed to the actual measurements. When
+distributions are skewed, samples can contain measurements that are
+extreme (usually large). These extreme measurements can cause problems for
+methods based on means and standard deviations, but will have less effect
+on procedures based on ranks.</p>
+<table>
+<caption><span id="tab:tests2">Table 6.1: </span>Small-sample tests for 2 groups.</caption>
+<colgroup>
+<col width="22%" />
+<col width="40%" />
+<col width="37%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="left">Completely Randomized Design</th>
+<th align="left">Randomized Block Design</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Normal Data</td>
+<td align="left">2–Sample <span class="math inline">\(t\)</span>–test</td>
+<td align="left">Paired <span class="math inline">\(t\)</span>–test</td>
+</tr>
+<tr class="even">
+<td align="left">Non-Normal Data</td>
+<td align="left">Wilcoxon Rank Sum test</td>
+<td align="left">Wilcoxon Signed–Rank Test</td>
+</tr>
+</tbody>
+</table>
+<div id="independent-samples" class="section level2 hasAnchor" number="6.1">
+<h2><span class="header-section-number">6.1</span> Independent Samples<a href="comparing-two-population-means.html#independent-samples" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>In the case of independent samples, assume we sample <span class="math inline">\(n_1\)</span> units or subjects in treatment 1 which has a population mean response <span class="math inline">\(\mu_1\)</span> and
+population standard deviation <span class="math inline">\(\sigma_1\)</span>. Further, a sample of <span class="math inline">\(n_2\)</span> elements from treatment 2 is obtained where the population mean is <span class="math inline">\(\mu_2\)</span>
+and standard deviation is <span class="math inline">\(\sigma_2\)</span>. Measurements within and between samples are independent. Regardless of the distributions of the individual
+measurements, we have the following results based on linear functions of random variables, in terms of the means of the two random samples.
+The notation used is <span class="math inline">\(Y_{1j}\)</span> is the <span class="math inline">\(j^{th}\)</span> unit (replicate) from sample 1, and <span class="math inline">\(Y_{2j}\)</span> is the <span class="math inline">\(j^{th}\)</span> unit (replicate) from sample 2.
+In the case of independent samples, these two random variables are independent.</p>
+<p><span class="math display">\[ \overline{Y}_1 = \frac{\sum_{j=1}^{n_1}Y_{1j}}{n_1} = \sum_{j=1}^{n_1}\left(\frac{1}{n_1}\right)Y_{1j} \quad \Rightarrow \quad
+E\{\overline{Y}_1\} =\mu_1  \quad V\{\overline{Y}_1\} = \frac{\sigma^2_1}{n_1} \quad
+E\{\overline{Y}_2\} =\mu_2  \quad V\{\overline{Y}_2\} = \frac{\sigma^2_2}{n_2} \]</span></p>
+<p><span class="math display">\[ E\{\overline{Y}_1 - \overline{Y}_2\} = E\{\overline{Y}_1\} - E\{\overline{Y}_2\} = \mu_1 - \mu_2 \]</span>
+<span class="math display">\[ V\{\overline{Y}_1 - \overline{Y}_2\} = \sigma^2_{\overline{Y}_1 - \overline{Y}_2}
+=V\{\overline{Y}_1\} + V\{\overline{Y}_2\} -2 \mbox{COV}\{\overline{Y}_1,\overline{Y}_2\}=\frac{\sigma^2_1}{n_1}+\frac{\sigma^2_2}{n_2} + 0=
+\frac{\sigma^2_1}{n_1}+\frac{\sigma^2_2}{n_2} \]</span>
+<span class="math display">\[ SE\{\overline{Y}_1 - \overline{Y}_2\} = \sigma_{\overline{Y}_1 - \overline{Y}_2} = \sqrt{\frac{\sigma^2_1}{n_1}+\frac{\sigma^2_2}{n_2}} \]</span></p>
+<p>If the data are normally distributed, <span class="math inline">\(\overline{Y}_1 - \overline{Y}_2\)</span> is also normally distributed. If the data are not normally distributed,
+<span class="math inline">\(\overline{Y}_1 - \overline{Y}_2\)</span> will be approximately normally distributed in large samples. As in the case of a single mean, how large of samples are needed depends on
+the shape of the underlying distributions.</p>
+<div id="large-sample-tests" class="section level3 hasAnchor" number="6.1.1">
+<h3><span class="header-section-number">6.1.1</span> Large-Sample tests<a href="comparing-two-population-means.html#large-sample-tests" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The problem arises again that the variances will be unknown and must be estimated. For large sample sizes <span class="math inline">\(n_1\)</span> and <span class="math inline">\(n_2\)</span>, we have the following approximation
+for the sampling distribution of the following quantity, where the sample variances replace the true population variances.</p>
+<p><span class="math display">\[ \frac{\left(\overline{Y}_1-\overline{Y}_2\right) - \left(\mu_1 - \mu_2\right)}{\sqrt{\frac{S_1^2}{n_1} + \frac{S_2^2}{n_2}}} \stackrel{\cdot}{\sim} N(0,1) \]</span></p>
+<p><span class="math display">\[ \Rightarrow \quad P\left(\left(\overline{Y}_1-\overline{Y}_2\right)-z_{\alpha/2}\sqrt{\frac{S_1^2}{n_1} + \frac{S_2^2}{n_2}} \leq \mu_1 - \mu_2 \leq
+\left(\overline{Y}_1-\overline{Y}_2\right)+z_{\alpha/2}\sqrt{\frac{S_1^2}{n_1}+\frac{S_2^2}{n_2}}\right) \approx 1-\alpha \]</span></p>
+<p><strong>Example 6.1: NHL and EPL Players’ BMI</strong></p>
+<p>Body Mass Indices for all National Hockey League (NHL) and English Premier League (EPL) football players for the 2014/5 seasons were obtained.
+Identifying the NHL as league 1 and EPL as league 2 we have the following population parameters
+given in Table <a href="comparing-two-population-means.html#tab:chapter6a">6.2</a>.</p>
+<p>A plot of the two population histograms, along with normal densities is given in Figure <a href="comparing-two-population-means.html#fig:chapter6b">6.1</a>.
+Both distributions are well approximated by the normal distribution, with the NHL having a substantially higher mean and EPL having a slightly
+higher standard deviation.</p>
+<table>
+<caption><span id="tab:chapter6a">Table 6.2: </span>Population Sizes and Parameters for NHL and EPL Body Mass Index</caption>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="right"><span class="math inline">\(N\)</span></th>
+<th align="right"><span class="math inline">\(\mu\)</span></th>
+<th align="right"><span class="math inline">\(\sigma\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">NHL BMI (i=1)</td>
+<td align="right">748</td>
+<td align="right">26.514</td>
+<td align="right">1.449</td>
+</tr>
+<tr class="even">
+<td align="left">EPL BMI (i=2)</td>
+<td align="right">526</td>
+<td align="right">23.019</td>
+<td align="right">1.711</td>
+</tr>
+</tbody>
+</table>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:chapter6b"></span>
+<img src="STA2170bookdownproj_files/figure-html/chapter6b-1.png" alt="Distributions of Body Mass Index for NHL and EPL players" width="80%" />
+<p class="caption">
+Figure 6.1: Distributions of Body Mass Index for NHL and EPL players
+</p>
+</div>
+<p>We take 100000 independent random samples of sizes <span class="math inline">\(n_1=n_2=20\)</span> from the two populations,
+each time computing and saving <span class="math inline">\(\overline{y}_1, s_1, \overline{y}_2, s_2\)</span>.
+Note that these are not particularly large samples and this a precursor to adjustments
+made for small samples.</p>
+<table>
+<caption><span id="tab:chapter6c">Table 6.3: </span>NHL, EPL, and NHL-EPL mean BMI results</caption>
+<colgroup>
+<col width="11%" />
+<col width="10%" />
+<col width="12%" />
+<col width="22%" />
+<col width="22%" />
+<col width="20%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="right"><span class="math inline">\(\mu\)</span></th>
+<th align="right"><span class="math inline">\(\sigma\)</span></th>
+<th align="right"><span class="math inline">\(SE\{\bar{y}\}\)</span></th>
+<th align="right"><span class="math inline">\(\bar{\bar{y}}\)</span></th>
+<th align="right"><span class="math inline">\(s_{\bar{y}}\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">NHL</td>
+<td align="right">26.514</td>
+<td align="right">1.449</td>
+<td align="right">0.324</td>
+<td align="right">26.515</td>
+<td align="right">0.320</td>
+</tr>
+<tr class="even">
+<td align="left">EPL</td>
+<td align="right">23.019</td>
+<td align="right">1.711</td>
+<td align="right">0.383</td>
+<td align="right">23.019</td>
+<td align="right">0.375</td>
+</tr>
+<tr class="odd">
+<td align="left">NHL-EPL</td>
+<td align="right">3.495</td>
+<td align="right">2.242</td>
+<td align="right">0.501</td>
+<td align="right">3.495</td>
+<td align="right">0.493</td>
+</tr>
+</tbody>
+</table>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:chapter6c"></span>
+<img src="STA2170bookdownproj_files/figure-html/chapter6c-1.png" alt="Distribution of sample mean difference of Body Mass Index for NHL and EPL players, with n1=n2=20" width="80%" />
+<p class="caption">
+Figure 6.2: Distribution of sample mean difference of Body Mass Index for NHL and EPL players, with n1=n2=20
+</p>
+</div>
+<table>
+<caption><span id="tab:chapter6d">Table 6.4: </span>Coverage rates using z and t in Confidence Intervals for mean difference
+and theoretical and empirical variances of mean differences</caption>
+<colgroup>
+<col width="3%" />
+<col width="17%" />
+<col width="17%" />
+<col width="30%" />
+<col width="31%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="right">P(Cover|z)</th>
+<th align="right">P(Cover|t)</th>
+<th align="right"><span class="math inline">\(V\{\bar{Y}_1-\bar{Y}_2\}\)</span></th>
+<th align="right"><span class="math inline">\(s^2_{\bar{y}_1-\bar{y}_2}\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"></td>
+<td align="right">0.94682</td>
+<td align="right">0.95382</td>
+<td align="right">0.251411</td>
+<td align="right">0.2518422</td>
+</tr>
+</tbody>
+</table>
+<p>A histogram of the 100000 sample mean differences and the superimposed Normal density with mean <span class="math inline">\(\mu_1-\mu_2=3.495\)</span> and standard error
+<span class="math inline">\(SE\left\{\overline{Y}_1-\overline{Y}_2\right\}=0.501\)</span>
+(calculation given below) is shown in Figure <a href="comparing-two-population-means.html#fig:chapter6c">6.2</a>.</p>
+<p>Table <a href="comparing-two-population-means.html#tab:chapter6c">6.3</a> gives the theoretical and empirical results for the NHL and EPL means
+and their differences.</p>
+<p>The mean of the 100000 mean differences <span class="math inline">\(\overline{y}_1-\overline{y}_2\)</span> is
+3.495 with standard deviation (standard error) 0.493. Both are very close to their theoretical values (as they should be).</p>
+<p>Next we compute the following quantities (and intervals), counting the proportions of samples for which each contains <span class="math inline">\(\mu_1-\mu_2\)</span>, and its average estimated
+variance (squared standard error). These are given in Table <a href="comparing-two-population-means.html#tab:chapter6d">6.4</a>.</p>
+<p><span class="math display">\[ z: \left(\overline{y}_1-\overline{y}_2\right) \pm 1.96 \sqrt{\frac{s_1^2}{20}+\frac{s_2^2}{20}}  
+\qquad \qquad
+t: \left(\overline{y}_1-\overline{y}_2\right) \pm 2.024 \sqrt{\frac{s_1^2}{20}+\frac{s_2^2}{20}}
+\]</span>
+<span class="math display">\[\mu_1-\mu_2=26.514 - 23.019 = 3.495 \]</span>
+<span class="math display">\[ SE\left\{\overline{Y}_1-\overline{Y}_2\right\}=\sqrt{\frac{\sigma_1^2}{n_1}+\frac{\sigma_2^2}{n_2}}   = \sqrt{\frac{1.449^2}{20}+\frac{1.711^2}{20}} = 0.501 \]</span></p>
+<p>The mean of the 100000 sample mean differences is 3.495 compared to the theoretical mean difference of 3.495. The standard deviation
+of the sample mean differences is 0.493, compared to the theoretical standard error of 0.501.</p>
+<p>Of the intervals constructed from each sample mean difference and its estimated standard error (using <span class="math inline">\(s_1,s_2\)</span> in place of <span class="math inline">\(\sigma_1,\sigma_2\)</span>),
+the interval contains the true mean difference (3.495) for 94.682% of the samples, very close to the nominal 95% coverage rate. If we replace
+<span class="math inline">\(z_{.025}=1.96\)</span> with the more appropriate <span class="math inline">\(t_{.025,n_1+n_2-2}=t_{.025,38}=2.0244\)</span>, the coverage rate increases to 95.382%.
+Note that virtually all software packages will automatically use <span class="math inline">\(t\)</span> in place of <span class="math inline">\(z\)</span>, however, there are various statistical methods
+that always use the <span class="math inline">\(z\)</span> case.</p>
+<p>The average of the estimated variance of <span class="math inline">\(\overline{y}_1-\overline{y}_2\)</span>: <span class="math inline">\(s_1^2/n_1 + s_2^2/n_2\)</span> is 0.2518, while its theoretical value is
+<span class="math inline">\(\sigma_1^2/n_1 + \sigma_2^2/n_2=0.2514\)</span>. Note that the variance of the estimated difference is unbiased, not so for the standard error.</p>
+<p><span class="math display">\[ \nabla \]</span></p>
+<p>This logic leads to a large-sample test and Confidence Interval regarding <span class="math inline">\(\mu_1-\mu_2\)</span> once estimates <span class="math inline">\(\overline{y}_1, s_1, \overline{y}_2, s_2\)</span> have been observed in
+an experiment or observational study. The Confidence Interval and test are given below. Typically, <span class="math inline">\(z_{\alpha/2}\)</span> is replaced with <span class="math inline">\(t_{\alpha/2,\nu}\)</span>,
+where <span class="math inline">\(\nu\)</span> is the degrees of freedom, which depends on assumptions involving the variances (see below).</p>
+<p><span class="math display">\[\mbox{Large Sample } (1-\alpha)100\% \mbox{ CI for } \mu_1-\mu_2:   \left(\overline{y}_1-\overline{y}_2\right) \pm z_{\alpha/2} \sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}} \]</span></p>
+<p><span class="math display">\[ \mbox{2-tail: } H_0: \mu_1 - \mu_2 = \Delta_0 \quad H_A:\mu_1 - \mu_2 \neq \Delta_0 \quad TS:
+z_{obs}=\frac{\left(\overline{y}_1-\overline{y}_2\right) - \Delta_0}{\sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}}} \]</span>
+<span class="math display">\[RR: |z_{obs}|\geq z_{\alpha/2} \quad
+P=2P(Z\geq|z_{obs}|) \]</span></p>
+<p><span class="math display">\[ \mbox{Upper tail: } H_0: \mu_1 - \mu_2 \leq \Delta_0 \quad H_A:\mu_1 - \mu_2 &gt; \Delta_0 \quad TS:
+z_{obs}=\frac{\left(\overline{y}_1-\overline{y}_2\right) - \Delta_0}{\sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}}} \]</span>
+<span class="math display">\[RR: z_{obs}\geq z_{\alpha} \quad
+P=P(Z\geq z_{obs}) \]</span></p>
+<p><span class="math display">\[ \mbox{Lower tail: } H_0: \mu_1 - \mu_2 \geq \Delta_0 \quad H_A:\mu_1 - \mu_2 &lt; \Delta_0 \quad TS:
+z_{obs}=\frac{\left(\overline{y}_1-\overline{y}_2\right) - \Delta_0}{\sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}}} \]</span>
+<span class="math display">\[RR: z_{obs}\leq -z_{\alpha} \quad
+P=P(Z\leq z_{obs}) \]</span></p>
+<p><strong>Example 6.2: Gender Classification from Physical Measurements</strong></p>
+<p>A study in forensics used measurements of the length and breadth of the scapula from samples of 95 male and 96 female Thai adults to classify them by gender <span class="citation">(<a href="#ref-peckmann_2017">Peckmann et al. 2017</a>)</span>.
+The measurements were length and breadth of glenoid cavity (LGC and BGC, in mm), respectively. Summary data for the two samples for BGC are given below.</p>
+<p><span class="math display">\[  n_m=95 \quad \overline{y}_m=27.87 \quad s_m=2.04 \qquad \qquad n_f=96 \quad \overline{y}_f=23.77 \quad s_f=1.85 \]</span></p>
+<p><span class="math display">\[ \overline{y}_m-\overline{y}_f=27.87-23.77=4.10
+\qquad \qquad \widehat{SE}\left\{\overline{Y}_m-\overline{Y}_f\right\}=\sqrt{\frac{2.04^2}{95}+\frac{1.85^2}{96}}=0.282 \]</span></p>
+<p>A 95% Confidence Interval for the population mean difference, <span class="math inline">\(\mu_m-\mu_f\)</span> is given below.</p>
+<p><span class="math display">\[ \left(\overline{y}_m-\overline{y}_f\right) \pm z_{.025}\sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}}  \equiv
+4.10 \pm 1.960(0.282) \equiv 4.10 \pm 0.553  \equiv (3.55,4.65) \]</span></p>
+<p>The interval is very far away from 0, making us very confident that the population mean is higher for males than females.
+To test whether the population means differ (which they clearly do from the Confidence Interval), we conduct the following 2-tailed test with <span class="math inline">\(\alpha=0.05\)</span>.</p>
+<p><span class="math display">\[  H_0:\mu_m-\mu_f = 0 \quad H_A:\mu_m-\mu_f\neq 0 \quad T.S.: z_{obs}=\frac{4.10-0}{0.282} = 14.54 \]</span>
+<span class="math display">\[R.R.: |z_{obs}| \geq 1.960 \quad
+P=2P(Z\geq 14.54)\approx 0 \]</span></p>
+<p><span class="math display">\[ \nabla \]</span></p>
+</div>
+<div id="small-sample-tests-with-normal-data" class="section level3 hasAnchor" number="6.1.2">
+<h3><span class="header-section-number">6.1.2</span> Small Sample Tests with Normal Data<a href="comparing-two-population-means.html#small-sample-tests-with-normal-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>In the case where the two populations of measurements are normally
+distributed, the 2–sample <span class="math inline">\(t\)</span>–test is used. Note that it also works well for reasonably
+large sample sizes when the measurements are not normally distributed.
+This procedure is very
+similar to the large–sample test from the previous section, where
+only the critical values for the rejection region changes.</p>
+<p>In this section, we consider the two cases of equal variances
+<span class="math inline">\(\left(\sigma_1^2=\sigma_2^2\right)\)</span> and unequal variances
+<span class="math inline">\(\left(\sigma_1^2 \neq \sigma_2^2\right)\)</span>.</p>
+<div id="sample-students-ttest-for-normal-data-with-equal-variances" class="section level4 hasAnchor" number="6.1.2.1">
+<h4><span class="header-section-number">6.1.2.1</span> 2–Sample Student’s <span class="math inline">\(t\)</span>–test for Normal Data with Equal Variances<a href="comparing-two-population-means.html#sample-students-ttest-for-normal-data-with-equal-variances" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>This procedure is similar to the large–sample test, except the
+critical values for the rejection regions and Confidence Intervals are based on the <span class="math inline">\(t\)</span>-distribution
+with <span class="math inline">\(\nu=n_1+n_2-2\)</span> degrees of freedom and the variances are “pooled” (see below).
+We will assume the two population variances are equal in the 2-sample
+Student’s <span class="math inline">\(t\)</span>-test. If they are not, simple adjustments can be made to obtain an
+appropriate test, which will be given in the next subsection.
+We then “pool” the 2 sample variances to get an estimate of the
+common variance <span class="math inline">\(\sigma^2=\sigma^2_1=\sigma^2_2\)</span>. This estimate, which we
+will call <span class="math inline">\(s^2_p\)</span> is calculated as follows (it is a weighted average
+of the two variances).</p>
+<p><span class="math display">\[ s^2_p = \frac{(n_1-1)s^2_1 + (n_2-1)s^2_2}{n_1 +n_2 -2}. \]</span></p>
+<p>The tests of hypothesis concerning <span class="math inline">\(\mu_1 - \mu_2\)</span> are
+conducted as follow.</p>
+<p><strong>2-sided test</strong>
+<span class="math display">\[H_0:\mu_1-\mu_2=0 \quad H_A:\mu_1-\mu_2 \neq 0 \quad  \mbox{T.S.: } t_{obs} = \frac{\left(\overline{y}_1 -\overline{y}_2\right )}
+{\sqrt{s^2_p\left(\frac{1}{n_1} + \frac{1}{n_2}\right)}}\]</span>
+<span class="math display">\[\mbox{R.R.: } |t_{obs}|&gt;t_{\alpha/2,n_1+n_2-2} \qquad P=2P\left(t_{n_1+n_2-2}&gt;|t_{obs}|\right)\]</span>
+<strong>1-sided (upper-tail) test</strong>
+<span class="math display">\[H_0:\mu_1-\mu_2=0 \quad H_A:\mu_1-\mu_2 &gt; 0 \quad  \mbox{T.S.: } t_{obs} = \frac{\left(\overline{y}_1 -\overline{y}_2\right )}
+{\sqrt{s^2_p\left(\frac{1}{n_1} + \frac{1}{n_2}\right)}}\]</span>
+<span class="math display">\[\mbox{R.R.: } t_{obs}&gt;t_{\alpha,n_1+n_2-2} \qquad P=P\left(t_{n_1+n_2-2}&gt;t_{obs}\right)\]</span></p>
+<p><strong>Example 6.3: Comparison of Two Instructional Methods</strong></p>
+<p>A study was conducted <span class="citation">(<a href="#ref-rusanganwa_2013">Rusanganwa 2013</a>)</span>
+to compare two instructional methods: multimedia (treatment 1) and traditional (treatment 2) for teaching physics to undergraduate
+students in Rwanda.
+Subjects were assigned at random to the two treatments. Each subject received only one of the two methods.
+The numbers of subjects who completed the courses and took two exams were <span class="math inline">\(n_1=13\)</span> for the multimedia course and <span class="math inline">\(n_2=19\)</span> for the traditional course.
+The primary response was the post-course score on an examination.
+We will conduct the test <span class="math inline">\(H_0:\mu_1-\mu_2=0\)</span> vs <span class="math inline">\(H_A:\mu_1 - \mu_2 \neq 0\)</span>, where the null hypothesis is no difference in the effects of the two methods.
+The summary statistics are given below.</p>
+<p><span class="math display">\[ n_1=13 \quad \overline{y}_1=11.10 \quad s_1=3.47 \qquad \qquad n_2=19 \quad \overline{y}_2=8.35 \quad s_2=2.45 \]</span></p>
+<p>First, compute <span class="math inline">\(s_p^2\)</span>, the pooled variance:</p>
+<p><span class="math display">\[ s_p^2 =  \frac{(n_1 -1)s_1^2 +(n_2 -1)s_2^2}{n_1 + n_2 -2}
+=  \frac{(13-1)(3.47)^2 + (19-1)(2.45)^2}{13+19-2} =
+\frac{252.54}{30} =  8.42 \quad (s_p=2.90)\]</span></p>
+<p>Now conduct the (2-sided) test as described above with <span class="math inline">\(\alpha=0.05\)</span>
+significance level:</p>
+<p><span class="math display">\[ H_0:\mu_1-\mu_2=0 \qquad H_A:\mu_1-\mu_2 \neq 0 \]</span>
+<span class="math display">\[ \mbox{T.S.: }
+t_{obs} = \frac{(\overline{y}_1 -\overline{y}_2 )}
+{\sqrt{s^2_p\left(\frac{1}{n_1} + \frac{1}{n_2}\right)}} =
+\frac{(11.10-8.35)}
+{\sqrt{8.42\left(\frac{1}{13} + \frac{1}{19}\right)}} =\frac{2.75}{1.04} =2.633\]</span>
+<span class="math display">\[\mbox{R.R.: } |t_{obs}|\geq t_{\alpha/2,n_1+n_2-2}=t_{.05/2,13+19-2}=t_{.025,30}
+=2.042 \]</span>
+<span class="math display">\[ P=2P\left(t_{30}\geq |t_{obs}|\right)=2P\left(t_{30}\geq 2.633\right) = 0.0132 \]</span></p>
+<p>Based on this test, reject <span class="math inline">\(H_0\)</span> (for any <span class="math inline">\(\alpha \geq .0132\)</span>), and conclude that
+the population mean post course scores differ under these two conditions.
+The 95% Confidence Interval for <span class="math inline">\(\mu_1-\mu_2\)</span> is <span class="math inline">\(2.75 \pm 2.042(1.04) \equiv (0.62,4.88)\)</span>
+which does not contain 0.</p>
+<p>Below we use generated samples that have the same means and standard deviation and use the <strong>t.test</strong> function in R to
+conduct the 2-sample <span class="math inline">\(t\)</span>-test. The first output gives the 2-sided test, the second one gives the
+upper-tailed test.</p>
+<pre><code>##   score trt.y
+## 1  8.20     1
+## 2 14.03     1</code></pre>
+<pre><code>## 
+##  Two Sample t-test
+## 
+## data:  score by trt.y
+## t = 2.6323, df = 30, p-value = 0.01327
+## alternative hypothesis: true difference in means between group 1 and group 2 is not equal to 0
+## 95 percent confidence interval:
+##  0.6163295 4.8826179
+## sample estimates:
+## mean in group 1 mean in group 2 
+##       11.100000        8.350526</code></pre>
+<pre><code>## 
+##  Two Sample t-test
+## 
+## data:  score by trt.y
+## t = 2.6323, df = 30, p-value = 0.006634
+## alternative hypothesis: true difference in means between group 1 and group 2 is greater than 0
+## 95 percent confidence interval:
+##  0.9766925       Inf
+## sample estimates:
+## mean in group 1 mean in group 2 
+##       11.100000        8.350526</code></pre>
+<p>Note that when we conducted the upper-tail test, R computes an 1-sided Confidence Interval of the following form (note the difference in the lower bounds is due to rounding in calculations).</p>
+<p><span class="math display">\[ \left[(\overline{y}_1 -\overline{y}_2 )-t_{.05,n_1+n_2-2}\widehat{SE}\left\{\overline{y}_1 -\overline{y}_2 \right\},\infty\right] \equiv \left[2.75-1.697(1.04),\infty\right]
+  \equiv  \left[0.985,\infty\right] \]</span></p>
+<p><span class="math display">\[ \nabla \]</span></p>
+</div>
+<div id="welchs-test-for-normal-data-with-unequal-variances" class="section level4 hasAnchor" number="6.1.2.2">
+<h4><span class="header-section-number">6.1.2.2</span> Welch’s Test for Normal Data with Unequal Variances<a href="comparing-two-population-means.html#welchs-test-for-normal-data-with-unequal-variances" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>When the population variances are not equal, there is no justification for pooling the sample
+variances to better estimate the common variance <span class="math inline">\(\sigma^2\)</span>. In this case the estimated standard error of <span class="math inline">\(\overline{Y}_1-\overline{Y}_2\)</span>
+is <span class="math inline">\(\sqrt{s_1^2/n_1 + s_2^2/n_2}\)</span>. An adjustment is made to the degrees of freedom for an approximation to a <span class="math inline">\(t\)</span>-distribution of the <span class="math inline">\(t\)</span>-statistic.</p>
+<p><span class="math display">\[ \frac{\left(\overline{Y}_1-\overline{Y}_2\right) - \left(\mu_1-\mu_2\right)}{\sqrt{\frac{S_1^2}{n_1} + \frac{S_2^2}{n_2}}}  \stackrel{\cdot}{\sim} t_{\nu}
+\qquad \qquad \nu= \frac{\left[\frac{S_1^2}{n_1} + \frac{S_2^2}{n_2}\right]^2}{\left[\frac{(S_1^2/n_1)^2}{n_1-1} + \frac{(S_2^2/n_2)^2}{n_2-1}\right]} \]</span></p>
+<p>The test is referred to as <strong>Welch’s Test</strong>, and the degrees of freedom <strong>Satterthwaite’s Approximation</strong>.
+Statistical software packages automatically compute the approximate degrees of freedom.
+The approximation extends to
+more complex models as well. Once the samples are obtained, and the sample means and standard deviations are computed, the <span class="math inline">\((1-\alpha)100\%\)</span> Confidence
+Interval for <span class="math inline">\(\mu_1-\mu_2\)</span> is computed as follows.</p>
+<p><span class="math display">\[ \left(\overline{y}_1 - \overline{y}_2\right) \pm t_{\alpha/2,\nu} \sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}}
+\qquad \qquad
+\nu= \frac{\left[\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}\right]^2}{\left[\frac{(s_1^2/n_1)^2}{n_1-1} + \frac{(s_2^2/n_2)^2}{n_2-1}\right]} \]</span></p>
+<p>The test of hypothesis concerning <span class="math inline">\(\mu_1 - \mu_2\)</span> is
+conducted as follows.</p>
+<p><strong>2-sided Test</strong>
+<span class="math display">\[ H_0:\mu_1-\mu_2=0 \qquad H_A:\mu_1-\mu_2 \neq 0 \qquad
+\mbox{T.S.: } t_{obs} = \frac{\left(\overline{y}_1 -\overline{y}_2\right)}
+{\sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}}}\]</span>
+<span class="math display">\[ \mbox{RR: } |t_{obs}| \geq t_{\alpha/2,\nu} \qquad P=2P\left(t_{\nu}\geq |t_{obs}|\right)\]</span></p>
+<p><strong>Upper-Tail Test</strong>
+<span class="math display">\[ H_0:\mu_1-\mu_2=0 \qquad H_A:\mu_1-\mu_2 &gt; 0 \qquad
+\mbox{T.S.: } t_{obs} = \frac{\left(\overline{y}_1 -\overline{y}_2\right)}
+{\sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}}}\]</span>
+<span class="math display">\[ \mbox{RR: } t_{obs} \geq t_{\alpha,\nu} \qquad P=P\left(t_{\nu}\geq t_{obs}\right)\]</span></p>
+<p><strong>Example 6.4: Abdominal Quilting to Reduce Drainage in Breast Reconstruction Surgery</strong></p>
+<p>A study considered the effect of abdominal suture quilting on abdominal drainage during breast reconstruction surgery <span class="citation">(<a href="#ref-liang_2016">Liang et al. 2016</a>)</span>. A group of <span class="math inline">\(n_1=27\)</span>
+subjects (controls) received the standard DIEP procedure, while a group of <span class="math inline">\(n_2=26\)</span> subjects (treatment) received
+the DIEP procedure along with the suture quilting. The response measured was the amount of abdominal drainage during the surgery (in ml).
+The summary data are given below, note that the sample standard deviations are substantially different, and these are relatively large sample sizes.
+Side-by-side box plots are given in Figure <a href="comparing-two-population-means.html#fig:breastdiep">6.3</a>. The results of direct computations
+for Student’s and Welch’s tests are given in Table <a href="comparing-two-population-means.html#tab:breastdiep">6.5</a> and from use of the <strong>t.test</strong>
+in the R output below.</p>
+<p><span class="math display">\[ \mbox{Control Group: } n_1=27\quad \overline{y}_1=527.78 \quad s_1=322.07 \]</span>
+<span class="math display">\[ \mbox{DIEP Group: } n_2=26\quad \overline{y}_2=238.31 \quad s_2=242.66\]</span></p>
+<pre><code>##   trt age totvol
+## 1   1  26    550
+## 2   1  29    160</code></pre>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:breastdiep"></span>
+<img src="STA2170bookdownproj_files/figure-html/breastdiep-1.png" alt="Side-by-Side Boxplots of total volume of leakage during breast reconstruction surgery for Control and DIEP groups" width="80%" />
+<p class="caption">
+Figure 6.3: Side-by-Side Boxplots of total volume of leakage during breast reconstruction surgery for Control and DIEP groups
+</p>
+</div>
+<table style="width:100%;">
+<caption><span id="tab:breastdiep">Table 6.5: </span>Direct Computations for 2-sample t-tests (Student’s and Welch’s)</caption>
+<colgroup>
+<col width="12%" />
+<col width="12%" />
+<col width="12%" />
+<col width="7%" />
+<col width="6%" />
+<col width="9%" />
+<col width="6%" />
+<col width="18%" />
+<col width="8%" />
+<col width="8%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="right"><span class="math inline">\(\bar{y}_1\)</span></th>
+<th align="right"><span class="math inline">\(\bar{y}_2\)</span></th>
+<th align="right">diff</th>
+<th align="right">df</th>
+<th align="right">SE{diff}</th>
+<th align="right">t</th>
+<th align="right">P(&gt;|t|)</th>
+<th align="right">LB</th>
+<th align="right">UB</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Equal Var</td>
+<td align="right">527.778</td>
+<td align="right">238.308</td>
+<td align="right">289.47</td>
+<td align="right">51.00</td>
+<td align="right">78.560</td>
+<td align="right">3.685</td>
+<td align="right">0.001</td>
+<td align="right">131.754</td>
+<td align="right">447.187</td>
+</tr>
+<tr class="even">
+<td align="left">Unequal Var</td>
+<td align="right">527.778</td>
+<td align="right">238.308</td>
+<td align="right">289.47</td>
+<td align="right">48.25</td>
+<td align="right">78.145</td>
+<td align="right">3.704</td>
+<td align="right">0.001</td>
+<td align="right">132.371</td>
+<td align="right">446.569</td>
+</tr>
+</tbody>
+</table>
+<pre><code>## 
+##  Two Sample t-test
+## 
+## data:  totvol by trt.f
+## t = 3.6847, df = 51, p-value = 0.0005546
+## alternative hypothesis: true difference in means between group Control and group DIEP is not equal to 0
+## 95 percent confidence interval:
+##  131.7535 447.1866
+## sample estimates:
+## mean in group Control    mean in group DIEP 
+##              527.7778              238.3077</code></pre>
+<pre><code>## 
+##  Welch Two Sample t-test
+## 
+## data:  totvol by trt.f
+## t = 3.7043, df = 48.25, p-value = 0.0005452
+## alternative hypothesis: true difference in means between group Control and group DIEP is not equal to 0
+## 95 percent confidence interval:
+##  132.3707 446.5695
+## sample estimates:
+## mean in group Control    mean in group DIEP 
+##              527.7778              238.3077</code></pre>
+<p>The estimated mean difference, standard error, and degrees of freedom are computed below.</p>
+<p><span class="math display">\[ \overline{y}_1-\overline{y}_2= 527.78 - 238.31 = 289.47 \qquad \widehat{SE}\{\overline{Y}_1-\overline{Y}_2\} = \sqrt{\frac{322.07^2}{27}+\frac{242.66^2}{26}}=78.14 \]</span></p>
+<p><span class="math display">\[ \nu= \frac{\left[\frac{322.07^2}{27} +\frac{242.66^2}{26}\right]^2}{\left[\frac{(322.07^2/27)^2}{27-1} +
+   \frac{(242.66^2/26)^2}{26-1}\right]}=48.25 \qquad \qquad t_{.025,48.25}=2.010 \]</span></p>
+<p>The 95% Confidence Interval for <span class="math inline">\(\mu_1-\mu_2\)</span> and test statistic and p-value for testing <span class="math inline">\(H_0:\mu_1-\mu_2=0\)</span> versus <span class="math inline">\(H_A:\mu_1-\mu_2\neq 0\)</span>
+are given below. There is strong evidence that the suture quilting reduces blood loss during surgery.</p>
+<p><span class="math display">\[ 95\% \mbox{ CI for } \mu_1-\mu_2: \quad 289.47 \pm 2.010(78.14) \equiv  289.47 \pm 157.06 \equiv  (132.41,446.53)  \]</span></p>
+<p><span class="math display">\[ \mbox{T.S.: } t_{obs}=\frac{289.47}{78.14}=3.705 \qquad \qquad P=2P\left(t_{48.25}\geq 3.705\right)=.0005 \]</span></p>
+<p><span class="math display">\[ \nabla  \]</span></p>
+</div>
+</div>
+</div>
+<div id="paired-sample-designs" class="section level2 hasAnchor" number="6.2">
+<h2><span class="header-section-number">6.2</span> Paired Sample Designs<a href="comparing-two-population-means.html#paired-sample-designs" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>In paired samples (aka crossover or within subjects) designs, units (subjects) receive each treatment, thus acting
+as their own control. They may also have been matched based on some characteristics.
+Procedures based on these designs take this into
+account, and are based in determining differences between treatments
+after “removing” variability in the subjects (or pairs). When it is possible to conduct
+them, paired sample designs are more powerful than independent sample designs
+in terms of being able to detect a difference (reject <span class="math inline">\(H_0\)</span>) when
+differences truly exist (<span class="math inline">\(H_A\)</span> is true), for a fixed sample size and when measurements within subjects or pairs are positively correlated.</p>
+<p>In paired sample designs, each subject (or pair) receives each treatment. In the case
+of two treatments being compared, we compute the difference in the
+two measurements within each subject (or pair), and test whether or not the
+population mean difference is 0. When the differences are normally distributed,
+we use the paired <span class="math inline">\(t\)</span>-test to determine if differences exist in the mean
+response for the two treatments. Then this is simply a 1-sample problem on the differences.</p>
+<p>Let <span class="math inline">\(Y_1\)</span> be the score in condition 1 for a randomly selected subject, and <span class="math inline">\(Y_2\)</span> be the score in condition 2 for the subject.
+Let <span class="math inline">\(D=Y_1-Y_2\)</span> be the difference. Further, consider the following assumptions and their corresponding results.
+Note that the differences across subjects (or pairs)
+are considered to be independent.</p>
+<p><span class="math display">\[ E\{Y_1\}=\mu_1 \qquad V\{Y_1\}=\sigma_1^2 \qquad E\{Y_2\}=\mu_2 \qquad V\{Y_2\}=\sigma_2^2 \qquad \mbox{COV}\{Y_1,Y_2\} = \sigma_{12} \]</span></p>
+<p><span class="math display">\[ \Rightarrow \quad
+E\{D\} = \mu_1-\mu_2=\mu_D \qquad \qquad V\{D\} = \sigma_D^2=\sigma_1^2 + \sigma_2^2 - 2\sigma_{12} \]</span></p>
+<p><span class="math display">\[ \overline{D} = \frac{\sum_{i=1}^n D_i}{n} \qquad E\{\overline{D}\} = \mu_D \qquad V\{\overline{D}\}=\sigma_{\overline{D}}^2=\frac{\sigma_D^2}{n} \qquad
+SE\{\overline{D}\}=\sigma_{\overline{D}}=\frac{\sigma_D}{\sqrt{n}} \]</span></p>
+<p><span class="math display">\[ \mbox{For large } n {: } \qquad
+\overline{D} \stackrel{\cdot}{\sim} N\left(\mu_D, SE\{\overline{D}\}=\frac{\sigma_D}{\sqrt{n}}\right) \]</span></p>
+<p>Normality holds for any sample size if the individual measurements (or the differences) are normally distributed.</p>
+<p>It should be noted that in the paired case <span class="math inline">\(n_1=n_2\)</span> by definition. That
+is, there will always be equal sized samples when the experiment is conducted
+properly. There will be <span class="math inline">\(n=n_1=n_2\)</span> differences, even though there were <span class="math inline">\(2n=n_1+n_2\)</span> measurements
+made.
+From the <span class="math inline">\(n\)</span> differences obtained in a sample, the mean and standard deviation are obtained,
+and will labeled as <span class="math inline">\(\overline{d}\)</span> and <span class="math inline">\(s_d\)</span>.</p>
+<p><span class="math display">\[ \overline{d} = \frac{\sum_{i=1}^n d_i}{n}
+\qquad \qquad s_d^2 = \frac{\sum_{i=1}^n (d_i - \overline{d})^2}{n-1}
+\qquad \qquad s_d=\sqrt{s_d^2} \qquad \qquad \widehat{SE}\{\overline{D}\}= s_{\overline{D}}=\frac{s_d}{\sqrt{n}} \]</span></p>
+<p>A <span class="math inline">\((1-\alpha )100\%\)</span> Confidence Interval for the population mean difference <span class="math inline">\(\mu_D\)</span> is given below.</p>
+<p><span class="math display">\[ \overline{d} \pm t_{\alpha/2,n-1} \widehat{SE}\{\overline{D}\} \quad \equiv \quad
+\overline{d} \pm t_{\alpha/2,n-1} \frac{s_d}{\sqrt{n}} \]</span></p>
+<p>The test is conducted as follows.</p>
+<p><strong>2-Sided Test</strong>
+<span class="math display">\[H_0:\mu_1-\mu_2=\mu_D=0 \qquad H_A:\mu_D \neq 0 \qquad
+\mbox{T.S.: } t_{obs} = \frac{\overline{d}}{\widehat{SE}\{\overline{D}\}}=\frac{\overline{d}}{\left(\frac{s_d}{\sqrt{n}}\right)}\]</span>
+<span class="math display">\[\mbox{R.R.: } |t_{obs}|\geq t_{\alpha/2,n-1}  \qquad P=2P(t_{n-1} \geq |t_{obs}|)\]</span>
+<strong>Upper-Tail Test</strong>
+<span class="math display">\[H_0:\mu_1-\mu_2=\mu_D=0 \qquad H_A:\mu_D &gt; 0 \qquad
+\mbox{T.S.: } t_{obs} = \frac{\overline{d}}{\widehat{SE}\{\overline{D}\}}=\frac{\overline{d}}{\left(\frac{s_d}{\sqrt{n}}\right)}\]</span>
+<span class="math display">\[\mbox{R.R.: } t_{obs}\geq t_{\alpha,n-1}  \qquad P=P(t_{n-1} \geq t_{obs})\]</span></p>
+<p><strong>Example 6.5: Comparison of Two Analytic Methods for Determining Wine Isotope</strong></p>
+<p>A study was conducted to compare two analytic methods for determining <span class="math inline">\(^{87}Sr/^{86}Sr\)</span> isotope ratios in wine samples <span class="citation">(<a href="#ref-durante_2015">Durante et al. 2015</a>)</span>.
+These are used in geographic tracing of wine. The two methods are microwave (method 1) and low temperature (method 2).
+The data, and the differences
+(microwave - lowtemp) are given in Table <a href="comparing-two-population-means.html#tab:wineiso1">6.6</a>.</p>
+<pre><code>##   sample_id microwave  lowtemp
+## 1         1  0.708660 0.708610
+## 2         2  0.708762 0.708792</code></pre>
+<pre><code>##                                  n   dbar     sd
+## diff=(microwave-lowtemp)*100000 18 0.3667 2.4646</code></pre>
+<table>
+<caption><span id="tab:wineiso1">Table 6.6: </span><span class="math inline">\(^{87}SR/^{86}SR\)</span> Isotope ratios for 18 wine samples by Microwave and Low Temperature Methods</caption>
+<thead>
+<tr class="header">
+<th align="right">sample_id</th>
+<th align="right">microwave</th>
+<th align="right">lowtemp</th>
+<th align="right">diff</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">1</td>
+<td align="right">0.708660</td>
+<td align="right">0.708610</td>
+<td align="right">5.0e-05</td>
+</tr>
+<tr class="even">
+<td align="right">2</td>
+<td align="right">0.708762</td>
+<td align="right">0.708792</td>
+<td align="right">-3.0e-05</td>
+</tr>
+<tr class="odd">
+<td align="right">3</td>
+<td align="right">0.708725</td>
+<td align="right">0.708734</td>
+<td align="right">-9.0e-06</td>
+</tr>
+<tr class="even">
+<td align="right">4</td>
+<td align="right">0.708668</td>
+<td align="right">0.708662</td>
+<td align="right">6.0e-06</td>
+</tr>
+<tr class="odd">
+<td align="right">5</td>
+<td align="right">0.708675</td>
+<td align="right">0.708670</td>
+<td align="right">5.0e-06</td>
+</tr>
+<tr class="even">
+<td align="right">6</td>
+<td align="right">0.708702</td>
+<td align="right">0.708713</td>
+<td align="right">-1.1e-05</td>
+</tr>
+<tr class="odd">
+<td align="right">7</td>
+<td align="right">0.708647</td>
+<td align="right">0.708661</td>
+<td align="right">-1.4e-05</td>
+</tr>
+<tr class="even">
+<td align="right">8</td>
+<td align="right">0.708677</td>
+<td align="right">0.708667</td>
+<td align="right">1.0e-05</td>
+</tr>
+<tr class="odd">
+<td align="right">9</td>
+<td align="right">0.709145</td>
+<td align="right">0.709176</td>
+<td align="right">-3.1e-05</td>
+</tr>
+<tr class="even">
+<td align="right">10</td>
+<td align="right">0.709017</td>
+<td align="right">0.709024</td>
+<td align="right">-7.0e-06</td>
+</tr>
+<tr class="odd">
+<td align="right">11</td>
+<td align="right">0.708820</td>
+<td align="right">0.708814</td>
+<td align="right">6.0e-06</td>
+</tr>
+<tr class="even">
+<td align="right">12</td>
+<td align="right">0.709402</td>
+<td align="right">0.709364</td>
+<td align="right">3.8e-05</td>
+</tr>
+<tr class="odd">
+<td align="right">13</td>
+<td align="right">0.709374</td>
+<td align="right">0.709378</td>
+<td align="right">-4.0e-06</td>
+</tr>
+<tr class="even">
+<td align="right">14</td>
+<td align="right">0.709508</td>
+<td align="right">0.709517</td>
+<td align="right">-9.0e-06</td>
+</tr>
+<tr class="odd">
+<td align="right">15</td>
+<td align="right">0.709070</td>
+<td align="right">0.709063</td>
+<td align="right">7.0e-06</td>
+</tr>
+<tr class="even">
+<td align="right">16</td>
+<td align="right">0.709061</td>
+<td align="right">0.709079</td>
+<td align="right">-1.8e-05</td>
+</tr>
+<tr class="odd">
+<td align="right">17</td>
+<td align="right">0.709096</td>
+<td align="right">0.709039</td>
+<td align="right">5.7e-05</td>
+</tr>
+<tr class="even">
+<td align="right">18</td>
+<td align="right">0.708720</td>
+<td align="right">0.708700</td>
+<td align="right">2.0e-05</td>
+</tr>
+</tbody>
+</table>
+<pre><code>## 
+##  Paired t-test
+## 
+## data:  wi1$microwave and wi1$lowtemp
+## t = 0.6312, df = 17, p-value = 0.5363
+## alternative hypothesis: true mean difference is not equal to 0
+## 95 percent confidence interval:
+##  -8.589364e-06  1.592270e-05
+## sample estimates:
+## mean difference 
+##    3.666667e-06</code></pre>
+<p>As there are <span class="math inline">\(n=18\)</span> differences, the degrees of freedom are <span class="math inline">\(n-1=17\)</span>. The <span class="math inline">\(95\%\)</span> Confidence Interval for <span class="math inline">\(\mu_D\)</span> is computed below, where <span class="math inline">\(t_{.025,17}=2.110\)</span>.
+First, the mean and standard deviation of the differences are multiplied by 100000 (remove first 5 0s after decimal) to reduce the risk of calculation error.
+This is legitimate as the mean and standard deviation
+are of the same units. This leads to <span class="math inline">\(\overline{d}^*=0.3667\)</span> and <span class="math inline">\(s_d^*=2.46466\)</span>.</p>
+<p><span class="math display">\[ 0.3667 \pm 2.110 \frac{2.4646}{\sqrt{18}}
+\equiv  0.3667 \pm 2.110(0.5809) \equiv  0.3667 \pm 1.2257  \equiv \quad (-0.8590,1.5924)  \]</span></p>
+<p>In the original units the interval is of the form of (-.00000859,.000015924).
+Since the interval contains 0, there is no evidence that one method tends to score higher (or lower) than the other on average.</p>
+<p>The test of whether there is a difference in the true mean determinations between the two methods (with <span class="math inline">\(\alpha=0.05\)</span>) is conducted by
+completing the steps outlined below.</p>
+<p><span class="math display">\[H_0:\mu_1-\mu_2=\mu_D=0 \qquad  H_A:\mu_D \neq 0 \qquad
+\mbox{T.S.: } t_{obs} = \frac{0.3667}{\left(\frac{2.4646}{\sqrt{18}}\right)}=
+\frac{0.3667}{0.5809}=0.631\]</span>
+<span class="math display">\[\mbox{R.R.: } |t_{obs}|&gt;t_{\alpha/2,n-1}=t_{.025,17}=2.110 \qquad
+P = 2P\left(t_{17} \geq |0.631|\right)=.5364\]</span></p>
+<p>There is definitely no evidence that the two methods differ in terms of determinations of wine isotope ratios.</p>
+<p>The R code and output using the <strong>t.test</strong> is given at the end of the previous R chunk.</p>
+<p><span class="math display">\[ \nabla \]</span></p>
+</div>
+<div id="nonparametric-tests" class="section level2 hasAnchor" number="6.3">
+<h2><span class="header-section-number">6.3</span> Nonparametric Tests<a href="comparing-two-population-means.html#nonparametric-tests" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>When data are highly skewed, the extreme measurements can have large impacts on the group means and
+standard deviations. Two rank-based tests that are not effected by outliers are the <strong>Wilcoxon Rank-Sum Test</strong> for
+independent samples and the <strong>Wilcoxon Signed-Rank Test</strong> for paired samples. Note that for independent samples
+there is an alternative, but mathematically equivalent <strong>Mann-Whitney U-Test</strong> that is often reported.
+These tests require special tables for small samples and have normal approximations for larger samples.
+We briefly describe them here and use R for the computations.</p>
+<div id="independent-samples---wilcoxon-rank-sum-test" class="section level3 hasAnchor" number="6.3.1">
+<h3><span class="header-section-number">6.3.1</span> Independent Samples - Wilcoxon Rank-Sum Test<a href="comparing-two-population-means.html#independent-samples---wilcoxon-rank-sum-test" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>For the Rank-Sum test, let the sample sizes for groups 1 and 2 be <span class="math inline">\(n_1\)</span> and <span class="math inline">\(n_2\)</span>, respectively. Let the combined sample size
+be <span class="math inline">\(n_. = n_1 + n_2\)</span>.</p>
+<ul>
+<li>Rank the measurements across treatments from 1 (smallest) to <span class="math inline">\(n_.\)</span> (largest), adjusting for ties by giving the average rank for tied cases.</li>
+<li>Obtain the rank sums for each treatment: <span class="math inline">\(T_1\)</span> and <span class="math inline">\(T_2\)</span> with <span class="math inline">\(T_1+T_2=1+2+\ldots + n_. = \frac{n_.\times\left(n_.+1\right)}{2}\)</span></li>
+<li>The test involves looking for discrepancies between <span class="math inline">\(T_1\)</span> and <span class="math inline">\(T_2\)</span> with what would be expected under the hypothesis of equal medians, namely <span class="math inline">\(E\left\{T_i\right\}= \frac{n_i\times\left(n_.+1\right)}{2}\)</span></li>
+<li>Special tables or statistical software packages can be used for the tests.</li>
+</ul>
+<p><strong>Example 6.6: Abdominal Quilting to Reduce Drainage in Breast Reconstruction Surgery</strong></p>
+<p>With sample sizes of <span class="math inline">\(n_1=27\)</span> and <span class="math inline">\(n_2=26\)</span> being well above the limits of standard tables, we will use R for the test. The
+rank sums are <span class="math inline">\(T_1=962.5\)</span> and <span class="math inline">\(T_2 = 468.5\)</span>, respectively, with expected values under the hypothesis of equal medians being
+729 and 702, respectively. These actual values are much higher than expected for the control group and much lower than expected
+for the treatment group. The approximate p-value is very small, implying a higher median for Controls than Treated patients.</p>
+<pre><code>##   trt age totvol
+## 1   1  26    550
+## 2   1  29    160</code></pre>
+<pre><code>## Warning in wilcox.test.default(x = DATA[[1L]], y = DATA[[2L]], ...): cannot
+## compute exact p-value with ties</code></pre>
+<pre><code>## 
+##  Wilcoxon rank sum test with continuity correction
+## 
+## data:  totvol by trt.f
+## W = 584.5, p-value = 3.384e-05
+## alternative hypothesis: true location shift is not equal to 0</code></pre>
+<p><span class="math display">\[ \nabla  \]</span></p>
+</div>
+<div id="paired-samples---wilcoxon-signed-rank-test" class="section level3 hasAnchor" number="6.3.2">
+<h3><span class="header-section-number">6.3.2</span> Paired Samples - Wilcoxon Signed Rank Test<a href="comparing-two-population-means.html#paired-samples---wilcoxon-signed-rank-test" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>When the data are paired, differences are taken within the pairs as in the paired t-test. Then the
+absolute values of the differences are ranked from
+smallest (1) to largest (<span class="math inline">\(n\)</span>), again with tied differences receiving average ranks. The rank sum
+for positive differences <span class="math inline">\(\left(T^+\right)\)</span> and negative differences <span class="math inline">\(\left(T^-\right)\)</span> are obtained
+with <span class="math inline">\(T^+ + T^- = 1 + \cdots + n = n(n+1)/2\)</span>. Then <span class="math inline">\(T^+\)</span> and <span class="math inline">\(T^-\)</span> can be compared with their expected values
+which are both <span class="math inline">\(n(n+1)/4\)</span>. Again, special tables are available, or statistical software packages can be used for the test.</p>
+<p><strong>Example 6.7: Comparison of Two Analytic Methods for Determining Wine Isotope</strong></p>
+<p>For the wine samples, there were <span class="math inline">\(n=18\)</span> pairs analyzed by the microwave and low temperature methods. The ranks sums for
+the positive and negative differences were <span class="math inline">\(T^+ = 87.5\)</span> and <span class="math inline">\(T^- = 83.5\)</span>, respectively, each with expected value equal to <span class="math inline">\(18(19)/4 = 85.5\)</span>.
+The observed values are very close to their expected values under the hypothesis of equal medians. The p-value is .9479, implying no evidence of
+difference in location for the two analytic methods.</p>
+<pre><code>## Warning in wilcox.test.default(wi1$microwave, wi1$lowtemp, paired = TRUE):
+## cannot compute exact p-value with ties</code></pre>
+<pre><code>## 
+##  Wilcoxon signed rank test with continuity correction
+## 
+## data:  wi1$microwave and wi1$lowtemp
+## V = 87.5, p-value = 0.9479
+## alternative hypothesis: true location shift is not equal to 0</code></pre>
+<p><span class="math display">\[ \nabla  \]</span></p>
+
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="comparing-two-population-means.html#cb59-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb59-2"><a href="comparing-two-population-means.html#cb59-2" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span></code></pre></div>
+</div>
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
+<div id="ref-durante_2015" class="csl-entry">
+Durante, C., C. Baschieri, L. Bertacchini, D. Bertelli, M. Cocchi, A. Marchetti, D. Manzini, G. Papotti, and S. Sighinolfi. 2015. <span>“An Analytical Approach to Sr Isotope Ratio Detemination in Lambrusco Wines for Geographic Traceability Purposes.”</span> <em>Food Chemistry</em> 173: 557–63.
+</div>
+<div id="ref-liang_2016" class="csl-entry">
+Liang, D. G., J. R. Dusseldorp, C. van Schalkwyk, S. Hariswamy, S. Wood, V. Rose, and P. Moradi. 2016. <span>“Running Barbed Suture Quilting Reduces Abdominal Drainage in Perforator-Based Breast Reconstruction.”</span> <em>Journal of Plastic, Reconstructive &amp; Aesthetic Surgery</em> 69: 42–47.
+</div>
+<div id="ref-peckmann_2017" class="csl-entry">
+Peckmann, T. R., S. Scott, S. Meek, and P. Mahakkanukrauh. 2017. <span>“Sex Estimation from the Scapula in a Contemporary Thai Population: Applications for Forensic Anthropology.”</span> <em>Science and Justice</em> 57: 270–75.
+</div>
+<div id="ref-rusanganwa_2013" class="csl-entry">
+Rusanganwa, J. 2013. <span>“Multimedia as a Means to Enhance Teaching Technical Vocabulary to Physics Undergraduates in Rwanda.”</span> <em>English for Specific Purposes</em> 32: 36–44.
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="introduction-to-experimentation.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="experimental-design-and-the-analysis-of-variance.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": "https://github.com/LarryWinner/STA2170-Notes1/edit/main/06-references.Rmd",
+    "text": "Edit"
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": null,
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "subsection"
+  }
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
