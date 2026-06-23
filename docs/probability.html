@@ -23,7 +23,7 @@
 <meta name="author" content="Larry Winner" />
 
 
-<meta name="date" content="2026-06-22" />
+<meta name="date" content="2026-06-23" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -263,6 +263,7 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="9.3" data-path="regression-models.html"><a href="regression-models.html#logistic-regression"><i class="fa fa-check"></i><b>9.3</b> Logistic Regression</a></li>
 </ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -724,7 +725,7 @@ These are used in many situations where data are counts of numbers of events occ
 </ul>
 <p>Note that many experiments are well approximated by this model, and thus it has wide applicability. One problem that has been considered in great detail
 is the assumption of independence from trial to trial. A classic paper that looked at the “hot hand” in basketball shooting has led to many
-studies in sports involving the topic is [gilovich_1985].</p>
+studies in sports involving the topic is <span class="citation">(<a href="#ref-gilovich_1985">Gilovich, Vallone, and Tversky 1985</a>)</span>.</p>
 <p>The probability of any sequence of <span class="math inline">\(y\)</span> Successes and <span class="math inline">\(n-y\)</span> Failures is <span class="math inline">\(\pi^y (1-\pi)^{n-y}\)</span> for <span class="math inline">\(y=0,1,\ldots ,n\)</span>. The number of ways
 to observe <span class="math inline">\(y\)</span> successes in <span class="math inline">\(n\)</span> trials makes use of combinations described previously. The number of ways of choosing <span class="math inline">\(y\)</span> positions from
 <span class="math inline">\(1,2,\ldots ,n\)</span> is <span class="math inline">\(C_y^n=\frac{n!}{y!(n-y)!}={n \choose y}\)</span>. For instance, there is only one way observing either 0 or <span class="math inline">\(n\)</span> Successes, there are <span class="math inline">\(n\)</span> ways
@@ -1440,7 +1441,7 @@ well approximated by the N(5.840,0.208) in the graph.</p>
 <span id="cb38-2"><a href="probability.html#cb38-2" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span></code></pre></div>
 </div>
 </div>
-<h3>References</h3>
+<h3>References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
 <div id="ref-agresti_2002" class="csl-entry">
 Agresti, Alan. 2002. <em>Categorical Data Analysis</em>. 2nd ed. New York: Wiley.
@@ -1456,6 +1457,9 @@ Clarke, R. D. 1946. <span>“An Application of the Poisson Distribution.”</spa
 </div>
 <div id="ref-feller_1968" class="csl-entry">
 Feller, William. 1968. <em>An Introduction to Probability Theory and Its Applications, Vol.1</em>. 3rd ed. New York: Wiley.
+</div>
+<div id="ref-gilovich_1985" class="csl-entry">
+Gilovich, T., R. Vallone, and A. Tversky. 1985. <span>“The Hot Hand in Basketball: On the Misperception of Random Sequences.”</span> <em>Cognitive Psychology</em> 17 (3): 295–314.
 </div>
 <div id="ref-kahneman_1982" class="csl-entry">
 Kahneman, Daniel, Paul Slovic, and Amos Tversky. 1982. <em>Judgment Under Uncertainty: Heuristics and Biases</em>. 1st ed. Cambridge: Cambridge University Press.

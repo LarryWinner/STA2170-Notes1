@@ -453,7 +453,7 @@ A binomial "experiment" is based on a series of Bernoulli trials with the follow
 
 Note that many experiments are well approximated by this model, and thus it has wide applicability. One problem that has been considered in great detail
 is the assumption of independence from trial to trial. A classic paper that looked at the "hot hand" in basketball shooting has led to many
-studies in sports involving the topic is [gilovich_1985].
+studies in sports involving the topic is [@gilovich_1985].
 
 The probability of any sequence of $y$ Successes and $n-y$ Failures is $\pi^y (1-\pi)^{n-y}$ for $y=0,1,\ldots ,n$. The number of ways
 to observe $y$ successes in $n$ trials makes use of combinations described previously. The number of ways of choosing $y$ positions from
